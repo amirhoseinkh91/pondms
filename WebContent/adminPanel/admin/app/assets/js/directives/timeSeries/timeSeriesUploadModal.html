@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h3 class="modal-title">بارگزاری سری زمانی</h3>
+</div>
+<div class="modal-body">
+    <form name="form">
+
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">نوع سری زمانی</label>
+            <div class="col-sm-6">
+				<select class="form-control" ng-options="item.uid as item.title for item in Data.list track by item.uid" ng-model="Data.form.time_series_group_uid">
+				</select>
+            </div>
+        </div>
+
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">فرمت فایل</label>
+            <div class="col-sm-6">
+				<select class="form-control" ng-model="Data.form.file_format">
+					<option value="first">نوع 1</option>
+					<option value="second">نوع 2</option>
+					<option value="third">نوع 3</option>
+				</select>
+            </div>
+        </div>
+
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">مرجع</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="reference" >
+            </div>
+        </div>
+        
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">تاریخ جمع‌آوری</label>
+            <div class="col-sm-6">
+				<vt-persian-date-picker model="date" ></vt-persian-date-picker>
+            </div>
+        </div>
+        
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">بارگزاری</label>
+            <div class="col-sm-6">
+				<vt-file name="file" is-edit-mode="true" model="Data.file" type="xlsx"></vt-file>
+            </div>
+        </div>
+	</form>  
+</div>
+<div class="modal-footer">
+	<button class="btn btn-sm btn-success" type="button" ng-click="Func.onSaveClick()">ذخیره</button>
+    <button class="btn btn-sm btn-warning" type="button" ng-click="Func.onCancelClick()">انصراف</button>
+</div>

@@ -1,0 +1,53 @@
+{
+	"restrictions" : [
+		{ 
+			"type" : "eq" ,
+			"field" : "uid",
+			"value" : "ahmad"
+		}
+		,
+		{
+			"type" : "le",
+			"field" : "age",
+			"value" : 10
+		}
+		,
+		{
+			"type" : "isNull",
+			"field" : "firstName"
+		}
+		,
+		{
+			"type" : "geProp",
+			"field" : "leftFootLen",
+			"field2" : "rightFootLen"
+		}
+		,
+		{ 
+			"type" : "like" ,
+			"field" : "lastName",
+			"value" : "hma"
+		}
+		,
+		{
+			"type" : "or",
+			"conds" : [
+				{
+					"type" : "isNotNull" ,
+					"field" : "lastName"
+				} 
+				,
+				{
+					"type" : "isNotNull",
+					"field" : "username"
+				}
+			]
+		}
+	]
+	,
+	"orders": [
+		{ "field" : "age", "dir" : "asc" }
+	]
+}
+
+

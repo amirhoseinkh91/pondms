@@ -1,0 +1,26 @@
+{
+  "path" : "time_series_date_value_pair",
+  "key" : "timeseriesdatevaluepair",
+  "featureName" : "TIME_SERIES_DATE_VALUE_PAIR",
+  "properties" : {
+    "submisstionTime" : {
+      "label" : "submisstionTime",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "timeSeriValue" : {
+      "label" : "timeSeriValue",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"entityTypes" :[
+
+		{
+			"collectionName" : "event_col",
+			"entityKey" : "event",
+			"jsonSchemaFileName" : "event.json",
+			"hotkey" : "alt+shift+ctrl+9",
+			"name" : "رویداد"
+		}
+	]
+
+}

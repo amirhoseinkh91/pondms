@@ -1,0 +1,10 @@
+width-picker .dropdown-menu {
+	padding-bottom: 10px;
+}
+width-picker .width {
+	width: 150px;
+	min-height: 18px;
+	float: right;
+	cursor: pointer;
+	border-bottom-style: solid;
+}

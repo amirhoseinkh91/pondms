@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.review">
+
+	<class name="ReplyReview" table="REPLY_REVIEWS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="position" type="string" not-null="true" unique="false"/>
+
+		<property name="creationDate" type="date" unique="false" not-null="true">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="text" type="text" not-null="true" unique="false"/>
+
+		<property name="confirmed" type="boolean" unique="false" not-null="true">
+			<meta attribute="init">false</meta>
+		</property>
+
+		<!-- user who posted this review-->
+		<many-to-one name="user" not-null="true" unique="false" class="ir.viratech.pond_ms.model.user.User">
+			<column name="user_id"/>
+		</many-to-one>
+
+		<many-to-one name="review" class="ir.viratech.pond_ms.model.review.Review">
+			<column name="review_id"/>
+		</many-to-one>
+
+	</class>
+
+</hibernate-mapping>

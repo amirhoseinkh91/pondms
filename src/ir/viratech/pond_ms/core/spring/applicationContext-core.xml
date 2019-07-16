@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop.xsd
+			" >
+	
+	<context:annotation-config/>
+	
+	<bean id="applicationContextHolder" class="ir.viratech.commons.spring.context.ApplicationContextHolder" />
+	
+	<!-- 
+		This important line of code forces spring to always use CGLIB proxies.
+		We had to add it to resolve a problem like: 
+			http://stackoverflow.com/questions/4111919/nosuchbeandefinitionexception-when-implementing-a-new-interface
+			or:
+			http://stackoverflow.com/questions/16914623/aspectj-and-nosuchbeandefinitionexception-at-least-1-bean-which-qualifies-as-aut
+		Read this section of spring reference for more info:
+			spring-framework-4.0.7.RELEASE/docs/spring-framework-reference/html/aop.html#aop-proxying
+	 -->
+	<aop:config proxy-target-class="true"/>
+   
+	<!--
+	<context:property-placeholder /> 
+	-->
+	<bean id="propertyPlaceholderConfigurer" 
+			class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" />
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="ir/viratech/pond_ms/core/i18n/i18n-messages"></property>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	
+	<bean id="messageTranslator" class="ir.viratech.pond_ms.core.i18n.MessageTranslatorWithUserLocale" />
+	
+	<bean id="executionContextHolder" 
+			class="ir.viratech.commons.execution_context.ExecutionContextHolder" >
+		<property name="factory" >
+			<bean class="ir.viratech.commons.util.InstantiateFactory" factory-method="instantiateFactory">
+				<constructor-arg value="ir.viratech.pond_ms.core.execution_context.MyExecutionContext" />
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<beans profile="!test">
+		<bean id="uidGenerator" class="ir.viratech.commons.model.uid.UidGenerator_Random" />
+	</beans>
+	
+	<beans profile="test">
+		<bean id="uidGenerator" class="ir.viratech.commons.model.uid.UidGenerator_Deterministic" 
+				p:prefix="uid_" p:suffix="_" p:numberPadding="3" p:counter="1" />
+	</beans>
+	
+</beans>

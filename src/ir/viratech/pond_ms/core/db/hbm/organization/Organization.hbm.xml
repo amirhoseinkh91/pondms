@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.organization" schema="pond_ms">
+
+	<class name="Organization" table="ORGANIZATIONS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="name" type="string" not-null="true" />
+		<property name="code" type="string" not-null="false" />
+
+		<set name="users">
+			<key column="organizationId" />
+			<one-to-many class="ir.viratech.pond_ms.model.user.User" />
+		</set>
+
+		<many-to-one name="parent" not-null="false" unique="false"
+			column="parentId" class="Organization" />
+
+		<set name="children" inverse="true" >
+			<meta attribute="reverse">parent</meta>
+			<key column="parentId" not-null="false"/>
+			<one-to-many class="Organization" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+.navbar-default {
+	background-color: #00AF50;
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0;
+	z-index: 2;
+}
+.navbar * {
+	color: #fff !important;
+}
+.navbar .dropdown-menu * {
+	color: #000 !important;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus, 
+.navbar-default .navbar-nav > .open > a:hover {
+	background-color: #33654A;
+}
+.navbar-brand > img {
+    display: inline-block;
+    height: 45px;
+    float: right;
+    margin-top: -13px;
+}
+
+.menu-item-padding {
+	padding-right: 10px;
+}
+
+.left-sidebar-tab {
+	width: 50%;
+	text-align: center;
+}
+
+#pond-form-view-btn {
+	width: 100%;
+	text-align: center;
+}

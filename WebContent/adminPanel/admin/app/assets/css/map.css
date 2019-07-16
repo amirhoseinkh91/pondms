@@ -1,0 +1,170 @@
+.panel-map {
+	box-shadow: -2px 1px 4px -3px #000;
+	min-width: 310px;
+	position: absolute;
+	right: -30%;
+	z-index: 9;
+	transition: right 0.5s ease-in-out;
+	overflow: visible;
+	width: 30%;
+}
+.panel-map.opened{
+	right:0;
+}
+.sidemenuToggle{
+	position: absolute;
+	z-index: 9;
+	background: #fff;
+	border: none;
+	top: 13px;
+	padding: 11px 6px;
+	box-shadow: 0px 0px 5px -2px #000;
+	border-radius: 3px 0 0 3px;
+	left: -22px;
+	box-shadow: 0px 0px 5px -2px #000;
+	border-radius: 3px 0 0 3px;
+}
+
+.panel-map > .panel-body{
+	overflow: auto;
+	height: 91%;
+	width: 100%;
+}
+.sidemenuToggle > i{
+	color: #00AF50;
+}
+.panel-map .div-tree {
+	margin-top: 10px;
+}
+.panel-object {
+	height: 100%;
+	width: 25%;
+	position: fixed;
+	top: 50px;
+	left: -30%;
+	z-index: 9;
+	transition: left 0.5s ease-in-out;
+}
+.panel-object.opened{
+	left: 0%;
+}
+.panel-object.opened .fa.pull-left{
+	position: absolute;
+	left: 15px;
+	top: 10px;
+}
+.div-search > .input-group {
+    border-bottom: 1px solid #dedede;
+    transition: all 1s;
+}
+.div-search > .input-group > input {
+    border: medium none;
+    box-shadow: none;
+}
+.div-search > .input-group > .input-group-addon {
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+	color: #00af50;
+}
+.div-search:active, .div-search:active > div:active, .div-search > div:active {
+    border-color: #00af50;
+}
+
+#btn-map-export {
+	position: absolute;
+	top: 225px;
+	left: 35px;
+	min-height: 30px;
+	min-width: 40px;
+}
+
+#btn-map-intro {
+	position: absolute;
+	top: 260px;
+	left: 35px;
+	min-height: 30px;
+	min-width: 40px;
+}
+
+#btn-map-polygon {
+	position: absolute;
+	top: 295px;
+	left: 35px;
+	min-height: 30px;
+	min-width: 40px;
+}
+
+#btn-map-marker {
+	position: absolute;
+	top: 330px;
+	left: 35px;
+	min-height: 30px;
+	min-width: 40px;
+}
+
+.panel-map-search {
+	box-shadow: -2px 1px 4px -3px #000;
+	min-width: 310px;
+	position: absolute;
+	right: -25%;
+	top: 15px;
+	z-index: 9;
+	transition: right 0.5s ease-in-out;
+	overflow: visible;
+	width: 25%;
+}
+.panel-map-search.opened{
+	right: 40px;
+	top: 15px;
+}
+.div-search-result {
+	max-height: 485px;
+	overflow-y: auto;	
+}
+.div-search-result > div{
+	min-height: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	border-bottom: solid thin #eee;
+}
+.div-search-result div,
+.div-search-result div * {
+	cursor: pointer;
+}
+.div-search-result img {
+	height: 50px;
+	width: 50px;
+	margin-left: 10px;
+}
+
+.search-result-image {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.search-result-description {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.search-result-description label {
+	display: block;
+}
+
+.search-result-description-main {
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+.search-result-description-details {
+	font-size: 11px;
+	font-family: cursive;
+	color: gray;
+}
+
+#pond-timeseries-view-btn {
+	width: 100%;
+	box-sizing: border-box;
+}
+

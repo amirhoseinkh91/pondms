@@ -1,0 +1,11 @@
+{
+  "entityTypes": [
+    {
+      "collectionName": "city_col",
+      "entityKey": "city",
+      "jsonSchemaFileName": "city.json",
+      "hotkey": "alt+shift+ctrl+7",
+      "name": "معرفی شهر"
+    }
+  ]
+}

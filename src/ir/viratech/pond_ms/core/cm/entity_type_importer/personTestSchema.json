@@ -1,0 +1,77 @@
+{
+    "title": "شخص",
+    "key": "personTest",
+    "properties": {
+        "age": {
+            "label": "سن",
+            "searchable": "true",
+            "type": "integer"
+        },
+        "birthDate": {
+            "label": "تاریخ",
+            "searchable": "true",
+            "type": "date",
+            "widget": "jalali"
+        },
+        "emails": {
+            "label": "ایمیل ها",
+            "multiple": true,
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "englishName": {
+            "label": "نام انگلیسی",
+            "searchable": true,
+            "type": "string"
+        },
+        "father": {
+            "label": "پدر",
+            "type": "personTest",
+            "widget": "popupSelector"
+        },
+        "firstName": {
+            "label": "نام",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        },
+        "lastName": {
+            "label": "نام خانوادگی",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        },
+        "picture": {
+            "label": "عکس کاربر",
+            "type": "file",
+            "widget": "imageSelector"
+        }
+    },
+    
+    "displayStringFunction": "function () {var ds = firstName + ' ' + lastName;if (ds.trim() === '') {return englishName;} else {return ds;}}",
+    "extents": {
+        "enriched": [
+            "firstName",
+            "lastName"
+        ],
+        "list": [
+            "firstName",
+            "lastName",
+            "englishName"
+        ]
+    },
+    "viewGroups": [ 
+        {
+            "key": "detail",
+            "members": [ "firstName", "englishName", "lastName", "age", "picture", "birthDate", "emails", "father" ],
+            "name": "مشخصات"
+        }
+    ]
+}

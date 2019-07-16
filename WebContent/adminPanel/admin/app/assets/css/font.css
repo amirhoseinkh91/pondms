@@ -1,0 +1,14 @@
+@font-face {
+	font-family: DroidNaskh;
+	src: url(../font/DroidNaskh/DroidNaskh-Regular.ttf);
+}
+
+@font-face {
+	font-family: DroidNaskh;
+	font-weight: bold;
+	src: url(../font/DroidNaskh/DroidNaskh-Bold.ttf);
+}
+@font-face {
+	font-family: shabnam;
+	src: url(../font/shabnam/shabnam.woff);
+}

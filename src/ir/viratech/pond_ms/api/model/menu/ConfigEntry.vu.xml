@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel 
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+	<dto name="ConfigEntry" 
+			entityPackage="ir.viratech.pond_ms.model.config" 
+			package="ir.viratech.pond_ms.api.menu" >
+		<prop name="uid" internalName="extuid" save="disabled" />
+		
+		<prop name="title" type="String" />
+		<prop name="key" type="String" />
+		<prop name="value" type="String" trackModif="true" />
+	</dto>
+	
+	<resource name="ConfigEntry" 
+			package="ir.viratech.pond_ms.api.menu" 
+			entityPackage="ir.viratech.pond_ms.model.config" 
+			resourcePath="config_entry" 
+			bundlePrefix="configEntry."
+			entityMgr="ir.viratech.pond_ms.model.config.logic.ConfigEntryMgr" 
+			fullDto="ir.viratech.pond_ms.api.menu.dto.ConfigEntryFullDTO"
+			featureEntityName="CONFIG_ENTRY"
+			 />
+	
+</uiModel>

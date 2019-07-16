@@ -1,0 +1,25 @@
+<div class="modal-body statistics-div">
+	<h3>{{layer.name}}</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>بیشینه</th>
+				<th>کمینه</th>
+				<th>میانگین</th>
+				<th>انحراف معیار</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{data.max | number : 6}}</td>
+				<td>{{data.min | number : 6}}</td>
+				<td>{{data.avg | number : 6}}</td>
+				<td>{{data.stddev | number : 6}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-sm btn-warning" type="button"
+		ng-click="onCloseClick()">بستن</button>
+</div>

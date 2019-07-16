@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel 
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+	
+	<dto dtoName="PointObjectLightDTO" entityName="PointObject" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			package="ir.viratech.pond_ms.api.map_object.vector">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="name"/>
+	</dto>
+	
+	<dto name="PointObject" extentKey="full" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			package="ir.viratech.pond_ms.api.map_object.vector" >
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" save="hooked"/>
+		<prop name="creationDate" type="java.util.Date" save="disabled" sortable="true" />
+		<prop name="formInstances" type="com.fasterxml.jackson.databind.node.ArrayNode" save="abstract" load="abstract" typeKey="collection" />		
+		<prop name="point" type="ir.viratech.pond_ms.commons.geo.Point" load="abstract" save="abstract" typeKey="string"/>
+ 				
+ 	</dto>
+ 	
+	<resource name="PointObject" 
+			package="ir.viratech.pond_ms.api.map_object.vector" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			resourcePath="point-object" 
+			bundlePrefix="pointobject."
+			entityMgr="ir.viratech.pond_ms.model.map_object.vector.logic.PointObjectMgr" 
+			fullDto="ir.viratech.pond_ms.api.map_object.vector.dto.PointObjectFullDTO"
+			featureEntityName="POINT_OBJECT" />
+</uiModel>

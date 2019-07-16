@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+
+	<class name="Layer" table="LAYER" schema="pond_ms" abstract="true">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="name" type="string" not-null="true" />
+
+		<property name="description" type="string" not-null="false" />
+
+		<property name="creationDate" column="creation_date" type="timestamp"
+			not-null="true">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="pondRelated" type="boolean">
+			<column name="pondRelated" not-null="false" default="false" />
+		</property>
+
+		<many-to-one name="map" class="ir.viratech.pond_ms.model.gismap.GISMap" column="map_id"
+			not-null="true">
+		</many-to-one>
+
+		<many-to-one name="parentLayer" class="ParentLayer"
+			column="parent_id" not-null="false" unique="false" insert="false"
+			update="false" />
+
+		<property name="indexInParent" type="integer" column="index_in_parent"
+			not-null="false" unique="false" insert="false" update="false" />
+		
+		<many-to-one name="parentMap" class="ir.viratech.pond_ms.model.gismap.GISMap"
+			column="parent_map_id" not-null="false" unique="false" insert="false"
+			update="false" />
+
+		<property name="indexInGISMap" type="integer" column="index_in_gismap"
+			not-null="false" unique="false" insert="false" update="false" />
+
+
+		<property name="secret" type="boolean">
+			<column name="secret" not-null="false" default="false" />
+		</property>
+
+	</class>
+</hibernate-mapping>

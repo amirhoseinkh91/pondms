@@ -1,0 +1,19 @@
+<div class="mini-sidebar" ng-if="!Data.orgUid">
+	<div class="list-group">
+		<a ng-repeat="menu in Data.minitMenuList" ui-sref="{{menu.uiSref}}"
+			class="list-group-item"
+			access-checker="{{menu.feature}}"><i class="{{menu.icon}}"></i></a>
+	</div>
+</div>
+<div class="sidebar" ng-class="{'small-sidebar': !Data.orgUid}">
+	<div class="list-group">
+		<a ng-repeat="menu in Data.menuList" ui-sref="{{menu.uiSref}}"
+			class="list-group-item"
+			access-checker="{{menu.feature}}"
+			ng-class="{'active' : Func.isActive(menu)}">
+			<i class="{{menu.icon}}"></i>
+			<label class="menu-item-padding control-label">{{menu.title}}</label>
+		</a>
+	</div>
+</div>
+<div class="content flex-content" ui-view="content"></div>

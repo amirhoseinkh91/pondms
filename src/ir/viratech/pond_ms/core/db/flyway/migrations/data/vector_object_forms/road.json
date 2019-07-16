@@ -1,0 +1,39 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"Road_Type": {
+			"label": "نوع راه",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"FCODE": {
+			"label": "کد راه",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"Road_Type",
+				"FCODE"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

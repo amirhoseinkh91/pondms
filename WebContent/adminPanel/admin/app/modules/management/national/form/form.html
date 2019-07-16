@@ -1,0 +1,63 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت فرم‌ها</div>
+		<div class="panel-body">
+			<div class="col-md-8" aaccess-checker="API_LIST_FORM">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-search control-fn="Controller.formSearchController"></vt-search>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-grid control-fn="Controller.formListController"></vt-grid>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4" aaccess-checker="API_VIEW_FORM" 
+				ng-hide="Data.searchMode=='advanced'">
+				<div class="panel panel-default">
+					<div class="panel-body panel-management">
+						<div class="col-sm-12">
+							<a class="btn btn-sm btn-danger btn-text pull-left" 
+								href="cm.html#/{{Data.selectedform.key}}" target="_blank" 
+								ng-show="Data.mode!='view' || Data.selectedform.key" type="button">طراحی فرم</a>
+						
+							<a class="btn btn-sm btn-default btn-text"
+								aaccess-checker="API_ADD_FORM"
+								ng-show="true" type="button"
+								ng-click="Func.onAddformClick()" ng-disabled="Data.mode=='add'" ng-bind="'CREATE'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-primary btn-text"
+								aaccess-checker="API_EDIT_FORM"
+								ng-show="Data.selectedform.key && Data.mode!='edit'" type="button"
+								ng-click="Func.onEditformClick()" ng-disabled="" ng-bind="'EDIT'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								aaccess-checker="API_ADD_FORM"
+								ng-show="Data.mode=='add'" type="button"
+								ng-click="Func.onSaveformClick()" ng-bind="'SAVE'|EnToFaButton"
+								ng-disabled="formForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								aaccess-checker="API_EDIT_FORM"
+								ng-show="Data.mode=='edit'" type="button"
+								ng-click="Func.onUpdateformClick()" ng-bind="'UPDATE'|EnToFaButton"
+								ng-disabled="formForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-warning btn-text"
+								ng-show="Data.mode=='edit' || Data.mode=='add'" type="button"
+								ng-click="Func.onCancelClick()" ng-disabled="" ng-bind="'CANCEL'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-danger btn-text"
+								aaccess-checker="API_DELETE_FORM"
+								ng-show="Data.selectedform.key && Data.mode!='edit'" type="button"
+								ng-click="Func.onDeleteformClick()" ng-disabled="" ng-bind="'DELETE'|EnToFaButton"></a>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" ng-show="Data.selectedform.key || Data.mode=='add'">
+					<div class="panel-body">
+						<entity-type-edit-add model="Data.selectedform" api="Controller.crud"></entity-type-edit-add>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

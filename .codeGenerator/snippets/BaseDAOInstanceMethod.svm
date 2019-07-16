@@ -1,0 +1,9 @@
+-
+	/**
+	 * Gets the DAO instance from Spring.
+	 *
+	 * @return the instance of ${class.MGRClassName}
+	 */
+	public static ${class.DAOPackage}.${class.DAOClassName} getInstance() {
+		return ir.viratech.commons.spring.context.ApplicationContextProvider.getInitializedApplicationContext().getBean(${class.DAOPackage}.${class.DAOClassName}.class);
+	}

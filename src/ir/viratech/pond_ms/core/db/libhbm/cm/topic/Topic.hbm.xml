@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.commons.cm.aspect.topic.model" schema="commons_cm">
+
+	<class name="Topic" table="TOPICS" schema="commons_cm">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+		
+		<property name="extuid" type="string" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+			
+		<property name="name" type="string" not-null="true" unique="false"/>
+		
+		<property name="secretLevel" type="int" not-null="true" unique="false">
+			<meta attribute="init">1</meta>		
+		</property>
+		
+		<property name="deleted" type="boolean" not-null="true" unique="false"/>
+		
+		<many-to-one name="parent" class="Topic"
+				column="parentId" not-null="false" unique="false" 
+				insert="false" update="false"/>
+		
+		<property name="indexInParent" type="integer" not-null="false" unique="false"
+				insert="false" update="false"/>
+		
+		
+		<list name="children" inverse="false" cascade="all-delete-orphan"  >
+			<key column="parentId" not-null="false"/>
+			<list-index column="indexInParent" base="0" />
+			<one-to-many class="Topic" />
+		</list>
+		
+
+	</class>
+
+</hibernate-mapping>

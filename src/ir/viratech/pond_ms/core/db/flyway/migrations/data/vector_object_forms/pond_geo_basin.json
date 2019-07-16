@@ -1,0 +1,74 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"IRNGEOLOGY": {
+			"label": "کد زمین شناسی",
+			"type": "integer",
+			"widget": "",
+			"showEditButton": false
+		},
+		"AGE": {
+			"label": "دوره زمین شناسی",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"ACAD_TEXT": {
+			"label": "متن ایکد",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"GEOLOGY_ID": {
+			"label": "شناسه زمین شناسی",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"PERIMETER": {
+			"label": "محیط",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"AREA": {
+			"label": "مساحت",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"DESCRIPTIO": {
+			"label": "توضیحات",
+			"type": "string",
+			"widget": "textarea",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"IRNGEOLOGY",
+				"AGE",
+				"ACAD_TEXT",
+				"GEOLOGY_ID",
+				"PERIMETER",
+				"AREA",
+				"DESCRIPTIO"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:64"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

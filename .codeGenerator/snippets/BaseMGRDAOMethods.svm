@@ -1,0 +1,20 @@
+:Modified=true
+:Description=
+-
+
+#foreach ($prop in $class.AllProperties)
+#if ($prop.isUnique())
+
+	/**
+	 * Unique finder method for "${prop.VarName}".
+	 *
+	 * @param ${prop.VarName} the value of ${prop.VarName}
+	 * @return the unique matching object
+	 */
+	@ir.viratech.commons.spring.tx.ReadTransactional
+	public ${class.AbsoluteValueObjectSignatureClassName} getBy${prop.Name_firstLetterUpper}(${prop.AbsoluteSignatureClassName} ${prop.VarName}) {
+		return this.getDAO().getBy${prop.Name_firstLetterUpper}(${prop.VarName});
+	}
+#end
+#end
+

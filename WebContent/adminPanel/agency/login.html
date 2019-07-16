@@ -1,0 +1,104 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
+<!doctype html>
+
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assets/CSS/signup.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form class="sign-up">
+    <h1 class="sign-up-title">ورود به جاسترو</h1>
+    <input type="text" id="usernameField" class="sign-up-input" placeholder="نام کابری" autofocus>
+    <input type="password" id="passwordField" class="sign-up-input" placeholder="رمز عبور">
+    <input id="submitBtn" type="submit" value="ورود" class="sign-up-button">
+
+</form>
+ </body>
+ <script>
+	function getRandomColors(){var randcolors = [];for(var i=0; i<3; i ++){randcolors.push(Math.ceil(Math.random()*50));}return randcolors;}function changeBodyBackgroundColor() {var colors = getRandomColors();var backgroundcolor = "rgba("+colors[0]+","+colors[1]+","+colors[2]+",.6"+")";$("body").css("background-color", backgroundcolor);}setInterval(function(){changeBodyBackgroundColor();},5000)</script><script>$('.any-prob').on('click',function(){$('.prob-page').css({'transform':'translateY(0px)'})});
+</script>
+<Script>/*
+	$('.prob-page').on('click',function(){
+		$(this).css({'transform':'translateY(-280px)'})
+	});*/
+ </script>
+ 
+ <button id="myBtn">Add Element</button>
+
+<section id="wrapper"></section>
+
+<script>
+
+
+
+
+    $("#submitBtn").click(function(event) {
+
+        var a = document.getElementById("usernameField").value;
+        var b = document.getElementById("passwordField").value;
+
+         if (a != "" && b != "") {
+            $.ajax({
+
+                type: 'POST',
+                Accept: "text/plain; charset=utf-8",
+
+                url: "http://justrodev.ir/j_spring_security_check",
+                dataType: "text",
+                data: {
+                    'username': a,
+                    'password': b
+                },
+        })
+                    .always(function(data) {
+                        console.log(data);
+                        //loadStorage.setItem("Jsessionid", "JSESSIONID=" + data.getResponseHeader("Set_Cookie"));
+                        document.cookie = "JSESSIONID="  + data.cookie
+
+                        console.log(document.cookie)
+
+
+
+                        $.ajax({
+                            type: 'GET',
+                            url: "http://iloc.ir/PondMS/api/config",
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            dataType: "text",
+
+                            complete: function(xhr, textStatus) {
+                                console.log(xhr.status);
+
+                                if (true){
+                                }
+                                if (xhr.status == 200){
+                                    handleSuccess()
+                                }else{
+                                    handleError()
+                                }
+                            }
+                        })
+                        event.preventDefault()
+                    });
+            event.preventDefault()
+        }
+        });
+    function handleSuccess(){
+        //redirect to the next page
+        window.location.replace("justro.ir/dashboard.html");
+    }
+    function handleError() {
+
+
+    }
+
+
+
+</script>
+
+
+ </html>

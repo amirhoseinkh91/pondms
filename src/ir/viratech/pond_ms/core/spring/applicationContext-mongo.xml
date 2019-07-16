@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			">
+
+	<!-- Define the MongoTemplate which handles connectivity with MongoDB -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="${mongo.db}" />
+
+	</bean>
+
+	<bean id="mongoOptions" class="com.mongodb.MongoOptions">
+	   <property name="connectionsPerHost" value="100"/>
+	   <!-- <property name="maxWaitTime" value=""/> -->
+	</bean>
+
+	<!-- Factory bean that creates the Mongo instance -->
+	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		<property name="host" value="${mongo.host}" />
+		<property name="port" value="${mongo.port}" />
+		<property name="mongoOptions" ref="mongoOptions" />
+	</bean>
+
+    <bean id="mongoServerAddress" class="com.mongodb.ServerAddress" >
+        <constructor-arg index="0" type="java.lang.String" value="${mongo.host}" />
+        <constructor-arg index="1" type="int" value="${mongo.port}" />
+    </bean>
+
+	<bean id="mongoClient" class="com.mongodb.MongoClient" destroy-method="close">
+		<constructor-arg ref="mongoServerAddress" />
+	</bean>
+
+    <bean id="mongoDBManager" class="ir.viratech.commons.persistence.mongo.base.MongoDBManager" p:dbName="${mongo.db}" />
+
+
+</beans>

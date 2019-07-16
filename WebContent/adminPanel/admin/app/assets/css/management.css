@@ -1,0 +1,26 @@
+html, body,*{
+	font-family: shabnam;
+}
+.content.flex-content > div{
+	background: #f1f1f1;
+	padding: 0;
+}
+.content.flex-content > div > .panel.panel-default.panel-page-header{
+	background: #f1f1f1;
+}
+.content.flex-content > div > .panel.panel-default.panel-page-header > .panel-body > div > div.panel{
+	box-shadow: 0 0 6px -5px #000;
+}
+
+.layer-data-value {
+	padding-top: 8px;
+}
+
+#layer-features-btn {
+	width: 100%;
+}
+
+#sub-portals-label {
+	font-size: 14px!important;
+}
+

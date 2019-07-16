@@ -1,0 +1,155 @@
+<div class="modal-header">
+    <h3 class="modal-title">تنظیمات لایه</h3>
+</div>
+<div class="modal-body">
+    <form name="form">
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">نام</label>
+            <div ng-show="Data.mode=='view'" class="col-sm-6">
+                {{Data.layer.name}}
+            </div>
+            <div ng-show="Data.mode!='view'" class="col-sm-6">
+                <input type="text" class="form-control" name="name" ng-model="Data.layer.name">
+            </div>
+        </div>
+        <div class="row rowForm">
+            <div class="col-sm-3 col-sm-offset-4">
+                <input id="leaf" type="radio" name="radioSelection" value="leaf" ng-model="Data.layer.type">
+                <label for="leaf">برگ</label>
+                <div class="check"></div>
+            </div>
+            <div class="col-sm-4" style="position:relative">
+                <input id="parent" type="radio" name="radioSelection" value="parent" ng-model="Data.layer.type">
+                <label for="parent">میانی</label>
+                <div class="check"></div>
+            </div>
+        </div>
+        
+        <div class="row rowForm" ng-if="Data.layer.type == 'parent'">
+        	<div class="col-sm-4 text-left">تالاب</div>
+            <div class="col-sm-3">
+                <input id="isPond" type="radio" name="radioSelection-pond" ng-value="true" ng-model="Data.layer.isPond">
+                <label for="isPond">بله</label>
+                <div class="check"></div>
+            </div>
+            <div class="col-sm-4" style="position:relative">
+                <input id="isNotPond" type="radio" name="radioSelection-pond" ng-value="false" ng-model="Data.layer.isPond">
+                <label for="isNotPond">خیر</label>
+                <div class="check"></div>
+            </div>
+        </div>
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf'">
+            <label class="col-sm-4 text-left">نوع لایه</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="Data.layerType">
+                    <option value="vector">وکتور</option>
+                    <option value="raster">رستر</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector'">
+            <label class="col-sm-4 text-left">نوع عوارض</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="Data.layer.vectorObjectsType">
+                    <option value="Point">نقطه</option>
+                    <option value="LineString">خط</option>
+                    <option value="Polygon">چندضلعی</option>
+                </select>
+            </div>
+        </div>
+        
+		<div class="row rowForm" ng-if="Data.layer.type == 'leaf' && Data.layerType=='vector'">
+        	<div class="col-sm-4 text-left">برچسب عوارض</div>
+            <div class="col-sm-3">
+                <input id="isLabled" type="radio" name="radioSelection-labled" ng-value="true" ng-model="Data.layer.isLabeled">
+                <label for="isLabled">بله</label>
+                <div class="check"></div>
+            </div>
+            <div class="col-sm-4" style="position:relative">
+                <input id="isNotLabled" type="radio" name="radioSelection-labled" ng-value="false" ng-model="Data.layer.isLabeled">
+                <label for="isNotLabled">خیر</label>
+                <div class="check"></div>
+            </div>
+        </div>
+        
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector'">
+            <label class="col-sm-4 text-left">فرم عوارض</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="Data.form"
+                        ng-options="form as form.name for form in Data.formList">
+                </select>
+            </div>
+        </div>
+        
+		<div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='raster'">
+            <label class="col-sm-4 text-left">طیف رنگی</label>
+	        <div class="col-sm-6">
+                <select class="form-control" ng-model="Data.layer.gradient"
+                		ng-options="gradient as gradient.title for gradient in Data.gradientList">
+                </select>
+			</div>
+        </div>
+        
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf'">
+            <label class="col-sm-4 text-left">سطح محرمانگی</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="Data.layer.secret">
+                    <option value="true">محرمانه</option>
+                    <option value="false">غیرمحرمانه</option>
+                </select>
+            </div>
+        </div>        
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf'">
+            <label class="col-sm-4 text-left">توضیحات</label>
+            <div ng-show="Data.mode=='view'" class="col-sm-6">
+                {{Data.layer.name}}
+            </div>
+            <div ng-show="Data.mode!='view'" class="col-sm-6">
+                <textarea class="form-control" rows="4" ng-model="Data.layer.description"></textarea>
+            </div>
+        </div>
+        
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector' && Data.layer.vectorObjectsType=='Point'">
+        	<label class="col-sm-4 text-left">آیکون</label>
+            <div class="col-sm-2">
+                <input id="point-icon-red" type="radio" name="radioSelection-point-icon" ng-value="'red'" ng-model="Data.layer.icon">
+                <label for="point-icon-red"><img src="app/lib/rtmap/assets/img/map-marker-red.png"></label>
+                <div class="check"></div>
+            </div>
+            <div class="col-sm-2">
+                <input id="point-icon-green" type="radio" name="radioSelection-point-icon" ng-value="'green'" ng-model="Data.layer.icon">
+                <label for="point-icon-green"><img src="app/lib/rtmap/assets/img/map-marker-green.png"></label>
+                <div class="check"></div>
+            </div>
+            <div class="col-sm-2">
+                <input id="point-icon-yellow" type="radio" name="radioSelection-point-icon" ng-value="'yellow'" ng-model="Data.layer.icon">
+                <label for="point-icon-yellow"><img src="app/lib/rtmap/assets/img/map-marker-yellow.png"></label>
+                <div class="check"></div>
+            </div>
+        </div>
+        
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector' && Data.layer.vectorObjectsType!='Point'">
+            <label class="col-sm-4 text-left">ضخامت</label>
+            <div class="col-sm-8"><width-picker model="Data.layer.width" is-edit-mode="Data.mode!='view'"></width-picker></div>
+        </div>
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector' && Data.layer.vectorObjectsType!='Point'">
+            <label class="col-sm-4 text-left">رنگ</label>
+	        <div class="col-sm-8"><color-picker model="Data.layer.color" is-edit-mode="Data.mode!='view'"></color-picker></div>
+        </div>
+        <div class="row rowForm" ng-if="Data.layer.type=='leaf' && Data.layerType=='vector' && Data.layer.vectorObjectsType=='Polygon'">
+            <label class="col-sm-4 text-left">رنگ داخلی</label>
+	        <div class="col-sm-8"><color-picker model="Data.layer.fill" is-edit-mode="Data.mode!='view'"></color-picker></div>
+        </div>
+    </form>
+    
+</div>
+<div class="modal-footer">
+	<button class="btn btn-sm btn-success" type="button" ng-click="Func.onSaveClick()">ذخیره</button>
+    <button class="btn btn-sm btn-warning" type="button" ng-click="Func.onCancelClick()">انصراف</button>
+</div>

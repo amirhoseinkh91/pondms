@@ -1,0 +1,4 @@
+:Modified=true
+:Description=
+-
+public abstract class ${class.BaseMGRClassName} extends ${class.AbsoluteRootMGRClassName}<${class.ValueObjectClassName}, ${class.ParentRoot.Id.Property.ObjectClass}> {

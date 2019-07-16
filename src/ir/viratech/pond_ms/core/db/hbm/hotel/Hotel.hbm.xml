@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.hotel">
+	<class name="Hotel" table="Hotels" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="hotel_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="eghamat_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="pintapin_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="ariabooking_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="hotelyar_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="hotelyar_code" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="iranhotelonline_name" type="string" not-null="false" unique="false">
+		</property>
+
+		<property name="iranhotelonline_code" type="string" not-null="false" unique="false">
+		</property>
+	</class>
+
+</hibernate-mapping>
+ 

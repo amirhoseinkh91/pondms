@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.user">
+
+	<class name="Feature" table="FEATURES" schema="pond_ms">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="name" type="string" not-null="true" unique="true" />
+		<property name="description" type="string" not-null="false" unique="false" />
+
+		<property name="exposable" type="boolean" not-null="true" unique="false" >
+			<meta attribute="init">false</meta>
+		</property>
+
+		<set name="usingRoles" table="ROLE_FEATURES" schema="pond_ms" inverse="true">
+			<meta attribute="reverse">availableFeatures</meta>
+			<key column="featureId" not-null="true"/>
+			<many-to-many column="roleId" class="ir.viratech.pond_ms.model.user.role.Role" />
+		</set>
+	</class>
+
+</hibernate-mapping>

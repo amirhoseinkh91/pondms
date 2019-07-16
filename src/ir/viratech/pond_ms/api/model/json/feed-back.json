@@ -1,0 +1,42 @@
+{
+  "path" : "feed-back",
+  "key" : "feedback",
+  "featureName" : "FEEDBACK",
+  "properties" : {
+    "title" : {
+      "label" : "title",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "email" : {
+      "label" : "email",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "comment" : {
+      "label" : "comment",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "date" : {
+      "label" : "date",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "title", "email", "comment" ]
+  }
+}

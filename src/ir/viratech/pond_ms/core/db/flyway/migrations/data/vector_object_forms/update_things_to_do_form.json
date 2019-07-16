@@ -1,0 +1,11 @@
+{
+  "entityTypes": [
+    {
+      "collectionName": "things_to_do_col",
+      "entityKey": "Things_To_Do",
+      "jsonSchemaFileName": "things_to_do.json",
+      "hotkey": "alt+shift+ctrl+4",
+      "name": "جاذبه های گردشگری"
+    }
+  ]
+}

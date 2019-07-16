@@ -1,0 +1,10 @@
+-
+
+	/**
+	 * Gets the Mgr instance from Spring.
+	 *
+	 * @return the instance of ${class.DAOClassName}
+	 */
+	public static ${class.AbsoluteMGRClassName} getInstance() {
+		return ir.viratech.commons.spring.context.ApplicationContextProvider.getInitializedApplicationContext().getBean(${class.AbsoluteMGRClassName}.class);
+	}

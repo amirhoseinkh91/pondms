@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.map_object.vector">
+
+    <class name="GISVectorObject" table="GIS_VECTOR_OBJECTS" schema="pond_ms"
+           abstract="true">
+
+        <id name="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+
+        <property name="extuid" type="string" not-null="true" unique="true">
+            <meta attribute="alternate-key">true</meta>
+            <meta attribute="init">this.generateUid()</meta>
+        </property>
+
+        <property name="name" type="string" not-null="false" unique="false"/>
+
+        <property name="creationDate" column="creation_date" type="timestamp"
+                  not-null="true">
+            <meta attribute="init">new java.util.Date()</meta>
+        </property>
+
+        <property name="provider" type="string" not-null="false"/>
+
+        <property name="formUID" type="string" not-null="false"/>
+
+        <property name="reviewCount" type="integer" not-null="false"/>
+
+        <property name="favoriteCount" type="integer" not-null="false"/>
+
+        <many-to-one name="layer"
+                     class="ir.viratech.pond_ms.model.layer.VectorLayer" fetch="select"
+                     column="layer_id" not-null="true" lazy="false">
+        </many-to-one>
+
+        <set name="reviews" cascade="all">
+            <meta attribute="reverse">gisVectorObject</meta>
+            <key column="vector_object_id"/>
+            <one-to-many class="ir.viratech.pond_ms.model.review.Review"/>
+        </set>
+
+        <set name="timeSeriesRootCategories" table="ROOT_CATEGORY" schema="pond_ms"
+             inverse="false" cascade="all" lazy="true">
+            <key column="object_id"/>
+            <one-to-many
+                    class="ir.viratech.pond_ms.model.time_series.RootCategory"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

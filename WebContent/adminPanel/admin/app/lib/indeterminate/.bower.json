@@ -1,0 +1,26 @@
+{
+  "name": "indeterminate",
+  "authors": [
+    "viratech <www.viratech.ir>"
+  ],
+  "description": "",
+  "main": "vtTriStateCheckbox.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "_release": "c17ab6ff97",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c17ab6ff9746154e41248627c3d87dbcfba45c68"
+  },
+  "_source": "http://gitlab.viradev.ir:6480/clientproject/vtindeterminate.git",
+  "_target": "*",
+  "_originalSource": "http://gitlab.viradev.ir:6480/clientproject/vtindeterminate.git"
+}

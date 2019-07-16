@@ -1,0 +1,76 @@
+<div class="form-group">
+	<p class="help-block" ng-show="controlFn.listItems.length==0">موردی یافت نشد.</p>
+	<a ng-click="controlFn.exitSearchMode()">EXIT_SEARCH_MODE</a>
+	<table class="table table-striped table-hover col-sm-12" ng-show="controlFn.listItems.length>0">
+		<thead>
+			<tr>
+				<th class="listDirectiveTh" 
+					style="color: #666666"
+					ng-repeat="field in controlFn.listItems.visibleFields"
+					ng-click="changeOrder(field)"
+					ng-style="{'width':field.width,'text-align':field.textAlign}">
+						<div class="col-sm-1" ng-show="Data.query.orders && Data.query.orders.length">
+							<span class="caret" style="transform: rotate(180deg);" ng-show="field.asc"></span>
+							<span class="caret" ng-hide="field.asc"></span>
+						</div>
+						<div class="col-sm-9">{{field.label}}</div>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in controlFn.listItems" 
+					ng-class="{'selected':item.isSelected}"
+     				style="cursor: pointer; cursor: hand; color: #666666">
+				<td ng-repeat="field in controlFn.listItems.visibleFields" 
+					ng-switch on="field.type" 
+					ng-click="onListItemClick(item)"
+					class="listDirectiveTd">
+					<span ng-switch-when="string">{{item[field.key]|EnToFaNumber|splitString:40}}</span>
+					<span ng-switch-when="int">{{item[field.key]|EnToFaNumber}}</span>
+					<span ng-switch-when="date">{{item[field.key]|persianDate:field.format|EnToFaNumber}}</span>
+					<span ng-switch-when="timestamp">{{item[field.key]|persianDate:field.format|EnToFaNumber}}</span>
+					<span ng-switch-when="bool">
+						<span ng-show="item[field.key]" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+						<span ng-hide="item[field.key]" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</span>
+					<span ng-switch-when="boolean">
+						<span ng-show="item[field.key]" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+						<span ng-hide="item[field.key]" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</span>
+					<span ng-switch-when="enum">{{item[field.key]|constFilter:field.filter}}</span>
+					<span ng-switch-when="action">
+     					<button class="btn btn-success btn-block" type="button"
+     							ng-click="field.action(item,$event)"
+     							ng-class="{{{field.icon}}:field.icon}"
+     							style="cursor: pointer;">{{field.actionName}}</button>
+     				</span>
+     				<span ng-switch-when="actionList">
+     					<div class="dropdown" ng-switch-when="action">
+							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" aria-expanded="true">
+								عملیات 
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+								<li role="presentation" ng-repeat="action in field.actionList">
+	     							<a role="menuitem" tabindex="-1" ng-click="action.action(item,$event)">{{action.name}}</a>
+								</li>
+							</ul>
+						</div>
+     				</span>
+					<span ng-switch-default>{{item[field.key]|EnToFaNumber|splitString:40}}</span> 
+     			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div>
+	<pagination ng-show="itemsPagination.show"
+		total-items="itemsPagination.totalItems"
+		ng-model="itemsPagination.currentPage"
+		max-size="itemsPagination.maxSize"
+		items-per-page="itemsPagination.perPage" 
+		ng-change="pageChanged()"
+		class="pagination-sm" boundary-links="true" 
+		first-text="ابتدا" last-text="انتها" next-text="بعدی" previous-text="قبلی">
+	</pagination>
+</div>

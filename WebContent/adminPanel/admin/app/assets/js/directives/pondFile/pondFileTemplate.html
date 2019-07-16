@@ -1,0 +1,38 @@
+
+<!-- <div style="width: 100%;" class="row rowForm" ng-if="isEditMode"> -->
+	<!-- <div class="col-sm-16"> -->
+	<a id="data-upload-btn" class="btn btn-sm btn-default" ng-if="isEditMode"
+		ng-click="onUploadDataClick()" access-checker="ADD_LAYER_FILES"> <span
+		ng-show="!importing">بارگذاری داده</span> <i ng-show="importing"
+		class="fa fa-spinner fa-pulse"></i>
+	</a>
+<!-- </div> -->
+<!-- </div> -->
+
+<!-- -------------------------------------------------------------------- -->
+<div class="row rowForm pond-file-list">
+	<div class="col-sm-12"
+		ng-repeat="file in fileHistoryList | orderBy: reverse:true">
+		<div class="file-history-entry row rowForm">
+			<label class="file-history-entry-key col-sm-4 text-right">مرجع</label>
+			<div class="file-history-entry-value col-sm-6">{{file.reference}}</div>
+		</div>
+		<div class="file-history-entry row rowForm">
+			<label class="file-history-entry-key col-sm-4 text-right">تاریخ
+				جمع‌آوری</label>
+			<div class="file-history-entry-value col-sm-6">{{file.date|persianDate:'yy/MM/dd'|EnToFaNumber}}</div>
+					<a class="btn" ng-click="deleteFileFromHistory(file)" style="margin-top: 5px; padding-left: -15px!important;"><i class="glyphicon glyphicon-trash"></i></a>
+					<span class="control-label ng-binding"></span>
+<!-- 			<a class="glyphicon glyphicon-trash"></a> -->
+			<vt-file class="file-download-btn" name="file" is-edit-mode="false"
+				model="{hash:file.file_hash}"></vt-file>
+		</div>
+		<!-- 	        <div class="file-history-entry row rowForm" access-checker="DOWNLOAD_LAYER_FILES"> -->
+		<!-- 	            <label class="file-history-entry-key col-sm-4 text-right">دانلود فایل</label> -->
+		<!-- 	            <div class="file-history-entry-value col-sm-6"> -->
+		<!-- 					<vt-file style="padding-top:-6px!important;" class="file-download-btn" name="file" is-edit-mode="false" model="{hash:file.file_hash}"></vt-file> -->
+		<!-- 	            </div> -->
+		<!-- 	        </div>		 -->
+
+	</div>
+</div>

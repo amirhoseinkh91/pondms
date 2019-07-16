@@ -1,0 +1,42 @@
+{
+  "path" : "point-object",
+  "key" : "pointobject",
+  "featureName" : "POINT_OBJECT",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "formInstances" : {
+      "label" : "formInstances",
+      "type" : "collection",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "point" : {
+      "label" : "point",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "name", "point" ]
+  }
+}

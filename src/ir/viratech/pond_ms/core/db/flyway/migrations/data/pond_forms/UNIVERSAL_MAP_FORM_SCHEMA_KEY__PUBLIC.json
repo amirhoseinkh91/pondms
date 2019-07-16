@@ -1,0 +1,37 @@
+{
+	"key": "UNIVERSAL_MAP_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "نقشه جامع تالاب",
+	"displayStringFunction": null,
+	"properties": {
+		"utm": {
+			"label": "نقشه جامع تالاب",
+			"type": "file",
+			"widget": "",
+			"showEditButton": false,
+			"title": "utm"
+		}
+	},
+	"extents": {
+		"list": [
+			"utm"
+		],
+		"enriched": [
+			"utm"
+		]
+	},
+	"viewGroups": [
+		{
+			"key": "detail",
+			"name": "مشخصات",
+			"members": [
+				"utm"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

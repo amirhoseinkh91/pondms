@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+
+	<joined-subclass name="LeafLayer" table="LEAF_LAYERS"
+		schema="pond_ms" extends="ir.viratech.pond_ms.model.layer.Layer">
+
+		<key column="layer_id" />
+
+		<list name="dataFiles" cascade="all">
+			<key column="layer_id" />
+			<list-index column="idx" base="0" />
+			<one-to-many class="ir.viratech.pond_ms.model.file.DataFile" />
+		</list>
+
+	</joined-subclass>
+</hibernate-mapping>

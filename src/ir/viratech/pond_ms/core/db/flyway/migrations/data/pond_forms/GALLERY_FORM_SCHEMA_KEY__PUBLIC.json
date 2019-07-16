@@ -1,0 +1,209 @@
+{
+	"key": "GALLERY_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "تصاویر",
+	"displayStringFunction": null,
+	"properties": {
+		"giahi_gallery": {
+			"label": "گونه های گیاهی شاخص",
+			"type": "attachment",
+			"widget": "attachFile",
+			"multiple": true,
+			"showEditButton": false
+		},
+		"arzesh_gallery": {
+			"label": "ارزش ها و کارکردهای تالاب",
+			"type": "attachment",
+			"widget": "attachFile",
+			"multiple": true,
+			"showEditButton": false
+		},
+		"tahdidat_gallery": {
+			"label": "تهدیدات تالاب",
+			"type": "attachment",
+			"widget": "attachFile",
+			"multiple": true,
+			"showEditButton": true,
+			"title": "tahdidat_gallery",
+			"typeComponent": {
+				"type": "attachment",
+				"typePersianName": "ضمیمه فایل",
+				"widgets": [
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": true,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFilemultiple.html",
+						"$$hashKey": "object:354"
+					},
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					},
+					{
+						"widget": "",
+						"persianName": "پیش فرض",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					}
+				],
+				"$$hashKey": "object:69"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"birds": {
+			"label": "گونه های پرندگان شاخص",
+			"type": "attachment",
+			"widget": "attachFile",
+			"multiple": true,
+			"showEditButton": true,
+			"title": "birds",
+			"typeComponent": {
+				"type": "attachment",
+				"typePersianName": "ضمیمه فایل",
+				"widgets": [
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": true,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFilemultiple.html",
+						"$$hashKey": "object:354"
+					},
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					},
+					{
+						"widget": "",
+						"persianName": "پیش فرض",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					}
+				],
+				"$$hashKey": "object:69"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"gallery": {
+			"label": "گونه های جانوری شاخص",
+			"type": "attachment",
+			"widget": "attachFile",
+			"multiple": true,
+			"showEditButton": true,
+			"title": "gallery",
+			"typeComponent": {
+				"type": "attachment",
+				"typePersianName": "ضمیمه فایل",
+				"widgets": [
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": true,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFilemultiple.html",
+						"$$hashKey": "object:354"
+					},
+					{
+						"widget": "attachFile",
+						"persianName": "ضمیمه",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/attach.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					},
+					{
+						"widget": "",
+						"persianName": "پیش فرض",
+						"multiple": false,
+						"isHidden": true,
+						"picPath": "",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/attachmentattachFile.html"
+					}
+				],
+				"$$hashKey": "object:69"
+			},
+			"widgetParams": {
+				
+			}
+		}
+	},
+	"extents": {
+		"list": [
+			"gallery"
+		],
+		"enriched": [
+			"gallery"
+		]
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "birds",
+			"name": "گونه های پرندگان شاخص",
+			"secretLevel": 1,
+			"members": [
+				"birds"
+			],
+			"$$hashKey": "object:903"
+		},
+		{
+			"key": "animals",
+			"name": "گونه های جانوری شاخص",
+			"secretLevel": 1,
+			"members": [
+				"gallery"
+			],
+			"$$hashKey": "object:904"
+		},
+		{
+			"key": "giahi",
+			"name": "گونه های گیاهی شاخص",
+			"secretLevel": 1,
+			"members": [
+				"giahi_gallery"
+			],
+			"$$hashKey": "object:905"
+		},
+		{
+			"key": "tahdidat",
+			"name": "تهدیدات تالاب",
+			"secretLevel": 1,
+			"members": [
+				"tahdidat_gallery"
+			],
+			"$$hashKey": "object:906"
+		},
+		{
+			"key": "arzesh",
+			"name": "ارزش ها و کارکردهای تالاب",
+			"secretLevel": 1,
+			"members": [
+				"arzesh_gallery"
+			],
+			"$$hashKey": "object:907"
+		}
+	]
+}

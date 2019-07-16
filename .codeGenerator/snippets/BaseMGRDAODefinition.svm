@@ -1,0 +1,10 @@
+:Modified=true
+:Description=
+-
+
+	private ${class.DAOClassName} ${class.DAOVarName} = ${class.DAOClassName}.getInstance();	
+
+	@Override
+	protected ${class.DAOClassName} getDAO() {
+		return this.${class.DAOVarName};
+	}

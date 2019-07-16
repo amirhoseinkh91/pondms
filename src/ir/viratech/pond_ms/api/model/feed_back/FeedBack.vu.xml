@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+    <dto name="FeedBack" extentKey="full"
+         entityPackage="ir.viratech.pond_ms.model.feed_back" package="ir.viratech.pond_ms.api.feed_back">
+        <prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" save="hooked"/>
+        <prop name="email" save="hooked"/>
+        <prop name="comment" save="hooked"/>
+        <prop name="date" save="disabled" type="java.util.Date"/>
+    </dto>
+
+
+    <resource entityName="FeedBack" resourceName="FeedBackResource"
+              package="ir.viratech.pond_ms.api.feed_back" entityPackage="ir.viratech.pond_ms.model.feed_back"
+              resourcePath="feed-back" bundlePrefix="feed-back."
+              entityMgr="ir.viratech.pond_ms.model.feed_back.logic.FeedBackMgr"
+              fullDto="ir.viratech.pond_ms.api.feed_back.dto.FeedBackFullDTO"
+              featureEntityName="FEEDBACK"/>
+
+
+</uiModel>

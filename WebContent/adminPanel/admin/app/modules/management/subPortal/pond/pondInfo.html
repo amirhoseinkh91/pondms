@@ -1,0 +1,60 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت تالاب‌ها</div>
+		<div class="panel-body" style="padding-bottom: 300px;">
+			<div class="col-md-12" access-checker="API_VIEW_POND">
+				
+				<div class="panel panel-default" access-checker="SEE_PUBLIC_POND_FORMS">
+					<div class="panel-heading">فرم</div>
+					<div class="panel-body">
+						<pond-form org-uid="Data.orgUid" pond-uid="Data.pondUid" schema-list="Data.schemaList" is-edit-mode="true"></pond-form>
+					</div>
+				</div>
+				
+				<div class="panel panel-default" access-checker="SEE_SECRET_POND_FORMS">
+					<div class="panel-heading">فرم محرمانه</div>
+					<div class="panel-body">
+						<pond-form org-uid="Data.orgUid" pond-uid="Data.pondUid" schema-list="Data.secretSchemaList" is-edit-mode="true"></pond-form>
+					</div>
+				</div>
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading">لایه‌ها</div>
+					<div class="panel-body">
+						<div class="col-sm-2">
+							<div class="list-group">
+								<a ng-repeat="layer in Data.leafList"
+									class="list-group-item"
+									ng-class="{'active' : Data.selectedLayer.uid==layer.uid}"
+									ng-click="Func.onLayerClick(layer)">
+									<label class="control-label">{{layer.name}}</label>
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-4" ng-show="Data.selectedLayer.uid">
+							<pond-file is-edit-mode="true" api="api"></pond-file>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="panel panel-default">
+					<div class="panel-heading">سری های زمانی</div>
+					<div class="panel-body">
+						<div class="col-sm-3" style="margin-top: 10px;">
+							<time-series-file-upload geo-object-uid=Data.pondUid object-type="'POND'"></time-series-file-upload>
+							<a class="btn btn-sm btn-text btn-default" id="show-timeseries-history-btn" ng-click='Func.onShowTimeseriesHistoryClick()'>مشاهده سری های زمانی موجود</a>
+						</div>
+						<div class="col-sm-4" ng-show="Data.showTimeseriesHistory">
+							<time-series-file-history func="Controller.func" ></time-series-file-history>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			">
+	<context:annotation-config />
+	<!-- ========================================================================================================================== -->
+	<!-- =================================================== Import Jobs ========================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<import resource="applicationContext-cm-irSearch.xml"/>
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =================================================== Core =========================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="cmContext" class="ir.viratech.pond_ms.core.CmContextImpl" />
+	<bean id="cmAccessChecker" class="ir.viratech.pond_ms.core.execution_context.CmAccessCheckerImpl" />
+
+	<context:component-scan base-package="ir.viratech.commons.cm.model">
+		<context:include-filter type="regex" expression=".*\.dao\..*DAO" />
+		<context:include-filter type="regex" expression=".*\.logic\..*Mgr" />
+	</context:component-scan>
+
+	<context:component-scan base-package="ir.viratech.commons.cm.aspect"
+		name-generator="org.springframework.beans.factory.support.DefaultBeanNameGenerator">
+		<!-- FIXME @SAhmad remove this section, I don't wan't to use topic but wan't to use others -->
+		<context:include-filter type="regex" expression=".*\.dao\..*DAO" />
+		<context:include-filter type="regex" expression=".*\.logic\..*Mgr" />
+		<context:include-filter type="regex" expression=".*\.aspect\..*\.logic\..*Mgr_.*" />
+		<context:include-filter type="regex" expression=".*\.aspect\..*\.dao\..*DAO_.*" />
+	</context:component-scan>
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ================================================= Needed beans ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="searchServiceAutomaticInit" class="java.lang.Boolean">
+		<constructor-arg index="0" type="boolean" value="false" />
+	</bean>
+
+
+	<bean id="mongoDBManager" class="ir.viratech.commons.cm.core.db.MongoDBManager" p:dbName="${mongo.db}" />
+
+	<bean class="ir.viratech.commons.cm.model.entity_instance.logic.EntityEnrichmentManager" />
+
+	<bean class="ir.viratech.commons.cm.api.entity_instance.export.EntityInstanceExportManager" />
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== EntityInterceptors ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="entityInterceptorManager" class="ir.viratech.commons.cm.model.entity_instance.interceptor.EntityInterceptorManager">
+		<property name="incomingInterceptors">
+			<list value-type="ir.viratech.commons.cm.model.entity_instance.interceptor.incoming.IncomingEntityInterceptor">
+				<!-- // add authorizer modifiers -->
+				<bean class="ir.viratech.commons.cm.model.entity_instance.authorizer.impl.SecretLevelAuthorizer"
+					  factory-method="getIncomingEntityManipulationInterceptor" factory-bean="secretLevelAuthorizer"/>
+
+
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.incoming.impl.PrimitiveFieldTypeCorrector" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.incoming.impl.FieldTypeHandlerOnSaveCallerInterceptor" />
+				<ref bean="relationalPropertyInterceptor" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.incoming.impl.DisplayStringAdder" />
+
+			</list>
+		</property>
+
+		<property name="outgoingInterceptors">
+			<list value-type="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.OutgoingEntityInterceptor">
+				<!-- // add authorizer modifiers -->
+				<bean class="ir.viratech.commons.cm.model.entity_instance.authorizer.impl.SecretLevelAuthorizer"
+					  factory-method="getOutgoingEntityManipulationInterceptor" factory-bean="secretLevelAuthorizer"/>
+
+
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.impl.AdditionalInfoRemover" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.impl.ArrayDataCorrector" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.impl.DisplayStringAdder" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.impl.ExtentApplier" />
+				<bean class="ir.viratech.commons.cm.model.entity_instance.interceptor.outgoing.impl.FieldTypeHandlerOnLoadCallerInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== FieldTypeHandler ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<bean id="documentFieldTypeHandler" class="ir.viratech.commons.cm.aspect.document.field_type.DocumentFieldTypeHandler" />
+
+	<bean id="FieldTypeHandlerManager" class="ir.viratech.commons.cm.core.field_type.FieldTypeHandlerManager">
+		<property name="handlers">
+			<list value-type="ir.viratech.commons.cm.core.field_type.FieldTypeHandlerInterface">
+				<bean class="ir.viratech.commons.cm.aspect.AspectFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.StringFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.IntegerFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.DoubleFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.EnumFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.FileFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.RelationalFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.RelationViewFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.BooleanFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.DateFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.aspect.topic.field_type.TopicFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.aspect.attachment.field_type.AttachmentFieldTypeHandler" />
+				<bean class="ir.viratech.commons.cm.core.field_type.impl.NullPropertyInfoFieldHandler" />
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.CustomPointFieldTypeHandler" />
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.JsonObjectFieldTypeHandler"/>
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.PlacesPlanFieldTypeHandler" />
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.PlacesUidFieldTypeHandler" />
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.TourPlansFieldTypeHandler" />
+				<bean class="ir.viratech.pond_ms.core.db.flyway.migrations.data.vector_object_forms.field_type_handler.LocationFieldTypeHandler" />
+				<ref bean="documentFieldTypeHandler" />
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =================================================== Graph =========================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+<!-- 	<bean id="neo4jJdbcConnection" class="ir.viratech.commons.cm.graph.model.dao.Neo4jJdbcConnection" scope="prototype">
+		<constructor-arg index="0" type="java.lang.String" value="${neo4j.url}" />
+		<constructor-arg index="1" type="java.lang.String" value="${neo4j.username}" />
+		<constructor-arg index="2" type="java.lang.String" value="${neo4j.password}" />
+	</bean>
+
+	<bean class="ir.viratech.commons.cm.graph.model.dao.Neo4jJdbcGraphDAO" />
+	<bean class="ir.viratech.commons.cm.graph.model.logic.Neo4jJdbcGraphMgr" />-->
+	<bean id="relationalPropertyInterceptor" class="ir.viratech.commons.cm.graph.RelationalPropertyInterceptor" />
+	<bean class="ir.viratech.commons.cm.graph.model.logic.DummyGraphMgr" />
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== Aspect ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="aspectManager" class="ir.viratech.commons.cm.aspect.AspectManager">
+		<property name="aspectList">
+			<list value-type="ir.viratech.commons.cm.aspect.Aspect">
+				<ref bean="attachmenableAspect" />
+				<ref bean="concurrentEditProtectedAspect" />
+				<ref bean="creditableAspect" />
+				<ref bean="historyKeptAspect" />
+				<ref bean="relationableAspect" />
+				<ref bean="tagAspect" />
+				<ref bean="topicAspect" />
+				<ref bean="irSearchAspect" />
+				<ref bean="docExtractAspect" />
+				<ref bean="documentAspect" />
+			</list>
+		</property>
+
+		<property name="autoAddedAspects">
+			<list value-type="ir.viratech.commons.cm.aspect.Aspect">
+				<ref bean="attachmenableAspect" />
+				<ref bean="concurrentEditProtectedAspect" />
+<!-- 				<ref bean="creditableAspect" /> -->
+				<ref bean="historyKeptAspect" />
+<!-- 				<ref bean="relationableAspect" /> -->
+<!-- 				<ref bean="tagAspect" /> -->
+<!-- 				<ref bean="topicAspect" /> -->
+				<ref bean="irSearchAspect" />
+				<ref bean="docExtractAspect" />
+				<ref bean="documentAspect" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="privateTagAspect" class="ir.viratech.commons.cm.aspect.private_tag.Aspect_PrivateTag" />
+	<bean id="tagAspect" class="ir.viratech.commons.cm.aspect.taggable.Aspect_Tag" />
+	<bean id="attachmenableAspect" class="ir.viratech.commons.cm.aspect.attachment.Aspect_Attachmentable" />
+	<bean id="concurrentEditProtectedAspect" class="ir.viratech.commons.cm.aspect.concurrent_edit_protected.Aspect_ConcurrentEditProtected" />
+	<bean id="creditableAspect" class="ir.viratech.commons.cm.aspect.creditable.Aspect_Creditable" />
+	<bean id="historyKeptAspect" class="ir.viratech.commons.cm.aspect.history_kept.Aspect_HistoryKept" />
+	<bean id="relationableAspect" class="ir.viratech.commons.cm.aspect.relation.Aspect_Relationable" />
+	<bean id="topicAspect" class="ir.viratech.commons.cm.aspect.topic.Aspect_Topic" />
+
+	<bean id="irSearchAspect" class="ir.viratech.commons.cm.aspect.ir_searchable.Aspect_IRSearchable" />
+	<bean id="docExtractAspect" class="ir.viratech.commons.cm.aspect.document_extractable.Aspect_DocumentExtractable" />
+	<bean id="documentAspect" class="ir.viratech.commons.cm.aspect.document.Aspect_Documentable" />
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== AuthorizerInterface ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="authorizerManager" class="ir.viratech.commons.cm.model.entity_instance.authorizer.AuthorizerManager">
+		<property name="authorizerList">
+			<list value-type="ir.viratech.commons.cm.model.entity_instance.authorizer.AuthorizerInterface">
+				<!-- // add authorizer modifiers -->
+
+				<ref bean="secretLevelAuthorizer" />
+<!-- 				<ref bean="TopicAuthorizer" /> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="secretLevelAuthorizer" class="ir.viratech.commons.cm.model.entity_instance.authorizer.impl.SecretLevelAuthorizer" />
+	<bean id="TopicAuthorizer" class="ir.viratech.commons.cm.aspect.topic.core.TopicAuthorizer" />
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== ExecutionContextHolder ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+<!--  	<bean id="executionContextHolder" class="ir.viratech.commons.execution_context.ExecutionContextHolder">
+		<property name="factory">
+			<bean class="ir.viratech.commons.util.InstantiateFactory" factory-method="instantiateFactory">
+				<constructor-arg value="ir.viratech.commons.execution_context.ExecutionContext" />
+			</bean>
+		</property>
+	</bean>
+-->
+
+	<bean id="CmFlywayMigrator" class="ir.viratech.commons.cm.core.db.flyway.CmFlywayMigrator" depends-on="cmContext,dataSource,uidGenerator"/>
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- =========================================== SpecialField ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="specialFieldManager" class="ir.viratech.commons.cm.core.special_field.SpecialFieldManager">
+		<property name="SpecialFieldList">
+			<list value-type="ir.viratech.commons.cm.core.special_field">
+				<!-- // add authorizer modifiers -->
+
+				<ref bean="cretionDateSpecialField" />
+				<ref bean="creatorSpecialField" />
+				<ref bean="displayStringSpecialField" />
+				<ref bean="isDeletedSpecialField" />
+				<ref bean="uidSpecialField" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cretionDateSpecialField" class="ir.viratech.commons.cm.core.special_field.impl.SpecialField_CreationDate" />
+	<bean id="creatorSpecialField" class="ir.viratech.commons.cm.core.special_field.impl.SpecialField_Creator" />
+	<bean id="displayStringSpecialField" class="ir.viratech.commons.cm.core.special_field.impl.SpecialField_DisplayString" />
+	<bean id="isDeletedSpecialField" class="ir.viratech.commons.cm.core.special_field.impl.SpecialField_IsDeleted" />
+	<bean id="uidSpecialField" class="ir.viratech.commons.cm.core.special_field.impl.SpecialField_Uid" />
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================== SpecialEntityInstanceMgr ====================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<bean class="ir.viratech.commons.cm.model.entity_instance.logic.SpecialEntityInstanceMgrProvider">
+		<property name="managers">
+			<map key-type="java.lang.String" value-type="java.lang.String">
+				<!-- <entry key="user" value="ir.viratech.commons.cm.examples.user.logic.UserMgr" /> -->
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ==========================================       Beans section      ====================================================== -->
+	<!-- Nested beans element only allowed in end of configuration file. so every bean which need profile should go here            -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean id="rootOfAccessTopicHolder" class="ir.viratech.commons.cm.aspect.topic.core.RootsOfAccessTopicHolder"/>
+
+
+
+</beans>

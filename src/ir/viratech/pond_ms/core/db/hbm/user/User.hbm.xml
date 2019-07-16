@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.user">
+
+	<class name="User" table="USERS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<!--  This config used in projects which authUser is stored in another server
+		<property name="authExtuid" type="string" unique="true" />
+		<property name="cachedUsername" type="string" unique="false" />
+		<property name="legacyPassword" type="string" />
+		 -->
+		<many-to-one name="authUser"
+				class="ir.viratech.pond_ms.model.user.AuthUser"
+				column="authUserId" unique="true" not-null="false"
+				cascade="all" lazy="false" >
+		</many-to-one>
+
+		<property name="enabled" type="boolean" not-null="true" unique="false" >
+			<meta attribute="init">true</meta>
+		</property>
+
+		<property name="userDefined" type="boolean" not-null="true" unique="false" >
+			<meta attribute="init">true</meta>
+		</property>
+
+		<set name="roles" table="USER_ROLES" schema="pond_ms" inverse="false" >
+			<meta attribute="reverse">users</meta>
+			<key column="userId" />
+			<many-to-many column="roleId" class="ir.viratech.pond_ms.model.user.role.UserRole" />
+		</set>
+		<property name="avatar" type="string" not-null="false" unique="false" />
+
+		<many-to-one name="organization"
+					class="ir.viratech.pond_ms.model.organization.Organization"
+					column="organizationId" not-null="false" unique="false" />
+
+		<set name="reviews">
+			<meta attribute="reverse">user</meta>
+			<key>
+				<column name="user_id"/>
+			</key>
+			<one-to-many class="ir.viratech.pond_ms.model.review.Review"/>
+		</set>
+
+		<one-to-one name="customer"
+				class="ir.viratech.pond_ms.model.customer.Customer"
+				property-ref="user" />
+
+		<property name="lastSeen" type="timestamp" not-null="false" unique="false"/>
+
+		<property name="firebaseId" type="string" not-null="false" unique="true" />
+
+	</class>
+
+</hibernate-mapping>

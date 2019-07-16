@@ -1,0 +1,13 @@
+
+<div class="btn-group" uib-dropdown is-open="isopen" auto-close="outsideClick">
+	<button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+		<img src="app/lib/rtmap/assets/img/layerPanel/maplayers2.png" style="transform: rotate(-4deg); width: 75%;">
+	</button>
+	<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"
+		ui-sortable="sortableOptions" ng-model="layers">
+		<li role="menuitem" ng-repeat="layer in layers track by $index" style="cursor: move;">
+			{{layer.get('name')}}
+		</li>
+	</ul>
+</div>
+</script></head>

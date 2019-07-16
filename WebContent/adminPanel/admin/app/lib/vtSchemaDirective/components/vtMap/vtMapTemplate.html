@@ -1,0 +1,8 @@
+<div class="noSidePadding">
+    <div ng-class="{hidden:!isEditMode}">
+        <button type="button" class="btn btn-default" ng-click="Func.onSaveMapDataClick()">ثبت</button>
+    </div>
+    <map-drawing model="model" mode="isEditMode ? 'edit' : 'view'"
+                 api="Controller[Data.crudName]" ng-if="Data.isShow">
+    </map-drawing>
+</div>

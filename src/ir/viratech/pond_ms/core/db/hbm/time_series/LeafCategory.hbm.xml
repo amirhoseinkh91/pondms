@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.time_series">
+
+	<joined-subclass name="LeafCategory" table="LEAF_CATEGORY" schema="pond_ms" 
+				extends="ir.viratech.pond_ms.model.time_series.Category">
+		
+		<key column="category_id"/>
+      
+      	<property name="timeSeriesValueType" type="string" not-null="true" />
+      	
+      	<set name="timeSeriesValues" table="TIME_SERIES_DATE_VALUE_PAIR" schema="pond_ms"
+			inverse="false" cascade="all" lazy="true" >
+			<key column="category_id" />
+			<one-to-many
+				class="ir.viratech.pond_ms.model.time_series.TimeSeriesDateValuePair" />
+		</set>
+	</joined-subclass>
+	
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+{
+  "key": "tourLeader",
+  "title": "تور لیدر",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "name": {
+      "label": "نام",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "image": {
+      "label": "عکس",
+      "type": "file",
+      "widget": "imageSelector"
+    },
+    "telephone": {
+      "label": "شماره تلفن",
+      "type": "string",
+      "widget": "textBox"
+    }
+  },
+  "aspects": {},
+  "extents": {
+    "full": [
+      "name",
+      "image",
+      "telephone"
+    ]
+  },
+  "viewGroups": [
+    {
+      "key": "tourLeader",
+      "name": "تور لیدر",
+      "members": [
+        "name",
+        "image",
+        "telephone"
+      ],
+      "secretLevel": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">فرم تالاب</h3>
+</div>
+<div class="modal-body">
+    <div class="panel panel-default" access-checker="SEE_PUBLIC_POND_FORMS">
+		<div class="panel-heading">فرم</div>
+		<div class="panel-body">
+			<pond-form pond-uid="pondUid" schema-list="schemaList" is-edit-mode="false"></pond-form>
+		</div>
+	</div>
+	
+	<div class="panel panel-default" access-checker="SEE_SECRET_POND_FORMS">
+		<div class="panel-heading">فرم محرمانه</div>
+		<div class="panel-body">
+			<pond-form  pond-uid="pondUid" schema-list="secretSchemaList" is-edit-mode="false"></pond-form>
+		</div>
+	</div>
+    
+</div>
+<div class="modal-footer">
+    <button class="btn btn-sm btn-warning" type="button" ng-click="onCancelClick()">بستن</button>
+</div>

@@ -1,0 +1,3961 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2TQFa0creYYhsc0l-1lgEHl7oKqT40g&language=fa&region=iran&callback=initMap"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>پنل کاربری | جاسترو</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="assets/CSS/dashboard-style.css" media="screen" type="text/css"/>
+    <link type="text/css" href="styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="assets/css/js-persian-cal.css">
+    <script src="assets/js/js-persian-cal.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+<script>
+    // base and global variable requirments
+    BaseURL = "http://192.168.2.64:8080/";
+    tourResponse = [];
+
+</script>
+
+
+
+<script>
+
+
+
+    function fillMainInformationForm () {
+
+        // closes other tabs and opens the first one
+        $("#section1").slideToggle('slow,swing')
+        $("#section2").slideUp("slow");
+        $("#section3").slideUp("slow");
+        $("#section4").slideUp("slow");
+
+        // checking if it is loaded from lastTours page
+        if ('mainInformation' in tourResponse) {
+
+            //name
+            var mainInformationName = document.getElementById("overviewform1").elements["name"];
+            mainInformationName.value = tourResponse.mainInformation.name;
+            //type
+            var mainInformationType = document.getElementById("overviewform1").elements["type"];
+            mainInformationType.value = tourResponse.mainInformation.type;
+            //srcCity
+            var mainInformationSrcCity = document.getElementById("overviewform1").elements["srcCity"];
+            mainInformationSrcCity.value = tourResponse.mainInformation.srcCity;
+            //dstCountries
+            var mainInformationDstCountries = document.getElementById("overviewform1").elements["dstCountries"];
+            mainInformationDstCountries.value = tourResponse.mainInformation.dstCountries;
+            //dstCities
+            var mainInformationDstCities = document.getElementById("overviewform1").elements["dstCities"];
+            mainInformationDstCities.value = tourResponse.mainInformation.dstCities;
+            //price
+            var mainInformationPrice = document.getElementById("overviewform1").elements["price"];
+            mainInformationPrice.value = tourResponse.mainInformation.price;
+            //disPrice
+            var mainInformationDiscountedPrice = document.getElementById("overviewform1").elements["discountedPrice"];
+            mainInformationDiscountedPrice.value = tourResponse.mainInformation.discountedPrice;
+            //duration
+            var mainInformationDuration = document.getElementById("overviewform1").elements["duration"];
+            mainInformationDuration.value = tourResponse.mainInformation.duration;
+            //images
+            var image = tourResponse.mainInformation.images[0];
+            var imageUrl =  BaseURL + "PondMS/files/0.jpg?mode=download&fcode=" + image;
+
+            //description
+            var mainInformationDescription = document.getElementById("overviewform1").elements["description"];
+            mainInformationDescription.value = tourResponse.mainInformation.description;
+            //date
+            var mainInformationDate = document.getElementById("overviewform1").elements["date"];
+            mainInformationDate.value = tourResponse.mainInformation.date;
+            //services
+            var mainInformationServices = document.getElementById("overviewform1").elements["services"];
+            mainInformationServices.value = tourResponse.mainInformation.services;
+            //requiredTools
+            var mainInformationRequiredTools = document.getElementById("overviewform1").elements["requiredTools"];
+            mainInformationRequiredTools.value = tourResponse.mainInformation.requiredTools;
+            //recommendedTools
+            var mainInformationRecommendedTools = document.getElementById("overviewform1").elements["recommendedTools"];
+            mainInformationRecommendedTools.value = tourResponse.mainInformation.recommendedTools;
+            //signupRules
+            var mainInformationSignupRules = document.getElementById("overviewform1").elements["signupRules"];
+            mainInformationSignupRules.value = tourResponse.mainInformation.signupRules;
+        }
+    }
+
+</script>
+
+
+
+<script>
+    function reverseDate() {
+        var date = overviewform1.date.value.toString().match(/.{2}/g).join('/');;
+        overviewform1.date.value = date
+    }
+</script>
+<script>
+    function DateSpliter() {
+         var num1 = ""
+         var num2 = ""
+        if (overviewform1.date.value.length == 2) {
+
+            num1 = overviewform1.date.value.slice(0, 2).concat('/');
+            overviewform1.date.value = num1;
+        }
+        else if (overviewform1.date.value.length == 5) {
+
+            num2 = overviewform1.date.value.slice(0, 5).concat('/');
+            overviewform1.date.value = num2
+        }
+    }
+</script>
+
+    <script>
+
+
+    //TODO : inja asle moshkelo dare
+    // for hotel form filling
+    hotelLockThis = 1;
+    //HOTElS size
+    function fillHotelsForm () {
+
+        if(hasBeenSendMainInformation) {
+            $("#section2").slideToggle('slow,swing');
+            $("#section4").slideUp("slow");
+            $("#section1").slideUp("slow");
+            $("#section3").slideUp("slow");
+
+        }else{
+            alert("لطفا ابتدا اطلاعات سفر را تکمیل نمایید")
+        }
+    }
+</script>
+
+
+
+<script>
+
+    EditHotelModeOn = false;
+
+    function fillHotelRoomsForm(cardnum){
+
+    }
+    function fillRoomForm(roomsD){
+
+    }
+</script>
+
+
+
+<script>
+
+
+    function fillTourGuideForm () {
+        if(hasBeenSendMainInformation) {
+            $("#section3").slideToggle('slow,swing')
+            $("#section1").slideUp("slow");
+            $("#section2").slideUp("slow");
+            $("#section4").slideUp("slow");
+
+        // TODO : images must be added and showen as well
+        if ('tourGuide' in tourResponse){
+            a = document.getElementById("overviewform3").elements["name"];
+            a.value = tourResponse.tourGuide.name;
+            a = document.getElementById("overviewform3").elements["phoneNumber"];
+            a.value = tourResponse.tourGuide.phoneNumber;
+        }
+        }else{
+            alert("لطفا ابتدا اطلاعات سفر را تکمیل نمایید")
+        }
+    }
+
+
+</script>
+
+
+
+<script>
+    // for editing cards
+    function editCards(id) {
+        var r = confirm("آیا قصد ویرایش اطلاعات را دارید ؟")
+        cardsindex = $(id).parent().index();
+        if (r == true) {
+            selectedIndex = $(id).index();
+            editModeIsOn = true;
+        }
+    }
+
+</script>
+
+
+<script>
+
+    //fill Form
+    editModeIsOn = false;
+    selectedIndex = 200;
+
+    function fillStenForm(stenCard){
+
+        editCards (stenCard);
+        if (editModeIsOn){
+            $("#sten1").show();
+            $("#meal1").hide();
+            $("#sight1").hide();
+            $("#res1").hide();
+            $("#transport1").hide();
+            $("#end1").hide();
+
+
+
+            //TODO: reset Form and after that fill the form from object
+            document.getElementById("startmoveform").reset();
+            var stenObject = cardsJson[selectedIndex];
+            var nameSten1 =  document.getElementById("startmoveform").elements["nameSten1"];
+            nameSten1.value = stenObject.name;
+            var citySten1 =  document.getElementById("startmoveform").elements["citySten1"];
+            citySten1.value = stenObject.city;
+            var countrySten1 =  document.getElementById("startmoveform").elements["countrySten1"];
+            countrySten1.value = stenObject.country;
+            var timeSten1 =  document.getElementById("startmoveform").elements["timeSten1"];
+            timeSten1.value  = stenObject.time;
+            var vehicleSten1 =  document.getElementById("startmoveform").elements["vehicleSten1"];
+            vehicleSten1.value = stenObject.vehicle;
+            var addressSten1 =  document.getElementById("startmoveform").elements["addressSten1"];
+            addressSten1.value = stenObject.address;
+
+        }
+
+
+    }
+
+    function fillMealForm(stenCard){
+
+        console.log(stenCard)
+        editCards (stenCard);
+
+
+        if (editModeIsOn){
+
+
+            $("#sten1").hide();
+            $("#meal1").show();
+            $("#sight1").hide();
+            $("#res1").hide();
+            $("#transport1").hide();
+            $("#end1").hide();
+
+
+            //TODO: reset Form and after that fill the form from object
+            document.getElementById("mealform").reset();
+            console.log(selectedIndex)
+            stenObjectMeal = cardsJson[selectedIndex]
+            console.log(stenObjectMeal)
+            var nameMeal1 =  document.getElementById("mealform").elements["nameMeal1"];
+            nameMeal1.value = stenObjectMeal.name;
+            var cityMeal1 =  document.getElementById("mealform").elements["cityMeal1"];
+            cityMeal1.value = stenObjectMeal.city;
+            var countryMeal1 =  document.getElementById("mealform").elements["countryMeal1"];
+            countryMeal1.value = stenObjectMeal.country;
+            var mealKindMeal1 =  document.getElementById("mealform").elements["mealKindMeal1"];
+            mealKindMeal1.value  = stenObjectMeal.mealkind;
+
+            var timeMeal1 =  document.getElementById("mealform").elements["timeMeal1"];
+            timeMeal1.value = stenObjectMeal.time;
+
+            var durationMeal1 =  document.getElementById("mealform").elements["durationMeal1"];
+            durationMeal1.value = stenObjectMeal.duration;
+
+            var commentMeal1 =  document.getElementById("mealform").elements["commentMeal1"];
+            commentMeal1.value = stenObjectMeal.comment;
+
+        }
+
+    }
+    function fillSightForm(stenCard){
+
+        editCards (stenCard);
+
+        if (editModeIsOn) {
+            $("#sten1").hide();
+            $("#meal1").hide();
+            $("#sight1").show();
+            $("#res1").hide();
+            $("#transport1").hide();
+            $("#end1").hide();
+
+            document.getElementById("sightform").reset();
+            var stenObject = cardsJson[selectedIndex]
+
+            var nameSight1 = document.getElementById("sightform").elements["nameSight1"];
+            nameSight1.value = stenObject.name;
+            var citySight1 = document.getElementById("sightform").elements["citySight1"];
+            citySight1.value = stenObject.city;
+            var ghashangNameSight1 = document.getElementById("sightform").elements["ghashangNameSight1"];
+            ghashangNameSight1.value = stenObject.city;
+            var countrySight1 = document.getElementById("sightform").elements["countrySight1"];
+            countrySight1.value = stenObject.country;
+            var timeSight1 = document.getElementById("sightform").elements["timeSight1"];
+            timeSight1.value = stenObject.time;
+            var durationSight1 = document.getElementById("sightform").elements["durationSight1"];
+            durationSight1.value = stenObject.vehicle;
+            var commentSight1 = document.getElementById("sightform").elements["commentSight1"];
+            commentSight1.value = stenObject.address;
+        }
+    }
+    function fillResForm(stenCard){
+
+        editCards (stenCard);
+
+        if (editModeIsOn) {
+
+
+            $("#sten1").hide();
+            $("#meal1").hide();
+            $("#sight1").hide();
+            $("#res1").show();
+            $("#transport1").hide();
+            $("#end1").hide();
+
+            document.getElementById("resform").reset();
+            var stenObject = cardsJson[selectedIndex]
+
+            var nameRes1 = document.getElementById("resform").elements["nameRes1"];
+            nameRes1.value = stenObject.name;
+            var countryRes1 = document.getElementById("resform").elements["countryRes1"];
+            countryRes1.value = stenObject.country;
+            var countryRes1 = document.getElementById("resform").elements["cityRes1"];
+            countryRes1.value = stenObject.city;
+            var resKindRes1 = document.getElementById("resform").elements["resKindRes1"];
+            resKindRes1.value = stenObject.kind;
+            var addressRes1 = document.getElementById("resform").elements["addressRes1"];
+            addressRes1.value = stenObject.address;
+            var timeRes1 = document.getElementById("resform").elements["startTimeRes1"];
+            timeRes1.value = stenObject.starttime;
+            var durationRes1 = document.getElementById("resform").elements["durationRes1"];
+            durationRes1.value = stenObject.duration;
+            var descRes1 = document.getElementById("resform").elements["descRes1"];
+            descRes1.value = stenObject.description;
+            var featRes1 = document.getElementById("resform").elements["featRes1"];
+            featRes1.value = stenObject.feat;
+        }
+
+
+    }
+    function fillTransForm(stenCard){
+
+        editCards (stenCard);
+
+
+
+        if (editModeIsOn) {
+
+
+            $("#sten1").hide();
+            $("#meal1").hide();
+            $("#sight1").hide();
+            $("#res1").hide();
+            $("#transport1").show();
+            $("#end1").hide();
+
+            document.getElementById("trnasportform").reset();
+            var stenObject = cardsJson[selectedIndex]
+
+            var vehicleTransport1 = document.getElementById("trnasportform").elements["vehicleTransport1"];
+            vehicleTransport1.value = stenObject.name;
+            var durationTransport1 = document.getElementById("trnasportform").elements["durationTransport1"];
+            durationTransport1.value = stenObject.country;
+        }
+    }
+    function fillEndForm(stenCard){
+
+        editCards (stenCard);
+
+        if (editModeIsOn){
+                $("#sten1").hide();
+                $("#meal1").hide();
+                $("#sight1").hide();
+                $("#res1").hide();
+                $("#transport1").hide();
+                $("#end1").show();
+
+
+
+                document.getElementById("endmoveform").reset();
+                var stenObject = cardsJson[selectedIndex]
+                var nameEnd1 =  document.getElementById("endmoveform").elements["nameEnd1"];
+                nameEnd1.value = stenObject.name;
+                var cityEnd1 =  document.getElementById("endmoveform").elements["cityEnd1"];
+                cityEnd1.value = stenObject.city;
+                var countryEnd1 =  document.getElementById("endmoveform").elements["countryEnd1"];
+                countryEnd1.value = stenObject.country;
+                var timeEnd1 =  document.getElementById("endmoveform").elements["timeEnd1"];
+                timeEnd1.value  = stenObject.time;
+                var vehicleEnd1 =  document.getElementById("endmoveform").elements["vehicleEnd1"];
+                vehicleEnd1.value = stenObject.vehicle;
+                var addressEnd1 =  document.getElementById("endmoveform").elements["addressEnd1"];
+                addressEnd1.value = stenObject.address;
+        }
+
+    }
+
+
+
+
+
+
+</script>
+
+
+
+
+
+<script>
+
+    //script for changing tabs
+
+    $(document).ready(function () {
+        $('#loader-wrapper').hide();
+        $('.lastTours').hide();
+        $('#lastT').click(function () {
+            $("#createT").removeClass("active");
+            $("#lastT").addClass("active");
+            $('.createtour').hide();
+            $('.lastTours').show();
+        });
+
+        $('#createT').click(function () {
+            $("#lastT").removeClass("active");
+            $("#createT").addClass("active");
+            $('.createtour').show();
+            $('.lastTours').hide();
+
+        });
+
+
+    });
+</script>
+
+<script>
+    // tour initilizing
+
+        $("#formopener4").click(function () {
+
+
+        })
+
+</script>
+<script>
+    imagesHashes = [];
+    function getMyImage(imageview) {
+        hhh =  imageview
+        myFile = '';
+        //TODO: inja errore document darim bayad check konim chera hamchin errori vojod dare
+
+            imageview.addEventListener('change', function () {
+
+                myFile = imageview.files[0];
+                console.log(myFile);
+                setTimeout(function () {
+                    var form = new FormData();
+                    form.append('file', myFile);
+                    uploadImage(myFile, imagesHashes);
+                }, 1000)
+            }, false);
+        myFile = ''
+    }
+</script>
+
+<script>
+    function readMainInformationURL(input) {
+        $("#blah").css({'display':'inline-block'});
+        $("#tour-img-del").css({'display':'block'});
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                        .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        ChosenImage = 'mainInfo';
+    }
+    function readTourGuideURL(input) {
+        $("#blah2").css({'display':'inline-block'});
+        $("#tourgiude-img-del").css({'display':'block'});
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah2')
+                        .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        ChosenImage = "TourGuide"
+    }
+
+    function readMealImageURL(input) {
+        $("#MealImageContainer").css({'display':'inline-block'});
+        $("#meal-img-del").css({'display':'block'});
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#MealImageContainer')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readSightImageURL(input) {
+        $("#SightImageContainer").css({'display':'inline-block'});
+        $("#sight-img-del").css({'display':'block'});
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#SightImageContainer')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readResImageURL(input) {
+        $("#ResImageContainer").css({'display':'inline-block'});
+        $("#res-img-del").css({'display':'block'});
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ResImageContainer')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+    function FillMainPrice(FillPrice){
+        var price = FillPrice.value;
+        var discountPrice = document.getElementById('DiscountPrice');
+        discountPrice.value = price;
+    }
+</script>
+<script>
+    function FillHotelPrice(FillPrice){
+        var price = FillPrice.value;
+        var discountPrice = document.getElementById('roomsdisprice');
+        discountPrice.value = price;
+    }
+</script>
+<script>
+    $( document ).ready(function() {
+        $('#RoomsContainer').hide();
+        $('#KindOfTour').on('click', function() {
+            $('#KindOfTour').val('');
+        });
+    });
+
+</script>
+<Script>
+
+
+
+
+</Script>
+<body>
+
+<div class="container">
+    <div class="row custom-nav">
+        <div class="h-left-con">
+            <div id="logout" class="" style="margin-left:20px">
+                <i class="fa fa-sign-out" style="font-size: 1.1em;color:white;margin-top:25px"></i>
+                <span style="color:white;font-size:1em">خروج</span>
+            </div>
+        </div>
+    </div>
+    <div class="row bottom-nav">
+        <div class="col-md-12">
+            <div class="nav-con">
+                <ul>
+                    <li id="createT" class="hactivity active">
+                        <i class="fa fa-plus"></i>
+                        <h4>ایجاد تور</h4>
+                    </li>
+                    <li id="lastT" class="hactivity" onclick="LastTours()">
+                        <i class="fa fa-suitcase"></i>
+                        <h4>تورهای گذشته</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="lastTours col-md-12">
+        <ul class="toursItemsHolder col-md-12">
+        </ul>
+    </div>
+
+    <div class="content col-md-12 createtour" style="text-align:center">
+        <div class="col-md-12" style="margin:2.5%;border-bottom:1px solid #fd5c63;padding-bottom:1%">
+            <span style="font-size:2em;">اطلاعات سفر</span>
+            <i id="formopener1" onclick="fillMainInformationForm()" class="fa fa-plus" aria-hidden="true"
+               style="margin-right:1%;color:#fd5c63;font-size:1.5em;cursor:pointer"></i>
+        </div>
+
+        <div class="newtour" id="section1">
+            <form id="overviewform1" action="">
+
+                <div class="newtour-input">
+                    کجا میخوای ببری اینارو<br>
+                    <input type="checkbox" class="tourdes" name="isIranian" value="true"> ایرانی
+                    <input type="checkbox" class="tourdes" name="isIranian" value="false"> خارجی <br>
+                </div>
+
+                <div class="newtour-input">
+                    <label> نام تور  <span style="color:#FC636B">*</span></label>
+                    <input type="text" name="name" placeholder=" نام تور" required>
+                </div>
+
+                <div class="newtour-input">
+                    <label> نوع تور <span style="color:#FC636B">*</span> </label>
+                    <input id="KindOfTour" list="tourkind" name="type" placeholder="     نوع تور" required>
+                    <datalist id="tourkind">
+                        <option value="سیاحتی">
+                        <option value="زیارتی">
+                        <option value="طبیعت گردی">
+                        <option value="بوم گردی">
+                        <option value="سافاری">
+                        <option value="تور آتلیه">
+                        <option value="تخصصی">
+                    </datalist>
+                </div>
+
+
+
+                <div class="newtour-input">
+                  <label> شهر مبدا <span style="color:#FC636B">*</span> </label>
+                     <input type="text" name="srcCity" placeholder="شهر مبدا" required>
+                </div>
+                <div class="newtour-input" id="countryDestinationAdd-div">
+                             <label> کشور مقصد <span style="color:#FC636B">*</span> </label>
+                              <input type="text" name="dstCountries" placeholder="کشور مقصد"><i id="countrydestinationadd"
+                                                                                      class="fa fa-plus"
+                                                                                      style="margin-right:1%;color:#fd5c63;font-size:15px;cursor:pointer"></i>
+                </div>
+
+
+                <div class="newtour-input" id="cityDestinationAdd-div" required>
+
+                    <label>   شهر مقصد <span style="color:#FC636B">*</span></label>
+                    <input type="text" name="dstCities" placeholder="شهر مقصد"><i id="citydestinationadd"
+                                                                                  class="fa fa-plus"
+                                                                                  style="margin-right:1%;color:#fd5c63;font-size:15px;cursor:pointer"></i>
+                </div>
+
+                <div class="newtour-input">
+                    <label> قیمت تور <span style="color:#FC636B">*</span> </label>
+                    <input  type="text" class="mustbenumber" data-type="number" onchange = "FillMainPrice(this);"  min="0" class="number" step="50000" name="price" placeholder="قیمت تور" required></i>
+               تومان
+                </div>
+
+                <div class="newtour-input">
+                    <label> قیمت با تخفیف </label>
+                    <input id="DiscountPrice" class="mustbenumber" type="text" data-type="number" min="0" step="50000" name="discountedPrice" placeholder="قیمت با تحفیف"></i>
+                    تومان
+                </div>
+
+                <div class="newtour-input">
+                    مدت زمان  : <span style="color:#FC636B">*</span>
+                    <input id="tourduration" class="mustbenumber" type="number" min=1 name="duration" placeholder="1"  style="width:35px" required>
+                    روز
+                </div>
+                <div id="image-loader-wrapper" style="margin-top:20px">
+                    <div id="loader1"></div>
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                </div>
+                <div class="newtour-input">
+                    <label> عکس کاور تور <span style="color:#FC636B">*</span></label>
+                    <input id="imageup" onclick="getMyImage(this)" onchange="readMainInformationURL(this)" type="file" name="fileimage" style="margin-right:40%; margin-bottom:8px">
+                    <img id="blah" src="#" width=220px height=180px style="display: none;"/>
+                    <div id="tour-img-del" style="cursor: pointer; display:none;" onclick="deleteImage()">پاک کردن عکس<i class="fa fa-trash col-md-12" aria-hidden="true"></i> </div>
+                </div>
+
+                <textarea rows="4" cols="50" name="description" style="direction:rtl"
+                          placeholder="توضیحات سفر :"></textarea>
+                <label> توضیحات سفر </label>
+                <div class="newtour-input" >
+                    <label> تاریخ حرکت <span style="color:#FC636B">*</span></label>
+                    <input type="text" id="pcal1" class="pdate" name="date">
+                </div>
+
+                <div class="newtour-input">
+                    <label class="tag">خدمات   سفر  </label>
+                    <textarea name="services" style="direction:rtl;width:150px;height:100px" placeholder="خدمات سفر"></textarea>
+                    <label class="tag">لوازم    ضروری  </label>
+                    <textarea name="requiredTools" style="direction:rtl;width:150px;height:100px" placeholder="لوازم ضروری :"></textarea>
+                    <label class="tag"> لوازم پیشنهادی  </label>
+                    <textarea name="recommendedTools" style="direction:rtl;width:150px;height:100px" placeholder="لوازم پیشنهادی"></textarea>
+                    <label class="tag">    شرایط ثبت نام  <span style="color:#FC636B">*</span></label>
+                    <textarea name="signupRules" style="direction:rtl;width:150px;height:100px;margin-top:25px" placeholder="شرایط ثبت نام "></textarea>
+                </div>
+
+            </form>
+            <div>
+
+            </div>
+            <input id="firstdatabutton" type="button"  value="ارسال اطلاعات"
+                   style="background-color:#67ab6a;margin:2.5%;font-size:1.5em">
+            <div class="firstdataForm"></div>
+        </div>
+
+        <div class="col-md-12" style="margin:2.5%;border-bottom:1px solid #fd5c63;padding-bottom:1%">
+            <span style="font-size:2em;">اطلاعات هتل</span>
+            <i id="formopener2" onclick="fillHotelsForm()" class="fa fa-plus" aria-hidden="true"
+               style="margin-right:1%;color:#fd5c63;font-size:1.5em;cursor:pointer"></i>
+        </div>
+
+        <div class="col-md-12" id="section2" style="margin-bottom:5%">
+
+
+
+        <div class="dialog" title="خطا" style="direction: rtl;display: none;"> لطفا اطلاعات هتل را تکمیل کنید .</div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12" style="direction: rtl">
+
+                <form id="hotelsform">
+                    <label> نام هتل : <span style="color:#FC636B">*</span></label>
+                    <input  type="text" id="hotelFormName" name="name"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+
+                    <label> ستاره :  <span style="color:#FC636B">*</span></label>
+                    <input class="mustbenumber" list="starlist" id="hotelFormStar" name="rate" max="5" min="1" style="text-align:center;width:35px;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+                    <datalist id="starlist">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                    </datalist>
+                    <label> شهر :  <span style="color:#FC636B">*</span></label>
+                    <input type="text" id="hotelFormCity" name="city"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+
+                    <label> کشور : <span style="color:#FC636B">*</span></label>
+                    <input type="text" id="hotelFormCountry" name="country"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+
+                    <label> grade : <span style="color:#FC636B">*</span></label>
+                    <input list="gradelist" id="hotelFormGrade" name="grade" style="text-align:center;width:35px;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+                    <datalist id="gradelist">
+                        <option value="A">
+                        <option value="B">
+                        <option value="C">
+                        <option value="D">
+                        <option value="نامشخص">
+                    </datalist>
+                </form>
+                <div class=col-md-12" id="addrooms" style="cursor:pointer;margin-right: 40%;margin-bottom:2.5%;margin-top:2.5%;height:22.5px;border-radius:5px;background-color:#FD5C63;width:15%;font-size:10px">
+                    اضافه کردن اتاق جدید <i class="fa fa-plus" aria-hidden="true"
+                                            style="margin-top:8px;margin-right:1%;color:#F6F6F6;cursor:pointer"></i>
+                </div>
+            <div id="RoomsContainer" style="margin-top:5%;">
+                <form id="roomsform">
+
+                    <label> نوع اتاق :   <span style="color:#FC636B">*</span></label>
+                    <input id="roomstype" type="text" name="type"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+
+                    <label> ظرفیت : <span style="color:#FC636B">*</span></label>
+                    <input id="capacity" type="number" name="capacity"
+                           style="text-align:center;width:35px;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+
+                    <label>  قیمت : <span style="color:#FC636B">*</span></label>
+                    <input id="roomsprice" class="mustbenumber" type="text" data-type="number" onchange="FillHotelPrice(this)" min="0" step="50000" name="price"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+                    <span style="    margin-right: -22px;margin-left: 25px;">تومان</span>
+                    <label>قیمت با تخفیف : </label>
+                    <input id="roomsdisprice" class="mustbenumber" type="text" data-type="number"  min="0" step="50000" name="discountedPrice"
+                           style="text-align:center;margin-left:2%;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;">
+                    <span style="    margin-right: -22px;margin-left: 25px;">تومان</span>
+                    <span id="saveRoom" style="cursor:pointer;background-color:#FD5C63;width:8%;font-size:16px;padding: 5px;border-radius: 8px">
+                        ذخیره
+                    </span>
+                </form>
+
+                <div class="col-md-12" id="addhotels"
+                     style="cursor:pointer;margin-top:2.5%;margin-left:42%;margin-bottom:2.5%;height:36px;margin-right:-15px;border-radius:5px;background-color:#FD5C63;width:18%;font-size:15px">
+                    <i class="fa fa-plus" aria-hidden="true"
+                       style="margin-top:4.5%;margin-right:1%;color:#F6F6F6;cursor:pointer"></i> اضافه کردن هتل جدید
+                </div>
+
+            </div>
+
+
+
+
+            <li id="roomsschema" class="col-md-12" onclick="fillRoomForm(this)" style="background-color:#66bb6a;width: 115px;border-radius:5px;margin-left:10px;margin-bottom:10px">
+                <span id="roomsschemaspan"></span> <i style="color:black;float:right" onclick="deletethiscard(this)" class="fa fa-trash" aria-hidden="true"></i></li>
+
+
+            <div class="hotelsholder col-md-12" style="height:auto;">
+                <ul id="hotelsschema" class="col-md-12" onclick="fillHotelRoomsForm(this)" style="background-color:#49a17b;width:115px;border-radius:5px;margin-left:45%;margin-bottom:10px">
+                    <span id="hotelsschemaspan">هتل داریوش</span><i style="color:black;" onclick="deletethiscard(this)" class="fa fa-trash" aria-hidden="true"></i>
+                </ul>
+
+            </div>
+
+
+            <input class="col-md-12" type="button" value="ارسال" onclick="addHotel()" style="margin-top:2.5%;background-color:#00A98F;border-radius:5px;width:10%;margin-left:47%">
+
+        </div>
+
+        </div>
+        <div class="col-md-12" style="margin:2.5%;border-bottom:1px solid #fd5c63;padding-bottom:1%">
+            <span style="font-size:2em;">اطلاعات راهنمای سفر</span>
+            <i id="formopener3" onclick="fillTourGuideForm()" class="fa fa-plus" aria-hidden="true"
+               style="margin-right:1%;color:#fd5c63;font-size:1.5em;cursor:pointer"></i>
+        </div>
+
+        <div class="newtour" id="section3">
+            <form id="overviewform3">
+
+                <div class="newtour-input">
+                    <label> نام راهنمای تور <span style="color:#FC636B">*</span></label>
+                    <input type="text" name="name" placeholder="نام راهنمای تور">
+                </div>
+
+                <div class="newtour-input">
+                    <label> شماره ی راهنمای تور <span style="color:#FC636B">*</span></label>
+                    <input type="text" class="numeric" name="phoneNumber" placeholder="شماره راهنمای تور" style="direction:ltr">
+                </div>
+
+                <div class="newtour-input">
+                    <label> عکس راهنمای تور </label>
+                    <img id="blah2" src="#" width=180px style="display: none;" height=180px  style="margin-left:60%;border-radius:450px;margin-bottom:25px;" />
+                    <input id="TourGuideImageUp" onclick="getMyImage(this)" onchange="readTourGuideURL(this)" type="file" multiple name="file"/>
+                    <div id="tourgiude-img-del" style="text-align: center; cursor: pointer; display:none;" onclick="deleteTourImage()">پاک کردن عکس<i style="color:black" class="fa fa-trash" aria-hidden="true"></i> </div>
+                </div>
+                <input id="thirddatabutton" type="button" value="ارسال اطلاعات"
+                       style="background-color:#67ab6a;margin:2.5%;font-size:1.5em">
+            </form>
+
+        </div>
+
+        <div class="col-md-12" style="margin:2.5%;border-bottom:1px solid #fd5c63;padding-bottom:1%">
+            <span style="font-size:2em;">آغاز تور</span>
+            <i id="formopener4" onclick="daysgenerator()" class="fa fa-plus" aria-hidden="true"
+               style="margin-right:1%;color:#fd5c63;font-size:1.5em;cursor:pointer"></i>
+        </div>
+
+
+        <div class="newtour" id="section4">
+
+            <div class="daysHolder">
+
+            </div>
+
+            <div id="overviewform4" action="#">
+
+                <div class="newtour-input cardsplay col-md-12">
+                    <input id="sten" class="stepsbutton" type="button" name="tourguide" value="آغاز"
+                           style="background-color:#00a98f">
+                    <input id="end" class="stepsbutton" type="button" name="tourguide" value="پایان"
+                           style="background-color:#00a98f;display: none">
+                    <input id="meal" class="stepsbutton" type="button" name="tourguide" value="وعده غذایی"
+                           style="background-color:#fbb034">
+                    <input id="sight" class="stepsbutton" type="button" name="tourguide" value="مکان دیدنی"
+                           style="background-color:#0091cd">
+                    <input id="res" class="stepsbutton" type="button" name="tourguide" value="اقامت"
+                           style="background-color:#fc636b">
+                    <input id="transport" class="stepsbutton" type="button" name="tourguide" value="انتقال"
+                           style="background-color:#ae63e4">
+                    <input id="send" onclick="SendData()" class="stepsbutton" type="button" name="senddata"
+                           value="ارسال"
+                           style="background-color:#8ec06c;border-radius:80px;width:10%;margin-right:20px">
+
+                    <div id="cardsholder" style="width:18%;height:80%"></div>
+                </div>
+                <div style="margin-bottom: 10%;">
+
+
+                    <div id="sten1" class="card1">
+                        <form id="startmoveform">
+                            <div style="font-size:1.5em;margin:2%;padding:1%">آغاز <i class="fa fa-suitcase" aria-hidden="true"></i><i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i></div>
+                            <div> <input type="text" id="nameSten1" name="name" placeholder="محل حرکت"><label><span style="color:#FC636B">*</span> محل حرکت </label></div>
+                            <div><input  class="time" id="timeSten1"  name="time" pattern="[0-9]{2}:[0-9]{2}" placeholder="ساعت حرکت"><label><span style="color:#FC636B">*</span> ساعت حرکت </label></div>
+                            <div><input list="transkind" type="text" id="vehicleSten1" name="vehicle" placeholder="وسیله نقلیه"><span style="color:#FC636B">*</span><label> وسیله نقلیه </label></div>
+                            <div><input type="text" id="addressSten1" name="address" placeholder="آدرس" size="45"><label> آدرس </label></div>
+                            <input placeholder="محل مورد نظر خودتان را روی نقشه مشخص کنید" type="text" style="display:none"
+                                   name="coordinates" id="latlng0" size="40"/><br/>
+                            <div id="map" style="width:100%;height:400px;"></div>
+                            <div>
+                                <input type="text" id="countrySten1" name="country" placeholder="کشور">
+                                <label><span style="color:#FC636B">*</span> کشور </label>
+                                <input type="text" id="citySten1" name="city" placeholder="شهر">
+                                <label><span style="color:#FC636B">*</span> شهر </label>
+                            </div>
+                            <input id="cardb1" type="button" onclick="addingstart()" value="اضافه"
+                                   style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+                        </form>
+                    </div>
+
+                    <div id="end1" class="card1">
+                        <form id="endmoveform">
+                            <div style="font-size:1.5em;margin:2%;padding:1%">پایان <i class="fa fa-suitcase" aria-hidden="true"></i><i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i></div>
+                            <div>
+                                <input type="text" id="nameEnd1" name="name" placeholder="محل حرکت">
+                                <label><span style="color:#FC636B">*</span> محل حرکت </label>
+                            </div>
+                            <input class="time"  id="timeEnd1" name="time" placeholder="ساعت حرکت">
+                            <label><span style="color:#FC636B">*</span> ساعت حرکت </label>
+                            <div>
+                                <input type="text" id="vehicleEnd1" name="vehicle" placeholder="وسیله نقلیه"><label><span style="color:#FC636B">*</span> وسیله نقلیه </label></div>
+                            <div>
+                                <input type="text" id="addressEnd1" name="address" placeholder="آدرس" size="45"><label> آدرس </label></div>
+
+                            <input placeholder="محل مورد نظر خودتان را روی نقشه مشخص کنید" type="text"
+                                   name="coordinates" id="latlng" size="40" style="display:none"/><br/>
+                            <div class="map"></div>
+                            <div>
+                                <input type="text" id="countryEnd1" name="country" placeholder="کشور">
+                                <label> کشور <span style="color:#FC636B">*</span></label>
+                                <input type="text" id="cityEnd1" name="city" placeholder="شهر">
+                                <label>  شهر <span style="color:#FC636B">*</span></label>
+                            </div>
+
+
+                            <input id="cardb0" type="button" onclick="addingarrival()" value="اضافه"
+                                   style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+                        </form>
+                    </div>
+                    <div id="meal1" class="card2">
+
+                        <form id="mealform" action="">
+                            <div style="font-size:1.5em;margin:2%;padding:1%">وعده غذایی <i class="fa fas-cutlery" aria-hidden="true"></i>
+                                <i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <input type="text" id="nameMeal1" name="name" placeholder="نام"><span style="color:#FC636B">* </span><label> نام </label></div>
+
+                            <div><input type="text" id="countryMeal1" name="country" placeholder="کشور"><span style="color:#FC636B">* </span><label> کشور </label></div>
+                            <div><input type="text" id="cityMeal1" name="city" placeholder="شهر"><span style="color:#FC636B">* </span><label> شهر </label></div>
+
+                            <div><input list="mealkind" id="mealKindMeal1" name="mealkind" placeholder="      وعده"><span style="color:#FC636B">* </span><label> وعده غذایی </label></div>
+
+
+                            <datalist id="mealkind">
+                                <option value="صبحانه">
+                                <option value="نهار">
+                                <option value="شام">
+                                <option value="میان وعده">
+                            </datalist>
+                            <div>
+                                <input class="time" id="timeMeal1" name="usr_time" placeholder="ساعت وعده"><label>ساعت شروع</label>
+                            </div>
+                                <div class="range-slider">
+                                <input class="range-slider__range " type="range" value="1" min="0.5" max="12" step="0.5" id="durationMeal1" name="duration" placeholder="ساعت" style="width:270px" >
+                                    <span class="range-slider__value">0</span><label>: مدت زمان</label>
+                                </div>
+
+                            <input placeholder="محل مورد نظر خودتان را روی نقشه مشخص کنید" type="text" id="latlng1"
+                                   name="coordinates" size="40" style="display:none"/><br/>
+                            <div id="map1"></div>
+
+
+
+                            <div>
+                                <img id="MealImageContainer" style="display: none" src="#" width=220px height=180px />
+                                <input onclick="getMyImage(this)" onchange="readMealImageURL(this)" name="meal-image-form" type="file" multiple style="margin-left:25%">
+                                <div id="meal-img-del" style="cursor: pointer; display:none" onclick="deleteImage()">پاک کردن عکس<i style="color:black" class="fa fa-trash" aria-hidden="true"></i> </div>
+                            </div>
+                            <div id="mealimages"></div>
+
+                            <div>
+                                <textarea rows="4" cols="50" id="commentMeal1" name="comment" style="direction:rtl"></textarea><label>: توضیحات سفر</label>
+                            </div>
+
+                            <div class="ShowImages" onclick="showImages(this)" style="border: 1px solid white;margin-top:10px">نمایش عکس ها</div>
+
+
+
+                            <input id="cardm1" type="button" onclick="addingmeal()" value="اضافه"
+                                   style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+
+                        </form>
+                    </div>
+
+
+                    <div id="sight1" class="card3">
+
+                        <form id="sightform" action="">
+                            <div style="font-size:1.5em;margin:2%;padding:1%"> مکان دیدنی <i class="fa fa-building" aria-hidden="true"></i>
+                                <i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <input type="text" id="nameSight1" name="name" placeholder="نام"><span style="color:#FC636B">*</span><label> نام </label></div>
+                            <div>
+                                <input type="text" id="ghashangNameSight1" name="ghashangname" placeholder="نام قشنگ"><label> نام خاص  </label></div>
+                            <div>
+                                <input type="text" id="countrySight1" name="country" placeholder="کشور"><label><span style="color:#FC636B">*</span> کشور </label>
+                            </div>
+                            <div>
+                                <input type="text" id="citySight1" name="city" placeholder="شهر"><span style="color:#FC636B">*</span><label> شهر </label></div>
+                            <div>
+
+                                <input class="time" id="timeSight1" name="usr_time" placeholder="زمان حرکت"><label>ساعت شروع</label>
+                            </div>
+
+                            <div class="range-slider">
+
+                                <input class="range-slider__range" type="range" value="1" min="0.5" max="12" step="0.5" id="durationSight1" name="duration" placeholder="ساعت" style="width:270px">
+                                <span class="range-slider__value">0</span><label>: مدت زمان</label>
+                            </div>
+
+                            <input placeholder="محل مورد نظر خودتان را روی نقشه مشخص کنید" type="text" id="latlng2"
+                                   name="coordinates" size="40" style="display:none"/><br/>
+                            <div id="map2"></div>
+                            <div>
+                                <img id="SightImageContainer" style="display: none;" src="#" width=220px height=180px />
+                                <input type="file" onclick="getMyImage(this)" onchange="readSightImageURL(this)" name="sight-image-form" multiple   style="margin-left: 27%;">
+                                <div id="sight-img-del" style="cursor: pointer; display:none;" onclick="deleteImage()">پاک کردن عکس<i style="color:black" class="fa fa-trash" aria-hidden="true"></i> </div>
+                            </div>
+
+                            <div>
+                                <textarea name="desc" rows="4" cols="50" id="commentSight1" name="comment" style="direction:rtl"></textarea><label>: توضیحات سفر</label>
+                            </div>
+
+                            <div class="ShowImages" onclick="showImages(this)" style="border: 1px solid white;margin-top:10px">نمایش عکس ها</div>
+
+                            <input id="cardb3" type="button" onclick="addingsight()" value="اضافه"
+                                   style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+                        </form>
+                    </div>
+
+
+                    <div id="res1" class="card4">
+
+                        <form id="resform">
+                            <div style="font-size:1.5em;margin:2%;padding:1%">اقامت <i class="fa fa-bed" aria-hidden="true"> </i>
+                                <i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i></div>
+                            <div>
+                                <input type="text" id="nameRes1" name="name" placeholder="نام"><span style="color:#00A98F">* </span><label> نام </label></div>
+                            <div>
+                                <input list="reskind" id="resKindRes1" name="reskind" placeholder="      اقامت"><span style="color:#00A98F">* </span><label> اقامت </label>
+                            </div>
+                            <datalist id="reskind">
+                                <option value="هتل">
+                                <option value="کمپ">
+                                <option value="مسافرخانه">
+                            </datalist>
+                            <div>
+                                <input type="text" id="countryRes1" name="country" placeholder="کشور">
+                                <span style="color:#00A98F">*</span><label> کشور </label>
+                            </div>
+                            <div>
+                                <input type="text" id="cityRes1" name="city" placeholder="شهر">
+                                <span style="color:#00A98F">*</span><label> شهر </label>
+                            </div>
+                            <div>
+                                <input class="time" id="startTimeRes1" name="starttime" placeholder="ساعت شروع"><label>ساعت شروع</label>
+                            </div>
+                            <div class="range-slider">
+                                <input  class="range-slider__range" type="range" value="1" min="0.5" max="12" step="0.5"  id="durationRes1" name="duration" placeholder="ساعت" style="width:300px">
+                                <span class="range-slider__value">0</span>
+                               <label>: مدت زمان</label>
+                            </div>
+                            <!--<div>-->
+                                <input placeholder="محل مورد نظر خودتان را روی نقشه مشخص کنید" type="text" name="coordinates" id="latlng3" size="40" style="display:none"/><br/>
+                                <div id="map3"></div>
+                            <!--</div>-->
+                            <div>
+                                <input type="text" id="addressRes1" name="address" placeholder="آدرس" size="50"></div>
+                            <label> آدرس</label>
+
+                            <div>
+                                <img id="ResImageContainer" style="display: none;" src="#" width=220px height=180px />
+                                <input type="file" onclick="getMyImage(this)" onchange="readResImageURL(this)" name="res-image-form" multiple  style="margin-left: 27%;">
+                                <div id="res-img-del" style="cursor: pointer; display:none;" onclick="deleteImage()">پاک کردن عکس<i style="color:black" class="fa fa-trash" aria-hidden="true"></i></div>
+                            </div>
+
+                            <div>
+                                <textarea rows="4" cols="50" id="descRes1" name="desc" style="direction:rtl"></textarea><label>توضیحات</label>
+                            </div>
+                            <div>
+                                <textarea rows="4" cols="50" id="featRes1" name="feat" style="direction:rtl"></textarea>
+                                <label>امکانات</label>
+                            </div>
+
+                            <div class="ShowImages" onclick="showImages(this)" style="border: 1px solid white;margin-top:10px">نمایش عکس ها</div>
+
+                            <input id="cardb4" type="button" onclick="addingres()" value="اضافه" style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+                        </form>
+                    </div>
+
+                    <div id="transport1" class="card5">
+                        <form id="trnasportform">
+
+                            <div style="font-size:1.5em;margin:2%;padding:1%">انتقال <i class="fa fa-bus" aria-hidden="true"></i>
+                                <i onclick="CloseCard(this)" style="cursor:pointer ; float:right" class="fa fa-times-circle" aria-hidden="true"></i>
+                            </div>
+
+                            <div>
+
+                                <input list="transkind" id="vehicleTransport1" name="vehicle" placeholder="وسیله انتقال">
+                                <label>وسیله انتقال</label>
+                            </div>
+
+                            <datalist id="transkind">
+                                <option value="اتوبوس">
+                                <option value="هواپیما">
+                                <option value="قطار">
+                                <option value="کشتی">
+                                <option value="ماشین">
+                                <option value="پیاده">
+                            </datalist>
+
+                            <div>
+                                <input  class="range-slider__range" type="range" value="1" min="0.5" max="24" step="0.5"   type="number" id="durationTransport1" name="duration" placeholder="مدت زمان به ساعت" style="width:300px">
+                                <span class="range-slider__value">0</span><label>: مدت زمان</label>
+                            </div>
+                            <input id="cardb5" type="button" onclick="addingtransport()" value="اضافه"
+                                   style="background-color:#67ab6a;margin:2.5%;font-size:1.2em">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div style="display:none;position:absolute">
+                <div id="startschema" class="cardsschema" onclick="fillStenForm(this)"><i style="color:white"
+                                                                                onclick="deletethiscard(this)"
+                                                                                class="fa fa-trash delete"
+                                                                                aria-hidden="true"></i>
+                    <span>آغاز</span></div>
+                <div id="mealschema" class="cardsschema" onclick="fillMealForm(this)" style="background-color:#fbb034">وعده
+                    غذایی<i style="color:white" onclick="deletethiscard(this)" class="fa fa-trash delete"
+                            aria-hidden="true"></i></div>
+                <div id="sightschema" class="cardsschema" onclick="fillSightForm(this)" style="background-color:#0091cd">مکان دیدنی<i
+                        style="color:white" onclick="deletethiscard(this)" class="fa fa-trash delete"
+                        aria-hidden="true"></i></div>
+                <div id="resschema" class="cardsschema" onclick="fillResForm(this)" style="background-color:#fc636b">اقامت<i
+                        style="color:white" onclick="deletethiscard(this)" class="fa fa-trash delete"
+                        aria-hidden="true"></i></div>
+                <div id="transportschema" class="cardsschema" onclick="fillTransForm(this)" style="background-color:#ae63e4"><i
+                        style="color:white" onclick="deletethiscard(this)" class="fa fa-trash delete"
+                        aria-hidden="true"></i>انتقال
+                </div>
+                <div id="endschema" class="cardsschema" onclick="fillEndForm(this)"  style="background-color:#00a98f"><i style="color:white"
+                                                                                            onclick="deletethiscard(this)"
+                                                                                            class="fa fa-trash delete"
+                                                                                            aria-hidden="true"></i><span
+                        >پایان</span></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+</div>
+
+
+
+
+<div class="thumbnailContainer">
+    <i class="fa fa-times" onclick="closeGallery()" aria-hidden="true"></i>
+    <h2 class="text-center">گالری عکس ها</h2>
+    <div class="lightbox-gallery">
+        <div><img src="1.jpg" alt=""></div>
+        <div><img src="2.jpg" alt=""></div>
+        <div><img src="3.jpg" alt=""></div>
+        <div><img src="4.jpg" alt=""></div>
+        <div><img src="5.jpg" alt=""></div>
+    </div>
+</div>
+
+
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $(".mustbenumber").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                $("#errmsg").html("لطفا فقط عدد وارد نمایید").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+</script>
+
+<script>
+    function closeGallery() {
+
+        $('.thumbnailContainer').css({'display':'none'});
+        $('.container').css({'opacity':'1'});
+
+    }
+</script>
+
+<script>
+
+    function showImages (id) {
+
+        $('.thumbnailContainer').css({'display': 'block'});
+        $('.container').css({'opacity': '0.05'});
+    }
+    // Create a lightbox
+    (function() {
+        var $lightbox = $("<div class='lightbox'></div>");
+        var $img = $("<img>");
+        var $caption = $("<p class='caption'></p>");
+
+        // Add image and caption to lightbox
+
+        $lightbox
+                .append($img)
+                .append($caption);
+
+        // Add lighbox to document
+
+        $('body').append($lightbox);
+
+        $('.lightbox-gallery img').click(function(e) {
+            e.preventDefault();
+
+            // Get image link and description
+            var src = $(this).attr("src");
+            var cap = $(this).attr("alt");
+
+            // Add data to lighbox
+
+            $img.attr('src', src);
+            $caption.text(cap);
+
+            // Show lightbox
+
+            $lightbox.fadeIn('fast');
+
+            $lightbox.click(function() {
+                $lightbox.fadeOut('fast');
+            });
+        });
+
+    }());
+
+
+</script>
+
+
+
+
+<script>
+    var objCal1 = new AMIB.persianCalendar( 'pcal1' );
+</script>
+
+
+
+
+<script>
+
+
+    aJSON = [];
+    bJSON = [];
+    cJSON = [];
+    dJSON = [];
+    eJSON = [];
+    thisdayClass = "";
+    lockthis = 1;
+    sendingdata = true;
+    finalDaysCount = 0;
+        daysfa = [ "" , "روز اول", "روز دوم", "روز سوم", "روز چهارم", "روز پنجم", "روز ششم", "روز هفتم", "روز هشتم", "روز نهم", "روز دهم", "روز یازدهم", "روز دوازدهم", "روز سیزدهم", "روز چهاردم", "روز پانزدهم", "روز شانزدهم", "روز هفدهم", "روز هجدهم", "روز نوزدهم", "روز بیستم", "روز بیست و یکم", "روز بیست و دوم", "روز بیست و سوم", "روز بیست و چهارم", "روز بیست و پنجم" ]
+    var checkerValue = false;
+
+    function daysgenerator() {
+
+
+        if(hasBeenSendMainInformation) {
+            document.documentElement.scrollTop = 0;
+            $("#section4").slideToggle('slow,swing');
+            $("#section1").slideUp("slow");
+            /*$("#section2").slideUp("slow");*/
+            $("#section3").slideUp("slow");
+
+
+
+        if (lockthis > 1){
+            if ($("#tourduration").val() !== ""  && $("#tourduration").val() !== finalDaysCount){
+
+                checkerValue = true;
+                lockthis = 1;
+            }
+        }
+
+        if (!('mainInformation' in tourResponse)) {
+
+
+            if (lockthis === 1) {
+
+                //day count get from json duration
+                //var days = get json duration objcet
+
+                days = $("#tourduration").val();
+
+                if (days != ""){
+
+
+                    if (checkerValue){
+
+
+                        if (finalDaysCount > $("#tourduration").val()){
+
+                            finalDaysCount = 1;
+
+                            var t = $('.daysHolder').children('div').length;
+                            for (var l = 0; l < t; l++) {
+                                $('.daysHolder').children('div')[0].remove();
+                            }
+                        }
+
+                        checkerValue = false;
+
+
+                        for (var i = finalDaysCount; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                    }else{
+
+                        for (var i = 1; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                    }
+
+
+                    lockthis++;
+
+                }else{
+
+                    $("#tourduration").value = 1
+                    days = 1;
+
+                 if (checkerValue){
+
+
+
+                     if (finalDaysCount > $("#tourduration").val()){
+
+                         finalDaysCount = 1;
+                         var t = $('.daysHolder').children('div').length;
+                         for (var l = 0; l < t; l++) {
+                             $('.daysHolder').children('div')[0].remove();
+                         }
+                     }
+                     checkerValue = false;
+                     for (i = finalDaysCount; i <= days; i++) {
+                         //create a DIV with days and Show days function with passing itself to function
+                         daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                         $(".daysHolder").append(daysdiv);
+                         //create a Holder DIV with show days function on it
+                         cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                         $("#cardsholder").append(cardsholderdiv);
+                     }
+                 }else{
+
+
+
+
+                     for (i = 1; i <= days; i++) {
+                         //create a DIV with days and Show days function with passing itself to function
+                         daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                         $(".daysHolder").append(daysdiv);
+                         //create a Holder DIV with show days function on it
+                         cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                         $("#cardsholder").append(cardsholderdiv);
+                     }
+                 }
+
+
+                    lockthis++;
+                }
+
+
+            }
+
+        }else{
+
+            if (lockthis != 1) {
+
+
+                //get number of days from main information
+                days = tourResponse.mainInformation.duration
+
+                if ($("#tourduration").val() == "") {
+
+
+                    if (days > 0) {
+
+                        lockthis = 1;
+                        for (i = 0; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                        lockthis++;
+                    } else {
+
+
+
+                        $("#tourduration").value = 1;
+                        days = $("#tourduration").val();
+
+                        for (i = 1; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                        lockthis++;
+                    }
+
+                } else {
+
+                    if ($("#tourduration").val() == days) {
+
+
+
+
+                        lockthis = 1;
+                        for (i = 1; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                        lockthis++;
+
+                    } else {
+
+
+
+                        days = $("#tourduration").val();
+
+                        for (i = 1; i <= days; i++) {
+                            //create a DIV with days and Show days function with passing itself to function
+                            daysdiv = $('<div class="days" id =day' + i + ' onclick="showdays(this)">' + daysfa[i] + '</div>')
+                            $(".daysHolder").append(daysdiv);
+                            //create a Holder DIV with show days function on it
+                            cardsholderdiv = $('<div class="CardsHolder CardsHolderday' + i + '" id="cardsHolderday' + i + '"></div>')
+                            $("#cardsholder").append(cardsholderdiv);
+                        }
+                        lockthis++;
+                    }
+                }
+            }
+        }
+
+        }else{
+            alert("لطفا ابتدا اطلاعات سفر را تکمیل نمایید")
+        }
+       finalDaysCount = days;
+
+    }
+
+
+    // for shwoing day
+    prevDay = 0;
+
+    function showdays(thisday) {
+        //was here too
+
+            dayIndex = $(thisday).index();
+            if (prevDay === dayIndex) {
+            } else{
+                $("#overviewform4 form").trigger("reset");
+                
+            }
+        prevDay = dayIndex;
+
+
+//till here
+        if(sendingdata) {
+
+            dayJSON = thisday.id
+
+            //get this day
+            $('.days').unbind().css({"background-color": "#dcdcdc"});
+
+            $(thisday).css({"background-color": "#FD5C63"})
+
+            thisdayID = '#cardsHolder' + thisday.id
+            thisdayClass = '.CardsHolder' + thisday.id
+
+
+
+            for (var v = 1; v <= days; v++) {
+                $(".CardsHolderday" + v).hide();
+            }
+
+            $(".cardsplay").show();
+
+
+            $(thisdayID).show()
+            cardsJson = []
+
+            whichDay = thisday.id;
+
+            if (whichDay in tourResponse) {
+
+                dayResponseJson = tourResponse[whichDay].length;
+
+                var lockstartDay = false;
+                var lockendDay = false;
+
+                for (var k = 0; k < dayResponseJson; k++) {
+
+                    switch (tourResponse[whichDay][k].objectType) {
+
+                        case "meal":
+
+                            cardsJson.push(tourResponse[whichDay][k]);
+                            $("#mealschema").show().clone().appendTo(thisdayClass)
+                            break;
+
+                        case "sightSeeing":
+
+                            cardsJson.push(tourResponse[whichDay][k]);
+                            $("#sightschema").show().clone().appendTo(thisdayClass)
+                            break;
+
+                        case "residence":
+
+                            cardsJson.push(tourResponse[whichDay][k]);
+
+                            $("#resschema").show().clone().appendTo(thisdayClass)
+                            break;
+
+                        case "transfer":
+
+                            cardsJson.push(tourResponse[whichDay][k]);
+
+                            $("#transportschema").show().clone().appendTo(thisdayClass)
+                            break;
+
+
+                        case "arrival":
+
+                            if (!lockendDay) {
+                                cardsJson.push(tourResponse[whichDay][k]);
+                                $("#endschema").show().clone().appendTo(thisdayClass)
+                                $("#end").css({"display":"none"});
+                                lockendDay = true;
+                            }
+                            break;
+
+
+                        case "departure":
+
+                            if (!lockstartDay) {
+                                cardsJson.push(tourResponse[whichDay][k]);
+                                $("#startschema").show().clone().appendTo(thisdayClass)
+                                $("#sten").css({"display":"none"});
+                                lockstartDay = true;
+                            }
+
+                            break;
+                    }
+                }
+            }
+            sendingdata = false
+            }
+        else{
+            if($(thisdayClass).children().length == 0){
+
+                //get this day
+                $('.days').unbind().css({"background-color": "#dcdcdc"});
+
+                $(thisday).css({"background-color": "#FD5C63"})
+
+                thisdayID = '#cardsHolder' + thisday.id
+                thisdayClass = '.CardsHolder' + thisday.id
+
+                for (var v = 1; v <= days; v++) {
+                    $(".CardsHolderday" + v).hide();
+                }
+
+                $(".cardsplay").show();
+
+                //$("#cardsholder").hide();
+
+                $(thisdayID).show()
+                cardsJson = []
+
+                whichDay = thisday.id;
+
+                if (whichDay in tourResponse) {
+
+                    dayResponseJson = tourResponse[whichDay].length;
+
+                    var lockstartDay = false;
+                    var lockendDay = false;
+
+                    for (var k = 0; k < dayResponseJson; k++) {
+
+                        switch (tourResponse[whichDay][k].objectType) {
+
+                            case "meal":
+
+                                cardsJson.push(tourResponse[whichDay][k]);
+                                $("#mealschema").show().clone().appendTo(thisdayClass)
+                                break;
+
+                            case "sightSeeing":
+
+                                cardsJson.push(tourResponse[whichDay][k]);
+                                $("#sightschema").show().clone().appendTo(thisdayClass)
+                                break;
+
+                            case "residence":
+
+                                cardsJson.push(tourResponse[whichDay][k]);
+
+                                $("#resschema").show().clone().appendTo(thisdayClass)
+                                break;
+
+                            case "transfer":
+
+                                cardsJson.push(tourResponse[whichDay][k]);
+
+                                $("#transportschema").show().clone().appendTo(thisdayClass)
+                                break;
+
+
+                            case "arrival":
+
+                                if (!lockendDay) {
+                                    cardsJson.push(tourResponse[whichDay][k]);
+                                    $("#endschema").show().clone().appendTo(thisdayClass)
+                                    $("#end").css({"display":"none"});
+                                    lockendDay = true;
+                                }
+                                break;
+
+
+                            case "departure":
+
+                                if (!lockstartDay) {
+                                    cardsJson.push(tourResponse[whichDay][k]);
+                                    $("#startschema").show().clone().appendTo(thisdayClass)
+                                    $("#sten").css({"display":"none"});
+                                    lockstartDay = true;
+                                }
+
+                                break;
+                        }
+                    }
+                }
+                sendingdata = false
+            }else
+            {
+                alert("لطفا اطلاعات روز جاری را ارسال کنید .")
+            }
+
+            }
+
+    }
+
+</script>
+
+
+
+<script>
+
+    cardsJson = [];
+    cardsIDCounter = 1;
+
+    //on click add  this card add to this cardholder
+    sendthisday = []
+    console.log(typeof sendthisday)
+    console.log(sendthisday)
+    function adding(add) {
+        addParent = $(add).parent().parent();
+        console.log(addParent.value);
+    }
+
+
+</script>
+
+
+
+<script>
+
+    function deletethiscard(id) {
+
+
+        if(id.id == "deleteCountry") {
+            Counter--;
+        }
+        if(id.id == "deleteC") {
+            Counter2--;
+        }
+
+        cardsindex = $(id).parent().index();
+        mmm = id
+        var r = confirm("میخواهید کارت مورد نظر خود را حذف کنید");
+        if (r == true) {
+            cardsJson.splice(cardsindex, 1);
+            console.log(cardsJson);
+            $(id).parent().remove();
+            if(mmm.parentElement.id == "startschema"){
+                $("#sten").show();
+                $("#sten1").hide();
+                $("#end").hide();
+            }else if((mmm.parentElement.id == "endschema")){
+                $("#end").show();
+        }
+        }
+    }
+</script>
+
+
+<script>
+    function addingstart() {
+
+
+        var o = {};
+
+        var a = $("#startmoveform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            //var that = this;
+            //var i = 0;
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+                /*if(that[0][i].type == 'number')
+                 that.value = parseInt(that.value);*/
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+
+            var myArrayOfCoordinates = []
+
+            var commaindex = o.coordinates.indexOf(",")
+            var lat = o.coordinates.substring(0, commaindex)
+            myArrayOfCoordinates.push(lat)
+
+            var lng = o.coordinates.substring(commaindex + 2, o.coordinates.length)
+            myArrayOfCoordinates.push(lng)
+
+            return o;
+        };
+
+        $(function () {
+            $("#startmoveform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            startinfoJSON = JSON.stringify($('#startmoveform').serializeObject());
+            var objecttype = [];
+            objecttype["objectType"] = "departure";
+            // startinfoJSON = $.extend(JSON.parse(startinfoJSON), JSON.parse(aJSON));
+            startinfoJSON = $.extend(startinfoJSON, objecttype);
+            startinfoJSON = JSON.stringify(startinfoJSON);
+            startinfoJSON = JSON.parse(startinfoJSON);
+            if (editModeIsOn){
+
+                cardsJson[selectedIndex] = startinfoJSON
+                editModeIsOn = false;
+                selectedIndex = 200;
+            }else{
+                cardsJson.push(startinfoJSON);
+                $("#startschema").show().clone().appendTo(thisdayClass)
+            }
+            console.log(cardsJson)
+        });
+
+        $("#sten1").hide();
+        $("#sten").hide();
+        $("#end").show();
+
+
+    }
+
+</script>
+
+
+<script>
+
+    function showme(index) {
+
+        var divindex = $(index).parent();
+        console.log(typeof divindex);
+
+    }
+</script>
+
+
+<script>
+    function addingarrival() {
+
+
+        var o = {};
+
+        var a = $("#endmoveform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            //var that = this;
+            //var i = 0;
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+                /*if(that[0][i].type == 'number')
+                 that.value = parseInt(that.value);*/
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            var myArrayOfCoordinates = []
+
+            var commaindex = o.coordinates.indexOf(",")
+            var lat = o.coordinates.substring(0, commaindex)
+            myArrayOfCoordinates.push(lat)
+
+            var lng = o.coordinates.substring(commaindex + 2, o.coordinates.length)
+            myArrayOfCoordinates.push(lng)
+
+            console.log(myArrayOfCoordinates)
+            return o;
+
+        };
+
+        $(function () {
+            $("#endmoveform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            endinfoJSON = JSON.stringify($('#endmoveform').serializeObject());
+
+            var objecttype = []
+            objecttype["objectType"] = "arrival";
+            endinfoJSON = JSON.stringify(endinfoJSON);
+
+            endinfoJSON = JSON.parse(endinfoJSON);
+            if (editModeIsOn){
+                cardsJson[selectedIndex] = endinfoJSON
+                editModeIsOn = false;
+                selectedIndex = 200;
+            }else{
+                cardsJson.push(endinfoJSON);
+                $("#endschema").show().clone().appendTo(thisdayClass)
+            }
+            console.log(cardsJson)
+
+        });
+
+        $("#end1").hide();
+        $("#end").hide();
+    }
+</script>
+
+
+<script>
+    function addingmeal() {
+
+
+        var o = {};
+
+        var a = $("#mealform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            //var that = this;
+            //var i = 0;
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+                /*if(that[0][i].type == 'number')
+                 that.value = parseInt(that.value);*/
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            var myArrayOfCoordinates = []
+
+            var commaindex = o.coordinates.indexOf(",")
+            var lat = o.coordinates.substring(0, commaindex)
+            myArrayOfCoordinates.push(lat)
+
+            var lng = o.coordinates.substring(commaindex + 2, o.coordinates.length)
+            myArrayOfCoordinates.push(lng)
+
+
+            return o;
+
+        };
+
+        $(function () {
+            $("#mealform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            mealinfoJSON = JSON.stringify($('#mealform').serializeObject());
+
+            var objecttype = []
+            objecttype["objectType"] = "meal";
+
+            mealinfoJSON = $.extend(JSON.parse(mealinfoJSON), JSON.parse(cJSON));
+            mealinfoJSON = $.extend(mealinfoJSON, objecttype);
+            mealinfoJSON = JSON.stringify(mealinfoJSON);
+            mealinfoJSON = JSON.parse(mealinfoJSON);
+
+            if (editModeIsOn){
+                cardsJson[selectedIndex] = mealinfoJSON;
+                editModeIsOn = false;
+                selectedIndex = 200;
+            }else{
+                cardsJson.push(mealinfoJSON);
+                $("#mealschema").show().clone().appendTo(thisdayClass)
+
+            }
+            console.log(cardsJson)
+
+        });
+        document.getElementById("mealform").reset();
+        $("#meal1").hide();
+
+    }
+</script>
+
+
+<script>
+    function addingsight() {
+
+
+        var o = {};
+
+        var a = $("#sightform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+
+            return o;
+
+        };
+
+        $(function () {
+            $("#sightform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            sightinfoJSON = JSON.stringify($('#sightform').serializeObject());
+
+            var objecttype = []
+            objecttype["objectType"] = "sightSeeing";
+
+            // sightinfoJSON = $.extend(JSON.parse(sightinfoJSON), JSON.parse(dJSON));
+            sightinfoJSON = $.extend(sightinfoJSON, objecttype);
+            sightinfoJSON = JSON.stringify(sightinfoJSON);
+            sightinfoJSON = JSON.parse(sightinfoJSON);
+
+            if (editModeIsOn){
+                cardsJson[selectedIndex] = sightinfoJSON
+                editModeIsOn = false;
+                selectedIndex = 200;
+            }else{
+                cardsJson.push(sightinfoJSON);
+                $("#sightschema").show().clone().appendTo(thisdayClass)
+
+            }
+            console.log(cardsJson)
+
+        });
+        document.getElementById("sightform").reset();
+        $("#sight1").hide();
+    }
+</script>
+
+
+<script>
+    function addingres() {
+
+
+        var o = {};
+
+        var a = $("#resform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            //var that = this;
+            //var i = 0;
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            var myArrayOfCoordinates = [];
+
+            var commaindex = o.coordinates.indexOf(",");
+            var lat = o.coordinates.substring(0, commaindex);
+            myArrayOfCoordinates.push(lat);
+
+            var lng = o.coordinates.substring(commaindex + 2, o.coordinates.length);
+            myArrayOfCoordinates.push(lng);
+
+            console.log(myArrayOfCoordinates);
+            return o;
+
+        };
+
+        $(function () {
+            $("#resform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            resinfoJSON = JSON.stringify($('#resform').serializeObject());
+
+            var objecttype = []
+            objecttype["objectType"] = "residence";
+
+
+            resinfoJSON = $.extend(JSON.parse(resinfoJSON), JSON.parse(eJSON));
+            resinfoJSON = $.extend(resinfoJSON, objecttype);
+            resinfoJSON = JSON.stringify(resinfoJSON);
+            resinfoJSON = JSON.parse(resinfoJSON);
+
+            if (editModeIsOn){
+                cardsJson[selectedIndex] = resinfoJSON
+                editModeIsOn = false;
+                selectedIndex = 200;
+            }else{
+                cardsJson.push(resinfoJSON);
+                $("#resschema").show().clone().appendTo(thisdayClass)
+
+            }
+            console.log(cardsJson)
+
+        });
+        document.getElementById("resform").reset();
+        $("#res1").hide();
+    }
+</script>
+
+
+<script>
+
+    function addingtransport() {
+
+        var o = {};
+
+        var a = $("#trnasportform").serializeArray();
+
+        $.fn.serializeObject = function () {
+            var o = {};
+
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $(function () {
+
+            $("#trnasportform").submit(function (e) {
+                e.preventDefault();
+            });
+
+            transportinfoJSON = JSON.stringify($('#trnasportform').serializeObject());
+
+            var objecttype = [];
+            objecttype["objectType"] = "transfer";
+
+
+            transportinfoJSON = $.extend(JSON.parse(transportinfoJSON), objecttype);
+            transportinfoJSON = JSON.stringify(transportinfoJSON)
+            transportinfoJSON = JSON.parse(transportinfoJSON);
+
+            if (editModeIsOn){
+                cardsJson[selectedIndex] = transportinfoJSON
+                editModeIsOn = false;
+                selectedIndex = 200;
+
+            }else{
+                cardsJson.push(transportinfoJSON);
+                $("#transportschema").show().clone().appendTo(thisdayClass)
+
+            }
+
+            console.log(cardsJson)
+
+        });
+
+        document.getElementById("trnasportform").reset();
+        $("#transport1").hide();
+
+
+    }
+
+
+</script>
+
+
+<script>
+
+</script>
+
+
+
+<script>
+
+
+    function sendimages() {
+
+        $("#loader-wrapper").show()
+        $(".container").css({"opacity": "0.2"});
+
+        $.ajax({
+            type: "POST",
+            url: "test",
+            data: '',
+            ContentType: multipart / form - data,
+            dataType: "JSON",
+            crossDomain: true,
+            success: function (response) {
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+
+                alert('اطلاعات ارسال شد');
+
+            },
+            error: function () {
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+                alert("خطا در ارسال اطلاعات لطفا دوباره تلاش کنید .")
+            }
+        });
+    }
+
+
+</script>
+<script>
+
+
+    sendDaysData = {};
+    function SendData() {
+        if(tourduration.value == 1 && $(thisdayClass).children().length < 4){
+            alert("حداقل 4 کارت اضافه کنید")
+        }else {
+            cardsJson = JSON.stringify(cardsJson);
+            cardsJson = JSON.parse(cardsJson);
+            console.log(cardsJson[0]);
+
+            console.log("Cardsjson : " + typeof cardsJson[0])
+            console.log("sendDaysData before: " + typeof sendDaysData)
+
+            sendDaysData[dayJSON] = cardsJson;
+            console.log("sendDaysData after : " + sendDaysData[dayJSON])
+
+            sendDaysData = JSON.stringify(sendDaysData);
+
+
+            $("#loader-wrapper").show()
+            $(".container").css({"opacity": "0.2"});
+            $.ajax({
+                type: "POST",
+                url: "/api/tour/items/" + uid + "?q=" + dayJSON,
+                data: sendDaysData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "JSON",
+                success: function (response) {
+                    $("#loader-wrapper").hide();
+                    $(".container").css({"opacity": "1"});
+                    alert("اطلاعات ارسال شد");
+                    sendingdata = true;
+                },
+                error: function () {
+                    $("#loader-wrapper").hide();
+                    $(".container").css({"opacity": "1"});
+                    alert("خطا در ارسال اطلاعات");
+                    //this hsit must be deleted
+                    sendingdata = true;
+
+                }
+            });
+        }
+    }
+
+</script>
+
+
+<script>
+
+    // TODO : what the fuck is this shit?
+    hotelCounter = 1;
+    var hotelsnameid = 1;
+    $("#Hotelsadd").click(function () {
+
+
+        hotelsnameid++;
+
+        document.getElementById('hotelsname1').id = 'hotelsname' + hotelsnameid;
+
+
+        var HotelsaddDIV = $('<form id="hotelsname1" class="hotelsname1"><div class="newtour-input"><input type="text" name="country" placeholder="کشور"></div><div class="newtour-input"><input type="text" name="city" placeholder="شهر"></div><div class="newtour-input hotelsdatas1"><div><input type="text" name="name" placeholder="هتل"><input type="text" name="star" placeholder="ستاره"><input type="text" name="grade" placeholder="grade"><div>اضافه کردن اتاق جدید<i id="roomsadd" onclick="getroomsparentID(this)" class="fa fa-plus" style="margin-right:1%;color:#fd5c63;font-size:15px;cursor:pointer"></i></div></div></div><div id="roomdatas11"><form id="RoomType1"><div class="roomdatas"><input type="text" name="type" placeholder="نوع اتاق"><input type="number" step="100000" name="price" placeholder="قیمت"></div></form></div></form>')
+        $(".HotelsContainer").append(RoomType1);
+        hotelCounter++;
+
+    });
+</script>
+
+
+
+
+<Script>
+    $('.tourdes').click(function () {
+        $(this).siblings('input:checkbox').prop('checked', false);
+    });
+</script>
+
+
+<script>
+    $(window).load(function () {
+        $("#section1").slideDown('slow,swing');
+        $("#section2").slideToggle('slow,swing');
+        $("#section3").slideToggle('slow,swing');
+        $("#section4").slideToggle('slow,swing');
+    });
+</script>
+
+
+<script>
+    $("#sten").click(function () {
+        $("#sten1").show();
+        $("#meal1").hide();
+        $("#sight1").hide();
+        $("#res1").hide();
+        $("#transport1").hide();
+    });
+
+    $("#meal").click(function () {
+        $("#sten1").hide();
+        $("#meal1").show();
+        $("#sight1").hide();
+        $("#res1").hide();
+        $("#transport1").hide();
+        $("#end1").hide();
+    });
+
+    $("#sight").click(function () {
+        $("#sten1").hide();
+        $("#meal1").hide();
+        $("#sight1").show();
+        $("#res1").hide();
+        $("#transport1").hide();
+        $("#end1").hide();
+    });
+
+    $("#res").click(function () {
+        $("#sten1").hide();
+        $("#meal1").hide();
+        $("#sight1").hide();
+        $("#res1").show();
+        $("#transport1").hide();
+        $("#end1").hide();
+    });
+
+    $("#transport").click(function () {
+        $("#sten1").hide();
+        $("#meal1").hide();
+        $("#sight1").hide();
+        $("#res1").hide();
+        $("#transport1").show();
+        $("#end1").hide();
+    });
+    $("#end").click(function () {
+        $("#sten1").hide();
+        $("#meal1").hide();
+        $("#sight1").hide();
+        $("#res1").hide();
+        $("#transport1").hide();
+        $("#end1").show();
+    });
+</script>
+
+<script>
+    $(document).ready(
+        $("#sten").click(function initMap() {
+            var uluru = {lat: 35.71083783530009, lng: 51.455841064453125};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: uluru
+            });
+            var markersBegin = [];
+
+            google.maps.event.addListener(map, "click", function (event) {
+
+                var objectOfCoordinatesInArray = []
+                var a = {}
+
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+
+                objectOfCoordinatesInArray.push(lat.toString())
+                objectOfCoordinatesInArray.push(lng.toString())
+
+                a["coordinates"] = objectOfCoordinatesInArray;
+                a["type"] = "Point";
+                aJSON = JSON.stringify({
+                    Point: a
+                });
+                console.log(aJSON)
+                center: uluru;
+            });
+
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                clearMarkers();
+                placeMarker(event.latLng);
+
+            });
+
+            function clearMarkers() {
+                setMapOnAll(null);
+                markersBegin = [];
+            };
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markersBegin.length; i++) {
+                    markersBegin[i].setMap(map);
+                }
+            };
+
+
+
+
+            function placeMarker(location) {
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                markersBegin.push(marker);
+
+            };
+
+        })
+    );
+
+    $(document).ready(
+        $("#meal").click(function initMap() {
+            var uluru = {lat: 35.71083783530009, lng: 51.455841064453125};
+            var map = new google.maps.Map(document.getElementById('map1'), {
+                zoom: 5,
+                center: uluru
+            });
+
+            var markers0 = [];
+
+            google.maps.event.addListener(map, "click", function (event) {
+
+                var objectOfCoordinatesInArray = [];
+
+                var a = {};
+
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+
+                objectOfCoordinatesInArray.push(lat.toString());
+                objectOfCoordinatesInArray.push(lng.toString());
+
+                a["coordinates"] = objectOfCoordinatesInArray;
+                a["type"] = "Point";
+                bJSON = JSON.stringify({
+                        Point: a
+                    }
+                );
+                console.log(aJSON)
+                center: uluru;
+            });
+
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                clearMarkers()
+                placeMarker(event.latLng);
+            });
+
+
+            function clearMarkers() {
+                setMapOnAll(null);
+                markers0 = [];
+            }
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers0.length; i++) {
+                    markers0[i].setMap(map);
+                }
+            }
+
+
+
+
+            function placeMarker(location) {
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                markers0.push(marker);
+
+            };
+
+
+        })
+    );
+
+    $(document).ready(
+        $("#sight").click(function initMap() {
+            var uluru = {lat: 35.71083783530009, lng: 51.455841064453125};
+            var map = new google.maps.Map(document.getElementById('map2'), {
+                zoom: 5,
+                center: uluru
+            });
+
+            var markers1 = [];
+
+            google.maps.event.addListener(map, "click", function (event) {
+
+                var objectOfCoordinatesInArray = [];
+
+                var a = {};
+
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+
+                objectOfCoordinatesInArray.push(lat.toString());
+                objectOfCoordinatesInArray.push(lng.toString());
+
+                a["coordinates"] = objectOfCoordinatesInArray;
+                a["type"] = "Point";
+                bJSON = JSON.stringify({
+                        Point: a
+                    }
+                );
+                console.log(aJSON)
+                center: uluru;
+            });
+
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                clearMarkers()
+                placeMarker(event.latLng);
+            });
+
+
+            function clearMarkers() {
+                setMapOnAll(null);
+                markers1 = [];
+            }
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers1.length; i++) {
+                    markers1[i].setMap(map);
+                }
+            }
+
+            function placeMarker(location) {
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                markers1.push(marker);
+
+            };
+
+        })
+    );
+
+    $(document).ready(
+        $("#res").click(function initMap() {
+            var uluru = {lat: 35.71083783530009, lng: 51.455841064453125};
+            var map = new google.maps.Map(document.getElementById('map3'), {
+                zoom: 5,
+                center: uluru
+            });
+
+            var markers2 = [];
+
+            google.maps.event.addListener(map, "click", function (event) {
+
+                var objectOfCoordinatesInArray = [];
+
+                var a = {};
+
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+
+                objectOfCoordinatesInArray.push(lat.toString());
+                objectOfCoordinatesInArray.push(lng.toString());
+
+                a["coordinates"] = objectOfCoordinatesInArray;
+                a["type"] = "Point";
+                bJSON = JSON.stringify({
+                        Point: a
+                    }
+                );
+                console.log(aJSON)
+                center: uluru;
+            });
+
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                clearMarkers()
+                placeMarker(event.latLng);
+            });
+
+
+            function clearMarkers() {
+                setMapOnAll(null);
+                markers2 = [];
+            }
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers2.length; i++) {
+                    markers2[i].setMap(map);
+                }
+            }
+
+            function placeMarker(location) {
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                markers2.push(marker);
+
+            };
+
+        })
+    )
+
+</script>
+
+<script>
+
+    hotels = [];
+    hotel = {};
+    room = {};
+    rooms = [];
+    EditMode = false;
+
+    $("#addrooms").click(function(){
+
+        var hotelName = $("#hotelFormName").val();
+        var hotelStar = $("#hotelFormStar").val();
+        var hotelCity = $("#hotelFormCity").val();
+        var hotelCountry = $("#hotelFormCountry").val();
+        var hotelGrade = $("#hotelFormGrade").val();
+
+        if(EditHotelModeOn){
+
+        }else {
+            if (hotelName != "" && hotelCity != "" && hotelCountry != "") {
+                // Must ADD EVENT LISTENER FOR CLICKING THE SPAN
+                hotelEditAndDelete="<span class='editHotel'>ویرایش</span><span class='deleteHotel'>حذف</span>";
+                $(".hotelsholder").append($('<ul>').append($('<li>').text(hotelName).append(hotelEditAndDelete).append("<ul>")));
+
+                hotel["name"] = hotelName;
+                if (hotelStar !== "") {
+                    hotel["rate"] = hotelStar;
+                } else {
+                    hotel["rate"] = null;
+                }
+                hotel["city"] = hotelCity;
+                hotel["country"] = hotelCountry;
+                if (hotelGrade !== "") {
+                    hotel["grade"] = hotelGrade;
+                } else {
+                    hotel["grade"] = null;
+                }
+            } else {
+                //TODO: make a dialog error base on whats empty and must be filled
+            }
+        }
+    });
+
+    $("#saveRoom").click(function(){
+
+        if(document.getElementById("roomstype").value !== "" && document.getElementById("capacity").value !== "" && document.getElementById("roomsprice").value !== "") {
+
+            if (EditMode) {
+                roomEditAndDelete = "<span class='editRoom'>ویرایش</span><span class='deleteRoom'>حذف</span>";
+                $(SelectedHotel).append($('<li>').text($("#roomstype").val()).append(roomEditAndDelete));
+                $(".hotelsholder ul>li").children(1).slideDown();
+                $(SelectedHotel).toggleClass('changed');
+            }else{
+                room = {};
+
+                roomEditAndDelete = "<span class='editRoom'>ویرایش</span><span class='deleteRoom'>حذف</span>";
+                $(".hotelsholder ul>li>ul").last().append($('<li>').text($("#roomstype").val()).append(roomEditAndDelete));
+                $(".hotelsholder ul>li").children(1).slideDown();
+                $(".hotelsholder>ul>li").last().toggleClass('changed');
+
+                saveRoomData();
+                $("#roomstype, #capacity, #roomsprice, #roomsdisprice").val("");
+
+            }
+        }
+        else
+        {
+            $(".dialog").dialog();
+        }
+
+    });
+
+    $("#addhotels").click(function() {
+        makehotelobject();
+        $("#hotelFormName, #hotelFormStar, #hotelFormCity, #hotelFormCountry, #hotelFormGrade, #roomstype, #capacity, #roomsprice, #roomsdisprice").val("");
+    });
+
+    var EditClick = 1;
+
+    $(".hotelsholder").on("click", "ul>li>.editHotel", function(){
+
+        if(EditClick == 1) {
+
+            EditHotelModeOn = true;
+            edithotel = $(".hotelsholder>ul>li>.editHotel").index(this);
+            $(this).parent().toggleClass("editMode");
+            console.log(hotels[edithotel]);
+            $('#RoomsContainer').show();
+            $('#addrooms').hide();
+            $("#hotelFormName").val(hotels[edithotel]["name"]);
+            $("#hotelFormCity").val(hotels[edithotel]["city"]);
+            $("#hotelFormStar").val(hotels[edithotel]["rate"]);
+            $("#hotelFormCountry").val(hotels[edithotel]["country"]);
+            $("#hotelFormGrade").val(hotels[edithotel]["grade"]);
+            $("#roomstype").val(hotels[edithotel]["rooms"][0]["type"]);
+            $("#capacity").val(hotels[edithotel]["rooms"][0]["capacity"]);
+            $("#roomsprice").val(hotels[edithotel]["rooms"][0]["price"]);
+            $("#roomsdisprice").val(hotels[edithotel]["rooms"][0]["discountedPrice"]);
+
+            EditClick --;
+        }
+        else{
+
+            $(this).parent().toggleClass("editMode");
+            EditHotelModeOn = false;
+            EditClick ++;
+        }
+
+    });
+
+
+    $(".hotelsholder").on("click", "ul>li>ul>li>.editRoom", function(){
+
+        if(EditClick == 1) {
+
+
+            EditMode == true
+            SelectedHotel = $(this).parent().parent();
+            EditHotelModeOn = true;
+            editRoom = $(this).parent().index()
+            hotelIndex = $(this).parent().parent().parent().index(".hotelsholder>ul>li");
+
+            $('#RoomsContainer').show();
+            $('#addrooms').hide();
+
+            $("#roomstype").val("");
+            $("#capacity").val("");
+            $("#roomsprice").val("");
+            $("#roomsdisprice").val("");
+
+            if (hotels.length > 0){
+                $("#roomstype").val(hotels[hotelIndex]["rooms"][editRoom]["type"]);
+                $("#capacity").val(hotels[hotelIndex]["rooms"][editRoom]["capacity"]);
+                $("#roomsprice").val(hotels[hotelIndex]["rooms"][editRoom]["price"]);
+                $("#roomsdisprice").val(hotels[hotelIndex]["rooms"][editRoom]["discountedPrice"]);
+                $("#hotelFormName").val(hotels[hotelIndex]["name"]);
+                $("#hotelFormStar").val(hotels[hotelIndex]["rate"]);
+                $("#hotelFormCity").val(hotels[hotelIndex]["city"]);
+                $("#hotelFormCountry").val(hotels[hotelIndex]["country"]);
+                $("#hotelFormGrade").val(hotels[hotelIndex]["grade"]);
+
+            }else{
+                $("#roomstype").val(rooms[editRoom]["type"]);
+                $("#capacity").val(rooms[editRoom]["capacity"]);
+                $("#roomsprice").val(rooms[editRoom]["price"]);
+                $("#roomsdisprice").val(rooms[editRoom]["discountedPrice"]);
+            }
+
+
+            EditClick --;
+
+        }else{
+            EditHotelModeOn = false;
+            EditClick ++;
+        }
+
+    });
+
+
+
+    $(".hotelsholder").on("click", "ul>li>.deleteHotel", function() {
+        deletehotel = $(".hotelsholder>ul>li>.deleteHotel").index(this);
+        hotels.splice(deletehotel,1);
+        $(this).parent().remove();
+        $("#hotelFormName").val("");
+        $("#hotelFormCity").val("");
+        $("#hotelFormStar").val("");
+        $("#hotelFormCountry").val("");
+        $("#hotelFormGrade").val("");
+        $('#RoomsContainer').hide();
+        $('#addrooms').show();
+        EditHotelModeOn = false;
+    });
+
+
+    //removing room
+    $(".hotelsholder").on("click", "ul>li>.deleteRoom", function() {
+        deleteRoom = $(".hotelsholder>ul>li>ul>.deleteRoom").index(this);
+        hotels.splice(deleteRoom,1);
+        $(this).parent().remove();
+        EditHotelModeOn = false;
+    });
+
+
+    $(".hotelsholder ul>li>ul").on("click", "li" ,function(){
+        editroom = $("hotelsholder>ul>li>ul>li").index(this);
+    });
+
+
+    selectedHotel = null;
+    $(document).ready(function(){
+        $("#popup").hide();
+        $('.hotelsholder').on("click", "ul>li", function (e) {
+
+            e.stopPropagation();
+            $(this).toggleClass('changed');
+            console.log(this);
+            if ($(this).find("ul").first().css("display") === "none") {
+                selectedHotel = null;
+                selectedHotel = $(".hotelsholder>ul>li").index(this);
+                console.log('this' + $(this).find("ul").first().css("display"))
+                $(this).children(":nth-child(3)").slideDown();
+            }
+            else {
+                $(this).find("ul").slideUp();
+            }
+
+        });
+    });
+</script>
+
+
+
+<script>
+    function previewFile() {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+    previewFile();
+</script>
+
+<script>
+
+    Counter2 = 0;
+
+    $("#citydestinationadd").click(function () {
+        $("input[name='dstCities']").each(function() {
+
+            if ($("input[name='dstCities']")[Counter2].value !== "") {
+
+                CountryCheck = true;
+
+            } else {
+                CountryCheck = false;
+
+            }
+
+        });
+        if(CountryCheck){
+
+            Counter2 ++;
+
+            var DestinationAdd = $('<div  style="padding-right: 70px "><input type="text" name="dstCities" placeholder="شهر مقصد"> <i id="deleteC" onclick="deletethiscard(this)" style="color:white;color:black;color:#fd5c63;cursor:pointer" class="fa fa-trash" aria-hidden="true"></i>  </div>')
+            DestinationAdd.appendTo('#cityDestinationAdd-div');
+        }
+        else{alert('اطلاعات شهر مقصد را کامل کنید')}
+    });
+</script>
+
+<script>
+    //MAMREZ THE GREATE was here
+    $("#sten").click(function(){
+        $("#end1,#meal1,#sight1,#res1,#transport1").find("input:not(:last-child)").val("");
+    });
+    $("#end").click(function(){
+        $("#sten1,#meal1,#sight1,#res1,#transport1").find("input:not(:last-child)").val("");
+    });
+    $("#meal").click(function(){
+        $("#end1,#sten1,#sight1,#res1,#transport1").find("input:not(:last-child)").val("");
+    });
+    $("#sight").click(function(){
+        $("#end1,#meal1,#sten1,#res1,#transport1").find("input:not(:last-child)").val("");
+    });
+    $("#res").click(function(){
+        $("#end1,#meal1,#sight1,#res1,#transport1").find("input:not(:last-child)").val("");
+    });
+    $("#transport").click(function(){
+        $("#end1,#meal1,#sight1,#res1,#sten1").find("input:not(:last-child)").val("");
+    });
+
+   /* $(".days").click(function() {
+        what=$(".daysHolder").index(".days");
+        alert(what);
+    })*/
+
+</script>
+
+<script>
+    Counter = 0;
+    CountryCheck = false;
+    $("#countrydestinationadd").click(function () {
+
+        $("input[name='dstCountries']").each(function() {
+
+            if ($("input[name='dstCountries']")[Counter].value !== "") {
+                CountryCheck = true;
+
+            } else {
+                CountryCheck = false;
+
+            }
+
+        });
+
+        if(CountryCheck){
+            Counter++;
+            $("#countryDestinationAdddesc").remove();
+
+
+
+            var DestinationAdd = $('<div style="padding-right: 70px "> <input type="text" name="dstCountries" placeholder="کشور مقصد"> <i id="deleteCountry" onclick="deletethiscard(this)" style="color:white;color:black;color:#fd5c63;cursor:pointer" class="fa fa-trash" aria-hidden="true"></i>  </div>')
+            DestinationAdd.appendTo('#countryDestinationAdd-div');
+        } else{alert('اطلاعات کشور مقصد را کامل کنید')}
+
+    });
+</script>
+<script>
+
+    function deletethis(id) {
+        $(id).parent().remove();
+    }
+
+    function deletethisHotel(id) {
+        $(id).parent().remove();
+        hotelCounter--;
+    }
+
+</script>
+
+
+<script>
+    $("#image-loader-wrapper").hide()
+    function uploadImage(file , array) {
+
+        $("#image-loader-wrapper").show()
+        $(".container").css({"opacity": "0.2"});
+        var form = new FormData()
+        form.append('file', file);
+        $.ajax({
+            type: "POST",
+            url:"/api/files/upload",
+            data: form,
+            processData: false,
+            contentType:false,
+            accept: "application/json, text/plain, */*",
+            success: function(response) {
+                alert("ارسال شد");
+                array.push(response[0].hash);
+                $("#image-loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+            },
+            error: function(){
+                if(ChosenImage == 'mainInfo') {
+                    $('#blah').attr('src', '');
+                    $('#imageup').val("");
+                    $("#blah").css({'display': 'none'});
+                    ChosenImage = null;
+                    alert("خطا در ارسال اطلاعات")
+                    $("#image-loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    $('#tour-img-del').css({'display':'none'});
+                }
+                else if(ChosenImage == "TourGuide"){
+                    $('#blah2').attr('src', '');
+                    $('#TourGuideImageUp').val("");
+                    $("#blah2").css({'display': 'none'});
+                    ChosenImage = null;
+                    alert("خطا در ارسال اطلاعات")
+                    $("#image-loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    $('#tourgiude-img-del').css({'display':'none'});
+                }
+
+
+            }
+        });
+
+
+    }
+
+
+</script>
+
+
+<script>
+
+    uid = "";
+    tour = {};
+    check = true;
+    var  dstCount = [];
+    var dstCit = [];
+
+    $('#firstdatabutton').click(function () {
+
+        var tourDuration = $("#tourduration").val();
+
+        //TODO: remember to check for all required fields
+        if(tourDuration === ""){
+            alert("لطفا تمامی ورودی های لازم را تکمیل نمایید")
+        }else {
+
+            var finalJson = {};
+
+            //name
+            var mainInformationName = document.getElementById("overviewform1").elements["name"];
+            finalJson["tourName"] = mainInformationName.value;
+            //type
+            var mainInformationType = document.getElementById("overviewform1").elements["type"];
+            finalJson["tourType"] = mainInformationType.value;
+            //src city
+            var mainInformationSrcCity = document.getElementById("overviewform1").elements["srcCity"];
+            finalJson["srcCity"] = mainInformationSrcCity.value;
+
+            //dst countries
+            var mainInformationIsIranian = document.getElementById("overviewform1").elements["isIranian"];
+            if (mainInformationIsIranian.value === false){
+                // destination country is necessary
+                finalJson["dstCountries"] = [];
+            }
+            //dst cities
+            finalJson["dstCities"] = [];
+
+            // price
+            var mainInformationPrice = document.getElementById("overviewform1").elements["price"];
+            finalJson["price"] = mainInformationPrice.value;
+
+            //disPice
+            var mainInformationDiscountedPrice = document.getElementById("overviewform1").elements["discountedPrice"];
+            if (mainInformationDiscountedPrice.value !== ""){
+                finalJson["disPrice"] = mainInformationDiscountedPrice.value;
+            }
+
+            // duration
+            var mainInformationDuration = document.getElementById("overviewform1").elements["duration"];
+            finalJson["duration"] = mainInformationDuration.value;
+
+            // descritpion
+            var mainInformationDescription = document.getElementById("overviewform1").elements["description"];
+            if (mainInformationDescription.value !== ""){
+                finalJson["description"] = mainInformationDescription.value;
+            }
+
+            // date
+            var mainInformationDate = document.getElementById("pcal1");
+            alert(mainInformationDate.value)
+            finalJson["date"] =  mainInformationDate.value;
+            
+            // service
+            var mainInformationServices = document.getElementById("overviewform1").elements["services"];
+            var mainInformationRequiredTools = document.getElementById("overviewform1").elements["requiredTools"];
+            var mainInformationRecommendedTools = document.getElementById("overviewform1").elements["recommendedTools"];
+            var mainInformationSignupRules = document.getElementById("overviewform1").elements["signupRules"];
+
+
+            $.fn.serializeObject = function () {
+                var o = {};
+                var a = this.serializeArray();
+
+                $.each(a, function () {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                o.price = parseInt(o.price.replace(/[^\d\.]/g,''));
+                o.discountedPrice = parseInt(o.discountedPrice.replace(/[^\d\.]/g,''));
+                o.dstCountries=dstCount.concat(o.dstCountries);
+                o.dstCities=dstCit.concat(o.dstCities);
+                var bool = true;
+                if (o.isIranian == "true")
+                    bool = true;
+                else
+                    bool = false;
+                o.isIranian = bool;
+                return o;
+            };
+
+            $(function () {
+
+                // this function must add to ajax succues
+                hasBeenSendMainInformation = true;
+
+
+                $("#overviewform1").submit(function (e) {
+                    e.preventDefault();
+                });
+                sendmainData = {}
+                maininfoJSON = JSON.stringify($('#overviewform1').serializeObject());
+                maininfoJSON = JSON.parse(maininfoJSON)
+                maininfoJSON["images"] = imagesHashes;
+                maininfoJSON = JSON.stringify(maininfoJSON);
+                maininfoJSON = JSON.parse(maininfoJSON);
+                sendmainData["mainInformation"] = maininfoJSON;
+                sendmainData = JSON.stringify(sendmainData);
+                sendmainData = JSON.parse(sendmainData)
+                tour = $.extend(tour, sendmainData);
+                tour = JSON.stringify(tour);
+                console.log(tour);
+                if (check) {
+                    if (window.uid != "") {
+                        //update
+                        if (confirm('آيا قصد بروزرسانی اطلاعات را دارید ؟')) {
+                            // Save it!
+                            $("#loader-wrapper").show()
+                            $(".container").css({"opacity": "0.2"});
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/tour/items/" + uid,
+                                data: tour,
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "JSON",
+                                crossDomain: true,
+                                success: function (response) {
+
+                                    //$("#uploadResponse").append(response);
+                                    alert('ارسال شد ')
+                                    $("#loader-wrapper").hide()
+                                    $(".container").css({"opacity": "1"});
+                                    console.log("/api/tour/items/" + uid)
+                                    console.log("dafeye 2: " + tour)
+                                },
+                            })
+                            $("#loader-wrapper").hide()
+                            $(".container").css({"opacity": "1"});
+                            ;
+                        }
+                        else {
+
+                        }
+                    } else {
+                        $("#loader-wrapper").show()
+                        $(".container").css({"opacity": "0.2"});
+                        //send first time (old add)
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/tour/items",
+                            data: tour,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "JSON",
+                            crossDomain: true,
+                            success: function (response) {
+
+                                //$("#uploadResponse").append(response);
+                                alert('ارسال شد')
+                                $("#loader-wrapper").hide()
+                                $(".container").css({"opacity": "1"});
+                                uid = response.uid
+
+                            },
+                            error: function () {
+                                $("#loader-wrapper").hide()
+                                $(".container").css({"opacity": "1"});
+                                alert("خطا در ارسال اطلاعات لطفا دوباره تلاش کنید")
+                            }
+                        });
+                    }
+                } else {
+                }
+            });
+        }
+    });
+
+
+    //-------------------------- Tourguide's data ------------------------------
+    $('#thirddatabutton').click(function () {
+        $.fn.serializeObject = function () {
+            var tourguide = {};
+
+            var a = this.serializeArray();
+
+            $.each(a, function () {
+                /*if(	[0][i].type == 'number')
+                 this.value = parseInt(this.value);
+                 */
+                if (tourguide[this.name] !== undefined) {
+                    if (!tourguide[this.name].push) {
+
+                        tourguide[this.name] = [tourguide[this.name]];
+                    }
+                    tourguide[this.name].push(this.value || '');
+                } else {
+                    tourguide[this.name] = this.value || '';
+
+                }
+
+            });
+
+
+
+            tourguide["images"] = imagesHashes;
+
+            tourguide = JSON.stringify(tourguide);
+
+            tourguide = JSON.parse(tourguide);
+
+            console.log(tourguide)
+
+            return tourguide;
+
+
+        };
+
+
+//-----------------------------------------------Tourguide FORM 1
+        $(function () {
+
+            $("#overviewform3").submit(function (e) {
+                e.preventDefault();
+            });
+
+            tourguidsinfoJSON = JSON.stringify($('#overviewform3').serializeObject());
+
+
+            tourguidsinfoJSON = JSON.stringify({
+                tourGuide: JSON.parse(tourguidsinfoJSON)
+            });
+            console.log(tourguidsinfoJSON);
+
+            tour = $.extend(JSON.parse(tour), JSON.parse(tourguidsinfoJSON));
+            tour = JSON.stringify(tour);
+            console.log(tour);
+
+//--------------------------------------------------------------------
+
+            $("#loader-wrapper").show()
+            $(".container").css({"opacity": "0.2"});
+            $.ajax({
+                type: "POST",
+                url: "/api/tour/items/" + uid,
+                data: tour,
+                dataType: "JSON",
+                contentType: "application/json; charset=utf-8",
+                processData: false,
+                success: function (response) {
+
+                    alert("اطلاعات ارسال شد")
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                },
+                error:  function () {
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    alert("خطا در ارسال اطلاعات لطفا دوباره تلاش کنید")
+                }
+            });
+
+        });
+    });
+
+    //-------------------------- MoveForm data ------------------------------
+
+
+</script>
+
+
+<script>
+    // hide schema
+    $("#hotelsschema").hide();
+    $("#roomsschema").hide();
+</script>
+
+<script>
+</script>
+
+
+<!---------------hotel on done btn------->
+
+
+<script>
+    function sendhotelsdata() {
+
+        hotelsStringfied = JSON.stringify({
+            hotels: Hotels
+        });
+
+        tour = $.extend(tour, JSON.parse(hotelsStringfied));
+        tour = JSON.stringify(tour)
+        $("#loader-wrapper").show()
+        $(".container").css({"opacity": "0.2"});
+        $.ajax({
+            type: "POST",
+            url: "/api/tour/items/" + uid,
+            data: tour,
+            dataType: "JSON",
+            contentType: "application/json; charset=utf-8",
+            processData: false,
+
+            success: function (response) {
+
+//                $("#uploadResponse").append(response);
+                alert("اطلاعات ارسال شد")
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+            },
+            error: function () {
+
+                alert("مشکل در ارسال اطلاعات")
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+            }
+        });
+
+    }
+
+    function saveRoomData(){
+
+       var room = {};
+       var roomType = document.getElementById("roomstype").value;
+       var roomCapacity = document.getElementById("capacity").value;
+       var roomPrice = document.getElementById("roomsprice").value;
+       var roomDiscountPrice = document.getElementById("roomsdisprice").value;
+
+       room["type"] = roomType;
+       room["price"] = roomPrice;
+       room["discountedPrice"] = roomDiscountPrice;
+       room["capacity"] = roomCapacity;
+
+       rooms.push(room);
+
+    }
+
+
+    function makehotelobject() {
+
+        var hotel = {};
+
+        var hotelName = document.getElementById("hotelFormName").value;
+        var hotelStar = document.getElementById("hotelFormStar").value;
+        var hotelCity = document.getElementById("hotelFormCity").value;
+        var hotelCountry = document.getElementById("hotelFormCountry").value;
+        var hotelGrade = document.getElementById("hotelFormGrade").value;
+
+        hotel["name"] = hotelName;
+        hotel["rate"] = hotelStar;
+        hotel["city"] = hotelCity;
+        hotel["country"] = hotelCountry;
+        hotel["grade"] = hotelGrade;
+
+        hotel["rooms"] = rooms;
+        hotels.push(hotel);
+        rooms = [];
+    }
+
+
+    function addHotel() {
+
+        tour = JSON.parse(tour);
+        tour["Hotels"] = hotels;
+        tour = JSON.stringify(tour);
+
+        $.ajax({
+            type: "POST",
+            url: "/api/tour/items" + uid,
+            data: tour,
+            contentType: "application/json; charset=utf-8",
+            dataType: "JSON",
+            crossDomain: true,
+            success: function (response) {
+
+                //$("#uploadResponse").append(response);
+                alert('ارسال شد')
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+                uid = response._uid
+
+            },
+            error: function () {
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+                alert("خطا در ارسال اطلاعات لطفا دوباره تلاش کنید")
+            }
+        });
+
+    }
+
+    function resetHotelForm(){
+        document.getElementById("roomsform").reset();
+        document.getElementById("hotelsform").reset();
+    }
+
+</script>
+
+
+<!-----------Hotel morebtn onClick Add-------->
+
+<script>
+
+    Hotels = [];
+
+    result = {};
+
+    $('#addhotels').click(function (hotel) {
+
+        console.log(hotel);
+        $('#RoomsContainer').hide();
+        $('#addrooms').show();
+
+    });
+
+
+</script>
+
+
+<!------------------------ Rooms handle in here -------------------------------------->
+<script>
+
+    //define the rooms final array , every rooms add to this array-------------------------------------
+    ROOMS = [];
+
+    function saveRoom(){
+
+        if (selectedRoomId != 100){
+            window.ROOMS.splice(selectedRoomId , 1);
+        }
+
+        var result = {};
+        $("#roomsform").serializeArray().map(function (item) {
+
+            if (result[item.name]) {
+                if (typeof(result[item.name]) === "string") {
+                    result[item.name] = [config[item.name]];
+                }
+                result[item.name].push(item.value);
+            } else {
+                result[item.name] = item.value;
+            }
+        });
+
+        //convert price to number instead of string----------------------------------
+        result.price = parseInt(result.price)
+        result.discountedPrice = parseInt(result.discountedPrice)
+
+
+        //push the rooms to final ROOM array------------------------------------
+        ROOMS.push(result);
+        selectedRoomId = 100;
+
+
+        var u = $('.roomsholder').children('div').length;
+        for (var m = 0; m < u; m++) {
+            $('.roomsholder').children('div')[0].remove();
+        }
+
+        for (k = 0; k < window.ROOMS.length; k++) {
+            var roomName = window.ROOMS[k].type
+            document.getElementById("roomsschemaspan").innerHTML = roomName;
+            //add rooms schema to rooms Holder DIV
+            $("#roomsschema").clone().show().appendTo(".roomsholder");
+        }
+    }
+
+
+    function addRoomsToRoomArray(check) {
+
+        if (selectedRoomId != 100){
+            window.ROOMS.splice(selectedRoomId , 1);
+        }
+
+        var result = {};
+        $("#roomsform").serializeArray().map(function (item) {
+
+            if (result[item.name]) {
+                if (typeof(result[item.name]) === "string") {
+                    result[item.name] = [config[item.name]];
+                }
+                result[item.name].push(item.value);
+            } else {
+                result[item.name] = item.value;
+            }
+        });
+
+        //convert price to number instead of string----------------------------------
+        result.price = parseInt(result.price);
+        result.discountedPrice = parseInt(result.discountedPrice);
+
+
+        //push the rooms to final ROOM array------------------------------------
+        rooms.push(result);
+        selectedRoomId = 100;
+
+
+        if (check) {
+
+            var u = $('.roomsholder').children('div').length;
+            for (var m = 0; m < u; m++) {
+                $('.roomsholder').children('div')[0].remove();
+            }
+
+            for (k = 0; k < window.ROOMS.length; k++) {
+                var roomName = window.ROOMS[k].type;
+                document.getElementById("roomsschemaspan").innerHTML = roomName;
+                //add rooms schema to rooms Holder DIV
+                    $("#roomsschema").clone().show().appendTo("");
+            }
+        }
+    }
+
+
+    //get rooms input value from rooms form and set in a json format------------------------------------
+
+    $('#addrooms').click(function () {
+
+        if(hotelsform.name.value == "" || hotelsform.rate.value == "" || hotelsform.city.value == "" || hotelsform.country.value == "" || hotelsform.grade.value == ""){
+            $( ".dialog" ).dialog();
+        }else {
+            $('#RoomsContainer').show();
+            $('#addrooms').hide();
+        }
+    });
+
+</script>
+
+<!— —------------------------------------------------------------------------------ —>
+<script>
+    var lastToursJson = [];
+
+    function LastTours() {
+
+        $.get("/api/tour/items/").success(function (response) {
+            lastToursJson = response;
+           // tourResponse = response;
+            for (var index = 0; index < lastToursJson.length; index++) {
+                $(".toursItemsHolder").append('<li class="tourItems col-md-12" ><i class="fa fa-pencil" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true" onclick="deletetour(this)"></i>' + lastToursJson[index].name + '</li>')
+                console.log(lastToursJson[index])
+            }
+        });
+    }
+
+    function deletetour(id) {
+        var touritems = $(id).parent()
+        var tourindex = $(id).parent().index();
+        console.log(tourindex)
+        var touruid = lastToursJson[tourindex]._uid;
+        console.log(touruid)
+        var r = confirm("می خواهید تور مورد نظر را حذف کنید");
+        if (r == true) {
+
+
+            $("#loader-wrapper").show()
+            $(".container").css({"opacity": "0.2"});
+
+
+            $.ajax({
+                url: "/api/tour/items/" + touruid,
+                type: 'DELETE',
+                success: function () {
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    $(touritems).remove()
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    alert("اطلاعات با موفقیت حذف شد.")
+                },
+                error: function () {
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    $("#loader-wrapper").hide()
+                    $(".container").css({"opacity": "1"});
+                    alert("خطا در برقراری با سرور. لطفا دوباره تلاش کنید")
+                },
+            });
+        } else {
+        }
+    }
+
+</script>
+
+
+<script>
+    $("#logout").click(function () {
+        $("#loader-wrapper").show()
+        $(".container").css({"opacity": "0.2"});
+        $.ajax({
+            type: "GET",
+            url: "/logout",
+            success: function (response) {
+                $("#loader-wrapper").hide()
+                $(".container").css({"opacity": "1"});
+                window.location.replace("/adminPanel/static/login.html")
+            },
+        });
+        $("#loader-wrapper").hide()
+        $(".container").css({"opacity": "1"});
+    })
+</script>
+
+
+
+
+<script>
+
+
+    //TODO : here is some clicks from the last page the only thing that must be added is the tourResponse value inside this method
+
+    function lastToursEdit() {
+
+        a = document.getElementById("overviewform1").elements["name"];
+        a.value = tourResponse.mainInformation.name;
+        a = document.getElementById("overviewform1").elements["isIranian"];
+        if (tourResponse.mainInformation.isIranian == true) {
+            $("#ION").prop('checked', true);
+        }
+        else {
+            $("#FON").prop('checked', true);
+        }
+
+        countrysize = tourResponse.mainInformation.dstCountries.length;
+        citysize = tourResponse.mainInformation.dstCountries.length;
+
+
+        $('.content').show();
+        $('.lastTours').hide();
+        $("#section1").slideToggle('slow,swing');
+
+    }
+
+
+
+
+</script>
+<script>
+    $(document).ready(function(){
+        $("input[data-type='number']").keyup(function(event){
+            // skip for arrow keys
+            if(event.which >= 37 && event.which <= 40){
+                event.preventDefault();
+            }
+            var $this = $(this);
+            var num = $this.val().replace(/,/gi, "");
+            var num2 = num.split(/(?=(?:\d{3})+$)/).join(",");
+            console.log(num2);
+            // the following line has been simplified. Revision history contains original.
+            $this.val(num2);
+        });
+    });
+</script>
+
+<script>
+$(function() {
+    $('#datepicker11').datepicker();
+    });
+</script>
+
+<script>
+        function deleteImage(){
+            $('#blah').attr('src', '');
+            $("#blah").css({'display':'none'})
+        }
+        function deleteTourImage() {
+            $('#blah2').attr('src', '');
+            $("#blah2").css({'display':'none'})
+        }
+</script>
+<script>
+    function CloseCard(card) {
+        ChosenCard = card.parentElement.parentElement.parentElement;
+        resetForm = card.parentElement.parentElement;
+        console.log(ChosenCard);
+        var r = confirm("کارت حذف شود ؟");
+        {
+            if (r == true) {
+                $(ChosenCard).hide();
+                $(ChosenCard).childIndex()
+                resetForm.reset();
+            }
+        }
+    }
+</script>
+
+
+
+
+<script>
+    $.widget('wx.timepicker', {
+        _create: function() {
+            this.timepicker = $('<div class="timepicker"><div class="clock"><div class="unit hour bubble">Hr</div><div class="unit minute bubble">Min</div><div class="face"><div class="time-bubbles"></div><div class="minute hand"></div><div class="hour hand"></div></div><div class="meridiem am bubble">AM</div><div class="meridiem pm bubble">PM</div></div><div class="done">ثبت</div></div>').hide().insertAfter(this.element);
+            this.hour = 0;
+            this.minute = 0;
+            this.meridiem = 0; // 0=am, 1=pm
+            this.display = 0; // 0=none, 1=hours, 2=minutes
+            this.isOpen = false;
+            var self = this;
+
+            this.element.prop('autocomplete',false);
+            if(self._parseInput()) {
+                self._refreshAll();
+            }
+            this.timepicker.find('.unit.minute').on('click', function() {
+                self._buildMinutes();
+            });
+            this.timepicker.find('.unit.hour').on('click', function() {
+                self._buildHours();
+            });
+            this.timepicker.on('click', '.time.hour', function() {
+                self.hour = $(this).data('value');
+                self._buildMinutes();
+                self._refreshAll();
+            });
+            this.timepicker.on('click', '.time.minute', function() {
+                self.minute = $(this).data('value');
+                self._refreshAll();
+            });
+            this.element.on('focus click', function() {
+                self._open();
+            });
+            this.timepicker.on('mousedown', function(e) {
+                return false;
+            });
+            this.element.on('blur', function(e) {
+                self._parseInput();
+                self._refreshInput();
+                self._close();
+            });
+            this.element.on('input', function() {
+                if(self._parseInput()) {
+                    self._refreshClock();
+                }
+            });
+            this.timepicker.find('.done').on('click', function() {
+                self.element.focus();
+                self._close();
+            });
+            this.timepicker.find('.meridiem.am').on('click', function() {
+                self.meridiem = 0;
+                self._refreshAll();
+            });
+            this.timepicker.find('.meridiem.pm').on('click', function() {
+                self.meridiem = 1;
+                self._refreshAll();
+            });
+        },
+
+        _open: function() {
+            if(!this.isOpen) {
+                var offset = this.element.offset();
+                this.timepicker.css({
+                    'left':offset.left+'px',
+                    'top':(offset.top+this.element.outerHeight())+'px'
+                }).show();
+                this.isOpen = true;
+                this._buildHours();
+            }
+        },
+
+        _close: function() {
+            if(this.isOpen) {
+                this.timepicker.hide();
+                this.isOpen = false;
+            }
+        },
+
+        _refreshAll: function() {
+            this._refreshInput();
+            this._refreshClock();
+        },
+
+        _refreshInput: function() {
+            var hour = this.hour === 0 ? 12 : this.hour;
+            var minute = this.minute < 10 ? '0'+this.minute : this.minute;
+            this.element.val(hour+':'+minute+(this.meridiem?'pm':'am'));
+        },
+
+        _refreshClock: function() {
+            var self = this;
+            if(this.meridiem) {
+                this.timepicker.find('.meridiem.am').removeClass('selected');
+                this.timepicker.find('.meridiem.pm').addClass('selected');
+            } else {
+                this.timepicker.find('.meridiem.pm').removeClass('selected');
+                this.timepicker.find('.meridiem.am').addClass('selected');
+            }
+            this.timepicker.find('.time.selected').removeClass('selected');
+            if(this.display === 1) {
+                this.timepicker.find('.time.hour').filter(function() {
+                    return $(this).data('value') === self.hour;
+                }).addClass('selected');
+            } else {
+                this.timepicker.find('.time.minute').filter(function() {
+                    return $(this).data('value') === self.minute;
+                }).addClass('selected');
+            }
+            this.timepicker.find('.hand.hour').css('transform', 'rotate(' + (this.hour / 12 * 360) + 'deg)');
+            this.timepicker.find('.hand.minute').css('transform', 'rotate(' + (this.minute / 60 * 360) + 'deg)');
+        },
+
+        _parseInput: function() {
+            var time = $.trim(this.element.val());
+            var match;
+            var valid = false;
+            this.hour = 0;
+            this.minute = 0;
+            this.meridiem = 0;
+            if(time.length > 0 && (match = /^(\d{1,2})(?::?(\d{2}))?(?: ?([ap])\.?(?:m\.?)?)?$/i.exec(time))) {
+                valid = true;
+                this.hour = parseInt(match[1]);
+                this.minute = match[2] ? parseInt(match[2]) : 0;
+                if(match[3] && match[3].toLowerCase() === 'p') {
+                    this.meridiem = 1;
+                }
+            }
+            if(this.minute >= 60) {
+                this.hour += Math.floor(this.minute/60);
+                this.minute = this.minute % 60;
+            }
+            if(this.hour >= 12) {
+                this.meridiem = 1;
+                this.hour = this.hour % 12;
+            }
+            return valid;
+        },
+
+        _buildHours: function() {
+            if(this.display === 1) return;
+            this.display = 1;
+            var r = this.timepicker.find('.face').width() / 2;
+            var j = r - 22;
+            var bubbles = [];
+            for(var hour = 0; hour < 12; ++hour) {
+                var x = j * Math.sin(Math.PI * 2 * (hour / 12));
+                var y = j * Math.cos(Math.PI * 2 * (hour / 12));
+                var bubble = $('<div>', {'class': 'time hour bubble'})
+                    .text(hour == 0 ? 12 : hour)
+                    .css({
+                        marginLeft: (x + r - 15) + 'px',
+                        marginTop: (-y + r - 15) + 'px'
+                    })
+                    .data('value', hour);
+                if(this.hour === hour) bubble.addClass('selected');
+                bubbles.push(bubble);
+            }
+            this.timepicker.find('.time-bubbles').html(bubbles);
+            this.timepicker.find('.minute.hand').removeClass('selected');
+            this.timepicker.find('.minute.unit').removeClass('selected');
+            this.timepicker.find('.hour.hand').addClass('selected').appendTo(this.timepicker.find('.face'));
+            this.timepicker.find('.hour.unit').addClass('selected');
+        },
+
+        _buildMinutes: function() {
+            if(this.display === 2) return;
+            this.display = 2;
+            var r = this.timepicker.find('.face').width() / 2;
+            var j = r - 22;
+            var bubbles = [];
+            for(var min = 0; min < 60; min += 5) {
+                var str = min < 10 ? '0' + min : String(min);
+                var x = j * Math.sin(Math.PI * 2 * (min / 60));
+                var y = j * Math.cos(Math.PI * 2 * (min / 60));
+                var bubble = $('<div>', {'class': 'time minute bubble'})
+                    .text(str)
+                    .css({
+                        marginLeft: (x + r - 15) + 'px',
+                        marginTop: (-y + r - 15) + 'px'
+                    })
+                    .data('value', min);
+                if(this.minute === min) bubble.addClass('selected');
+                bubbles.push(bubble);
+            }
+            this.timepicker.find('.time-bubbles').html(bubbles);
+            this.timepicker.find('.hour.hand').removeClass('selected');
+            this.timepicker.find('.hour.unit').removeClass('selected');
+            this.timepicker.find('.minute.hand').addClass('selected').appendTo(this.timepicker.find('.face'));
+            this.timepicker.find('.minute.unit').addClass('selected');
+        }
+
+    });
+    $('.time').timepicker();
+
+
+
+
+
+</script>
+<script>
+    var rangeSlider = function(){
+        var slider = $('.range-slider'),
+            range = $('.range-slider__range'),
+            value = $('.range-slider__value');
+
+        slider.each(function(){
+
+            value.each(function(){
+                var value = $(this).prev().attr('value');
+                $(this).html(value);
+            });
+
+            range.on('input', function(){
+                $(this).next(value).html("   ساعت   " + this.value);
+            });
+        });
+    };
+
+    rangeSlider();
+</script>
+<script>
+    $('form').on('focus', 'input[type=number]', function (e) {
+        $(this).on('mousewheel.disableScroll', function (e) {
+            e.preventDefault()
+        })
+    })
+    $('form').on('blur', 'input[type=number]', function (e) {
+        $(this).off('mousewheel.disableScroll')
+    })
+
+</script>
+<script>
+$('.numeric').on('input', function (event) {
+this.value = this.value.replace(/[^0-9]/g, '');
+});
+</script>
+
+
+</html>

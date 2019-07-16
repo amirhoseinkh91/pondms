@@ -1,0 +1,32 @@
+<div class="noSidePadding">
+    <!--<div>مبدأ</div>-->
+    <div class="row rowForm">
+        <div class="col-sm-12">
+            <div ng-class="{hidden:!isEditMode}">
+                <input type="text" class="form-control" ng-model="model.name">
+            </div>
+            <div ng-class="{hidden:isEditMode}">{{model.name}}</div>
+        </div>
+        <div class="col-sm-12">
+            <vt-map api="Controller.sourceApi" ng-model="model.point"
+                    model="model.point"
+                    field="field+'source'" is-edit-mode="isEditMode">
+            </vt-map>
+        </div>
+    </div>
+    <!--<div>مقصد</div>
+    <div class="row rowForm">
+        <div class="col-sm-12">
+            <div ng-class="{hidden:!isEditMode}">
+                <input type="text" class="form-control" ng-model="model.sourceDestination.destination.name">
+            </div>
+            <div ng-class="{hidden:isEditMode}">{{model.sourceDestination.destination.name}}</div>
+        </div>
+        <div class="col-sm-12">
+            <vt-map api="Controller.destinationApi" ng-model="model.sourceDestination.destination.location"
+                    model="model.sourceDestination.destination.location"
+                    field="field+'destination'" is-edit-mode="isEditMode">
+            </vt-map>
+        </div>
+    </div>-->
+</div>

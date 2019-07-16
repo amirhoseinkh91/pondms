@@ -1,0 +1,34 @@
+#timeseries-history-box{
+	border: 1px dashed black;
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#timeseries-history-inner-box {
+	width: 100%;
+	margin: auto;
+}
+
+.timeseries-group-name {
+	padding-top: 10px;
+}
+
+.timeseries-history-entry-key {
+	font-size: 11px!important;
+	width: 105px;
+	font-weight: normal;
+}
+
+.timeseries-history-entry-value {
+	padding-top: 8px;
+	word-wrap: break-word;
+	font-weight: normal;
+}
+
+.timeseries-download-btn {
+	float: left;
+	margin-left: 15px;
+	margin-top: 5px;
+}

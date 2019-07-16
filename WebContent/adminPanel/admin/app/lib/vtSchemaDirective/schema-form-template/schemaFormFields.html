@@ -1,0 +1,21 @@
+<div class="">
+     <div class="row noSideMargin">
+          <div class="b">
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                    <div class="list-group" ng-repeat='viewGroup in schema[goodGroups]' ng-if="userSecretLevel>=viewGroup.secretLevel|| !viewGroup.secretLevel" ng-init="initialActiveTab(viewGroup)">
+                         <a href="javascript:void(0)" ng-click="onChangeTabActiveIndexClick(viewGroup)" class="list-group-item text-center" ng-class="{'active':viewGroup.isTabActive}">
+                              <span style="color: Red; margin-left: 10px;" ng-show="viewGroup.hasRequierd">*</span>
+                              {{viewGroup.name}}
+                         </a>
+                    </div>
+               </div>
+               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                    <!-- flight section -->
+                    <div class="bhoechie-tab-content" ng-class="{'active':viewGroup.isTabActive}" ng-repeat='viewGroup in schema[goodGroups]' ng-if="userSecretLevel>=viewGroup.secretLevel|| !viewGroup.secretLevel" style='padding-left: 10px;'>
+                         <schema-form-field api="apis[field]" glob-schema='schema' suffix="suffix" ng-repeat='field in  viewGroup.members track by $index' is-focused='isFocused' field='field' schema='schema.properties[field]' model='model' required='schema.properties[field].required' label='{{schema.properties[field].label}}' is-edit-mode='isEditMode' ng-if="schema.properties[field]"> </schema-form-field>
+                         <schema-form-field api="apis[field]" glob-schema='schema' suffix="suffix" ng-repeat='field in  viewGroup.members track by $index' is-focused='isFocused' field='field' schema='schema.staticSections[field]' model='model' required='schema.staticSections[field].required' label='{{schema.staticSections[field].label}}' is-edit-mode='isEditMode' ng-if="schema.staticSections[field]"> </schema-form-field>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

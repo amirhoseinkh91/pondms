@@ -1,0 +1,1415 @@
+	{
+	"key": "gooneh_giahi",
+	"title": "گونه های شاخص گیاهی",
+	"displayStringFunction": "function(){return persian_name}",
+	"properties": {
+		"persian_name": {
+			"label": "نام فارسی",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"latin_name": {
+			"label": "نام لاتین",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"khanevade": {
+			"label": "خانواده",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"tazien": {
+			"label": "تزیین",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "water_regime"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "tazien",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "water_regime",
+				"label": "وضعیت رژیم آبی",
+				"members": [
+					{
+						"key": "dayemi",
+						"label": "دایمی"
+					},
+					{
+						"key": "movaghat",
+						"label": "موقت"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:507"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"zistgah": {
+			"label": "زیستگاه",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "water_salt"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "zistgah",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "water_salt",
+				"label": "شوری آب",
+				"members": [
+					{
+						"key": "shoor",
+						"label": "شور"
+					},
+					{
+						"key": "labshoor",
+						"label": "لب شور"
+					},
+					{
+						"key": "shirin",
+						"label": "شیرین"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:514"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"taghzie_abzian": {
+			"label": "تغذیه آبزیان",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "vaziat_taghzieh"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "taghzie_abzian",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "vaziat_taghzieh",
+				"label": "وضعیت تغذیه گرایی",
+				"members": [
+					{
+						"key": "bala",
+						"label": "بالا"
+					},
+					{
+						"key": "motevaset",
+						"label": "متوسط"
+					},
+					{
+						"key": "paien",
+						"label": "پایین"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:513"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"talif_dam": {
+			"label": "تعلیف دام",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "talif_dam",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"masaref_darooyi": {
+			"label": "مصارف دارویی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "masaref_darooyi",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"arzesh_eghtesadi": {
+			"label": "ارزش اقتصادی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "arzesh_eghtesadi",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"bohrani": {
+			"label": "بحرانی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "bohrani",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"maraze_khatar": {
+			"label": "در معرض خطر",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "maraze_khatar",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"asibpazir": {
+			"label": "آسیب پذیر",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "asibpazir",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"sami": {
+			"label": "گیاه سمی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "sami",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"masaref_ensan": {
+			"label": "مصارف انسان",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "masaref_ensan",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"taghzie_ensan": {
+			"label": "تغذیه انسان",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "taghzie_ensan",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"jangal_masnoie": {
+			"label": "جنگل مصنوعی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "jangal_masnoie",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"hefazat_khak": {
+			"label": "حفاظت خاک",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "hefazat_khak",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"goone_boomi": {
+			"label": "گونه بومی",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "goone_boomi",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "giahi",
+				"label": "گونه های گیاهی",
+				"members": [
+					{
+						"key": "chamanshoor",
+						"label": "چمن شور"
+					},
+					{
+						"key": "shene_gandomi",
+						"label": "شن گندمی"
+					},
+					{
+						"key": "tirkaman_abi",
+						"label": "تیرکمان ابی"
+					},
+					{
+						"key": "alaf_farsh",
+						"label": "علف فرش"
+					},
+					{
+						"key": "siah_daneh",
+						"label": "سیاه دانه"
+					},
+					{
+						"key": "dashti",
+						"label": "دشتی"
+					},
+					{
+						"key": "kharshotor",
+						"label": "خارشتر"
+					},
+					{
+						"key": "paye_khar",
+						"label": "پای خر"
+					},
+					{
+						"key": "taje_khoroos",
+						"label": "تاج خروس"
+					},
+					{
+						"key": "choghondarin",
+						"label": "چغندرین"
+					},
+					{
+						"key": "gole_jaliz",
+						"label": "گل جالیز"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:509"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"masraf_sanati_tejari": {
+			"label": "مصرف صنعتی و تجاری",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "khadat_talab"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "masraf_sanati_tejari",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "khadat_talab",
+				"label": "خدمات تالاب",
+				"members": [
+					{
+						"key": "seid_mahi",
+						"label": "صید ماهی"
+					},
+					{
+						"key": "tasbit_sahel",
+						"label": "تثبیت ساحل"
+					},
+					{
+						"key": "tahneshini_rosoobat",
+						"label": "ته نشینی رسوبات"
+					},
+					{
+						"key": "jazb_mavd_moghazi",
+						"label": "جذب مواد مغذی و باقیمانده مواد سمی و کنترل سیلاب"
+					},
+					{
+						"key": "arzesh_shekar_parandegan",
+						"label": "ارزش اقتصادی شکار پرندگان"
+					},
+					{
+						"key": "arzesh_eghtesadi_bardasht_ney",
+						"label": "ارزش اقتصادی برداشت نی"
+					},
+					{
+						"key": "cheraye_heyvanat",
+						"label": "چرای حیوانات"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:510"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"taghzie_parandegan": {
+			"label": "تغذیه پرندگان",
+			"type": "boolean",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "taghzie_parandegan",
+			"typeComponent": {
+				"type": "boolean",
+				"typePersianName": "بله/خیر",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "boolean",
+						"persianName": "بله/خیر",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/boolean.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/boolean.html",
+						"$$hashKey": "object:518"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"enumType": {
+				"key": "animals",
+				"label": "گونه های جانوری",
+				"members": [
+					{
+						"key": "Chalkalburnus_mossulensis",
+						"label": "شاه کولی"
+					},
+					{
+						"key": "abuzamir",
+						"label": "ابوزمیر"
+					},
+					{
+						"key": "zabangavi",
+						"label": "زبان گاوی"
+					},
+					{
+						"key": "zaminkan",
+						"label": "زمین کن"
+					},
+					{
+						"key": "pico",
+						"label": "پیکو"
+					},
+					{
+						"key": "feriale",
+						"label": "فریاله"
+					},
+					{
+						"key": "kharoo",
+						"label": "خارو"
+					},
+					{
+						"key": "guaf",
+						"label": "گواف"
+					},
+					{
+						"key": "marmahi",
+						"label": "مارماهی"
+					},
+					{
+						"key": "koose",
+						"label": "کوسه"
+					}
+				],
+				"route": "enum_type/items",
+				"reqParams": null,
+				"restangularized": true,
+				"fromServer": true,
+				"parentResource": null,
+				"restangularCollection": false,
+				"$$hashKey": "object:508"
+			},
+			"widgetParams": {
+				
+			}
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"persian_name",
+				"latin_name",
+				"khanevade",
+				"tazien",
+				"zistgah",
+				"taghzie_abzian",
+				"taghzie_parandegan",
+				"talif_dam",
+				"masaref_darooyi",
+				"arzesh_eghtesadi",
+				"masraf_sanati_tejari",
+				"goone_boomi",
+				"hefazat_khak",
+				"jangal_masnoie",
+				"taghzie_ensan",
+				"masaref_ensan",
+				"sami",
+				"asibpazir",
+				"maraze_khatar",
+				"bohrani"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:4365"
+		}
+	]
+}

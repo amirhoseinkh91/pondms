@@ -1,0 +1,164 @@
+{
+  "path" : "org/{org_key}/layer",
+  "key" : "layer",
+  "featureName" : "LAYER",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "description" : {
+      "label" : "description",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "type" : {
+      "label" : "type",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "childCount" : {
+      "label" : "childCount",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "formSchemaKey" : {
+      "label" : "formSchemaKey",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "vectorObjectsType" : {
+      "label" : "vectorObjectsType",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "secret" : {
+      "label" : "secret",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "isPond" : {
+      "label" : "isPond",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "icon" : {
+      "label" : "icon",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "color" : {
+      "label" : "color",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "width" : {
+      "label" : "width",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "fill" : {
+      "label" : "fill",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "isLabeled" : {
+      "label" : "isLabeled",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "gradient" : {
+      "label" : "gradient",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "parentLayer" : {
+      "label" : "parentLayer",
+      "type" : "enum",
+      "enumType" : null,
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "map" : {
+      "label" : "map",
+      "type" : "enum",
+      "enumType" : "org/{org_key}/gis-map",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "pond" : {
+      "label" : "pond",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "subLayers" : {
+      "label" : "subLayers",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "name", "description" ]
+  }
+}

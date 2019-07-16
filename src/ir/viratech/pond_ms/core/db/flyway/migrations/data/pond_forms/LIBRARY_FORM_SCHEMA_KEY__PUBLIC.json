@@ -1,0 +1,40 @@
+{
+	"key": "LIBRARY_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "اطلاعات کتابخانه ای",
+	"displayStringFunction": null,
+	"properties": {
+		"documents": {
+			"type": "attachment",
+			"label": "اسناد مرتبط با تالاب",
+			"multiple": true,
+			"widget": "attachFile",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"list": [
+			"documents"
+		],
+		"enriched": [
+			"documents"
+		]
+	},
+	"viewGroups": [
+		{
+			"key": "detail",
+			"name": "مشخصات",
+			"members": [
+				"documents"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:119"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

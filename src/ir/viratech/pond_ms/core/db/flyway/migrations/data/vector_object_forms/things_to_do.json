@@ -1,0 +1,139 @@
+{
+  "key": "Things_To_Do",
+  "title": "جاذبه های گردشگری",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "Things_To_DoName": {
+      "type": "string",
+      "label": "نام جاذبه",
+      "widget": "textBox",
+      "showEditButton": false
+    },
+    "StartTime": {
+      "type": "integer",
+      "label": "شروع کار",
+      "widget": ""
+    },
+    "EndTime": {
+      "type": "integer",
+      "label": "پایان کار",
+      "widget": ""
+    },
+    "Tags": {
+      "type": "string",
+      "multiple": true,
+      "label": "تگ ها",
+      "widget": "textBox"
+    },
+    "Address": {
+      "type": "string",
+      "label": "آدرس",
+      "widget": "textarea"
+    },
+    "TelephoneNum": {
+      "type": "string",
+      "label": "شماره تلفن",
+      "widget": "textBox"
+    },
+    "Website": {
+      "type": "string",
+      "label": "وب سایت",
+      "widget": "textBox"
+    },
+    "Features": {
+      "type": "string",
+      "multiple": true,
+      "label": "امکانات",
+      "widget": "textBox"
+    },
+    "Description": {
+      "type": "string",
+      "label": "توضیحات",
+      "widget": "textarea"
+    },
+    "Rate": {
+      "type": "integer",
+      "typeParams": {
+        "min": 0,
+        "max": 10
+      },
+      "label": "درجه کیفی",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "Images": {
+      "type": "file",
+      "label": "تصاویر",
+      "multiple": true,
+      "widget": "imageSelector",
+      "widgetParams": {}
+    },
+    "TotalScore": {
+      "type": "integer",
+      "label": "امتیاز کل",
+      "widget": "",
+      "showEditButton": false
+    },
+    "IntrinsicValue": {
+      "type": "integer",
+      "label": "ارزش ذاتی",
+      "widget": "",
+      "showEditButton": false
+    },
+    "TemporalValue": {
+      "type": "integer",
+      "typeParams": {
+        "min": -100
+      },
+      "label": "ارزش زمانی",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "Tips": {
+      "type": "string",
+      "label": "راهنما",
+      "widget": "textBox",
+      "multiple": true
+    },
+    "alternativeRoutes": {
+      "type": "string",
+      "label": "مسیر ها",
+      "widget": "textarea",
+      "multiple": true
+    }
+  },
+  "extents": {
+    "enriched": [],
+    "list": []
+  },
+  "viewGroups": [
+    {
+      "key": "Things_To_Do",
+      "name": "جاذبه های گردشگری",
+      "members": [
+        "Things_To_DoName",
+        "TotalScore",
+        "TemporalValue",
+        "IntrinsicValue",
+        "Rate",
+        "Images",
+        "Description",
+        "StartTime",
+        "EndTime",
+        "Tags",
+        "Features",
+        "Address",
+        "TelephoneNum",
+        "Website",
+        "Tips",
+        "alternativeRoutes"
+      ],
+      "secretLevel": 0,
+      "$$hashKey": "object:119"
+    }
+  ],
+  "searchIndexDepth": null,
+  "aspects": {}
+}

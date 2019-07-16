@@ -1,0 +1,121 @@
+{
+  "key": "tour",
+  "title": "تور",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "tour_duration": {
+      "label": "مدت زمان تور",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "starting_price": {
+      "label": "شروع قیمت",
+      "type": "double",
+      "widget": ""
+    },
+    "transport_supplier": {
+      "label": "تهیه کننده حمل و نقل",
+      "type": "string"
+    },
+    "source": {
+      "label": "مبدا",
+      "type": "point"
+    },
+    "destination": {
+      "label": "مقصد",
+      "type": "point"
+    },
+    "tour_initialize_date": {
+      "label": "شروع کلی تور",
+      "type": "date",
+      "widget": "jalali"
+    },
+    "tour_end_date": {
+      "label": "پایان کلی تور",
+      "type": "date",
+      "widget": "jalali"
+    },
+    "necessary_items": {
+      "label": "وسایل مورد نیاز",
+      "multiple": true,
+      "type": "string",
+      "widget": "textBox"
+    },
+    "agency": {
+      "label": "آژانس",
+      "type": "placeUid",
+      "multiple": true,
+      "widget": "placeSearch"
+    },
+    "tour_leader": {
+      "label": "تور لیدر",
+      "type": "placeUid",
+      "multiple": true,
+      "widget": "placeSearch"
+    },
+    "features": {
+      "type": "string",
+      "label": "خدمات آژانس",
+      "multiple": true,
+      "widget": "textBox"
+    },
+    "tour_plans": {
+      "label": "برنامه های تور",
+      "type": "placesPlan",
+      "multiple": true
+    },
+    "media": {
+      "label": "عکس و فیلم ها",
+      "type": "file",
+      "multiple": true
+    },
+    "cityUIDs": {
+      "label": "شناسه شهر ها",
+      "multiple": true,
+      "type": "string",
+      "widget": "textBox"
+    }
+  },
+  "aspects": {},
+  "extents": {
+    "full": [
+      "tour_duration",
+      "starting_price",
+      "transport_supplier",
+      "source",
+      "destination",
+      "tour_initialize_date",
+      "tour_end_date",
+      "necessary_items",
+      "agency",
+      "tour_leader",
+      "features",
+      "tour_plans",
+      "media",
+      "cityUIDs"
+    ]
+  },
+  "viewGroups": [
+    {
+      "key": "tour",
+      "name": "تور",
+      "members": [
+        "tour_duration",
+        "starting_price",
+        "transport_supplier",
+        "source",
+        "destination",
+        "tour_initialize_date",
+        "tour_end_date",
+        "necessary_items",
+        "agency",
+        "tour_leader",
+        "features",
+        "tour_plans",
+        "media",
+        "cityUIDs"
+      ],
+      "secretLevel": 0
+    }
+  ]
+}

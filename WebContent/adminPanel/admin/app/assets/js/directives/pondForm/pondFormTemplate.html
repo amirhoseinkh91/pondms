@@ -1,0 +1,24 @@
+<div class="col-sm-2">
+	<div class="list-group">
+		<a ng-repeat="schema in schemaList"
+			class="list-group-item"
+			ng-class="{'active' : selectedSchema.key==schema.key}"
+			ng-click="onSchemaClick(schema)">
+			<label class="control-label">{{schema.title}}</label>
+		</a>
+	</div>
+</div>
+<div class="col-sm-10" ng-if="selectedSchema.key">
+	<div class="text-left" access-checker="EDIT_PUBLIC_POND_FORMS" ng-if="isEditMode">
+		<a class="btn btn-sm btn-success btn-text" type="button"
+			ng-click="onSaveFormClick()" ng-bind="'SAVE'|EnToFaButton"></a>
+		<a class="btn btn-sm btn-default btn-text" type="button"
+			ng-click="onCancelClick()" ng-bind="'CANCEL'|EnToFaButton"></a>
+	</div>
+	<hr>
+	<form name="example" class="form-horizontal" role="form" ng-if="!loading">
+		<schema-form-fields is-edit-mode="isEditMode" schema="selectedSchema"
+			model="selectedForm" api="api" 
+			user-secret-level="100" simple-view="selectedSchema.viewGroups.length==1"></schema-form-fields>
+	</form>
+</div>

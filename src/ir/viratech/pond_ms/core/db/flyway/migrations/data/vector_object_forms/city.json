@@ -1,0 +1,112 @@
+{
+  "key": "",
+  "title": "",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "name": {
+      "type": "string",
+      "label": "نام شهر",
+      "widget": "textBox",
+      "showEditButton": false
+    },
+    "description": {
+      "type": "string",
+      "label": "توضیحات",
+      "widget": "textarea",
+      "showEditButton": false
+    },
+    "Rate": {
+      "type": "integer",
+      "label": "درجه کیفی",
+      "widget": ""
+    },
+    "IntrinsicValue": {
+      "type": "integer",
+      "label": "ارزش ذاتی",
+      "widget": ""
+    },
+    "TemporalValue": {
+      "type": "integer",
+      "label": "ارزش زمانی",
+      "widget": ""
+    },
+    "TotalScore": {
+      "type": "integer",
+      "label": "امتیاز کل",
+      "widget": "",
+      "showEditButton": false
+    },
+    "things_to_do_count": {
+      "type": "integer",
+      "label": "تعداد مکان های دیدنی",
+      "widget": "",
+      "showEditButton": false
+    },
+    "restaurant_count": {
+      "type": "integer",
+      "label": "تعداد رستوران ها",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "Images": {
+      "type": "file",
+      "label": "تصاویر",
+      "multiple": true,
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "Tags": {
+      "type": "string",
+      "label": "تگ ها",
+      "widget": "textarea"
+    },
+    "hotel_count": {
+      "label": "تعداد هتل ها",
+      "type": "integer",
+      "widget": "",
+      "showEditButton": false
+    },
+    "eventUIDs": {
+      "label": "شناسه های رویداد",
+      "type": "string",
+      "widget": "textBox",
+      "multiple": true
+    },
+    "tourUIDs": {
+      "label": "شناسه های تور",
+      "type": "string",
+      "widget": "textBox",
+      "multiple": true
+    }
+  },
+  "extents": {
+    "enriched": [],
+    "list": []
+  },
+  "viewGroups": [
+    {
+      "key": "viewGroup1",
+      "name": "گروه1",
+      "members": [
+        "name",
+        "Images",
+        "description",
+        "things_to_do_count",
+        "hotel_count",
+        "restaurant_count",
+        "TotalScore",
+        "Rate",
+        "IntrinsicValue",
+        "TemporalValue",
+        "eventUIDs",
+        "tourUIDs"
+      ],
+      "secretLevel": 0,
+      "$$hashKey": "object:116"
+    }
+  ],
+  "searchIndexDepth": null,
+  "aspects": {}
+}

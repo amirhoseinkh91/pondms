@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+    <dto name="AppMessage" extentKey="full"
+         package="ir.viratech.pond_ms.api.app_message"
+         entityPackage="ir.viratech.pond_ms.model.app_message" genFIC="true">
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" type="string"/>
+        <prop name="message" type="string"/>
+        <!--<prop name="creationDate" save="disabled" type="timestamp"/>-->
+        <prop name="creationDate" type="string" internalName="creationDateString" save="disabled"/>
+        <prop name="expirationDate" type="timestamp"/>
+        <prop name="enabled" type="boolean"/>
+        <prop name="images" fieldInfo="disabled" type="java.util.Set(java.lang.String)"
+              internalType="java.util.Set(ir.viratech.commons.file.model.AbstractFile)"
+              load="abstract" save="abstract"/>
+        <prop name="videoUrl" type="string" trackModif="true"/>
+        <prop name="videoOnly" type="boolean"/>
+        <prop name="urls" type="java.util.List(java.lang.String)"
+              internalType="java.util.List(ir.viratech.pond_ms.model.app_message.AppMessageUrl)"
+              save="abstract" load="abstract"/>
+    </dto>
+
+    <dto dtoName="AppMessageViewDTO"
+         package="ir.viratech.pond_ms.api.app_message"
+         entityPackage="ir.viratech.pond_ms.model.app_message"
+         entityName="AppMessage"
+         genFIC="false">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+
+        <prop name="title" type="string" save="disabled"/>
+        <prop name="message" type="string" save="disabled"/>
+        <prop name="creationDate" save="disabled" type="timestamp"/>
+        <prop name="images" fieldInfo="disabled" type="java.util.Set(java.lang.String)"
+              internalType="java.util.Set(ir.viratech.commons.file.model.AbstractFile)"
+              load="abstract" save="disabled"/>
+        <prop name="videoUrl" type="string" save="disabled"/>
+
+        <prop name="videoOnly" type="boolean" save="disabled"/>
+
+        <prop name="urls" type="java.util.List(java.lang.String)"
+              internalType="java.util.List(ir.viratech.pond_ms.model.app_message.AppMessageUrl)"
+              save="disabled" load="abstract"/>
+    </dto>
+
+    <resource name="AppMessage"
+              package="ir.viratech.pond_ms.api.app_message"
+              entityPackage="ir.viratech.pond_ms.model.app_message"
+              resourcePath="app-message" bundlePrefix="message.app."
+              entityMgr="ir.viratech.pond_ms.model.app_message.logic.AppMessageMgr"
+              fullDto="ir.viratech.pond_ms.api.app_message.dto.AppMessageFullDTO"
+              featureEntityName="APP_MESSAGE"/>
+
+
+</uiModel>

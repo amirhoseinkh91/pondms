@@ -1,0 +1,6 @@
+<span uib-dropdown>
+	<div class="color" ng-style="{'background-color':model}" id="simple-dropdown" uib-dropdown-toggle></div>
+	<ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown" ng-if="isEditMode">
+		<li ng-repeat="color in colors" class="color" ng-style="{'background-color':color}" ng-click="onColorClick(color)"></li>
+	</ul>
+</span>

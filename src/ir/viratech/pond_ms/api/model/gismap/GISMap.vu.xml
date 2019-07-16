@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto dtoName="GISMapLightDTO" entityName="GISMap"
+		entityPackage="ir.viratech.pond_ms.model.gismap" package="ir.viratech.pond_ms.api.gismap">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="title" />
+	</dto>
+
+	<dto name="GISMap" extentKey="full" entityPackage="ir.viratech.pond_ms.model.gismap"
+		package="ir.viratech.pond_ms.api.gismap">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="title" save="hooked" />
+		<prop name="latinTitle" type="string" />
+		<prop name="description" type="string" />
+		<prop name="creationDate" type="java.util.Date" save="disabled"
+			sortable="true" />
+		<prop name="minZoom" type="int" />
+		<prop name="maxZoom" type="int" />
+		<prop name="defaultZoom" type="int" />
+		<prop name="boundingBox" type="ir.viratech.pond_ms.commons.geo.Polygon"
+			load="abstract" save="abstract" typeKey="string" />
+
+		<prop name="center" type="ir.viratech.pond_ms.commons.geo.Point" load="abstract" save="abstract" typeKey="string"/>
+		<prop name="childCount" type="int" load="abstract" save="disabled" />
+
+		<prop-dto name="organization"
+			type="ir.viratech.pond_ms.api.organization.dto.OrganizationFullDTO"
+			internalType="ir.viratech.pond_ms.model.organization.Organization"
+			load="hooked-dtoLoadFrom" save="disabled" trackModif="true" />
+
+
+		<prop name="subLayers"
+			internalType="java.util.List.&lt;ir.viratech.pond_ms.model.layer.Layer.&gt;"
+			type="ir.viratech.commons.api.dto.PlainCollectionDTO&lt;ir.viratech.pond_ms.model.layer.Layer, ir.viratech.pond_ms.api.layer.dto.LayerLightDTO&gt;"
+			load="abstract" save="abstract" typeKey="collection" />
+	</dto>
+
+
+	<resource
+		entityName="GISMap"
+		resourceName="GISMapResource"
+		package="ir.viratech.pond_ms.api.gismap"
+		entityPackage="ir.viratech.pond_ms.model.gismap"
+		resourcePath="org/{org_key}/gis-map"
+		bundlePrefix="gismap."
+		entityMgr="ir.viratech.pond_ms.model.gismap.logic.GISMapMgr"
+		fullDto="ir.viratech.pond_ms.api.gismap.dto.GISMapFullDTO"
+		parent="ir.viratech.pond_ms.api.AbstractOrganizationBasedMgrBasedResource&lt;GISMap,
+		ir.viratech.pond_ms.api.gismap.dto.GISMapFullDTO&gt;"
+		featureEntityName="GIS_MAP" />
+
+	<resource
+		entityName="GISMap"
+		resourceName="GISMapAnonymousResource"
+		package="ir.viratech.pond_ms.api.gismap"
+		entityPackage="ir.viratech.pond_ms.model.gismap"
+		resourcePath="gis-map"
+		bundlePrefix="gismap."
+		entityMgr="ir.viratech.pond_ms.model.gismap.logic.GISMapMgr"
+		fullDto="ir.viratech.pond_ms.api.gismap.dto.GISMapFullDTO"
+		featureEntityName="GIS_MAP" />
+
+</uiModel>

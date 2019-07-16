@@ -1,0 +1,32 @@
+{
+  "name": "PondMS",
+  "version": "1.0.0",
+  "authors": [
+    "viratech <www.viratech.ir>"
+  ],
+  "description": "",
+  "main": "app.js",
+  "license": "",
+  "homepage": "index.html",
+  "dependencies": {
+  	"angular": "1.5.2",
+  	"angular-animate": "1.5.2",
+    "angular-bootstrap": "0.13.4",
+    "angular-ui-router": "0.2.15",
+    "AngularJS-Toaster": "2.0.0",
+    "bootstrap":"3.3.4",
+    "bootstrap-rtl": "3.3.4",
+    "lodash": "4.17.4",
+    "moment-jalaali": "0.3.9",
+    "restangular": "1.6.1",
+    "angular-intro.js" : "*",
+    "nouislider" : "10.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

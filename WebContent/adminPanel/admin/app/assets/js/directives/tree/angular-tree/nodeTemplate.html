@@ -1,0 +1,21 @@
+	<input type="checkbox" ng-model="node.properties.checked"
+		ng-change="Func.onChangeCheckbox(node, node.properties.checked)" 
+		ng-show="node.properties.type=='raster'||node.properties.type=='vector'" ng-if="api.visibilityAction" 
+		style="margin:8px 5px 0 0;">
+		
+	<span class="treeNode" ng-class="{'treeNodeSelected':(api.selectedNode.properties && api.selectedNode.properties.uid==node.properties.uid)}"> 
+		<i class="fa fa-minus" ng-show="node.children.length && node.childCount" ng-click="node.collapse()"></i>
+		<i class="fa fa-plus" ng-show="!node.children.length && node.childCount" ng-click="Func.onExpandClick(node)"></i>
+		<i class="fa fa-leaf" ng-show="!node.childCount && (node.properties.type=='vector' || node.properties.type=='raster')"></i>
+		<i class="fa fa-map" ng-show="!node.childCount && node.properties.type!='vector' && node.properties.type!='raster'"></i>
+		<p style="white-space: pre-wrap;" ng-bind="node.title" ng-click="Func.onNodeClick(node)"></p>
+	</span>
+	
+	<i class="fa fa-btn" ng-class="{'fa-eye':node.properties.eye, 'fa-eye-slash':!node.properties.eye}"
+		ng-show="node.properties.type=='vector' && node.properties.isLabeled && node.properties.checked" ng-if="api.visibilityAction"
+		ng-click="Func.onEyeClick(node)"
+		style="float:left;padding-top:10px;"></i>
+	
+	<ul class="treeChild">
+		<li class="tree-node" ng-repeat="node in node.children" ng-include="context.nodeTemplate"></li>
+	</ul>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel 
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+		
+	<dto dtoName="TimeSeriesGroupLightDTO" entityName="TimeSeriesGroup" 
+			entityPackage="ir.viratech.pond_ms.model.time_series" 
+			package="ir.viratech.pond_ms.api.time_series">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="name" load="abstract"/>
+	</dto>
+			
+	<dto name="TimeSeriesGroup" extentKey="full" 
+			entityPackage="ir.viratech.pond_ms.model.time_series" 
+			package="ir.viratech.pond_ms.api.time_series" >
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="name" load="abstract"/>
+		<prop name="description" internalName="description"/>
+			
+ 	</dto>
+ 	
+
+ 	<resource 
+		entityName="TimeSeriesGroup"
+		resourceName="TimeSeriesGroupResource"
+		package="ir.viratech.pond_ms.api.time_series"
+		entityPackage="ir.viratech.pond_ms.model.time_series"
+		resourcePath="time_series_group"
+		bundlePrefix="time_series.group."
+		entityMgr="ir.viratech.pond_ms.model.time_series.logic.TimeSeriesGroupMgr"
+		fullDto="ir.viratech.pond_ms.api.time_series.dto.TimeSeriesGroupFullDTO"
+		featureEntityName="TIME_SERIES_GROUP" />
+ 	
+			
+</uiModel>

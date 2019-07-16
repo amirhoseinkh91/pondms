@@ -1,0 +1,18 @@
+.form-inline .form-group input {
+	min-width: 180px !important;
+}
+
+#chart-box {
+	padding: 5px;
+	margin: 10px 0 10px 0;
+}
+
+#chart-div {
+	float: none;
+	margin: auto;
+}
+
+#category-date-filter {
+	margin-bottom: 10px;
+}
+

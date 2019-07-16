@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+
+	<dto dtoName="CustomerViewedGISVectorObjectFullDTO" package="ir.viratech.pond_ms.api.customer"
+		 entityPackage="ir.viratech.pond_ms.model.customer" extentKey="light"
+		 entityName="CustomerViewedGISVectorObject">
+
+		<prop name="uid" internalName="extuid" save="disabled" searchable="false" sortable="false" />
+		<prop name="viewDate" type="timestamp" sortable="true" searchable="true" save="disabled" />
+		<prop-dto name="gisVectorObject"
+				type="ir.viratech.pond_ms.api.map_object.vector.dto.GISVectorObjectMapDTO"
+				internalType="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject"
+				searchable="false" load="hooked-dtoLoadFrom" save="disabled"	/>
+	</dto>
+
+	<resource name="CustomerViewedGISVectorObject"
+		  package="ir.viratech.pond_ms.api.customer"
+		  parent="ir.viratech.pond_ms.api.customer.AbstractCustomerBasedMgrBasedResource&lt;CustomerViewedGISVectorObject,ir.viratech.pond_ms.api.customer.dto.CustomerViewedGISVectorObjectFullDTO&gt;"
+		  entityPackage="ir.viratech.pond_ms.model.customer"
+		  resourcePath="cu/v1/viewedgisvectorobject"
+		  bundlePrefix="customerViewedGisVectorObject."
+		  entityMgr="ir.viratech.pond_ms.model.customer.logic.CustomerViewedGISVectorObjectMgr"
+		  fullDto="ir.viratech.pond_ms.api.customer.dto.CustomerViewedGISVectorObjectFullDTO"
+		  />
+</uiModel>

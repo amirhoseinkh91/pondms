@@ -1,0 +1,70 @@
+{
+  "path" : "category",
+  "key" : "category",
+  "featureName" : "CATEGORY",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "childCount" : {
+      "label" : "childCount",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "isLeaf" : {
+      "label" : "isLeaf",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "isRoot" : {
+      "label" : "isRoot",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "timeSeriesValueType" : {
+      "label" : "timeSeriesValueType",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "relatedGroup" : {
+      "label" : "relatedGroup",
+      "type" : null,
+      "children" : {
+        "label" : "children",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "values" : {
+        "label" : "values",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      }
+    },
+    "extents" : {
+      "list" : [ "name" ]
+    }
+  }
+}

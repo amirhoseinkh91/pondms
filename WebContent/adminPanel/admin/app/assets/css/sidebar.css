@@ -1,0 +1,102 @@
+.mini-sidebar {
+	background-color: #33654A;
+	min-height: 100%;
+	position: absolute;
+	width: 3%;
+	right: 0;
+	top: 0;
+	padding-top: 20px;	
+}
+.sidebar {
+	background-color: #1C5535;
+	min-height: 100%;
+	position: absolute;
+	width: 16%;
+	right: 0;
+	top: 0;
+	padding-top: 20px;
+}
+.sidebar.small-sidebar {
+	width: 13% !important;
+	right: 3% !important;
+}
+.sidebar .list-group .list-group-item,
+.sidebar .list-group .list-group-item a:focus,
+.mini-sidebar .list-group .list-group-item,
+.mini-sidebar .list-group .list-group-item a:focus {
+	background:transparent;
+	color: #fff;
+	font-size: 14px;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	min-height: 45px;
+	
+	/* rounded tab */
+	border-radius: 50px;
+	width: 92%;
+	margin: auto;
+}
+
+.sidebar .list-group .list-group-item.active,
+.sidebar .list-group .list-group-item.active a:focus {
+	background-color: #33654A;
+}
+
+.sidebar .devider {
+	margin-top: 10px;
+	margin-top: 10px;
+	font-size: 7px !important;
+	color: #ccc;
+	padding-right: 15px;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+.sidebar .devider:hover{
+	cursor: pointer;
+}
+.sidebar .devider span {
+	font-size: 11px !important;	
+}
+
+.content {
+	margin-right: 16%;
+	width: 84%;
+}
+.sidebar .list-group .list-group-item label {
+    font-weight: normal;
+    font-size: 12px;
+    cursor: pointer;
+}
+.devider + .list-group {
+    background: #0e301f none repeat scroll 0 0;
+    height: 0;
+    min-height: 0;
+    overflow: hidden;
+    transition: all 0.15s linear 0s;
+}
+.devider + .list-group.opened {
+    height: auto;
+    min-height: 150px;
+}
+.sidebar .devider + .list-group .list-group-item, .sidebar .devider + .list-group .list-group-item a:focus {
+ 	/* border-radius: 0;
+    border-style: solid;
+    border-width: 0 1px 0 0; */
+    /* margin: 0 20px; */
+    padding: 7px 0 0;
+    width: auto;
+}
+.devider > i {
+    font-size: 15px;
+    margin: 0 0 0 5px;
+    padding: 6px 0;
+    cursor:pointer;
+    vertical-align: middle;
+}
+.sidebar .devider + .list-group > div{
+	border-right: 1px solid #fff;
+    margin: 8px auto;
+    width: 82%;
+}
+.sidebar .devider + .list-group .list-group-item:before { content:"\2014";}

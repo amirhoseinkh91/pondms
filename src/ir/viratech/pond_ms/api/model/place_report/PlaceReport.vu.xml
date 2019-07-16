@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+    <dto name="PlaceReport" extentKey="full"
+         package="ir.viratech.pond_ms.api.place_report"
+         entityPackage="ir.viratech.pond_ms.model.place_report">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title"/>
+        <prop name="message"/>
+        <prop name="creationDate" type="timestamp" save="disabled"/>
+    </dto>
+
+    <dto dtoName="PlaceReportLightDTO"
+         entityName="PlaceReport"
+         package="ir.viratech.pond_ms.api.place_report"
+         entityPackage="ir.viratech.pond_ms.model.place_report">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title"/>
+        <prop name="message"/>
+    </dto>
+
+</uiModel>

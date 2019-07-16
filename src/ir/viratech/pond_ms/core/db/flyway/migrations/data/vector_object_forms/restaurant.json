@@ -1,0 +1,126 @@
+{
+  "key": "",
+  "title": "",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "RestaurantName": {
+      "type": "string",
+      "label": "نام رستوران",
+      "widget": "textBox"
+    },
+    "Features": {
+      "type": "string",
+      "multiple": true,
+      "label": "امکانات",
+      "widget": "textBox"
+    },
+    "Description": {
+      "type": "string",
+      "label": "توضیحات",
+      "widget": "textarea"
+    },
+    "Address": {
+      "type": "string",
+      "label": "آدرس",
+      "widget": "textarea"
+    },
+    "Images": {
+      "type": "file",
+      "label": "تصاویر",
+      "multiple": true,
+      "widget": "imageSelector",
+      "widgetParams": {}
+    },
+    "Tags": {
+      "type": "string",
+      "multiple": true,
+      "label": "تگ ها",
+      "widget": "textBox"
+    },
+    "TelephoneNum": {
+      "type": "string",
+      "label": "شماره تلفن",
+      "widget": "textBox"
+    },
+    "Website": {
+      "type": "string",
+      "label": "وب سایت",
+      "widget": "textBox"
+    },
+    "Price": {
+      "type": "integer",
+      "typeParams": {
+        "min": 1,
+        "max": 4
+      },
+      "label": "قیمت",
+      "widget": "",
+      "widgetParams": {}
+    },
+    "Rate": {
+      "type": "integer",
+      "typeParams": {
+        "min": 0,
+        "max": 10
+      },
+      "label": "درجه کیفی",
+      "widget": "",
+      "widgetParams": {}
+    },
+    "IntrinsicValue": {
+      "type": "integer",
+      "label": "ارزش ذاتی",
+      "widget": ""
+    },
+    "TemporalValue": {
+      "type": "integer",
+      "label": "ارزش زمانی",
+      "widget": ""
+    },
+    "TotalScore": {
+      "type": "integer",
+      "label": "امتیاز کل",
+      "widget": ""
+    },
+    "VenueId": {
+      "type": "string",
+      "label": "آی دی Foursquare",
+      "widget": "textBox"
+    },
+    "StartTime": {
+      "type": "integer",
+      "label": "شروع کار",
+      "widget": "",
+      "widgetParams": {}
+    }
+  },
+  "extents": {
+    "enriched": [],
+    "list": []
+  },
+  "viewGroups": [
+    {
+      "key": "Restaurant",
+      "name": "رستوران",
+      "members": [
+        "RestaurantName",
+        "Rate",
+        "TemporalValue",
+        "IntrinsicValue",
+        "TotalScore",
+        "VenueId",
+        "Price",
+        "Images",
+        "Address",
+        "TelephoneNum",
+        "Website",
+        "Tags",
+        "Description",
+        "Features"
+      ],
+      "secretLevel": 0
+    }
+  ],
+  "searchIndexDepth": null,
+  "aspects": {}
+}

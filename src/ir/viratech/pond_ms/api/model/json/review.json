@@ -1,0 +1,110 @@
+{
+  "path" : "review",
+  "key" : "review",
+  "featureName" : "REVIEW",
+  "properties" : {
+    "title" : {
+      "label" : "title",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "rate" : {
+      "label" : "rate",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "text" : {
+      "label" : "text",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "visitedDate" : {
+      "label" : "visitedDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "typeOfVisit" : {
+      "label" : "typeOfVisit",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "confirmed" : {
+      "label" : "confirmed",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "deleted" : {
+      "label" : "deleted",
+      "type" : "bool",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "voteUpCount" : {
+      "label" : "voteUpCount",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "voteDownCount" : {
+      "label" : "voteDownCount",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "replies" : {
+      "label" : "replies",
+      "type" : null,
+      "user" : {
+        "label" : "user",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "gisVectorObject" : {
+        "label" : "gisVectorObject",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      }
+    },
+    "extents" : {
+      "list" : [ "title", "text", "typeOfVisit" ]
+    }
+  }
+}

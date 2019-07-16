@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel
+		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+
+	<dto name="Feature" dtoName="FeatureDTO"
+			package="ir.viratech.pond_ms.api.user"
+			entityPackage="ir.viratech.pond_ms.model.user" >
+		<prop name="uid" internalName="extuid" save="disabled" searchable="false" sortable="false" />
+		<prop name="title" internalName="displayString" save="disabled" searchable="false" sortable="false" />
+	</dto>
+
+	<dto name="UserRole"
+			entityPackage="ir.viratech.pond_ms.model.user.role"
+			package="ir.viratech.pond_ms.api.user" >
+		<prop name="uid" internalName="extuid" save="disabled" />
+		<prop name="name" client-required="true" />
+		<prop name="description" client-widget="textarea" />
+
+		<prop name="features" internalName="featuresRelationMap"
+				internalType="ir.viratech.commons.util.relation_map.RelationMap(ir.viratech.pond_ms.model.user.Feature)"
+				type="ir.viratech.commons.api.dto.relation_map.DisplableRelationMapDTO(ir.viratech.pond_ms.model.user.Feature)"
+				searchable="false"
+				load="hooked-dtoLoadFrom"
+				save="hooked-dtoSaveTo-ignoreNull"
+				typeKey="collection" />
+
+
+	</dto>
+
+
+	<dto dtoName="UserRoleLightDTO" name="UserRole"
+			entityPackage="ir.viratech.pond_ms.model.user.role"
+			package="ir.viratech.pond_ms.api.user" >
+
+		<prop name="uid" internalName="extuid" save="disabled" />
+		<prop name="name" client-required="true"/>
+		<prop name="description" client-widget="textarea"/>
+	</dto>
+
+	<resource name="Role"
+			package="ir.viratech.pond_ms.api.user"
+			entityName="UserRole" entityPackage="ir.viratech.pond_ms.model.user.role"
+			resourcePath="role"
+			bundlePrefix="role."
+			entityMgr="ir.viratech.pond_ms.model.user.role.logic.UserRoleMgr"
+			fullDto="ir.viratech.pond_ms.api.user.dto.UserRoleFullDTO"
+			featureEntityName="ROLE" />
+
+</uiModel>

@@ -1,0 +1,56 @@
+{
+	"key": "form_mahiha",
+	"title": "ماهی ها",
+	"displayStringFunction": "function(){return goone_farsi}",
+	"properties": {
+		"goone_farsi": {
+			"label": "گونه فارسی",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"goone_latin": {
+			"label": "گونه لاتین",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"khanevade": {
+			"label": "خانواده",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"vaziat_hozoor": {
+			"label": "وضعیت حضور",
+			"type": "enum",
+			"typeParams": {
+				"enumType": "faravani_hozoor_mahi"
+			},
+			"widget": "",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "مشخصات",
+			"members": [
+				"goone_farsi",
+				"goone_latin",
+				"khanevade",
+				"vaziat_hozoor"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

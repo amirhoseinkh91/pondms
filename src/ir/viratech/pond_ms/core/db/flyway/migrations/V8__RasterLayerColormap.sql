@@ -1,0 +1,1 @@
+ALTER TABLE pond_ms.RASTER_LAYERS ADD COLUMN colormap varchar(255);

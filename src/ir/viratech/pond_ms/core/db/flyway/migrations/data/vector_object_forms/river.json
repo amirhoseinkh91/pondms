@@ -1,0 +1,38 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"DRAINIRAN": {
+			"label": "کد",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Length": {
+			"label": "طول",
+			"type": "double",
+			"widget": ""
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"DRAINIRAN",
+				"Length"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

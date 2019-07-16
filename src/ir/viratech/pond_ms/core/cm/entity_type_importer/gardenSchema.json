@@ -1,0 +1,39 @@
+{
+    "key": "garden",
+    "title": "باغ",
+    "properties": {
+        "area": {
+            "label": "مساحت",
+            "type": "integer"
+        },
+        "place": {
+            "label": "مکان",
+            "type": "string"
+        },
+        "englishName": {
+            "label": "نام انگلیسی",
+            "searchable": true,
+            "type": "string"
+        },
+        "name": {
+            "label": "نام",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        }
+    },
+    "displayStringFunction": "function () {var ds = name;if (ds.trim() === '') {return englishName;} else {return ds;}}",
+    "extents": {
+        "enriched": [ "name"],
+        "list": [ "name", "englishName", "area","place" ]
+    },
+    "viewGroups": [
+        {
+            "key": "detail",
+            "members": [ "name", "englishName", "area", "place"],
+            "name": "مشخصات"
+        }
+    ]
+}

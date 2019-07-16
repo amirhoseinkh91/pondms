@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel
+        xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+>
+
+    <dto dtoName="FoursquareKeyLightDTO" entityName="FoursquareKey"
+         entityPackage="ir.viratech.pond_ms.model.foursquare"
+         package="ir.viratech.pond_ms.api.foursquare"
+         extentKey="light">
+        <prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="clientId" internalName="clientId" type="string" searchable="true" sortable="false"/>
+        <prop name="clientSecret" internalName="clientSecret" type="string" searchable="true" sortable="false"/>
+    </dto>
+
+    <dto name="FoursquareKey"
+         entityName="FoursquareKey"
+         entityPackage="ir.viratech.pond_ms.model.foursquare"
+         package="ir.viratech.pond_ms.api.foursquare"
+         extentKey="full">
+        <prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="clientId" internalName="clientId" type="string" searchable="true" sortable="false"/>
+        <prop name="clientSecret" internalName="clientSecret" type="string" searchable="true" sortable="false"/>
+        <prop name="usedCount" internalName="usedCount" type="int" searchable="true" sortable="false"/>
+        <prop name="maxUsage" internalName="maxUsage" type="int" searchable="true" sortable="false"/>
+    </dto>
+
+    <resource
+            entityName="FoursquareKey"
+            resourceName="FoursquareKeyResource"
+            package="ir.viratech.pond_ms.api.foursquare"
+            entityPackage="ir.viratech.pond_ms.model.foursquare"
+            resourcePath="foursquare-key"
+            bundlePrefix="foursquare.key."
+            entityMgr="ir.viratech.pond_ms.model.foursquare.logic.FoursquareKeyMgr"
+            fullDto="ir.viratech.pond_ms.api.foursquare.dto.FoursquareKeyFullDTO"
+            featureEntityName="POINT_OBJECT"/>
+
+</uiModel>

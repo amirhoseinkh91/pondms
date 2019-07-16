@@ -1,0 +1,100 @@
+*{
+	font-family: "shabnam";
+	font-size: 13px;
+	outline: none !important;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: "shabnam";
+}
+.not-show-ui-until-ready-angular{
+	visibility: hidden;
+}
+.show-ui-after-ready-angular{
+	visibility: visible !important;
+}
+html,body {
+	height: 100%;
+}
+body {
+	overflow-y: hidden;
+}
+select{
+	font-size: 11px !important;
+}
+.mainContent {
+	padding: 0;
+}
+.flex-content {
+	display: flex;
+	height: 100vh;
+	overflow: auto;
+}
+
+/*������ ********** form ********** */
+.required:after {
+	content: "*";
+	color: red;
+	position: absolute;
+	height: 25px;
+	top: 0;
+}
+.rowForm{
+	min-height: 34px;
+	margin-bottom: 5px;
+}
+.rowForm > label{
+	padding-top: 8px;
+}
+form .row.rowForm .col-sm-7 {
+	padding-top: 8px;
+}
+.text-error{
+	font-size: 10px !important;
+	color: #dd4b39 !important;
+}
+
+/*������ ********** main panel ********** */
+.panel-management{
+	min-height: 74px !important;
+	padding: 20px 15px;
+}
+.panel-page-header{
+	border: none;
+	box-shadow: none;
+}
+.panel-page-header .panel-heading{
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #fff;
+}
+.panel-page-header > .panel-body{
+	padding-right: 0;
+	padding-left: 0;
+}
+.panel-flat {
+	background-color: #f1f1f1;
+	box-shadow: none;
+}
+.panel-simple {
+	box-shadow: none;
+}
+
+/*������ ********** div ********** */
+.div-custom {
+	float: right;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.div-row {
+	width: 100%;
+}
+
+/*������ **********  ********** */
+.label-repeat{
+	margin: 3px;
+	float: right;
+	font-size: 14px;
+}
+.fa-btn, a{
+	cursor: pointer;
+}

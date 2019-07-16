@@ -1,0 +1,203 @@
+{
+	"key": "GENERAL_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "اطلاعات عمومی",
+	"displayStringFunction": "function(){return name;}",
+	"properties": {
+		"name": {
+			"type": "string",
+			"label": "نام",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"description": {
+			"type": "string",
+			"label": "توضیحات",
+			"widget": "textarea",
+			"showEditButton": false
+		},
+		"latin_name": {
+			"label": "نام لاتین",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"address": {
+			"label": "مکان",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"place": {
+			"label": "مختصات جغرافیایی",
+			"type": "html",
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "place",
+			"typeComponent": {
+				"type": "html",
+				"typePersianName": "محتوای استاتیک",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "html",
+						"persianName": "html",
+						"isStatic": true,
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/html.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/html.html",
+						"widgetParamSchema": {
+							"title": "",
+							"properties": {
+								"html": {
+									"label": "محتویات",
+									"type": "string",
+									"widget": "textBox",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"html"
+									],
+									"$$hashKey": "object:452"
+								}
+							]
+						},
+						"$$hashKey": "object:443"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"isStatic": true,
+			"widgetParams": {
+				"html": "مختصات جغرافیایی"
+			}
+		},
+		"Zone": {
+			"label": "ناحیه",
+			"type": "integer",
+			"widget": "",
+			"showEditButton": false
+		},
+		"X": {
+			"label": "طول",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Y": {
+			"label": "عرض",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false,
+			"title": "Y"
+		},
+		"info": {
+			"label": "اطلاعات عمومی",
+			"type": "html",
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "info",
+			"typeComponent": {
+				"type": "html",
+				"typePersianName": "محتوای استاتیک",
+				"widgets": [
+					{
+						"widget": "",
+						"picName": "html",
+						"persianName": "html",
+						"isStatic": true,
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/html.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/html.html",
+						"widgetParamSchema": {
+							"title": "",
+							"properties": {
+								"html": {
+									"label": "محتویات",
+									"type": "string",
+									"widget": "textBox",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"html"
+									],
+									"$$hashKey": "object:452"
+								}
+							]
+						},
+						"$$hashKey": "object:443"
+					}
+				],
+				"$$hashKey": "object:75"
+			},
+			"isStatic": true,
+			"widgetParams": {
+				"html": "اطلاعات عمومی"
+			}
+		}
+	},
+	"extents": {
+		"list": [
+			"name",
+			"description",
+			"latin_name",
+			"address",
+			"place",
+			"Zone",
+			"X",
+			"Y",
+			"info"
+		],
+		"enriched": [
+			"name",
+			"description",
+			"latin_name",
+			"address",
+			"place",
+			"Zone",
+			"X",
+			"Y",
+			"info"
+		]
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "detail",
+			"name": "مشخصات",
+			"members": [
+				"info",
+				"name",
+				"latin_name",
+				"address",
+				"description",
+				"place",
+				"Zone",
+				"X",
+				"Y"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:878"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel 
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+	
+	<dto dtoName="PolygonObjectLightDTO" entityName="PolygonObject" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			package="ir.viratech.pond_ms.api.map_object.vector">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="name"/>
+	</dto>
+	
+	<dto name="PolygonObject" extentKey="full" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			package="ir.viratech.pond_ms.api.map_object.vector" >
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" save="hooked"/>
+		<prop name="creationDate" type="java.util.Date" save="disabled" sortable="true" />
+		<prop name="formInstances" type="com.fasterxml.jackson.databind.node.ArrayNode" save="abstract" load="abstract" typeKey="collection" />		
+		<prop name="polygon" type="ir.viratech.pond_ms.commons.geo.Polygon" load="abstract" save="abstract" typeKey="string"/>
+ 	</dto>
+ 	
+	<resource name="PolygonObject" 
+			package="ir.viratech.pond_ms.api.map_object.vector" 
+			entityPackage="ir.viratech.pond_ms.model.map_object.vector" 
+			resourcePath="polygon-object" 
+			bundlePrefix="polygonobject."
+			entityMgr="ir.viratech.pond_ms.model.map_object.vector.logic.PolygonObjectMgr" 
+			fullDto="ir.viratech.pond_ms.api.map_object.vector.dto.PolygonObjectFullDTO"
+			featureEntityName="POLYGON_OBJECT" />
+</uiModel>

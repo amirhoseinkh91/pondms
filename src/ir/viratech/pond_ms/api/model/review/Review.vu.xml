@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+    <dto name="Review" extentKey="full"
+         package="ir.viratech.pond_ms.api.review"
+         entityPackage="ir.viratech.pond_ms.model.review" genFIC="true">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" type="string"/>
+        <prop name="rate" type="int"/>
+        <prop name="text" type="string"/>
+        <prop name="creationDate" type="string" internalName="creationDateString" save="disabled"/>
+        <prop name="visitedDate" type="string" internalName="visitedDateString" save="disabled"/>
+        <prop name="typeOfVisit" type="string"/>
+        <prop name="confirmed" type="int"/>
+        <prop name="deleted" type="boolean"/>
+		<prop name="voteUpCount" type="long" save="disabled"/>
+		<prop name="voteDownCount" type="long" save="disabled" />
+        <prop name="replies"
+              type="ir.viratech.commons.api.dto.PlainCollectionDTO(ir.viratech.pond_ms.model.review.ReplyReview, ir.viratech.pond_ms.api.review.dto.ReplyReviewFullDTO)"
+              internalType="java.util.Set(ir.viratech.pond_ms.model.review.ReplyReview)"
+              save="abstract" load="abstract" trackModif="true"/>
+
+        <prop-dto name="user" type="ir.viratech.pond_ms.api.user.dto.UserReviewDTO"
+                  internalType="ir.viratech.pond_ms.model.user.User" fieldInfo="disabled" save="disabled" load="abstract"/>
+
+        <prop-dto name="gisVectorObject" save="disabled" load="hooked-dtoLoadFrom"
+                  internalType="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject"
+                  type="ir.viratech.pond_ms.api.map_object.vector.dto.GISVectorObjectFullDTO"
+                  fieldInfo="disabled"/>
+
+    </dto>
+
+    <dto dtoName="ReviewViewDTO"
+         entityName="Review"
+         package="ir.viratech.pond_ms.api.review"
+         entityPackage="ir.viratech.pond_ms.model.review" genFIC="false">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" type="string" save="disabled"/>
+        <prop name="rate" type="int" save="disabled"/>
+        <prop name="text" type="string" save="disabled"/>
+        <prop name="creationDate" type="string" internalName="creationDateString" save="disabled"/>
+        <prop name="visitedDate" type="string" internalName="visitedDateString" save="disabled"/>
+        <prop name="visitType" internalName="typeOfVisit" type="string" save="disabled"/>
+		<prop name="voteUpCount" type="long" save="disabled"/>
+		<prop name="voteDownCount" type="long" save="disabled" />
+        <prop-dto name="user" save="disabled" type="ir.viratech.pond_ms.api.user.dto.UserReviewDTO"
+                  internalType="ir.viratech.pond_ms.model.user.User"
+                  load="hooked-dtoLoadFrom"/>
+
+        <prop name="replies"
+              type="ir.viratech.commons.api.dto.PlainCollectionDTO(ir.viratech.pond_ms.model.review.ReplyReview, ir.viratech.pond_ms.api.review.dto.ReplyReviewViewDTO)"
+              internalType="java.util.Set(ir.viratech.pond_ms.model.review.ReplyReview)"
+              save="disabled" load="abstract" trackModif="true"/>
+
+    </dto>
+
+    <dto dtoName="ReviewLightDTO"
+         entityName="Review"
+         package="ir.viratech.pond_ms.api.review"
+         entityPackage="ir.viratech.pond_ms.model.review" genFIC="false">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" type="string" save="disabled"/>
+        <prop name="rate" type="int" save="disabled"/>
+        <prop name="text" type="string" save="disabled"/>
+        <prop name="creationDate" type="string" internalName="creationDateString" save="disabled"/>
+        <prop name="visitedDate" type="string" internalName="visitedDateString" save="disabled"/>
+        <prop name="visitType" internalName="typeOfVisit" type="string" save="disabled"/>
+		<prop-dto name="gisVectorObject" type="ir.viratech.pond_ms.api.map_object.vector.dto.GISVectorObjectFullDTO"
+				internalType="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject" save="disabled" load="hooked-dtoLoadFrom"/>
+
+        <prop name="replies"
+              type="ir.viratech.commons.api.dto.PlainCollectionDTO(ir.viratech.pond_ms.model.review.ReplyReview, ir.viratech.pond_ms.api.review.dto.ReplyReviewViewDTO)"
+              internalType="java.util.Set(ir.viratech.pond_ms.model.review.ReplyReview)"
+              save="disabled" load="abstract" trackModif="true"/>
+
+    </dto>
+
+    <dto dtoName="ReviewSaveDTO"
+         entityName="Review"
+         package="ir.viratech.pond_ms.api.review"
+         entityPackage="ir.viratech.pond_ms.model.review" genFIC="false">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="title" type="string"/>
+        <prop name="rate" type="int"/>
+        <prop name="text" type="string"/>
+        <prop name="visitedDate" type="string" internalName="visitedDateString" save="disabled"/>
+        <prop name="visitType" internalName="typeOfVisit" type="string"/>
+
+    </dto>
+
+
+    <resource name="Review"
+              package="ir.viratech.pond_ms.api.review" entityPackage="ir.viratech.pond_ms.model.review"
+              resourcePath="review" bundlePrefix="review."
+              entityMgr="ir.viratech.pond_ms.model.review.logic.ReviewMgr"
+              fullDto="ir.viratech.pond_ms.api.review.dto.ReviewFullDTO"
+              featureEntityName="REVIEW"/>
+
+
+</uiModel>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+
+	<dto dtoName="PondLightDTO" entityName="Pond"
+			entityPackage="ir.viratech.pond_ms.model.layer"
+			package="ir.viratech.pond_ms.api.layer">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="title" internalName="title"/>
+	</dto>
+
+	<dto name="Pond" extentKey="full"
+			entityPackage="ir.viratech.pond_ms.model.layer"
+			package="ir.viratech.pond_ms.api.layer" >
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="title" internalName="title" />
+
+ 		<prop-dto name="layer"
+ 				type="ir.viratech.pond_ms.api.layer.dto.LayerLightDTO"
+ 				internalType="ir.viratech.pond_ms.model.layer.ParentLayer"
+ 				save="hooked-replaceEntity-nullable" trackModif="true"/>
+
+ 		<prop name="timeSeries"
+		   	internalType="java.util.List.&lt;ir.viratech.pond_ms.model.time_series.RootCategory.&gt;"
+			type="ir.viratech.commons.api.dto.PlainCollectionDTO&lt;ir.viratech.pond_ms.model.time_series.Category, ir.viratech.pond_ms.api.time_series.dto.CategoryLightDTO&gt;"
+			save="disabled-withSetter"
+			load="abstract"
+			typeKey="collection" />
+
+ 		</dto>
+
+
+ 	<resource
+		entityName="Pond"
+		resourceName="PondResource"
+		package="ir.viratech.pond_ms.api.layer"
+		entityPackage="ir.viratech.pond_ms.model.layer"
+		resourcePath="org/{org_key}/pond"
+		bundlePrefix="pond."
+		entityMgr="ir.viratech.pond_ms.model.layer.logic.PondMgr"
+		fullDto="ir.viratech.pond_ms.api.layer.dto.PondFullDTO"
+		parent="ir.viratech.pond_ms.api.AbstractOrganizationBasedMgrBasedResource&lt;Pond,
+		ir.viratech.pond_ms.api.layer.dto.PondFullDTO&gt;"
+		featureEntityName="POND" />
+
+
+</uiModel>

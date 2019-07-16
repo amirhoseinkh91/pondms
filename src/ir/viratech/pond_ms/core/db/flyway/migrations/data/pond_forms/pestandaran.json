@@ -1,0 +1,73 @@
+{
+	"key": "pestandaran",
+	"title": "پستانداران",
+	"displayStringFunction": "function(){return persian_name;}",
+	"properties": {
+		"persian_name": {
+			"label": "نام فارسی",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"scientific_name": {
+			"label": "نام علمی",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"khanevade": {
+			"label": "خانواده",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"jamiat_dar_talab": {
+			"label": "فراوانی در تالاب",
+			"type": "enum",
+			"typeParams": {
+				"enumType": "faravani_dar_talab_pestandaran"
+			},
+			"widget": "",
+			"showEditButton": false
+		},
+		"jamiat_dar_iran": {
+			"label": "فراوانی در ایران",
+			"type": "enum",
+			"typeParams": {
+				"enumType": "faravani_dar_talab_pestandaran"
+			},
+			"widget": "",
+			"showEditButton": false
+		},
+		"tedad_moshahedeshode_79": {
+			"label": "تعداد مشاهده شده در مطالعات سال 79-80",
+			"type": "integer",
+			"widget": "",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "توضیحات",
+			"members": [
+				"persian_name",
+				"scientific_name",
+				"khanevade",
+				"jamiat_dar_talab",
+				"jamiat_dar_iran",
+				"tedad_moshahedeshode_79"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:64"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

@@ -1,0 +1,64 @@
+<div ng-show="isEditMode">
+    <div class="row rowForm">
+        <div class="col-sm-12">
+            <input class="form-control" type="text" ng-model="Data.placePlanObj.name" name='{{field}}-{{suffix}}-name'
+                   placeholder="نام">
+        </div>
+        <div class="col-sm-12">
+            <input class="form-control" type="text" ng-model="Data.placePlanObj.services" name='{{field}}-{{suffix}}-services'
+                   placeholder="خدمات">
+        </div>
+        <div class="col-sm-12">
+            <input class="form-control" type="number" step="0.1" ng-model="Data.placePlanObj.price" name='{{field}}-{{suffix}}-price'
+                   placeholder="قیمت">
+        </div>
+        <div class="col-sm-12">
+            <vt-persian-date-picker ng-model="Data.placePlanObj.startDate" model="Data.placePlanObj.startDate"
+                                    name='{{field}}-{{suffix}}-startDate'>
+            </vt-persian-date-picker>
+        </div>
+        <div class="col-sm-12">
+            <vt-persian-date-picker ng-model="Data.placePlanObj.endDate" model="Data.placePlanObj.endDate"
+                                    name='{{field}}-{{suffix}}-endDate'>
+            </vt-persian-date-picker>
+        </div>
+        <div class="col-sm-12">
+            <input class="form-control" type="text" ng-model="Data.placePlanObj.reserve"
+                   name='{{field}}-{{suffix}}-reserve'
+                   placeholder="روش تماس: url یا telephoneNo">
+        </div>
+        <div class="col-sm-12 text-left">
+            <button class="btn btn-success" type="button" ng-click="Func.onSaveClick()">ذخیره</button>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="row rowForm">
+        <table class="table table-striped table-hover" ng-show="model.length > 0">
+            <thead>
+            <tr>
+                <th>اسم</th>
+                <th>قیمت</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>روش تماس</th>
+                <th ng-show="isEditMode">حذف</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in model">
+                <td>{{item.name | EnToFaNumber}}</td>
+                <td>{{item.price | EnToFaNumber}}</td>
+                <td>{{item.startDate | persianDate:'dd-MMMM-yyyy' | EnToFaNumber}}</td>
+                <td>{{item.endDate | persianDate:'dd-MMMM-yyyy' | EnToFaNumber}}</td>
+                <td>{{item.reserve | EnToFaNumber}}</td>
+                <td ng-show="isEditMode">
+                    <button class="btn btn-danger" type="button" ng-click="Func.onRemoveClick(item, $index)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

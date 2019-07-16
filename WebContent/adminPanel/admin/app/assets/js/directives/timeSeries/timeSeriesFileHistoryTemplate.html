@@ -1,0 +1,11 @@
+<div class="row rowForm" id="timeseries-history-box"> 
+	<div class="col-sm-11" id="timeseries-history-inner-box" 
+		ng-repeat="category in timeSeriesGroupList">
+		<div class="row rowForm">
+			<div class="col-sm-6 timeseries-group-name">{{category.name}}</div>
+			<vt-file class="file-download-btn" name="file" is-edit-mode="false"
+				model="{hash:category.dataFile.hash}"></vt-file>
+			</div>
+		</div>
+	</div>
+</div>

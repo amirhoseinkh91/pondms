@@ -1,0 +1,130 @@
+<div class="panel panel-map-search" ng-class="{'opened':!openRightSide}" id="search-bar">
+	<div class="panel-body">
+		<div class="col-sm-12 div-search">
+			<div class="input-group">
+			  <input type="text" class="form-control" 
+			  		placeholder="جستجو ..." aria-describedby="basic-addon1" 
+			  		ui-keypress="{13:'Func.onSearchClick()'}"
+			  		ng-model="Data.query" >
+			  <span class="input-group-addon" id="basic-addon1" ng-click="Func.onSearchClick()"><i class="fa fa-search fa-btn"></i></span>
+			  <span class="input-group-addon" id="basic-addon2" ng-click="Func.onClearSearchClick()"><i class="fa fa-times fa-btn"></i></span>
+			</div>
+			
+			<div class="div-search-result">
+				<div ng-repeat="layer in Data.searchedLayerList">
+					<div class="search-result-image">
+						<img ng-src="{{'app/assets/img/'+ layer.type +'.png'}}">
+					</div>
+					<div class="search-result-description">
+						<label class="search-result-description-main">{{layer.name}}</label>
+						<label class="search-result-description-details">لایه {{layer.type}}</label>
+					</div>
+				</div>
+				<div ng-repeat="obj in Data.searchedObjectList" ng-click="Func.onSearchedObjectClick(obj)">
+					<div class="search-result-image">
+						<img ng-src="{{'app/assets/img/'+ obj.type +'.png'}}">
+					</div> 
+					<div class="search-result-description">
+						<label class="search-result-description-main">{{obj.name}}</label>
+						<label class="search-result-description-details">{{obj.layer.name}}</label>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-map flex-content" ng-class="{'opened':openRightSide}">
+	<div class="panel-body">
+		<div class="col-sm-12 div-tree">
+			<ng-tree api="Controller.treeController"></ng-tree>
+		</div>
+	</div>
+	<button id="right-menu-toggle" class="sidemenuToggle" ng-click="openRightSide=!openRightSide"><i class="fa fa-bars"></i></button>
+</div>
+
+<div class="panel panel-object flex-content" ng-class="{'opened':openLeftSide}">
+	<i class="fa fa-btn fa-times pull-left" ng-click="Func.onCloseInfoPanelClick()"></i>
+	<div class="panel-body col-sm-11">
+		<div class="object-title">
+			<p ng-if="leftSideType=='object'">{{Data.vectorObject.name}}</p>
+			<p ng-if="leftSideType=='pond' || leftSideType=='layer'">{{Data.selectedLayer.name}}</p>
+		</div>
+		<ul class="nav nav-tabs">
+			<li class="left-sidebar-tab" role="presentation" ng-class="{'active':tab.active}"
+				ng-repeat="tab in Data.tabList"
+				ng-click="Func.onTabClick(tab)"
+				ng-show="tab.types.indexOf(leftSideType)!=-1"><a>{{tab.title}}</a></li>
+		</ul>
+		<div class="col-sm-12" ng-show="Data.tabList[0].active">
+			<p ng-bind="Data.vectorObject.description" ng-if="leftSideType=='object'"></p>
+			<p ng-bind="Data.selectedLayer.description"></p>
+		</div>
+		<div class="col-sm-12" ng-show="Data.tabList[1].active">
+			<a ng-show="Data.mode=='view' && leftSideType=='object' && !featureLoading"
+			   class="btn btn-sm btn-default" ng-click="Func.changeEditMode()">ویرایش</a>
+			<a ng-show="Data.mode=='view' && leftSideType=='object' && !featureLoading"
+			   class="btn btn-sm btn-default" ng-click="Func.deleteModel()" ng-confirm="آیا از حذف این نقطه مطمئن هستید؟">حذف</a>
+			<a ng-show="Data.mode!='view' && leftSideType=='object' && !featureLoading"
+			   class="btn btn-sm btn-default" ng-click="Func.saveEditMode()">ذخیره</a>
+			<a ng-show="Data.mode!='view' && leftSideType=='object' && !featureLoading"
+			   class="btn btn-sm btn-default" ng-click="Func.cancleEditMode()">انصراف</a>
+			<div class="panel-body" ng-if="leftSideType=='object' && !featureLoading">
+				<map-drawing model="Data.mapModel" mode="Data.mode" api="Controller.crud"></map-drawing>
+			</div>
+			<form name="example" class="form-horizontal" role="form" ng-if="leftSideType=='object' && !featureLoading">
+				<schema-form-fields is-edit-mode="Data.mode!='view'" schema="Data.form"
+					model="Data.vectorObject.formInstance" api="Data.api"
+					simple-view="Data.form.viewGroups.length==1"></schema-form-fields>
+			</form>
+			
+			<form name="example" class="form-horizontal" role="form" ng-if="leftSideType=='pond'">
+				<schema-form-fields is-edit-mode="false" schema="Data.pondSchema"
+					model="Data.pondForm" api="Data.api"
+					simple-view="Data.pondSchema.viewGroups.length==1"></schema-form-fields>
+			</form>
+			<div ng-if="leftSideType=='pond'" style="margin-bottom: 60px;">
+				<a class="btn btn-sm btn-success btn-text" id="pond-form-view-btn" type="button" ng-click="Func.onShowSchemaFormClick()">مشاهده فرم</a>
+			</div>
+		</div>
+		<div class="col-sm-12" ng-show="Data.tabList[2].active">
+			<time-series-file-history func="Controller.func" ></time-series-file-history>
+			<a class="btn btn-sm btn-success btn-text" id="pond-timeseries-view-btn" type="button" ng-click="Func.onTimeSeriesClick()">مشاهده نمودار سری های زمانی</a>
+		</div>
+		<div class="col-sm-12" ng-show="Data.tabList[3].active">
+			<pond-file is-edit-mode="false" api="Data.fileApi"></pond-file>
+		</div>
+		
+	</div>
+</div>
+
+
+<div class="rtMap">
+	<div id="map"></div>
+	<pan map="map"></pan>
+	<legend layer-list='Data.layerList'></legend>
+	<sortable-layer-panel map="map"></sortable-layer-panel>
+	<button class="btn btn-default" id="btn-map-export" ng-click="Func.onExportClick()">
+		<i class="fa fa-download fa-lg"></i>
+	</button>
+	<button class="btn btn-default" id="btn-map-polygon" ng-click="Func.onDrawPolygonClick()" 
+			ng-show="Data.selectedLayer.type && Data.selectedLayer.type=='raster'">
+		<i class="fa fa-street-view fa-lg"></i>
+	</button>
+	<button class="btn btn-default" id="btn-map-marker" ng-click="Func.onDrawPointClick()" 
+			ng-show="Data.selectedLayer.type && Data.selectedLayer.type=='raster'">
+		<i class="fa fa-map-marker fa-lg"></i>
+	</button>
+	<button class="btn btn-default" id="btn-map-intro"  ng-click="CallMe();">
+		<i class="glyphicon glyphicon-question-sign"></i>
+	</button>
+	
+	
+</div>
+
+<div 
+     ng-intro-options="Controller.IntroOptions"
+     ng-intro-method="CallMe" id='help-div'></div>
+
+<!-- 	 ng-controller="MyController" -->

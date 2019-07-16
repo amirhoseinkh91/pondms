@@ -1,0 +1,59 @@
+{
+  "path" : "vectorlayer",
+  "key" : "vectorlayer",
+  "featureName" : "VECTOR_LAYER",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "type" : {
+      "label" : "type",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "formSchemaKey" : {
+      "label" : "formSchemaKey",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "parentLayer" : {
+      "label" : "parentLayer",
+      "type" : "enum",
+      "enumType" : "parentlayer",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "vectorObjects" : {
+      "label" : "vectorObjects",
+      "type" : "collection",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "name", "type", "formSchemaKey" ]
+  }
+}

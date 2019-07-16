@@ -1,0 +1,237 @@
+{
+	"key": "DESCRIPTIVE_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "اطلاعات توصیفی",
+	"displayStringFunction": "function(){return 'اطلاعات توصیفی';}",
+	"properties": {
+		"Wet_Rate": {
+			"type": "string",
+			"label": "رده بندی تالاب",
+			"widget": "textBox"
+		},
+		"related_samans": {
+			"type": "html",
+			"label": "سمن های مرتبط با تالاب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				"html": "ب"
+			}
+		},
+		"related_saman": {
+			"type": "string",
+			"label": "سمن های مرتبط با تالاب",
+			"multiple": true,
+			"widget": "textBox",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"engheraz": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"label": "گونه های در معرض انقراض",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"area": {
+			"type": "integer",
+			"label": "مساحت (هکتار)",
+			"widget": ""
+		},
+		"depth": {
+			"type": "integer",
+			"label": "میانگین عمق (سانتی متر)",
+			"widget": ""
+		},
+		"volume": {
+			"type": "integer",
+			"label": "حجم آب تالاب (میلیون متر مکعب)",
+			"widget": "",
+			"showEditButton": false
+		},
+		"salt": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "water_salt"
+			},
+			"label": "طبقه بندی نوع تالاب از لحاظ شوری آب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"water_regime": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "water_regime"
+			},
+			"label": "وضعیت رژیم آبی",
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"navasanat_from": {
+			"type": "integer",
+			"label": "از",
+			"widget": ""
+		},
+		"navasanat_to": {
+			"type": "integer",
+			"label": "تا",
+			"widget": ""
+		},
+		"mohajemin": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "animals"
+			},
+			"label": "گونه های جانوری مهاجم",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"goone_giahi_mohajem": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "giahi"
+			},
+			"label": "گونه های گیاهی مهاجم",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"manabe_tamin_ab": {
+			"type": "string",
+			"label": "منابع تامین آب تالاب",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"vaziathefazati": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "vaziat_modiriati"
+			},
+			"label": "وضعیت مدیریتی تالاب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"zinafan_talab": {
+			"type": "string",
+			"label": "ذینفعان تالاب",
+			"widget": "textarea",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"eutrophic": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "vaziat_taghzieh"
+			},
+			"label": "وضعیت تغذیه گرایی تالاب",
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"karbordhaye_talab": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "khadat_talab"
+			},
+			"label": "کاربردهای تالاب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			}
+		},
+		"tahdidat_talab": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "tahdidat_talab"
+			},
+			"label": "تهدیدات تالاب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"navasanatomgh": {
+			"type": "html",
+			"label": "دامنه نوسانات عمق",
+			"widget": "",
+			"widgetParams": {
+				"html": "دامنه نوسانات عمق (متر)"
+			}
+		}
+	},
+	"extents": {
+		"list": [
+			"name",
+			"description"
+		],
+		"enriched": [
+			"name",
+			"description",
+			"Wet_Rate",
+			"vaziathefazati",
+			"water_regime",
+			"salt",
+			"eutrophic"
+		]
+	},
+	"viewGroups": [
+		{
+			"key": "detail",
+			"name": "مشخصات",
+			"members": [
+				"volume",
+				"area",
+				"depth",
+				"manabe_tamin_ab",
+				"Wet_Rate",
+				"water_regime",
+				"eutrophic",
+				"related_saman",
+				"zinafan_talab",
+				"karbordhaye_talab",
+				"tahdidat_talab",
+				"engheraz",
+				"mohajemin",
+				"goone_giahi_mohajem",
+				"vaziathefazati",
+				"salt",
+				"navasanatomgh",
+				"navasanat_from",
+				"navasanat_to"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:116"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

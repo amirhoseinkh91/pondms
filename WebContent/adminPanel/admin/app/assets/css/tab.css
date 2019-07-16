@@ -1,0 +1,37 @@
+.nav-tabs {
+	margin-bottom: 10px;
+}
+.nav-tabs > li > a{
+	border: none !important;
+	color: #555;
+}
+
+.nav-tabs > li{
+	cursor: pointer;
+}
+
+.nav-tabs > li > a:hover{
+	background: transparent;
+}
+
+.nav-tabs > li.active{
+	border-bottom: solid 2px #4285f4;
+}
+
+.list-group-item{
+	color: #999;
+	background: #fff;
+	border-width: 0 0 1px 1px;
+	border-radius: 0;
+	border-color: #DCDCDC;
+	margin-top: 1px;
+	padding: 7px 5px;
+}
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+	color: #00AF50;
+	background: #fff;
+	border-color: #DCDCDC;
+}
+.list-group-item:last-child,.list-group-item:first-child{
+	border-radius : 0;
+}

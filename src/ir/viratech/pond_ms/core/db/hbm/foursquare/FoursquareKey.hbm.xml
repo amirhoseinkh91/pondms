@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.foursquare" schema="foursquare">
+
+    <class name="FoursquareKey" table="FOURSQUARE_KEYS" schema="foursquare">
+        <id name="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+
+        <property name="extuid" type="string" not-null="true" unique="true">
+            <meta attribute="alternate-key">true</meta>
+            <meta attribute="init">this.generateUid()</meta>
+        </property>
+
+        <property name="clientId" type="string" unique="true" column="client_id" not-null="true"/>
+
+        <property name="clientSecret" type="string" unique="true" column="client_secret" not-null="true"/>
+
+        <property name="usedCount" column="used_count" type="java.lang.Integer" not-null="true">
+            <meta attribute="init">0</meta>
+        </property>
+
+        <property name="maxUsage" column="max_usage" type="integer" not-null="true">
+            <meta attribute="init">0</meta>
+        </property>
+
+        <property name="busy" column="busy" type="boolean" not-null="true">
+            <meta attribute="init">false</meta>
+        </property>
+
+        <property name="lastUsedDate" column="last_used_date" type="timestamp" not-null="true">
+            <meta attribute="init">ir.viratech.commons.utils.MyDateUtils.yesterday()</meta>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

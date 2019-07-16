@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.file">
+	<class name="DataFile" table="DATA_FILES" schema="pond_ms">
+		
+		
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+		
+		
+		<many-to-one name="abstractFile" class="ir.viratech.commons.file.model.AbstractFile"
+			column="abstract_file" unique="true" not-null="true" cascade="all"/>
+		
+		
+		<property name="dataReference" type="string" not-null="false" />
+		<property name="dataCollectionDate" column="data_collection_date" type="timestamp"
+			not-null="false" />
+
+	</class>
+</hibernate-mapping>

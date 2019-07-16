@@ -1,0 +1,42 @@
+{
+  "path" : "foursquare-key",
+  "key" : "foursquarekey",
+  "featureName" : "POINT_OBJECT",
+  "properties" : {
+    "clientId" : {
+      "label" : "clientId",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "clientSecret" : {
+      "label" : "clientSecret",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "usedCount" : {
+      "label" : "usedCount",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "maxUsage" : {
+      "label" : "maxUsage",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "clientId", "clientSecret" ]
+  }
+}

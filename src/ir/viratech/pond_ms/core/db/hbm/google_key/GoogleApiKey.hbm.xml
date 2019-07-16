@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.google_key">
+	<class name="GoogleApiKey" table="Google_Api_Keys" schema="pond_ms">
+
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="key" type="string" unique="true"/>
+
+		<property name="lastUsedDate" column="last_used_date" type="timestamp">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="usedCounter" type="integer" />
+
+		<property name="busy" type="boolean" not-null="true">
+			<meta attribute="init">false</meta>
+		</property>
+
+	</class>
+
+</hibernate-mapping>
+ 

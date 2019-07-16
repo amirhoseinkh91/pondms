@@ -1,0 +1,341 @@
+{
+	"entityTypes": [
+		{
+			"collectionName": "publicDescriptivePondFormSchema_col",
+			"entityKey": "DESCRIPTIVE_FORM_SCHEMA_KEY__PUBLIC",
+			"jsonSchemaFileName": "DESCRIPTIVE_FORM_SCHEMA_KEY__PUBLIC.json",
+			"hotkey": "alt+shift+ctrl+1",
+			"name": "اطلاعات توصیفی"
+		}
+	],
+	"enums": [
+		{
+			"key": "water_regime",
+			"label": "وضعیت رژیم آبی",
+			"types": [
+				{
+					"key": "dayemi",
+					"label": "دایمی"
+				},
+				{
+					"key": "movaghat",
+					"label": "موقت"
+				}
+			]
+		},
+		{
+			"key": "water_salt",
+			"label": "شوری آب",
+			"types": [
+				{
+					"key": "shoor",
+					"label": "شور"
+				},
+				{
+					"key": "labshoor",
+					"label": "لب شور"
+				},
+				{
+					"key": "shirin",
+					"label": "شیرین"
+				}
+			]
+		},
+		{
+			"key": "vaziat_taghzieh",
+			"label": "وضعیت تغذیه گرایی",
+			"types": [
+				{
+					"key": "bala",
+					"label": "بالا"
+				},
+				{
+					"key": "motevaset",
+					"label": "متوسط"
+				},
+				{
+					"key": "paien",
+					"label": "پایین"
+				},
+				{
+					"key": "undefined",
+					"label": "نامشخص"
+				}
+			]
+		},
+		{
+			"key": "animals",
+			"label": "گونه های جانوری",
+			"types": [
+				{
+					"key": "Chalkalburnus_mossulensis",
+					"label": "شاه کولی"
+				},
+				{
+					"key": "abuzamir",
+					"label": "ابوزمیر"
+				},
+				{
+					"key": "zabangavi",
+					"label": "زبان گاوی"
+				},
+				{
+					"key": "zaminkan",
+					"label": "زمین کن"
+				},
+				{
+					"key": "pico",
+					"label": "پیکو"
+				},
+				{
+					"key": "feriale",
+					"label": "فریاله"
+				},
+				{
+					"key": "kharoo",
+					"label": "خارو"
+				},
+				{
+					"key": "guaf",
+					"label": "گواف"
+				},
+				{
+					"key": "marmahi",
+					"label": "مارماهی"
+				},
+				{
+					"key": "koose",
+					"label": "کوسه"
+				}
+			]
+		},
+		{
+			"key": "giahi",
+			"label": "گونه های گیاهی",
+			"types": [
+				{
+					"key": "chamanshoor",
+					"label": "چمن شور"
+				},
+				{
+					"key": "shene_gandomi",
+					"label": "شن گندمی"
+				},
+				{
+					"key": "tirkaman_abi",
+					"label": "تیرکمان ابی"
+				},
+				{
+					"key": "alaf_farsh",
+					"label": "علف فرش"
+				},
+				{
+					"key": "siah_daneh",
+					"label": "سیاه دانه"
+				},
+				{
+					"key": "dashti",
+					"label": "دشتی"
+				},
+				{
+					"key": "kharshotor",
+					"label": "خارشتر"
+				},
+				{
+					"key": "paye_khar",
+					"label": "پای خر"
+				},
+				{
+					"key": "taje_khoroos",
+					"label": "تاج خروس"
+				},
+				{
+					"key": "choghondarin",
+					"label": "چغندرین"
+				},
+				{
+					"key": "gole_jaliz",
+					"label": "گل جالیز"
+				}
+			]
+		},
+		{
+			"key": "khadat_talab",
+			"label": "خدمات تالاب",
+			"types": [
+				{
+					"key": "seid_mahi",
+					"label": "صید ماهی"
+				},
+				{
+					"key": "tasbit_sahel",
+					"label": "تثبیت ساحل"
+				},
+				{
+					"key": "tahneshini_rosoobat",
+					"label": "ته نشینی رسوبات"
+				},
+				{
+					"key": "jazb_mavd_moghazi",
+					"label": "جذب مواد مغذی و باقیمانده مواد سمی و کنترل سیلاب"
+				},
+				{
+					"key": "arzesh_shekar_parandegan",
+					"label": "ارزش اقتصادی شکار پرندگان"
+				},
+				{
+					"key": "arzesh_eghtesadi_bardasht_ney",
+					"label": "ارزش اقتصادی برداشت نی"
+				},
+				{
+					"key": "cheraye_heyvanat",
+					"label": "چرای حیوانات"
+				}
+			]
+		},
+		{
+			"key": "tahdidat_talab",
+			"label": "تهدیدات تالاب",
+			"types": [
+				{
+					"key": "kahesh_takhsis_ab",
+					"label": "رقابت در استفاده از منابع اب و كاهش تخصیص اب تالاب"
+				},
+				{
+					"key": "afzayesh_shoori",
+					"label": "افزايش شوری تالاب"
+				},
+				{
+					"key": "aloodegi_ab",
+					"label": "الودگی اب"
+				},
+				{
+					"key": "kahesh_jaryanha_seilabi",
+					"label": "کاهش جریانهای سیلابی"
+				},
+				{
+					"key": "taghirat_eghilimi",
+					"label": "تغییرات اقلیمی"
+				},
+				{
+					"key": "payamadhaye_khosksali",
+					"label": "پيامدهای خشكسالي"
+				},
+				{
+					"key": "hojoom_goonehaye_gheyreboomi",
+					"label": "معرفی گونه های غیربومی"
+				},
+				{
+					"key": "bardasht_gheyre_mojaz",
+					"label": "برداشت غيرمجاز منابع قرضه از تالاب و تکه تکه شدن زمین های تالابی"
+				}
+			]
+		},
+		{
+			"key": "vaziat_modiriati",
+			"label": "وضعیت مدیریتی تالاب",
+			"types": [
+				{
+					"key": "ramsar",
+					"label": "فهرست رامسر"
+				},
+				{
+					"key": "panahgah",
+					"label": "پناهگاه حیات وحش"
+				},
+				{
+					"key": "mantaghe_hefazatshode",
+					"label": "منطقه حفاظت شده"
+				},
+				{
+					"key": "zakhiregah_zistkore",
+					"label": "ذخیره گاه زیست کره"
+				}
+			]
+		},
+		{
+			"key": "faravani_dozistan",
+			"label": "فراوانی دوزیستان و خزندگان",
+			"types": [
+				{
+					"key": "F",
+					"label": "اندک"
+				},
+				{
+					"key": "C",
+					"label": "جمعیت متعارف و معمول"
+				},
+				{
+					"key": "A",
+					"label": "فراوان"
+				}
+			]
+		},
+		{
+			"key": "zistgah_dozistan_khazandegan",
+			"label": "زیستگاه دوزیستان و خزندگان",
+			"types": [
+				{
+					"key": "WL",
+					"label": "سرتاسر تالاب"
+				},
+				{
+					"key": "M",
+					"label": "تالاب اب شیرین"
+				},
+				{
+					"key": "islands",
+					"label": "جزایر"
+				}
+			]
+		},
+		{
+			"key": "faravani_dar_talab_pestandaran",
+			"label": "فراوانی در تالاب",
+			"types": [
+				{
+					"key": "kam",
+					"label": "کم"
+				},
+				{
+					"key": "motevaset",
+					"label": "متوسط"
+				},
+				{
+					"key": "faravan",
+					"label": "فراوان"
+				},
+				{
+					"key": "namoshakhas",
+					"label": "نامشخص"
+				}
+			]
+		},
+		{
+			"key": "faravani_hozoor_mahi",
+			"label": "فراوانی حضور ماهی ها",
+			"types": [
+				{
+					"key": "faravan",
+					"label": "فراوان"
+				},
+				{
+					"key": "motevaset",
+					"label": "متوسط"
+				},
+				{
+					"key": "kam",
+					"label": "کم"
+				},
+				{
+					"key": "benodrat",
+					"label": "به ندرت"
+				},
+				{
+					"key": "namoshakhas",
+					"label": "نامشخص"
+				}
+			]
+		}
+	]
+}

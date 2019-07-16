@@ -1,0 +1,19 @@
+{
+    "name": "indeterminate",
+    "version": "0.1.0",
+    "authors": [
+        "viratech <www.viratech.ir>"
+    ],
+    "description": "",
+    "main": "vtTriStateCheckbox.js",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test"
+    ],
+    "dependencies": {
+        "angular": "*"
+    }
+}
+

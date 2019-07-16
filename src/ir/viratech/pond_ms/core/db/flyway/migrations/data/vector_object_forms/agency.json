@@ -1,0 +1,135 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"Images": {
+			"type": "attachment",
+			"label": "تصاویر",
+			"multiple": true,
+			"widget": "attachFile",
+			"widgetParams": {}
+		},
+		"address": {
+			"type": "string",
+			"label": "آدرس",
+			"widget": "textarea"
+		},
+		"phoneNumber": {
+			"type": "string",
+			"label": "شماره تماس",
+			"widget": "textBox"
+		},
+		"website": {
+			"type": "string",
+			"label": "وبسایت",
+			"widget": "textBox"
+		},
+		"Rate": {
+			"type": "integer",
+			"label": "درجه کیفی",
+			"widget": "",
+			"showEditButton": false
+		},
+		"IntrinsicValue": {
+			"type": "integer",
+			"label": "ارزش ذاتی",
+			"widget": "",
+			"showEditButton": false
+		},
+		"TemporalValue": {
+			"type": "integer",
+			"label": "ارزش زمانی",
+			"widget": ""
+		},
+		"TotalScore": {
+			"type": "integer",
+			"label": "امتیاز کل",
+			"searchable": true,
+			"widget": "",
+			"widgetParams": {}
+		},
+		"name": {
+			"type": "string",
+			"label": "نام آژانس",
+			"searchable": true,
+			"widget": "textBox",
+			"widgetParams": {},
+			"showEditButton": false
+		},
+		"user_name": {
+			"label": "نام کاربری",
+			"type": "string",
+			"widget": "textBox",
+			"multiple": false,
+			"showEditButton": true,
+			"title": "user_name",
+			"typeComponent": {
+				"type": "string",
+				"typePersianName": "متن",
+				"widgets": [{
+					"widget": "textBox",
+					"persianName": "متن یک خطی",
+					"multiple": false,
+					"isHidden": false,
+					"picPath": "app/lib/vtSchemaDirective/img/component_pics/textBox.png",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringtextBox.html",
+					"$$hashKey": "object:285"
+				}, {
+					"widget": "textBox",
+					"persianName": "متن چند تایی",
+					"multiple": true,
+					"isHidden": true,
+					"picPath": "app/lib/vtSchemaDirective/img/component_pics/textBox.png",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringtextBoxmultiple.html"
+				}, {
+					"widget": "textarea",
+					"persianName": "متن چند خطی",
+					"multiple": false,
+					"isHidden": false,
+					"picPath": "app/lib/vtSchemaDirective/img/component_pics/textarea.png",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringtextarea.html",
+					"$$hashKey": "object:286"
+				}, {
+					"widget": "textarea",
+					"persianName": "متن چند خطی چندتایی",
+					"multiple": true,
+					"isHidden": true,
+					"picPath": "app/lib/vtSchemaDirective/img/component_pics/textarea.png",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringtextareamultiple.html"
+				}, {
+					"widget": "bigText",
+					"persianName": "متن بزرگ",
+					"multiple": false,
+					"isHidden": false,
+					"picPath": "app/lib/vtSchemaDirective/img/component_pics/bigText.png",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringbigText.html",
+					"$$hashKey": "object:287"
+				}, {
+					"widget": "",
+					"persianName": "پیش فرض",
+					"multiple": false,
+					"isHidden": true,
+					"picPath": "",
+					"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/stringtextBox.html"
+				}],
+				"$$hashKey": "object:63"
+			},
+			"searchable": true,
+			"widgetParams": {}
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"searchIndexDepth": null,
+	"aspects": {},
+	"viewGroups": [{
+		"key": "viewGroup1",
+		"name": "گروه1",
+		"members": ["name", "user_name", "Rate", "IntrinsicValue", "TemporalValue", "TotalScore", "address", "website", "phoneNumber", "Images"],
+		"secretLevel": 0,
+		"$$hashKey": "object:289"
+	}]
+}

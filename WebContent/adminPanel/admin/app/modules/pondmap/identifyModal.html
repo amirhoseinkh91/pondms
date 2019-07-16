@@ -1,0 +1,23 @@
+<div class="modal-body statistics-div">
+	<h3>{{layer.name}}</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>طول</th>
+				<th>عرض</th>
+				<th>مقدار</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{data.x | number : 4}}</td>
+				<td>{{data.y | number : 4}}</td>
+				<td>{{data.val | number : 6}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-sm btn-warning" type="button"
+		ng-click="onCloseClick()">بستن</button>
+</div>

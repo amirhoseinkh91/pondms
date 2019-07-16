@@ -1,0 +1,128 @@
+{
+	"key": "DESCRIPTIVE_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "اطلاعات توصیفی",
+	"displayStringFunction": null,
+	"properties": {
+		"name": {
+			"type": "string",
+			"label": "نام",
+			"widget": "textBox"
+		},
+		"description": {
+			"type": "string",
+			"label": "توضیحات",
+			"widget": "textarea",
+			"showEditButton": false
+		},
+		"Wet_Rate": {
+			"type": "string",
+			"label": "رده بندی تالاب",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"vaziathefazati": {
+			"type": "string",
+			"typeParams": {
+				"enumType": "vaziat_hefazati"
+			},
+			"label": "وضعیت مدیریتی تالاب",
+			"widget": "textBox",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"salt": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "shoori_tabaghebandi"
+			},
+			"label": "طبقه بندی نوع تالاب از لحاظ شوری آب",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"water_regime": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "water_regime"
+			},
+			"label": "وضعیت رژیم آبی",
+			"multiple": true,
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"related_saman": {
+			"type": "string",
+			"label": "سمن های مرتبط با تالاب",
+			"multiple": true,
+			"widget": "textBox",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"eutrophic": {
+			"type": "enum",
+			"typeParams": {
+				"enumType": "vaziat_taghzie"
+			},
+			"label": "وضعیت تغذیه گرایی تالاب",
+			"widget": "",
+			"widgetParams": {
+				
+			},
+			"showEditButton": true,
+			"title": "eutrophic",
+			"multiple": false
+		}
+	},
+	"extents": {
+		"list": [
+			"name",
+			"description",
+			"Wet_Rate",
+			"vaziathefazati",
+			"water_regime",
+			"salt",
+			"eutrophic"
+		],
+		"enriched": [
+			"name",
+			"description",
+			"Wet_Rate",
+			"vaziathefazati",
+			"water_regime",
+			"salt",
+			"eutrophic"
+		]
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "detail",
+			"name": "مشخصات",
+			"members": [
+				"name",
+				"description",
+				"Wet_Rate",
+				"vaziathefazati",
+				"related_saman",
+				"eutrophic",
+				"water_regime",
+				"salt"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:212"
+		}
+	]
+}

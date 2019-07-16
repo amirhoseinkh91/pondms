@@ -1,0 +1,74 @@
+{
+  "path" : "app-message",
+  "key" : "appmessage",
+  "featureName" : "APP_MESSAGE",
+  "properties" : {
+    "title" : {
+      "label" : "title",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "message" : {
+      "label" : "message",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "expirationDate" : {
+      "label" : "expirationDate",
+      "type" : "date",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "enabled" : {
+      "label" : "enabled",
+      "type" : "bool",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "images" : {
+      "label" : "images",
+      "type" : null,
+      "videoUrl" : {
+        "label" : "videoUrl",
+        "type" : "string",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "videoOnly" : {
+        "label" : "videoOnly",
+        "type" : "bool",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "urls" : {
+        "label" : "urls",
+        "type" : null
+      },
+      "extents" : {
+        "list" : [ "title", "message", "videoUrl" ]
+      }
+    }
+  }
+}

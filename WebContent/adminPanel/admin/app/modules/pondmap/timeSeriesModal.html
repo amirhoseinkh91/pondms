@@ -1,0 +1,45 @@
+<div class="modal-header">
+	<h3 class="modal-title">
+		<ol class="breadcrumb">
+	  		<li><span>سری زمانی</span></li>
+	  		<li><span>{{geoObject.title ? geoObject.title : geoObject.name}}</span></li>
+		</ol>
+	</h3>
+</div>
+<div class="modal-body">
+	<div class="form-inline" id="category-date-filter">
+		<select class="form-control"
+			ng-options="item as item.name for item in rootCategories"
+			ng-change="onFirstListChange()"
+			ng-model="selectedCategory.first"
+			ng-show="rootCategories">
+		</select> <select class="form-control"
+			ng-options="item as item.name for item in secondLevelCategories"
+			ng-change="onSecondListChange()" 
+			ng-model="selectedCategory.second"
+			ng-show="secondLevelCategories">
+		</select> <select class="form-control"
+			ng-options="item as item.name for item in thirdLevelCategories"
+			ng-change="onThirdListChange()" 
+			ng-model="selectedCategory.third"
+			ng-show="thirdLevelCategories">
+		</select>
+	</div>
+
+	<div class="panel panel-default" id="chart-box" ng-show="chartDrawn">
+		<div class="panel-body">
+			<div class="col-sm-10" id="chart-div">
+				<canvas id="bar" class="chart chart-bar" chart-data="data"
+					chart-labels="labels" chart-series="series">
+				</canvas>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-sm btn-warning" type="button"
+		ng-click="onCancelClick()">بستن</button>
+</div>

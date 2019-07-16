@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto name="ReplyReview" extentKey="full"
+		 package="ir.viratech.pond_ms.api.review"
+		 entityPackage="ir.viratech.pond_ms.model.review" genFIC="true">
+
+		<prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="position" type="string" />
+		<prop name="text" type="string"/>
+		<prop name="creationDate" type="timestamp" save="disabled"/>
+
+		<prop name="confirmed" type="boolean"/>
+
+	</dto>
+
+	<dto dtoName="ReplyReviewSaveDTO"
+		 entityName="ReplyReview"
+		 package="ir.viratech.pond_ms.api.review"
+		 entityPackage="ir.viratech.pond_ms.model.review" genFIC="false">
+
+		<prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="position" type="string" />
+		<prop name="text" type="string"/>
+
+	</dto>
+
+	<dto dtoName="ReplyReviewViewDTO"
+		 entityName="ReplyReview"
+		 package="ir.viratech.pond_ms.api.review"
+		 entityPackage="ir.viratech.pond_ms.model.review"
+		 genFIC="false">
+
+		<prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="position" save="disabled" type="string" />
+		<prop name="text" save="disabled" type="string"/>
+		<prop name="creationDate" type="timestamp" save="disabled"/>
+
+	</dto>
+
+
+</uiModel>

@@ -1,0 +1,103 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت تالاب‌ها</div>
+		<div class="panel-body">
+			<div class="col-md-8" access-checker="API_LIST_POND">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-search control-fn="Controller.pondSearchController"></vt-search>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-grid control-fn="Controller.pondListController"></vt-grid>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4" access-checker="API_VIEW_POND" 
+				ng-hide="Data.searchMode=='advanced'">
+				<div class="panel panel-default">
+					<div class="panel-body panel-management">
+						<div class="col-sm-12">
+							<a class="btn btn-sm btn-default btn-text"
+								access-checker="API_ADD_POND"
+								ng-show="true" type="button"
+								ng-click="Func.onAddpondClick()" ng-disabled="Data.mode=='add'" ng-bind="'CREATE'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-primary btn-text"
+								access-checker="API_EDIT_POND"
+								ng-show="Data.selectedpond.uid && Data.mode!='edit'" type="button"
+								ng-click="Func.onEditpondClick()" ng-disabled="" ng-bind="'EDIT'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								access-checker="API_ADD_POND"
+								ng-show="Data.mode=='add'" type="button"
+								ng-click="Func.onSavepondClick()" ng-bind="'SAVE'|EnToFaButton"
+								ng-disabled="pondForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								access-checker="API_EDIT_POND"
+								ng-show="Data.mode=='edit'" type="button"
+								ng-click="Func.onUpdatepondClick()" ng-bind="'UPDATE'|EnToFaButton"
+								ng-disabled="pondForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-warning btn-text"
+								ng-show="Data.mode=='edit' || Data.mode=='add'" type="button"
+								ng-click="Func.onCancelClick()" ng-disabled="" ng-bind="'CANCEL'|EnToFaButton"></a>
+							<a class="btn btn-sm btn-danger btn-text"
+								access-checker="API_DELETE_POND"
+								ng-show="Data.selectedpond.uid && Data.mode!='edit'" type="button"
+								ng-click="Func.onDeletepondClick()" ng-disabled="" ng-bind="'DELETE'|EnToFaButton"></a>
+								
+							<a class="btn btn-sm btn-danger btn-text"
+								access-checker="API_VIEW_POND"
+								ng-show="Data.selectedpond.uid" type="button"
+								ng-click="Func.onDetailClick()">جزئیات</a>
+								
+							<a class="btn btn-sm btn-default pull-left"
+								ng-show="true" type="button"
+								ng-click="Func.onChangeSearchModeClick('advanced')">
+								<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" ng-show="Data.selectedpond.uid || Data.mode=='add'">
+					<div class="panel-body">
+						<form name="pondForm" role="form" novalidate>
+							<div class="row rowForm">
+								<label class="col-sm-5">نام</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+							{{Data.selectedpond.title|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="text" class="form-control" name="title" 
+										ng-model="Data.selectedpond.title">
+								
+								</div>
+							</div>	
+							<div class="row rowForm">
+								<label class="col-sm-5">لایه</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+							{{Data.selectedpond.layer.name|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<select class="form-control" ng-model="Data.layer" name="layer" 
+										ng-change="Func.onSelectlayer(Data.layer)" 
+										ng-options="layer as layer.title for layer in Data.layerList">
+									</select>
+								</div>
+							</div>	
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4" access-checker="API_VIEW_POND" ng-show="Data.searchMode=='advanced'">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-sm-12">
+							<vt-search control-fn="Controller.pondAdvancedSearchController"></vt-search>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

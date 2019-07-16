@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd" >
+
+	<context:component-scan base-package="ir.viratech.pond_ms.api" />
+
+
+
+	<bean id="executionContextFilter" class="ir.viratech.pond_ms.api.auth.MyExecutionContextFilter">
+		<property name="executionContextHolder" ref="executionContextHolder" />
+	</bean>
+
+	<bean id="requestLogger" class="ir.viratech.commons.api.logfilter.FileSystemRequestLogger">
+		<property name="filePath" value="${requestLogger.filePath}" />
+	</bean>
+
+	<bean id="requestLoggerFilter" class="ir.viratech.commons.api.logfilter.RequestLoggerFilter">
+		<property name="requestLogger" ref="requestLogger" />
+		<property name="ignoreList" value="${requestLogger.ignoreList}" />
+	</bean>
+
+  	<bean id="passwordExpirationFilter" class="ir.viratech.pond_ms.api.user.filter.PasswordExpirationFilter">
+		<property name="errorStatusCode" value="419" />
+		<property name="availablePrefixes">
+			<list>
+				<value>/api/user/change_password</value>
+				<value>/api/config</value>
+				<value>/logout</value>
+				<value>/static</value>
+				<value>/app</value>
+			</list>
+		</property>
+	</bean>
+
+	<beans profile="dev">
+		<bean id="swaggerConfig"
+				class="com.wordnik.swagger.config.SwaggerConfig"
+				p:basePath="${server.url}/api"
+				p:apiVersion="1.0.0" />
+
+		<bean id="swaggerInitializer"
+				class="ir.viratech.commons.api.swagger.SwaggerInitializer" />
+
+	</beans>
+</beans>

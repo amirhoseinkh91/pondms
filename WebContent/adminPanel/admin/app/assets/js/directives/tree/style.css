@@ -1,0 +1,138 @@
+.tree {
+	min-height: 20px;
+	*padding: 19px 19px 141px;
+	margin-bottom: 20px;
+}
+
+.tree ul {
+	padding-right: 40px;
+}
+
+.tree>ul {
+	padding: 0;
+}
+
+.tree li.tree-node {
+	list-style-type: none;
+	margin: 0;
+	padding: 2px 5px 0 5px;
+	position: relative;
+	float: right;
+}
+
+.tree li.tree-node>p {
+	display: inline-block;
+	left: 0;
+	margin-bottom: 0 !important;
+	margin-left: 17px;
+	margin-right: 15px;
+	min-height: 0 !important;
+	padding: 0;
+	white-space: pre-wrap;
+}
+
+.tree li.tree-node::before, .tree li.tree-node::after {
+	content: '';
+	right: -20px;
+	position: absolute;
+	left: auto
+}
+
+.tree li.tree-node::before {
+	border-left: 1px solid #999;
+	bottom: 50px;
+	height: 100%;
+	top: 0;
+	width: 1px
+}
+
+.tree li.tree-node::after {
+	border-top: 1px solid #999;
+	height: 20px;
+	top: 17px;
+	width: 25px
+}
+
+.tree li.tree-node span {
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	display: inline-block;
+	padding: 5px 9px;
+	text-align: justify;
+	text-decoration: none;
+}
+
+.tree li.tree-node.parent_li>span {
+	cursor: pointer
+}
+
+.tree>ul>li.tree-node::before, .tree>ul>li.tree-node::after {
+	border: 0
+}
+
+.tree li.tree-node:last-child::before {
+	height: 17px
+}
+
+.tree li.tree-node.parent_li>span:hover, .tree li.tree-node.tree-node.parent_li>span:hover+ul li.tree-node span
+	{
+	background: #eee;
+	border: 1px solid #94a0b4;
+	color: #000
+}
+
+.tree .treeNode {
+	padding: 0px 3px;
+	background-color: transparent;
+	border: medium none;
+}
+
+.tree .treeNode:hover {
+	cursor: pointer;
+	color: orange;
+}
+
+.tree .treeNode.treeNodeSelected {
+	background-color: transparent;
+	border-color: none;
+	color: orange;
+}
+
+.tree .treeNode.treeNodeSelected  a .caret {
+	color: #ffffff;
+}
+
+.treeNode>i {
+	color: orange;
+}
+
+.tree .treeNode .badge {
+	left: 2px;
+	position: absolute;
+}
+
+.tree  .caret {
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 7px solid;
+	display: inline-block;
+	height: 0;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+
+.tree .treeNode p {
+	padding: 0px;
+	min-height: 0px !important;
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 15px;
+	left: 0px;
+	word-break: break-word;
+	font-size: 1.1em;
+}
+
+.tree .tree-node {
+	width: 100%;
+}

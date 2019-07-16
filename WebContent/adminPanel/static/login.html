@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+        function getRandomColors(){
+            var randcolors = [];
+            for(var i=0; i<3; i ++){
+                randcolors.push(Math.ceil(Math.random()*50));
+            }
+            return randcolors;
+        }
+        function changeBodyBackgroundColor() {
+            var colors = getRandomColors();
+            var backgroundcolor = "rgba("+colors[0]+","+colors[1]+","+colors[2]+",.6"+")";
+            $("body").css("background-color", backgroundcolor);
+        }
+        setInterval(function(){
+            changeBodyBackgroundColor();
+        },5000)
+    </script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ورود به سامانه جاسترو</title>
+<!-- Browser Not Support JavaScript and Redirect To page notSupportJS.html -->
+<noscript>
+	<meta http-equiv="refresh" content="0; URL=error-browser.html?errorType=JS" />
+</noscript>
+<link rel="shortcut icon" href="assets/images/favicon2.ico" type="image/x-icon" />
+
+<script type="text/javascript" src="assets/js/login.js"></script>
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.query-2.1.7.js"></script>
+<script type="text/javascript" src="assets/js/rainbows.js"></script>
+<script type="text/javascript" src="assets/js/angular.js"></script>
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/bootstrap-rtl.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h3 class="panel-title">سامانه جاسترو</h3>
+                    <!-- <h4> ورود به ناحیه مدیریت</h4> -->
+                </div>
+                <div class="panel-body">
+                    <form id="LoginForm" class="form-horizontal" action="/j_spring_security_check" method="post">
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="alert alert-danger" id="alarm">نام کاربری یا رمز عبور اشتباه وارد شده است.</div>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><img src="../static/assets/images/usericon.png"></div>
+                                        <input type="text" name="j_username" class="form-control" id="username" placeholder="لطفا نام کاربری خود را وارد نمایید" maxlength="128">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><img src="../static/assets/images/passicon.png"></div>
+                                    <input type="password" name="j_password" class="form-control" id="password" placeholder="لطفا رمز عبور خود را وارد نمایید" maxlength="128">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="rememberMe" name="_spring_security_remember_me"> مرا بخاطر بسپار
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <button type="submit" class="btn btn-success btn-block" id="submit">ورود</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer text-left">
+                    <!--<img src="../static/assets/images/logoJustRO.png">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                        <!--	<div id="main">-->
+<!--		<div class="middle">-->
+<!--			<div class="d1" style="width: 350px;">-->
+<!--				<div>-->
+<!---->
+<!--					<form id="LoginForm" action="../j_spring_security_check" method="post">-->
+<!---->
+<!--						<div class="input-box"-->
+<!--							style="padding: 20px; width: 300px; background-color: rgba(255, 255, 255, 1)">-->
+<!---->
+<!--							<div style="text-align: center">-->
+<!--								<img src="../static/assets/images/Logo.png">-->
+<!--							</div>-->
+<!---->
+<!--							<div>-->
+<!--								<p id='alarm' class=""-->
+<!--									style="font-size: 10px; color: red; text-align: right; visibility: hidden;">نام کاربری-->
+<!--									و یا رمز عبور وارد شده اشتباه است</p>-->
+<!--							</div>-->
+<!--							<div id="username_input">-->
+<!---->
+<!---->
+<!---->
+<!--								<div class="input-box">-->
+<!---->
+<!--									<input placeholder="نام کاربری" id="username" name="j_username" class="textbox-login  i1"-->
+<!--										maxlength="128" type="text"-->
+<!--										style="display: block; width: 276px; height: 45px; background: transparent; border: 0; color: #333; font-size: 14px; padding-right: 30px;">-->
+<!--									<img id="url_user" src="../static/assets/images/mailicon.png" alt="">-->
+<!---->
+<!--								</div>-->
+<!---->
+<!---->
+<!--							</div>-->
+<!---->
+<!--							<div id="password_input">-->
+<!---->
+<!---->
+<!--								<div class="input-box">-->
+<!---->
+<!--									<input placeholder="گذرواژه" id="password" name="j_password" class="textbox-login i2"-->
+<!--										maxlength="128" type="password"-->
+<!--										style="display: block; width: 276px; height: 45px; background: transparent; border: 0; color: #333; font-size: 14px; padding-right: 30px;">-->
+<!--									<img id="url_password" src="../static/assets/images/passicon.png" alt="">-->
+<!---->
+<!--								</div>-->
+<!---->
+<!---->
+<!--							</div>-->
+<!---->
+<!--							<div id="submit">-->
+<!---->
+<!--								<input class="i3" placeholder="remember Me" id="rememberMe"-->
+<!--									name="_spring_security_remember_me" type="checkbox"><label class="l1"-->
+<!--									for="rememberMe">مرا به خاطر بسپار</label> <input class="click i4 input-box" id="submit "-->
+<!--									type="submit" value="ورود">-->
+<!---->
+<!--							</div>-->
+<!--						</div>-->
+<!---->
+<!---->
+<!--					</form>-->
+<!--				</div>-->
+<!---->
+<!--			</div>-->
+<!---->
+<!--		</div>-->
+<!---->
+<!--	</div>-->
+
+	<script>
+		function err() {
+			if (window.location.search == '?login_error=1') {
+				document.getElementById('alarm').style.visibility = 'visible';
+			}
+		};
+		err();
+	</script>
+</body>
+
+
+
+</html>

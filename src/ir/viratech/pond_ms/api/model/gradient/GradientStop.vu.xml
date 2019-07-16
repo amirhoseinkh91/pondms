@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto name="GradientStop"  extentKey="full" 
+		entityPackage="ir.viratech.pond_ms.model.gradient" package="ir.viratech.pond_ms.api.gradient">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="offset" type="double" load="disabled" save="disabled-withSetter"/>
+		<prop name="red" type="double" save="disabled"/>
+		<prop name="green" type="double" save="disabled"/>
+		<prop name="blue" type="double" save="disabled"/>
+	</dto>
+
+</uiModel>

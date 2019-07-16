@@ -1,0 +1,173 @@
+{
+	"key": "TABULAR_FORM_SCHEMA_KEY__PUBLIC",
+	"title": "اطلاعات جدولی",
+	"displayStringFunction": null,
+	"properties": {
+		"goonehaye_giahi_shakhes": {
+			"type": "gooneh_giahi",
+			"label": "گونه های گیاهی شاخص",
+			"multiple": true,
+			"widget": "popupSelector",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"dozistan": {
+			"type": "dozistan",
+			"label": "گونه های دوزیست شاخص",
+			"multiple": true,
+			"widget": "popupSelector",
+			"widgetParams": {
+				
+			},
+			"showEditButton": false
+		},
+		"goonehaye_khazande_shakhes": {
+			"type": "khazandegan",
+			"label": "خزندگان شاخص",
+			"widget": "popupSelector",
+			"showEditButton": false,
+			"title": "goonehaye_khazande_shakhes",
+			"multiple": true,
+			"typeComponent": {
+				"type": "entitySelector",
+				"typePersianName": "انتخابگر موجودیت",
+				"widgets": [
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelector.html",
+						"$$hashKey": "object:189"
+					},
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت چندتایی",
+						"multiple": true,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelectormultiple.html"
+					}
+				],
+				"$$hashKey": "object:74"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"goonehaye_mahian_shakhesh": {
+			"type": "form_mahiha",
+			"label": "خصوصیات ماهیان مشاهده شده در سال 1375",
+			"widget": "popupSelector",
+			"showEditButton": false,
+			"title": "goonehaye_mahian_shakhesh",
+			"multiple": true,
+			"typeComponent": {
+				"type": "entitySelector",
+				"typePersianName": "انتخابگر موجودیت",
+				"widgets": [
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelector.html",
+						"$$hashKey": "object:189"
+					},
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت چندتایی",
+						"multiple": true,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelectormultiple.html"
+					}
+				],
+				"$$hashKey": "object:74"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"goonehaye_pestandar_shakhes": {
+			"type": "pestandaran",
+			"label": "پستانداران شاخص",
+			"widget": "popupSelector",
+			"showEditButton": true,
+			"title": "goonehaye_pestandar_shakhes",
+			"multiple": true,
+			"typeComponent": {
+				"type": "entitySelector",
+				"typePersianName": "انتخابگر موجودیت",
+				"widgets": [
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelector.html",
+						"$$hashKey": "object:189"
+					},
+					{
+						"widget": "popupSelector",
+						"picName": "",
+						"persianName": "انتخابگر موجودیت چندتایی",
+						"multiple": true,
+						"isHidden": true,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/entitySelector.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/popupSelectormultiple.html"
+					}
+				],
+				"$$hashKey": "object:74"
+			},
+			"widgetParams": {
+				
+			}
+		}
+	},
+	"extents": {
+		"list": [
+			"goonehaye_giahi_shakhes"
+		],
+		"enriched": [
+			"goonehaye_giahi_shakhes"
+		]
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "goonehaye_giahi",
+			"name": "گونه های گیاهی",
+			"members": [
+				"goonehaye_giahi_shakhes"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:315"
+		},
+		{
+			"key": "goonehaye_janevari",
+			"name": "گونه های جانوری",
+			"members": [
+				"dozistan",
+				"goonehaye_khazande_shakhes",
+				"goonehaye_mahian_shakhesh",
+				"goonehaye_pestandar_shakhes"
+			],
+			"secretLevel": 1,
+			"$$hashKey": "object:316"
+		}
+	]
+}

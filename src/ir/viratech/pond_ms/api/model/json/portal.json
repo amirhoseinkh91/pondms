@@ -1,0 +1,28 @@
+{
+  "path" : "portal",
+  "key" : "portal",
+  "featureName" : "Portal",
+  "properties" : {
+    "organization" : {
+      "label" : "organization",
+      "type" : "enum",
+      "enumType" : null,
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "gisMap" : {
+      "label" : "gisMap",
+      "type" : "enum",
+      "enumType" : "org/{org_key}/gis-map",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ ]
+  }
+}

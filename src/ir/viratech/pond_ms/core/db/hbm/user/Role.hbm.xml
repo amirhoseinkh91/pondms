@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.user.role">
+
+	<class name="Role" table="ROLES" schema="pond_ms">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+		<discriminator column="type_" type="string" />
+
+		<property name="extuid" type="string" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="name" type="string" not-null="true" unique="true" />
+		<property name="description" type="string" />
+
+		<property name="userDefined" type="boolean" not-null="true" unique="false" >
+			<meta attribute="init">true</meta>
+		</property>
+
+		<set name="availableFeatures" table="ROLE_FEATURES" schema="pond_ms" inverse="false" >
+			<meta attribute="reverse">usingRoles</meta>
+			<key column="roleId" />
+			<many-to-many column="featureId" class="ir.viratech.pond_ms.model.user.Feature" />
+		</set>
+
+		<subclass name="NullUserRole" discriminator-value="NullUserRole" />
+
+		<subclass name="UserRole" discriminator-value="UserRole"  >
+			<set name="users" table="USER_ROLES" schema="pond_ms" inverse="true" >
+				<meta attribute="reverse">roles</meta>
+				<key column="roleId" />
+				<many-to-many column="userId" class="ir.viratech.pond_ms.model.user.User" />
+			</set>
+		</subclass>
+	</class>
+
+</hibernate-mapping>

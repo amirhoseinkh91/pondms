@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+
+	<class name="Pond" table="PONDS" schema="pond_ms">
+
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="title" type="string" not-null="true" />
+
+		<many-to-one name="layer" unique="true"
+			not-null="true" class="ir.viratech.pond_ms.model.layer.ParentLayer" />
+
+		<property name="generalFormUID_public" type="string"
+			not-null="false" />
+		<property name="descriptiveFormUID_public" type="string"
+			not-null="false" />
+		<property name="tabularFormUID_public" type="string"
+			not-null="false" />
+		<property name="libraryFormUID_public" type="string"
+			not-null="false" />
+		<property name="galleryFormUID_public" type="string"
+			not-null="false" />
+		<property name="universalMapFormUID_public" type="string"
+			not-null="false" />
+
+		<property name="descriptiveFormUID_secret" type="string"
+			not-null="false" />
+		<property name="tabularFormUID_secret" type="string"
+			not-null="false" />
+		<property name="libraryFormUID_secret" type="string"
+			not-null="false" />
+		<property name="galleryFormUID_secret" type="string"
+			not-null="false" />
+		<property name="universalMapFormUID_secret" type="string"
+			not-null="false" />
+
+		<set name="timeSeriesRootCategories" table="ROOT_CATEGORY" schema="pond_ms"
+			inverse="false" cascade="all" lazy="true" >
+			<key column="pond_id" />
+			<one-to-many
+				class="ir.viratech.pond_ms.model.time_series.RootCategory" />
+		</set>
+
+	</class>
+</hibernate-mapping>

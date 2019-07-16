@@ -1,0 +1,142 @@
+<div class="panel panel-default panel-page-header col-sm-12">
+	<div class="panel-heading">مدیریت کاربران</div>
+	<div class="panel-body">
+		<div class="col-md-8" access-checker="API_LIST_USER">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<vt-search control-fn="Controller.userSearchController"></vt-search>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<vt-grid control-fn="Controller.userListController"></vt-grid>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-4" access-checker="API_VIEW_USER" 
+			ng-hide="Data.searchMode=='advanced'">
+			<div class="panel panel-default">
+				<div class="panel-body panel-management">
+					<div class="col-sm-12">
+						<a class="btn btn-sm btn-default btn-text"
+							access-checker="API_ADD_USER"
+							ng-show="true" type="button"
+							ng-click="Func.onAdduserClick()" ng-disabled="Data.mode=='add'" ng-bind="'CREATE'|EnToFaButton"></a>
+						<a class="btn btn-sm btn-primary btn-text"
+							access-checker="API_EDIT_USER"
+							ng-show="Data.selecteduser.uid && Data.mode!='edit'" type="button"
+							ng-click="Func.onEdituserClick()" ng-disabled="" ng-bind="'EDIT'|EnToFaButton"></a>
+						<a class="btn btn-sm btn-success btn-text"
+							access-checker="API_ADD_USER"
+							ng-show="Data.mode=='add'" type="button"
+							ng-click="Func.onSaveuserClick()" ng-bind="'SAVE'|EnToFaButton"
+							ng-disabled="userForm.$invalid && Data.validationClicked"></a>
+						<a class="btn btn-sm btn-success btn-text"
+							access-checker="API_EDIT_USER"
+							ng-show="Data.mode=='edit'" type="button"
+							ng-click="Func.onUpdateuserClick()" ng-bind="'UPDATE'|EnToFaButton"
+							ng-disabled="userForm.$invalid && Data.validationClicked"></a>
+						<a class="btn btn-sm btn-warning btn-text"
+							ng-show="Data.mode=='edit' || Data.mode=='add'" type="button"
+							ng-click="Func.onCancelClick()" ng-disabled="" ng-bind="'CANCEL'|EnToFaButton"></a>
+						<a class="btn btn-sm btn-danger btn-text"
+							access-checker="API_DELETE_USER"
+							ng-show="Data.selecteduser.uid && Data.mode!='edit'" type="button"
+							ng-click="Func.onDeleteuserClick()" ng-disabled="" ng-bind="'DELETE'|EnToFaButton"></a>
+						<a class="btn btn-sm btn-default pull-left"
+							ng-show="true" type="button"
+							ng-click="Func.onChangeSearchModeClick('advanced')">
+							<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-show="Data.selecteduser.uid || Data.mode=='add'">
+				<div class="panel-body">
+					<form name="userForm" role="form" novalidate>
+						<div class="row rowForm" ng-class="{'has-error':userForm.username.$invalid && Data.validationClicked}">
+							<label class="col-sm-5" ng-class="{'required':Data.mode=='add'}">نام کاربری</label>
+							<div class="col-sm-7" ng-show="Data.mode!='add'">
+						{{Data.selecteduser.username|EnToFaNumber}}
+							</div>
+							<div ng-show="Data.mode=='add'" class="col-sm-7">
+								<input type="text" class="form-control" name="username" required
+									ng-model="Data.selecteduser.username">
+							</div>
+						</div>	
+						<div class="row rowForm" ng-class="{'has-error':userForm.password.$invalid && Data.validationClicked}">
+							<label class="col-sm-5" ng-class="{'required':Data.mode=='add'}">رمز عبور</label>
+							<div ng-if="Data.mode=='add'" class="col-sm-7">
+								<input type="password" class="form-control" name="password" required
+									ng-model="Data.selecteduser.password">
+							</div>
+							<div ng-if="Data.mode=='edit'" class="col-sm-7">
+								<input type="password" class="form-control" name="password" 
+									ng-model="Data.selecteduser.password">
+							</div>
+						</div>	
+						<div class="row rowForm">
+							<label class="col-sm-5">فعال بودن</label>
+							<div ng-show="Data.mode=='view'" class="col-sm-7">
+						{{Data.selecteduser.enabled|checkmark}}
+							</div>
+							<div ng-show="Data.mode!='view'" class="col-sm-7">
+								<input type="checkbox" class="" name="enabled" 
+									ng-model="Data.selecteduser.enabled">
+							</div>
+						</div>	
+						<div class="row rowForm">
+							<label class="col-sm-5">نام</label>
+							<div ng-show="Data.mode=='view'" class="col-sm-7">
+						{{Data.selecteduser.firstName|EnToFaNumber}}
+							</div>
+							<div ng-show="Data.mode!='view'" class="col-sm-7">
+								<input type="text" class="form-control" name="firstName" 
+									ng-model="Data.selecteduser.firstName">
+							
+							</div>
+						</div>	
+						<div class="row rowForm">
+							<label class="col-sm-5">نام خانوادگی</label>
+							<div ng-show="Data.mode=='view'" class="col-sm-7">
+						{{Data.selecteduser.lastName|EnToFaNumber}}
+							</div>
+							<div ng-show="Data.mode!='view'" class="col-sm-7">
+								<input type="text" class="form-control" name="lastName" 
+									ng-model="Data.selecteduser.lastName">
+							
+							</div>
+						</div>	
+						<div class="row rowForm">
+							<label class="col-sm-5">نقش‌ها</label>
+							<div class="col-sm-12">
+								<table class="table table-striped">
+									<tbody>
+										<tr ng-repeat="role in Data.selecteduser.roles">
+											<td>{{role.title}}</td>
+											<td ng-show="Data.mode=='view'"
+												ng-class="{'fa fa-square-o':role.active==false,'fa fa-check-square':role.active==true}"></td>
+											<td ng-show="Data.mode!='view'">
+												<input type="checkbox" ng-model="role.active">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4" access-checker="API_VIEW_USER" ng-show="Data.searchMode=='advanced'">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="col-sm-12">
+						<vt-search control-fn="Controller.userAdvancedSearchController"></vt-search>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

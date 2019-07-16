@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:websocket="http://www.springframework.org/schema/websocket"
+	   xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/websocket
+			http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd"
+	   default-init-method="init">
+
+
+	<!-- this is an example of using config.properties variables in spring -->
+	<bean id="serverBaseUrl" class="java.lang.String">
+		<constructor-arg value="http://${server.host}:${server.port}" />
+	</bean>
+
+	<bean id="authServerNonSecureUrl" class="java.lang.String">
+		<constructor-arg value="${authServer.url}" />
+	</bean>
+
+	<bean id="report" name="Report" class="ir.viratech.pond_ms.model.report.Report" p:__type="Report" scope="prototype">
+	</bean>
+
+	<bean id="tour" name="Tour" class="ir.viratech.pond_ms.model.tour_relations.tour.Tour" p:__type="Tour" scope="prototype">
+	</bean>
+
+	<bean id="myUser" name="MyUser" class="ir.viratech.pond_ms.model.simplified_user.MyUser" p:__type="MyUser" scope="prototype">
+	</bean>
+
+    <bean id="serverPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<bean id="lotteryCodeGenerator" class="ir.viratech.just_ro.core.customer.lottery.LotteryCodeGenerator" />
+
+	<bean id="lotteryMessageManager" class="ir.viratech.pond_ms.core.lottery.LotteryMessageManager" />
+
+	<beans profile="web">
+
+		<bean  id="pondmanagementThreadPoolTaskScheduler"
+			class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+			<property name="poolSize" value="5" />
+		</bean>
+
+		<!-- <bean id="lotteryMessageScheduler"
+			class="ir.viratech.pond_ms.core.lottery.LotteryMessageScheduler"  >
+		</bean> -->
+
+	</beans>
+</beans>

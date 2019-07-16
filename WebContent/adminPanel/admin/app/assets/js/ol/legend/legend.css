@@ -1,0 +1,31 @@
+legend .panel {
+	position: fixed;
+	bottom: 20px;
+	left: 35px;
+	width: 200px;
+	background-color: white;
+	opacity: 0.85;
+	border-radius: 4px;
+	
+}
+
+legend .panel .div-legend {
+	margin: 10px;
+	min-height: 40px;
+	width: 90%;
+	border-bottom: solid thin #ccc;
+}
+
+legend .panel span {
+	float: right;
+	margin-left: 15px;
+	min-width: 50px;
+	min-height: 40px;
+}
+
+legend .panel label {
+	padding-top: 7px;
+	width: 110px;
+	word-wrap: break-word;
+    text-overflow: ellipsis;
+}

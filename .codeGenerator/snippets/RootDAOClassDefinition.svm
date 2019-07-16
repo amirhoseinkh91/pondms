@@ -1,0 +1,4 @@
+:Modified=true
+:Description=
+-
+public abstract class _RootDAO<E, I extends java.io.Serializable> extends ${class.AbsoluteBaseRootDAOClassName}<E, I> {

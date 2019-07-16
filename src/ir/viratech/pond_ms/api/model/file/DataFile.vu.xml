@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto dtoName="DataFileLightDTO" entityName="DataFile"
+		entityPackage="ir.viratech.pond_ms.model.file" package="ir.viratech.pond_ms.api.file">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" type="string" load="abstract" save="disabled" />
+		<prop name="hash" type="string" load="abstract" save="disabled" />
+	</dto>
+
+	<dto name="DataFile" extentKey="full" 
+		entityPackage="ir.viratech.pond_ms.model.file" package="ir.viratech.pond_ms.api.file">		
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" type="string" load="abstract" save="disabled" />
+		<prop name="hash" type="string" load="abstract" save="disabled" />
+		<prop name="dataReference" />
+		<prop name="dataCollectionDate" type="java.util.Date" />
+	</dto>
+
+
+</uiModel>

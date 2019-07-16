@@ -1,0 +1,33 @@
+ <input class='indeterminate-one-checkboxes'  type="checkbox" name="checkbox" value="" ng-if="oneCheckbox" id="checkbox"> 
+
+
+
+
+<table ng-show="!oneCheckbox" class="indeterminate-checkboxes table table-striped">
+	<thead>
+		<tr>
+			<th>{{title}}</th>
+			<th class="indeterminate-checkboxes-thead-th" ng-show="mode=='view'" ng-class="{'fa fa-square-o':(checkedValue==false && indeterminateValue==false),'fa fa-check-square':(checkedValue==true && indeterminateValue==false),'fa fa-plus-square':((indeterminateValue==true && checkedValue==false) || (indeterminateValue==true && checkedValue==true))}"></th>
+			<th class="indeterminate-checkboxes-thead-th" ng-show="mode!='view'"><input type="checkbox" class="checkbox-0"   name="tall" id="tall" ng-model="checkboxAll" ng-change="onCheckBoxChange('.checkbox-0')"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="indeterminate-checkboxes-tr"  ng-repeat="item in informationList.features">
+			<td> <label>{{item.title}}</label></td>
+			<td ng-show="mode=='view'" ng-class="{'fa fa-square-o':item.active==false,'fa fa-check-square':item.active==true}"></td>
+			<td ng-show="mode!='view'"> <input type="checkbox" class="checkbox-{{$index+1}}" ng-model="item.active" ng-checked="item.active" ng-change="onCheckBoxChange('.checkbox-'+($index+1))"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+<hr>
+
+
+
+

@@ -1,0 +1,26 @@
+<div class="sidebar">
+	<div class="list-group">
+		<a ng-repeat="menu in Data.menuList" ui-sref="{{menu.uiSref}}"
+			class="list-group-item"
+			access-checker="{{menu.feature}}"
+			ng-class="{'active' : Func.isActive(menu)}">
+			<i class="{{menu.icon}}"></i>
+			<label class="menu-item-padding control-label">{{menu.title}}</label>
+		</a>
+	</div>
+	
+	<div class="devider" ng-click="subListIsOpened = !subListIsOpened">
+		<i ng-class="{'fa fa-minus':subListIsOpened,'fa fa-plus':!subListIsOpened}"></i>
+		<span id="sub-portals-label" class="menu-item-padding">زیرپورتال‌ها</span>
+	</div>
+	<div class="list-group" ng-class="{'opened': subListIsOpened}">
+		<div>
+			<a ng-repeat="org in Data.orgList"
+				class="list-group-item"
+				ng-click="Func.onOrgClick(org)">
+				<label class="control-label">{{org.title}}</label>
+			</a>
+		</div>	
+	</div>
+</div>
+<div class="content flex-content" ui-view="content"></div>

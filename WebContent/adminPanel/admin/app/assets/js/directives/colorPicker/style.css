@@ -1,0 +1,7 @@
+color-picker .color {
+	width: 25px;
+	height: 25px;
+	float: right;
+	margin: 7px;
+	cursor: pointer;
+}

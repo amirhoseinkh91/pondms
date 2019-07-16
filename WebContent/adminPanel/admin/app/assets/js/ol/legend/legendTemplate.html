@@ -1,0 +1,10 @@
+<div class="panel" ng-show="layerList.length">
+	<div class="div-legend" ng-repeat="layer in layerList">
+		<span ng-switch on="layer.vectorObjectsType">
+			<img ng-switch-when="Point" ng-src="{{'app/lib/rtmap/assets/img/map-marker-' + layer.icon + '.png'}}" height="30px">
+			<div ng-switch-when="LineString" ng-style="createLineLegend(layer)"></div>
+			<div ng-switch-when="Polygon" ng-style="createPolygonLegend(layer)"></div>
+		</span>
+		<label class="control-label">{{layer.name}}</label>
+	</div>
+</div>

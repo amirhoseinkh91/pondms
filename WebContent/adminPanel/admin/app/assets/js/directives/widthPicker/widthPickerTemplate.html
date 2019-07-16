@@ -1,0 +1,8 @@
+<span uib-dropdown>
+	<div class="width" ng-style="{'border-width':model}" id="simple-dropdown" uib-dropdown-toggle></div>
+	<ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown" ng-if="isEditMode">
+		<li ng-repeat="width in widths" class="col-sm-12" ng-click="onWidthClick(width)">
+			<div class="width" ng-style="{'border-width':width}"></div>
+		</li>
+	</ul>
+</span>

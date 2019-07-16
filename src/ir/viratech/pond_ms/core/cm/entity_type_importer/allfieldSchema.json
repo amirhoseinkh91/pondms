@@ -1,0 +1,103 @@
+{
+    "key": "allField",
+    "title": "موجودیت کامل",
+    "properties": {
+        "big_text": {
+            "label": "بزرگ‌متن",
+            "type": "string",
+            "widget": "bigText",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "boolean": {
+            "label": "بولین",
+            "type": "boolean"
+        },
+        "date_g": {
+            "label": "تاریخ",
+            "type": "date",
+            "widget": "gregorian"
+        },
+        "date_j": {
+            "label": "تاریخ جلالی",
+            "type": "date",
+            "widget": "jalali"
+        },
+        "file": {
+            "label": "فایل",
+            "type": "file"
+        },
+        "image": {
+            "label": "عکس",
+            "type": "file",
+            "widget": "imageSelector"
+        },
+        "int": {
+            "label": "عدد",
+            "type": "integer"
+        },
+        "multi_string": {
+            "label": "رشته چندتایی",
+            "multiple": true,
+            "type": "string"
+        },
+        "multi_textarea": {
+            "label": "توضیحات چندتایی",
+            "multiple": true,
+            "type": "string",
+            "widget": "textarea"
+        },
+        "multiple_file": {
+            "label": "فایل چندتایی",
+            "multiple": true,
+            "type": "file"
+        },
+        "param_string": {
+            "label": "نام انگلیسی",
+            "required": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "string": {
+            "label": "رشته فارسی",
+            "type": "string"
+        },
+        "textarea": {
+            "label": "توضیحات",
+            "type": "string",
+            "widget": "textarea"
+        }
+    },
+    
+    "displayStringFunction": "function(){return string}",
+    
+    "extents": {
+        "enriched": [ "file" ],
+        "list": [ "string", "int", "boolean" ]
+    },
+    "viewGroups": [
+        {
+            "key": "text",
+            "members": ["string", "param_string", "multi_string", "textarea", "multi_textarea", "big_text" ],
+            "name": "رشته‌ها"
+        },
+        {
+            "key": "option",
+            "members": ["entity", "multi_entity", "@topicable" ],
+            "name": "انتخابگرها"
+        },
+        {
+            "key": "files",
+            "members": ["file", "image", "@attachmentable" ],
+            "name": "فایل‌ها"
+        },
+        {
+            "key": "others",
+            "members": ["int", "boolean", "date_g", "date_j" ],
+            "name": "بقیه"
+        }
+    ]
+}

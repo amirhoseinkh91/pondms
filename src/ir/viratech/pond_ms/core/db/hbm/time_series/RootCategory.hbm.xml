@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.time_series">
+
+	<joined-subclass name="RootCategory" extends="ParentCategory"
+			table="ROOT_CATEGORY" schema="pond_ms" >
+
+		<key column="category_id"/>
+
+		<many-to-one name="group" class="TimeSeriesGroup"
+			column="group_id" not-null="false" unique="false"/>
+			
+		<many-to-one name="pond" class="ir.viratech.pond_ms.model.layer.Pond"
+			column="pond_id" not-null="false" unique="false"/>
+			
+		<many-to-one name="GISVectorObject" class="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject"
+			column="object_id" not-null="false" unique="false"/>
+			
+		<many-to-one name="dataFile" unique="true" not-null="true" class="ir.viratech.pond_ms.model.file.DataFile" cascade="all"/>
+			
+		
+	</joined-subclass>
+</hibernate-mapping>

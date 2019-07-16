@@ -1,0 +1,22 @@
+<button class="btn changeLayer" ng-click="showLayerOptions()">
+	<img src="app/lib/rtmap/assets/img/layerPanel/maplayers2.png" style="transform: rotate(-4deg); width: 75%;">
+</button>
+<div class="row layer-options" ng-show="layerOptions">
+	<div class="list-group col-md-12 list-group-custom" style="text-align: right;">
+	  <a class="list-group-item active map-setting-title">
+	    تنظیمات نقشه
+	  </a>
+	  <span class="list-group-item text-right box-head">لایه ها
+	  	<p ng-repeat="layer in addedLayers track by $index" class="text-center" style="text-align: right;">
+			<input type="checkbox" id="{{$index}}" ng-click="changeLayerVisibility(layer)" ng-checked="layer.get('visible')"/>
+			<label for="{{$index}}">{{layer.get('label')}}</label>
+		</p>
+	  </span>
+	  <span class="list-group-item text-right box-head">نقشه پایه
+	  	<p ng-repeat="baseLayer in baseLayers track by $index" class="text-left base-layer-options" style="text-align: right;">
+			<input type="radio" name="baseLayer" id="baseLayer{{$index}}" ng-checked="baseLayer.get('visible')" ng-click="changeLayerVisibility(baseLayer)"/>
+			<label for="baseLayer{{$index}}">{{baseLayer.get('label')}}</label>
+		</p>
+	  </span>
+	</div>
+</div>

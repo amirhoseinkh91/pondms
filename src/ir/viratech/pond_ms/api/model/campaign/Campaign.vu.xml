@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+
+    <dto name="Campaign" extentKey="full"
+         package="ir.viratech.pond_ms.api.campaign"
+         entityPackage="ir.viratech.pond_ms.model.campaign">
+
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="device_name" type="string" save="disabled"/>
+        <prop name="destination" type="string" save="disabled"/>
+        <prop name="days" type="com.fasterxml.jackson.databind.JsonNode" save="disabled" load="abstract"/>
+    </dto>
+
+    <dto dtoName="CampaignFlagUpSaveDTO"
+         entityName="Campaign"
+         package="ir.viratech.pond_ms.api.campaign"
+         entityPackage="ir.viratech.pond_ms.model.campaign">
+        <prop name="uid" type="string" internalName="extuid" save="disabled" sortable="false"/>
+        <prop name="device_name" type="string" save="simple"/>
+        <prop name="destination" type="string" save="simple"/>
+        <prop name="flag_up" type="boolean" save="abstract" load="disabled"/>
+    </dto>
+
+</uiModel>

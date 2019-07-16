@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project >
+
+<!--
+ * Ant Build File
+ * @author Mohammad Mahini, Kian Mirjalali, SAhmad Fazeli
+-->
+
+<project name="PondMS" default="deploy" basedir=".">
+
+    <property name="project.name" value="${ant.project.name}"/>
+    <property environment="env"/>
+    <property file="build.xml.properties"/>
+
+    <path id="compile.classpath">
+        <fileset dir="${sourceLibNotDeploy}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${sourcelibdir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <!--=================================    Targets   =================================-->
+    <target name="clean" description="Clean">
+        <delete dir="${build.home}"/>
+        <delete dir="${deploy.home}"/>
+        <!-- 	This Directory contains data about spring sessions on tomcat shutdown, Deleting it will signout all devices -->
+        <!-- <delete failonerror="false" dir="${deploy.work}"/> -->
+    </target>
+
+    <target name="cleanJars">
+        <description>Delete the jar files</description>
+        <delete dir="${build.home}/WEB-INF/lib"/>
+        <delete dir="${deploy.home}/WEB-INF/lib"/>
+        <delete failonerror="false" dir="${deploy.work}"/>
+        <delete>
+            <fileset dir="${weblibdir}">
+                <include name="*.jar"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="prepare">
+        <description>Making directories</description>
+        <mkdir dir="${build.home}"/>
+        <mkdir dir="${build.webInfDir}"/>
+        <mkdir dir="${build.classesDir}"/>
+        <!-- mkdir dir="${build.classesDir}/ui/i18n" /-->
+    </target>
+
+    <target name="cleanMigrationsDir">
+        <description>Cleans the migrations directory</description>
+        <echo message="Cleaning the migrations directory..."/>
+        <delete dir="${build.classesDir}/${migrationsDir}" failonerror="false"/>
+        <echo message="Cleaned."/>
+    </target>
+
+    <target name="compileMain" depends="prepare,cleanMigrationsDir">
+        <description>Compile main Java classes as necessary</description>
+        <javac srcdir="${sourcedir}" destdir="${build.classesDir}" debug="${compile.debug}"
+               optimize="${compile.optimize}" includeantruntime="false" encoding="UTF-8">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <!-- NOTE: if="${...}" works in ant 1.8+ -->
+    <target name="compileTests" depends="compileMain" if="${build.includeTest}">
+        <description>Compile test Java classes as necessary</description>
+        <javac srcdir="${testSourceDir}" destdir="${build.classesDir}" debug="${compile.debug}"
+               optimize="${compile.optimize}" includeantruntime="false" encoding="UTF-8">
+            <classpath path="${sourcedir}"/>
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="compileInProjectFolder" depends="prepare">
+        <description>Compile Java classes as necessary</description>
+        <mkdir dir="${inProjectCompileFolder}"/>
+        <javac srcdir="${sourcedir}" destdir="${inProjectCompileFolder}" debug="${compile.debug}"
+               optimize="${compile.optimize}">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+
+    <target name="runQuick">
+        <description>run a java class</description>
+        <java classname="${mainClass}" fork="true" failonerror="true">
+            <classpath path="${build.classesDir}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line="${args}"/>
+        </java>
+    </target>
+
+    <target name="run" depends="build, runQuick">
+        <description>Example: ant run -DmainClass=ir.viratech.pond_ms.ui.cli.example_data.DataSuite -Dargs="a b c"
+        </description>
+    </target>
+
+    <target name="makeJars">
+        <description>Build the jar files</description>
+        <copy todir="${weblibdir}" flatten="true">
+            <fileset dir="${sourcelibdir}" casesensitive="yes">
+                <include name="*.jar"/>
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="remakeJars" description="cleanJars+makeJars">
+        <antcall target="cleanJars"/>
+        <antcall target="makeJars"/>
+        <antcall target="refreshProject"/>
+    </target>
+
+    <target name="buildMain" depends="compileMain,makeJars">
+        <description>Build the project with main classes</description>
+        <!-- copy other resources -->
+        <copy todir="${build.classesDir}">
+            <fileset dir="${sourcedir}" excludes="**/*.java, **/*.class, **/*.utf8" casesensitive="yes"/>
+        </copy>
+        <!-- Copy static content web application -->
+        <copy todir="${build.home}">
+            <fileset dir="${webroot}" casesensitive="yes">
+                <exclude name="WEB-INF/classes/**"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="buildTests" depends="buildMain, compileTests" if="${build.includeTest}">
+        <description>Build the project with test classes</description>
+        <!-- copy other resources -->
+        <copy todir="${build.classesDir}">
+            <fileset dir="${testSourceDir}" excludes="**/*.java, **/*.class, **/*.utf8" casesensitive="yes"/>
+        </copy>
+    </target>
+
+    <target name="buildGulp">
+        <exec executable="gulp" failifexecutionfails="false" failonerror="false">
+        </exec>
+    </target>
+
+    <target name="build" depends="buildMain, buildTests" description="Build the project">
+    </target>
+
+    <target name="deploy" depends="build, buildGulp" description="Deploy to tomcat dir">
+        <mkdir dir="${deploy.home}"/>
+        <copy todir="${deploy.home}">
+            <fileset dir="${build.home}"
+            />
+        </copy>
+    </target>
+
+    <target name="doc">
+        <description>Generating javadoc</description>
+        <delete dir="${doc.javadoc}"/>
+        <mkdir dir="${doc.javadoc}"/>
+        <javadoc sourcepath="${sourcedir}" destdir="${doc.javadoc}" verbose="true" author="true" version="true"
+                 useexternalfile="true">
+            <classpath refid="compile.classpath"/>
+        </javadoc>
+    </target>
+
+    <target name="refreshProject" if="eclipse.running">
+        <eclipse.convertPath fileSystemPath="${basedir}" property="projPath"/>
+        <eclipse.refreshLocal resource="${projPath}" depth="infinite"/>
+    </target>
+
+    <target name="generateUi" description="generate ui classes">
+        <java classname="ir.viratech.commons.code_gen.ui.UiGenerator" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line=". ./.codeGenerator/uiConfig.properties"/>
+        </java>
+        <property file="./.codeGenerator/uiConfig.properties"/>
+        <fixcrlf eol="unix" fixlast="false" srcdir="./${vu.BaseDir}/json/"/>
+        <antcall target="refreshProject"/>
+    </target>
+
+    <target name="generateWeb" description="generate web files">
+        <java classname="ir.viratech.commons.code_gen.web.WebGenerator" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line=". ./.codeGenerator/uiConfig.properties"/>
+        </java>
+        <antcall target="refreshProject"/>
+    </target>
+
+    <target name="create-uiModel.xsd">
+        <description>Creates the current version of "uiModel.xsd" at "${uiGen.schemaFile}".</description>
+        <java classname="ir.viratech.commons.code_gen.ui.UiXmlSchemaProvider" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line="${uiGen.schemaFile}"/>
+        </java>
+        <antcall target="refreshProject"/>
+    </target>
+
+    <target name="generateDdl" description="generate the ddl file">
+        <java classname="ir.viratech.commons.code_gen.ddl.DdlGenerator" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line=". ./.codeGenerator/config.properties"/>
+        </java>
+        <property file="./.codeGenerator/config.properties"/>
+        <java classname="ir.viratech.commons.code_gen.ddl.Corrector" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <redirector input="${ddl.output.path}" output="${ddl.output.path.corrected}" logerror="true"/>
+            <arg line="./.codeGenerator/corrector.json"/>
+        </java>
+        <fixcrlf file="${ddl.output.path.corrected}" eol="unix"/>
+        <antcall target="refreshProject"/>
+        <!-- TODO: open editor -->
+    </target>
+
+    <target name="generateModel" description="generate the model files">
+        <java classname="ir.viratech.commons.code_gen.model.ModelGenerator" fork="true">
+            <classpath path="${inProjectCompileFolder}"/>
+            <classpath refid="compile.classpath"/>
+            <arg line=" . ./.codeGenerator"/>
+        </java>
+        <antcall target="refreshProject"/>
+    </target>
+
+    <!-- Migrate -->
+    <target name="migrateDb" depends="build" description="Migrate db to current state">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.flyway.Migrate_Update"/>
+        </antcall>
+    </target>
+
+    <target name="resetAndInitDB" depends="build" description="Clear db and initialize it">
+        <!-- Reset DB -->
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.flyway.Migrate_ResetAndInit"/>
+        </antcall>
+    </target>
+
+    <target name="importDataSuite" depends="build" description="Import the DataSuite">
+        <antcall target="runQuick">
+            <param name="mainClass" value="${dataSuite.class}"/>
+        </antcall>
+    </target>
+
+    <target name="addSpecialNameToThings_To_DO" depends="build" description="add SpecialNames To Form">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.ui.cli.editMongo.AddSpecialNameToThings_To_Do"/>
+        </antcall>
+    </target>
+
+    <target name="checkPointsAccuracy" depends="build" description="add SpecialNames To Form">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.ui.cli.pointTester.PointsAccuracyChecker"/>
+        </antcall>
+    </target>
+
+    <target name="passwordHasher" depends="build" description="hashes passwords stored in db to md5">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.ui.cli.hashPassword.PasswordsHasher"/>
+        </antcall>
+    </target>
+
+    <target name="removeExtraAgency" depends="build" description="removeExtraAgency">
+        <antcall target="runQuick">
+            <param name="mainClass"
+                   value="ir.viratech.pond_ms.ui.cli.removeExtraAgencyVectorLayer.RemoveExtraAgencyParentLayer"/>
+        </antcall>
+    </target>
+
+    <target name="restaurantDataImporter" depends="build"
+            description="import foursquare venues as restaurant data from file">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.data_import.restaurant.RestaurantDataImporter"/>
+        </antcall>
+    </target>
+
+    <target name="deleteAllRestaurants" depends="build" description="delete all restaurants from db">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.ui.cli.restaurant.RestaurantCRUD"/>
+        </antcall>
+    </target>
+
+    <target name="fixHotelPrices" depends="build" description="fixes hotel prices">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.fix_price.FixHotelPrices"/>
+        </antcall>
+    </target>
+
+    <target name="sendLotteryCodeToAllCustomers" depends="build" description="send lottery code to all customers">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.just_ro.cli.SendLotteryCodeToAllCustomers"/>
+        </antcall>
+    </target>
+
+
+    <target name="createPointIndexForGisVectorObjects" depends="build" description="create index for points in mongodb">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.CreatePointIndexForGisVectorObjects"/>
+        </antcall>
+    </target>
+
+    <target name="makeFeaturesExposableFieldTrue" depends="build" description="make all exposable features fields true">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.features.FalseFeaturesToTrue"/>
+        </antcall>
+    </target>
+
+    <target name="updateReviewCount" depends="build" description="update review count in gis vector object">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.api.review.FindReviewsCount"/>
+        </antcall>
+    </target>
+
+    <target name="downloadRestaurantImages" depends="build"
+            description="download restaurant images in opt restaurant folder">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.images.RestaurantDownloadImagesTask"/>
+        </antcall>
+    </target>
+
+    <target name="addImageWatermark" depends="build" description="add watermark to all images">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.images.ImageWaterMark"/>
+        </antcall>
+    </target>
+
+    <target name="getThingsToDoTags" depends="build" description="get list tags">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.tags_counter.GetAllThingsToDoTags"/>
+        </antcall>
+    </target>
+
+    <target name="getRestaurantsTags" depends="build" description="get list tags">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.tags_counter.GetAllRestaurantsTags"/>
+        </antcall>
+    </target>
+
+    <target name="detectOS" depends="build" description=" print os type....! ">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.DetectOs"/>
+        </antcall>
+    </target>
+
+
+    <target name="importDownloadedRestaurantImagesToMongo" depends="build" description="import all images to mongo">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.images.RestaurantImportImagesToMongodbTask"/>
+        </antcall>
+    </target>
+
+    <target name="restaurantTaskRemoveDuplicates" depends="build" description="import all images to mongo">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.four_square_json.RestaurantDuplicateRemover"/>
+        </antcall>
+    </target>
+
+    <target name="restaurantTaskFirstMerge" depends="build" description="import city restaurants">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.four_square_json.convertRestaurantsJsonToNewModel"/>
+        </antcall>
+    </target>
+
+    <target name="restaurantTaskSecondMerge" depends="build" description="merge province restaurants">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.four_square_json.MergeFourSquaresNewModelFiles"/>
+        </antcall>
+    </target>
+
+    <target name="restaurantTaskFinalImport" depends="build" description="import all restaurants to db">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.four_square_json.PushAllRestaurantsToDB"/>
+        </antcall>
+    </target>
+
+    <target name="customersData" depends="build" description="get all customers name and phone number">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.get_all_customrs_data.GetAllCustomersData"/>
+        </antcall>
+    </target>
+
+    <target name="deleteAllIsDeletedMongo" depends="build" description="delete all is deleted data in mongo db">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.DeleteAllIsDeletedMongoData"/>
+        </antcall>
+    </target>
+
+    <target name="splitMongoDbTags" depends="build" description="split all things to do tags">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.SplitThingsToDoTags"/>
+        </antcall>
+    </target>
+
+    <target name="fixAzarbayjanData" depends="build" description="fix deleted azarbayjan data">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.FixWestAzarbayjanDeletedData"/>
+        </antcall>
+    </target>
+</project>
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.gismap">
+
+	<class name="GISMap" table="GISMAPS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="title" type="string" not-null="true" unique="false">
+		</property>
+
+		<property name="latinTitle" column="latin_title" type="string"
+			not-null="false" unique="false">
+		</property>
+
+		<property name="description" type="string" />
+
+
+		<property name="creationDate" column="creation_date" type="timestamp"
+			not-null="true">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="boundingBox" type="org.hibernate.spatial.GeometryType"
+			not-null="true">
+			<meta attribute="property-type">com.vividsolutions.jts.geom.Polygon</meta>
+			<column name="bounding_box" sql-type="GEOMETRY"></column>
+		</property>
+
+		<property name="center" type="org.hibernate.spatial.GeometryType"
+			not-null="true">
+			<meta attribute="property-type">com.vividsolutions.jts.geom.Point</meta>
+			<column name="center" sql-type="GEOMETRY"></column>
+		</property>
+
+		<property name="minZoom" type="int" not-null="false" unique="false">
+			<column name="min_zoom" default="12" unique="false" />
+		</property>
+
+		<property name="maxZoom" type="int" not-null="false" unique="false">
+			<column name="max_zoom" default="16" unique="false" />
+		</property>
+
+		<property name="defaultZoom" type="int" not-null="false"
+			unique="false">
+			<column name="default_zoom" default="14" unique="false" />
+		</property>
+
+		<list name="layers" cascade="all, delete-orphan" inverse="false">
+			<key column="parent_map_id" not-null="false" unique="false"/>
+			<list-index column="index_in_gismap" base="0" />
+			<one-to-many class="ir.viratech.pond_ms.model.layer.Layer" />
+		</list>
+
+		<many-to-one name="organization"
+			class="ir.viratech.pond_ms.model.organization.Organization"
+			column="organization_id" unique="true" not-null="true" />
+
+	</class>
+
+</hibernate-mapping>

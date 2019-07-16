@@ -1,0 +1,17 @@
+/*button styles */
+.btn{
+	border-radius:3px;
+}
+.btn-success{
+	background-color: #5cb85c;
+	border-color: #5cb85c;
+}
+.btn-default {
+    color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+#show-timeseries-history-btn {
+	width: 100%;
+	margin-top: 5px;
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.user">
+
+	<typedef name="encryptedString" class="org.jasypt.hibernate4.type.EncryptedStringType">
+		<param name="encryptorRegisteredName">strongHibernateStringEncryptor</param>
+	</typedef>
+
+	<class name="AuthUser" table="AUTH_USERS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="username" type="string" not-null="true" unique="true" />
+
+		<property name="password" type="string" not-null="true" unique="false" />
+
+		<property name="enabled" type="boolean" not-null="true" unique="false" >
+			<meta attribute="init">true</meta>
+		</property>
+
+		<property name="firstName" type="string" />
+		<!--
+		<property name="firstName" type="encryptedString" >
+			<meta attribute="property-type">java.lang.String</meta>
+		</property>
+		 -->
+		<property name="lastName" type="string" />
+		<property name="phoneNumber" type="string" />
+
+		<property name="userExpirationDate" type="timestamp" not-null="false" unique="false" />
+		<property name="passwordExpirationDate" type="timestamp" not-null="false" unique="false" />
+
+		<property name="noLoginExpirationDate" type="timestamp" not-null="false" unique="false" />
+		<property name="lastLoginFailureDate" type="timestamp" not-null="false" unique="false" />
+		<property name="lastConsecutiveLoginFailuresCount" type="int" not-null="true" unique="false" />
+
+	</class>
+
+</hibernate-mapping>

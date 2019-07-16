@@ -1,0 +1,35 @@
+{
+  "path" : "vector-object-shortcut",
+  "key" : "vectorobjectshortcut",
+  "featureName" : "VECTOR_OBJECT_SHORTCUT",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "layer" : {
+      "label" : "layer",
+      "type" : "enum",
+      "enumType" : null,
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "name" ]
+  }
+}

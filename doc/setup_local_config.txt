@@ -1,0 +1,9 @@
+
+1. create or update the file in /etc/profiles/profiles.d/ViraConfigs.sh
+	write this:
+	export POND_MS_ENV_LOC= {local_config_path}
+
+We suggest the value of {local_config_path} to be something like:
+	/opt/viraConf/PondMS.properties
+
+2. edit {local_config_path} and write the local configurations.

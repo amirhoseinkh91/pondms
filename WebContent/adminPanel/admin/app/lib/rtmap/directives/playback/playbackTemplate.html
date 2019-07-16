@@ -1,0 +1,120 @@
+<div class="row playback-container">
+	<i class="fa fa-times pull-left" ng-click="Func.exit()" style="cursor:pointer"></i>
+    <div class="col-sm-6" style="border-left: 1px solid #e0e0e0;">
+        <div class="col-sm-12 vehicle-list">
+            <label style="font-weight: bold; margin-left: 10px;">خودرو ها</label>
+            <span class="vehicle" ng-repeat="item in controller.playList track by $index"
+            	ng-click="Func.changeVehicle(item)">{{item.code|EnToFaNumber}}
+            </span>
+        </div>
+        <div class="col-sm-12 refresh-section">
+            <div class="col-sm-3" style="margin-top: 19px;">
+            	<label style="position: absolute; right: -24px; top: 6px; font-size: 11px;">از تاریخ</label>
+                <vt-persian-date-picker model="Data.searchQuery.datePicker.from"></vt-persian-date-picker>
+            </div>
+            <div class="col-sm-3" style="margin-top: 19px;">
+            	<label style="position: absolute; right: 0px; top: 7px; font-size: 12px;">تا</label>
+                <vt-persian-date-picker model="Data.searchQuery.datePicker.to"></vt-persian-date-picker>
+            </div>
+            <div class="col-sm-2 custom-time-picker dir-left no-padding" style="padding-top: 20px;">
+            	<label style="position: absolute; right: -10px; top: 23px; font-size: 10px;">از ساعت</label>
+                <uib-timepicker ng-model="Data.searchQuery.timePicker.from"
+                                show-spinners="false"	
+                                show-meridian="Data.searchQuery.timePicker.ismeridian">
+                </uib-timepicker>
+            </div>
+            <div class="col-sm-2 custom-time-picker dir-left no-padding" style="padding-top: 20px;">
+            	<label style="position: absolute; right: 9px; top: 23px; font-size: 11px;">تا</label>
+                <uib-timepicker ng-model="Data.searchQuery.timePicker.to"
+                                show-spinners="false"	
+                                show-meridian="Data.searchQuery.timePicker.ismeridian">
+                    </uib-timepicker>
+            </div>
+            <div class="col-sm-2" style="margin-top: 20px;">
+                <button ng-click="Func.refresh();" class="btn red-btn">نمایش</button>
+            </div>
+            <div class="col-sm-12" style="padding-top: 15px;">
+                <div class="checkbox options" style="margin-top: -3px;">
+                    <label>
+                        <input type="checkbox" ng-model="Data.options.stopPoint"> توقفات
+                    </label>
+                </div>
+                <div class="checkbox options">
+                    <label>
+                        <input type="checkbox" ng-model="Data.options.speedExceed"> خروج از ناحیه
+                    </label>
+                </div>
+                <div class="checkbox options">
+                    <label>
+                        <input type="checkbox" ng-model="Data.options.outOfRegion"> سرعت غیر مجاز
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 no-padding" style="padding-top: 5px;">
+            <div class="col-sm-6 no-padding">
+                <div class="col-sm-6 no-padding">
+                    <div class="padding5">
+                        <span><i class="fa fa-user fa-custom"></i>کد راننده</span>
+                        <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].driver_code|EnToFaNumber}}</span>
+                    </div>
+                    <div class="padding5">
+                        <span><i class="fa fa-road fa-custom"></i>کد خط</span>
+                        <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].line_code|EnToFaNumber}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 no-padding">
+                    <div class="padding5">
+                        <span><i class="fa fa-dot-circle-o fa-custom"></i>کل نقاط</span>
+                        <span>{{Data.trackingPointMap[Data.selectedVehicle.uid].length|EnToFaNumber}}</span>
+                    </div>
+                    <div class="padding5">
+                        <span><i class="fa fa-automobile fa-custom"></i>کد خودرو</span>
+                        <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].vehicle_id|EnToFaNumber}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 real-time-panel-s2">
+                <div class="padding5">
+                    <span><i class="fa fa-dashboard fa-custom" style="color: #00B88D"></i>سرعت</span>
+                    <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].speed|EnToFaNumber}}km/h</span>
+                </div>
+                <div class="padding5">
+                    <span><i class="fa fa-map-marker fa-custom" style="color: #00B88D"></i>مکان</span>
+                    <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].point.coordinates[1]|number:2|EnToFaNumber}}</span>
+                    <span>,</span>
+                    <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].point.coordinates[0]|number:2|EnToFaNumber}}</span>
+                </div>
+                <div class="padding5">
+                    <span><i class="fa fa-clock-o fa-custom" style="color: #00B88D"></i>زمان نقطه</span>
+                    <span>{{Data.trackingPointMap[Data.selectedVehicle.uid][Data.infoMap[Data.selectedVehicle.uid].currentIndex].tp_time|persianDate:'hh:mm:ss yy/MM/dd'|EnToFaNumber}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-12" style="margin-top: 20px;">
+                <span class="date-time" style="color: #43a047; float: left; font-size: 10px; margin-left: -12px; margin-top: -5px;">{{Data.searchQuery.startDate|persianDate:'hh:mm:ss yy/MM/dd'|EnToFaNumber}}</span>
+                <div id="slider-step"></div>
+                <span class="date-time" style="color: #d32f2f; float: right; font-size: 10px; margin-top: -50px;">{{Data.searchQuery.endDate|persianDate:'hh:mm:ss yy/MM/dd'|EnToFaNumber}}</span>
+        </div>
+    	<div class="col-sm-12" ng-show="Data.isLoading">
+    		<div class="controlling-panel">
+		    	<i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+    		</div>
+    	</div>
+        <div class="col-sm-12" ng-show="Data.currentState.name && !Data.isLoading">
+            <div class="controlling-panel">
+                <span class="date-time" ng-show="Data.currentSpeed/Config.baseSpeed!=1" style="color:#EA751C">{{Data.currentSpeed/Config.baseSpeed}}X</span>
+				<span style="position: absolute; right: 40%; top: 9px;">{{Data.currentTime|persianDate:'hh:mm:ss yy/MM/dd'|EnToFaNumber}}</span>
+				<a ng-click="Func.forward()" ng-show="true"><i class="fa fa-3x fa-step-forward"></i></a>
+				<a ng-click="Func.speedUp()" ng-show="true"><i style="padding-left:10px" class="fa fa-3x fa-forward"></i></a>
+				<a ng-click="Func.play()" ng-show="Data.currentState.name!='play'"><i style="padding-left:10px" class="fa fa-3x fa-play"></i></a>
+				<a ng-click="Func.pause()" ng-show="Data.currentState.name=='play'"><i class="fa fa-3x fa-pause"></i></a>
+				<a ng-click="Func.stop()" ng-show="Data.currentState.name=='play' || Data.currentState.name=='pause'"><i class="fa fa-3x fa-stop"></i></a>
+				<a ng-click="Func.speedDown()" ng-show="true"><i style="padding-right: 10px;" class="fa fa-3x fa-backward"></i></a>
+				<a ng-click="Func.backward()" ng-show="true"><i class="fa fa-3x fa-step-backward"></i></a>
+			</div>
+        </div>
+    </div>
+</div>

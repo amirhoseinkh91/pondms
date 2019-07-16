@@ -1,0 +1,81 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"F3": {
+			"type": "string",
+			"label": "نام ایستگاه",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"code": {
+			"type": "double",
+			"label": "کد ایستگاه",
+			"widget": "",
+			"showEditButton": false
+		},
+		"sale_tasis": {
+			"type": "double",
+			"label": "سال تاسیس",
+			"widget": "",
+			"showEditButton": false
+		},
+		"ertefa": {
+			"type": "double",
+			"label": "ارتفاع",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Zone": {
+			"type": "integer",
+			"label": "ناحیه",
+			"widget": "",
+			"showEditButton": false
+		},
+		"X": {
+			"type": "double",
+			"label": "طول جغرافیایی",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Y": {
+			"type": "double",
+			"label": "عرض جغرافیایی",
+			"widget": "",
+			"showEditButton": false
+		},
+		"ostan": {
+			"label": "استان",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"F3",
+				"code",
+				"ostan",
+				"sale_tasis",
+				"ertefa",
+				"Zone",
+				"X",
+				"Y"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:125"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

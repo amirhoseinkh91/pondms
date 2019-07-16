@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.review">
+
+	<class name="Review" table="REVIEWS" schema="pond_ms">
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+
+		<property name="extuid" type="string" not-null="true" unique="true">
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+
+		<property name="title" type="string" not-null="true" unique="false"/>
+
+		<property name="rate" type="int" not-null="true" unique="false">
+			<meta attribute="init">0</meta>
+		</property>
+
+		<property name="text" type="text" not-null="true" unique="false"/>
+
+		<property name="creationDate" type="timestamp" unique="false" not-null="true">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="lastModifiedDate" type="timestamp" unique="false" not-null="true">
+			<meta attribute="init">review.getCreationDate()</meta>
+		</property>
+
+		<!-- user who posted this review-->
+		<many-to-one name="user" not-null="true" unique="false" class="ir.viratech.pond_ms.model.user.User">
+			<meta attribute="reverse">reviews</meta>
+			<column name="user_id"/>
+		</many-to-one>
+
+		<property name="visitedDate" type="timestamp" unique="false" not-null="true">
+			<meta attribute="init">new java.util.Date()</meta>
+		</property>
+
+		<property name="typeOfVisit" type="string" not-null="true" unique="false"/>
+
+		<property name="confirmed" type="int" unique="false" not-null="true">
+			<meta attribute="init">0</meta>
+		</property>
+
+		<property name="deleted" type="boolean" unique="false" not-null="true">
+			<meta attribute="init">false</meta>
+		</property>
+
+		<many-to-one name="gisVectorObject"  class="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject" lazy="false">
+			<column name="vector_object_id"/>
+		</many-to-one>
+
+		<list name ="replies" cascade="save-update, delete">
+			<meta attribute="reverse">review</meta>
+			<key column = "review_id"/>
+			<list-index column = "idx"/>
+			<one-to-many class="ir.viratech.pond_ms.model.review.ReplyReview"/>
+		</list>
+
+
+	</class>
+
+</hibernate-mapping>

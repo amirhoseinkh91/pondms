@@ -1,0 +1,16 @@
+.statistics-div td {
+	direction: ltr;
+	text-align: center;
+}
+
+.statistics-div th {
+	text-align: center;
+	color: green;
+}
+
+.statistics-div h3 {
+	color: green;
+	font-size: 25px;
+	margin-bottom: 15px;
+	text-align: center;
+}

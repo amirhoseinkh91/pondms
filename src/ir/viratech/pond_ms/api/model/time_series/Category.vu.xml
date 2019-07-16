@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto dtoName="CategoryLightDTO" entityName="Category"
+		entityPackage="ir.viratech.pond_ms.model.time_series" package="ir.viratech.pond_ms.api.time_series">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" internalName="name" />
+		<prop name="childCount" type="java.lang.Integer" save="disabled"
+			load="abstract" />
+		<prop name="isLeaf" type="java.lang.Boolean" save="disabled"
+			load="abstract" />
+		<prop name="isRoot" type="java.lang.Boolean" save="disabled"
+			load="abstract" />
+		<prop name="timeSeriesValueType" type="string" save="disabled"
+			sortable="false" load="abstract" />
+		<prop-dto name="dataFile"
+			type="ir.viratech.pond_ms.api.file.dto.DataFileLightDTO"
+			internalType="ir.viratech.pond_ms.model.file.DataFile"
+			load="abstract" save="disabled" />
+	</dto>
+
+	<dto name="Category" extentKey="full"
+		entityPackage="ir.viratech.pond_ms.model.time_series" package="ir.viratech.pond_ms.api.time_series">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false" />
+		<prop name="name" internalName="name" />
+		<prop name="childCount" type="java.lang.Integer" save="disabled"
+			load="abstract" />
+		<prop name="isLeaf" type="java.lang.Boolean" save="disabled"
+			load="abstract" />
+		<prop name="isRoot" type="java.lang.Boolean" save="disabled"
+			load="abstract" />
+		<prop name="timeSeriesValueType" type="string" save="disabled"
+			sortable="false" load="abstract" />
+
+		<prop-dto name="relatedGroup"
+			type="ir.viratech.pond_ms.api.time_series.dto.TimeSeriesGroupLightDTO"
+			internalType="ir.viratech.pond_ms.model.time_series.TimeSeriesGroup"
+			load="abstract" save="disabled-withSetter" />
+
+		<prop name="children"
+			internalType="java.util.List.&lt;ir.viratech.pond_ms.model.time_series.Category.&gt;"
+			type="ir.viratech.commons.api.dto.PlainCollectionDTO&lt;ir.viratech.pond_ms.model.time_series.Category, ir.viratech.pond_ms.api.time_series.dto.CategoryLightDTO&gt;"
+			load="abstract" save="disabled-withSetter" typeKey="collection" />
+
+		<prop name="values"
+			internalType="java.util.List.&lt;ir.viratech.pond_ms.model.time_series.TimeSeriesDateValuePair.&gt;"
+			type="ir.viratech.commons.api.dto.PlainCollectionDTO&lt;ir.viratech.pond_ms.model.time_series.TimeSeriesDateValuePair, ir.viratech.pond_ms.api.time_series.dto.TimeSeriesDateValuePairLightDTO&gt;"
+			load="abstract" save="disabled-withSetter" typeKey="collection" />
+
+	</dto>
+
+
+	<resource entityName="Category" resourceName="CategoryResource"
+		package="ir.viratech.pond_ms.api.time_series" entityPackage="ir.viratech.pond_ms.model.time_series"
+		resourcePath="category" bundlePrefix="time_series."
+		entityMgr="ir.viratech.pond_ms.model.time_series.logic.CategoryMgr"
+		fullDto="ir.viratech.pond_ms.api.time_series.dto.CategoryFullDTO"
+		featureEntityName="CATEGORY" />
+
+
+</uiModel>

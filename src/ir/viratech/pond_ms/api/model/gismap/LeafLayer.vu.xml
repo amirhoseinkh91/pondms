@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel 
+ 		xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd "
+		>
+		
+	<dto dtoName="LeafLayerLightDTO" entityName="LeafLayer" 
+			entityPackage="ir.viratech.pond_ms.model.layer" 
+			package="ir.viratech.pond_ms.api.layer">
+		<prop name="uid" internalName="extuid" save="disabled" sortable="false"/>
+		<prop name="name" />
+ 		<prop name="type" type="string" load="abstract" save="disabled"/>
+ 		<prop name="vectorObjectType" type="string" load="abstract" save="disabled"/>
+		<prop name="secret" type="java.lang.Boolean" save="disabled" sortable="false" load="abstract" />
+		
+	</dto>
+
+</uiModel>

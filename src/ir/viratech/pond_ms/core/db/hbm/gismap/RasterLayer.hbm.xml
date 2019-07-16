@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+
+	<joined-subclass name="RasterLayer" table="RASTER_LAYERS" schema="pond_ms" 
+				extends="ir.viratech.pond_ms.model.layer.LeafLayer">
+		<key column="layer_id"/>
+
+		<many-to-one name="gradient" not-null="false" class="ir.viratech.pond_ms.model.gradient.Gradient" />	
+		<many-to-one name="rasterFile" unique="true" cascade="all" not-null="false" class="ir.viratech.commons.file.model.AbstractFile" />
+		
+	</joined-subclass>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+{
+  "path" : "config_entry",
+  "key" : "configentry",
+  "featureName" : "CONFIG_ENTRY",
+  "properties" : {
+    "title" : {
+      "label" : "title",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "key" : {
+      "label" : "key",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "value" : {
+      "label" : "value",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "title", "key", "value" ]
+  }
+}

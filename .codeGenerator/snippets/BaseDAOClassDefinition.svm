@@ -1,0 +1,4 @@
+:Modified=true
+:Description=
+-
+public abstract class ${class.BaseDAOClassName} extends ${class.AbsoluteBaseRootDAOClassName}<${class.AbsoluteValueObjectSignatureClassName}, ${class.ParentRoot.Id.Property.ObjectClass}> {

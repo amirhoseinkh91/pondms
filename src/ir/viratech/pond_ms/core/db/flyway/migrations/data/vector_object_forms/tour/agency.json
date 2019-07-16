@@ -1,0 +1,70 @@
+{
+  "key": "agency",
+  "title": "آژانس",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "icon": {
+      "label": "آیکون",
+      "type": "file",
+      "widget": "imageSelector"
+    },
+    "name": {
+      "label": "نام آژانس",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "address": {
+      "label": "آدرس آژانس",
+      "type": "string",
+      "widget": "textarea"
+    },
+    "telephone": {
+      "label": "تلفن",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "email": {
+      "label": "ایمیل",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "website": {
+      "label": "وبسایت",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "social": {
+      "label": "شبکه های اجتماعی",
+      "type": "string",
+      "widget": "textBox"
+    }
+  },
+  "aspects": {},
+  "extents": {
+    "full": [
+      "icon",
+      "name",
+      "address",
+      "telephone",
+      "email",
+      "website",
+      "social"
+    ]
+  },
+  "viewGroups": [
+    {
+      "key": "agency",
+      "name": "آژانس",
+      "members": [
+        "icon",
+        "name",
+        "address",
+        "telephone",
+        "email",
+        "website",
+        "social"
+      ],
+      "secretLevel": 0
+    }
+  ]
+}

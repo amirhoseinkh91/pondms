@@ -1,0 +1,9 @@
+<div class="">
+     <div class="row noSideMargin">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               <div ng-repeat='viewGroup in schema[goodGroups]' style='padding-left: 10px;' ng-if="userSecretLevel>=viewGroup.secretLevel|| !viewGroup.secretLevel">
+                    <schema-form-field api="apis[field]" ng-repeat='field in viewGroup.members track by $index' is-focused='isFocused' field='field' suffix="suffix" schema='schema.properties[field]' model='model' required='schema.properties[field].required' label='{{schema.properties[field].label}}' is-edit-mode='isEditMode'></schema-form-field>
+               </div>
+          </div>
+     </div>
+</div>

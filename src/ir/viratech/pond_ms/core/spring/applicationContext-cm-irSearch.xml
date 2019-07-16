@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			"
+	>
+
+		<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+	<!-- ================================================= IRSearch Beans ======================================================= -->
+	<!-- ========================================================================================================================== -->
+	<!-- ========================================================================================================================== -->
+
+	<bean
+		class="ir.viratech.commons.cm.aspect.ir_searchable.model.entity_type_mapping.logic.IRSearchEntityTypeMappingStatusManager" />
+	<bean
+		class="ir.viratech.commons.cm.aspect.ir_searchable.util.IRSearchIndexer" />
+	<bean
+		class="ir.viratech.commons.cm.aspect.ir_searchable.model.search.logic.EntityInstanceIRSearcher" />
+	<bean
+		class="ir.viratech.commons.cm.aspect.document_extractable.util.DocumentExtractorUtils" />
+	<bean
+		class="ir.viratech.commons.cm.aspect.ir_searchable.model.search.query.IRSearchQueryExecuter" />
+	<bean
+		class="ir.viratech.commons.cm.aspect.ir_searchable.util.IRSearchEntityTypeEventListener" />
+	
+	
+	
+	<beans profile="web">
+
+	<bean  id="irSearchThreadPoolTaskScheduler"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+		<property name="poolSize" value="3" />
+	</bean>
+
+	<bean id="irSearchIndexerScheduler"
+		class="ir.viratech.commons.cm.aspect.ir_searchable.util.IRSearchIndexerScheduler">
+	</bean>
+	</beans>
+
+
+</beans>

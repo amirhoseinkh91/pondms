@@ -1,0 +1,36 @@
+.pond-file-list {
+	margin: 0;	
+}
+
+.pond-file-list>.col-sm-12 {
+	border: 1px dashed #03342e;
+	margin: 10px 0;
+}
+
+.file-history-entry {
+	min-height: 30px!important;
+}
+
+.file-history-entry-key {
+	font-size: 11px!important;
+	width: 105px;
+	font-weight: normal;
+}
+
+.file-history-entry-value {
+	padding-top: 8px;
+	word-wrap: break-word;
+	font-weight: normal;
+}
+
+.file-download-btn {
+	float: left;
+	margin-left: 15px;
+	margin-top: 5px;
+}
+
+#data-upload-btn {
+	width: 100%;
+	text-align: center;
+	margin: auto;
+}

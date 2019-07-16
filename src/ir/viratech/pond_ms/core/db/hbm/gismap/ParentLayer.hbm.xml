@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+
+	<joined-subclass name="ParentLayer" extends="Layer"
+			table="PARENT_LAYER" schema="pond_ms" >
+
+		<key column="layer_id" />
+
+		<list name="subLayers" cascade="all, delete-orphan" inverse="false" lazy="false">
+			<meta attribute="reverse">parentLayer</meta>
+			<key column="parent_id" not-null="false" unique="false" />
+			<list-index column="index_in_parent" base="0" />
+			<one-to-many class="Layer" />
+		</list>
+
+	</joined-subclass>
+</hibernate-mapping>

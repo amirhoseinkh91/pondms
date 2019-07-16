@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.time_series">
+
+	<class name="TimeSeriesDateValuePair" table="TIME_SERIES_DATE_VALUE_PAIR" schema="pond_ms">
+
+		<id name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+		
+		<property name="extuid" type="string" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+			<meta attribute="init">this.generateUid()</meta>
+		</property>
+		
+		<property name="submissionTime" type="long" not-null="true" unique="false"/>
+		<property name="timeSeriValue" type="string" not-null="false" unique="false"/>
+		
+	</class>
+
+</hibernate-mapping>

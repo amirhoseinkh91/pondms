@@ -1,0 +1,18 @@
+sortable-layer-panel .btn-group {
+	position: absolute;
+	top: 190px;
+	left: 35px;
+}
+
+sortable-layer-panel .btn-group button{
+	width: 40px;
+	padding: 0;
+	background-color: #fff;
+}
+
+sortable-layer-panel .dropdown-menu {
+    left: 40px;
+    right: auto;
+    top: 0px;
+    padding: 7px;
+}

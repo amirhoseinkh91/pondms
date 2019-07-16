@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.app_message">
+    <class name="AppMessage" table="APP_MESSAGES" schema="pond_ms">
+        <id name="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+
+        <property name="extuid" type="string" not-null="true" unique="true">
+            <meta attribute="alternate-key">true</meta>
+            <meta attribute="init">this.generateUid()</meta>
+        </property>
+
+        <property name="title" type="string" not-null="true" unique="false"/>
+
+        <property name="message" type="text" not-null="true" unique="false"/>
+
+        <property name="creationDate" type="date" not-null="true" unique="false">
+            <meta attribute="init">new java.util.Date()</meta>
+        </property>
+
+        <property name="expirationDate" type="date" not-null="false" unique="false"/>
+
+        <set name="images" table="APP_MESSAGES_IMAGES" schema="pond_ms">
+            <key>
+                <column name="app_message_id"/>
+            </key>
+            <many-to-many unique="true" class="ir.viratech.commons.file.model.AbstractFile" column="imagefile_id"/>
+        </set>
+
+        <property name="enabled" type="boolean" unique="false" not-null="true">
+            <meta attribute="init">true</meta>
+        </property>
+
+        <property name="videoUrl" type="string" not-null="false" unique="false" />
+
+        <property name="videoOnly" type="boolean" not-null="true" unique="false"/>
+
+        <list name="urls" cascade="all-delete-orphan" inverse="false">
+			<key column="appMessageId" not-null="true" unique="false" />
+			<index column="indexInAppMessage" />
+			<one-to-many class="ir.viratech.pond_ms.model.app_message.AppMessageUrl" />
+		</list>
+
+    </class>
+
+</hibernate-mapping>

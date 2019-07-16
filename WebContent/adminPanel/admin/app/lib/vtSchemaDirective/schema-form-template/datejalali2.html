@@ -1,0 +1,7 @@
+<div class="row rowForm" ng-class="{'has-error': formState['{{field}}-{{suffix}}'].$invalid && isEditMode && api.validationClicked}">
+     <label for="{{field}}" class="control-label col-sm-4" ng-class="{'required':isEditMode && required}"> {{label}}</label>
+     <div class="col-sm-8 q11 noPadding">
+          <vt-persian-date-picker is-required="required" ng-class="{hidden:!isEditMode}" ng-model="model[field]" name="{{field}}" class="col-sm-12" model="model[field]"></vt-persian-date-picker>
+          <p class="form-control-static" ng-class="{hidden:isEditMode}">{{model[field]|persianDate:'yyyy/MM/dd'|EnToFaNumber}}</p>
+     </div>
+</div>

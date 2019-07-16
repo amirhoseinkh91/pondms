@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.layer">
+	<joined-subclass name="VectorLayer" table="VECTOR_LAYER"
+		schema="pond_ms" extends="ir.viratech.pond_ms.model.layer.LeafLayer">
+		<key column="layer_id" />
+		<property name="formSchemaKey" type="string" not-null="false" />
+		<property name="vectorObjectsType" type="string" not-null="false" />
+
+		<property name="pointIcon" type="string" not-null="false" />
+		<property name="lineColor" type="string" not-null="false" />
+		<property name="lineWidth" type="string" not-null="false" />
+		<property name="polygonFill" type="string" not-null="false" />
+		
+		<property name="labled" type="boolean" not-null="true" />
+
+		<set name="vectorObjects" table="GIS_VECTOR_OBJECTS" schema="pond_ms"
+			inverse="true" cascade="all" lazy="true">
+			<key column="layer_id" />
+			<one-to-many
+				class="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject" />
+		</set>
+	</joined-subclass>
+</hibernate-mapping>

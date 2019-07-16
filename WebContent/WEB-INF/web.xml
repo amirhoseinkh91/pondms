@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="
+		 	http://java.sun.com/xml/ns/javaee
+		 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID"
+         version="3.0">
+
+    <display-name>PondMS</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                            Error Page                            -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <error-page>
+        <error-code>401</error-code>
+        <location>/adminPanel/static/error-401.html</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/adminPanel/static/error-403.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/adminPanel/static/error-500.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/index.html</location>
+    </error-page>
+
+
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                      Hibernate related settings                  -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--  OPEN SESSION IN VIEW FILTER  -->
+    <!--  must appear before spring material  -->
+    <filter>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- TODO sometimes it does not work! -->
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                      Spring and Spring Security                  -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--
+      - Location of the XML file that defines the root application context
+      - Applied by ContextLoaderListener of SpringSecurity
+      -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/applicationContext-web-all.xml
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>execution.type</param-name>
+        <param-value>web</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextInitializerClasses</param-name>
+        <param-value>ir.viratech.pond_ms.core.spring.WebApplicationContextInitializer</param-value>
+    </context-param>
+    <!--
+      - Loads the root application context of this web app at startup.
+      - The application context is then available via
+      - WebApplicationContextUtils.getWebApplicationContext(servletContext).
+      -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--	Spring Security Filter Chains	-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                       Execution Context                          -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <filter>
+        <description>Filter for setting the current ExecutionContext instance</description>
+        <display-name>ExecutionContextFilter</display-name>
+        <filter-name>executionContextFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>executionContextFilter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>executionContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                        Request Logging                           -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <filter>
+        <description>Logger for the input requests</description>
+        <display-name>RequestLoggerFilter</display-name>
+        <filter-name>RequestLoggerFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>requestLoggerFilter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>RequestLoggerFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>ir.viratech.pond_ms.core.filter.CorsFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                         File Download                            -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <servlet>
+        <description>The file downloading servlet using FileManager</description>
+        <servlet-name>managedFileServlet</servlet-name>
+        <servlet-class>ir.viratech.commons.file.web.download.ManagedFileServlet</servlet-class>
+        <init-param>
+            <param-name>managerClass</param-name>
+            <param-value>ir.viratech.commons.file.model.web.FileManager</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managedFileServlet</servlet-name>
+        <url-pattern>/files/*</url-pattern>
+    </servlet-mapping>
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                       Jersey related settings                    -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>
+                ir.viratech.pond_ms.api;
+                ir.viratech.commons.api.auth;
+                ir.viratech.commons.api;
+                ir.viratech.commons.file.web;
+                com.fasterxml.jackson.jaxrs;
+                com.wordnik.swagger.jaxrs.listing;
+                ir.viratech.commons.cm.api;
+                ir.viratech.pond_ms.api.filter;
+                ir.viratech.just_ro.api;
+                ir.viratech.pond_ms.api.tour;
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.classnames</param-name>
+            <param-value>
+                com.wordnik.swagger.jaxrs.listing.ApiListingResource,
+                com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider,
+                com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON,
+                com.wordnik.swagger.jaxrs.listing.ResourceListingProvider
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>ir.viratech.commons.api.RestApplication</param-value>
+        </init-param>
+        <!--
+        <init-param>
+            <param-name>jersey.config.server.tracing</param-name>
+            <param-value>ALL</param-value>
+        </init-param>
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                      Password Expiration Filter                  -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <filter>
+        <description>Filter for password expiration</description>
+        <display-name>PasswordExpirationFilter</display-name>
+        <filter-name>PasswordExpirationFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>passwordExpirationFilter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>PasswordExpirationFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                     Listener Settings for cache                  -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <listener>
+        <listener-class>ir.viratech.just_ro.core.cache.StartCache</listener-class>
+    </listener>
+
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--                     WebSocket Related Settings                   -->
+    <!--==================================================================-->
+    <!--==================================================================-->
+    <!--<absolute-ordering>-->
+    <!--<name>spring_web</name>-->
+    <!--</absolute-ordering>-->
+    <session-config>
+        <session-timeout>4842400</session-timeout>
+    </session-config>
+</web-app>

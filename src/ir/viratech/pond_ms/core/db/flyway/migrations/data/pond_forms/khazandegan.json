@@ -1,0 +1,59 @@
+{
+	"key": "khazandegan",
+	"title": "خزندگان",
+	"displayStringFunction": "function(){return goone;}",
+	"properties": {
+		"goone": {
+			"label": "گونه",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"zistgah": {
+			"label": "زیستگاه",
+			"type": "enum",
+			"typeParams": {
+				"enumType": "zistgah_dozistan_khazandegan"
+			},
+			"widget": "",
+			"showEditButton": false
+		},
+		"faravani": {
+			"label": "فراوانی",
+			"type": "enum",
+			"typeParams": {
+				"enumType": "faravani_dozistan"
+			},
+			"widget": "",
+			"showEditButton": false
+		},
+		"description": {
+			"label": "توضیحات",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "مشخصات",
+			"members": [
+				"goone",
+				"description",
+				"zistgah",
+				"faravani"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

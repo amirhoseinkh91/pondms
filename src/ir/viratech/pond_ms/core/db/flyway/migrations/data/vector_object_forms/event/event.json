@@ -1,0 +1,140 @@
+{
+  "key": "event",
+  "title": "رویداد",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "name": {
+      "label": "اسم",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "placesUid": {
+      "label": "شناسه مکان ها",
+      "type": "placeUid",
+      "multiple": true,
+      "widget": "placeSearch"
+    },
+    "placesPlans": {
+      "label": "برنامه های مرتبط با محل",
+      "type": "placesPlan",
+      "multiple": true
+    },
+    "tips": {
+      "label": "راهنما",
+      "type": "string",
+      "multiple": true,
+      "widget": "textBox"
+    },
+    "tags": {
+      "label": "تگ ها",
+      "type": "string",
+      "multiple": true,
+      "widget": "textBox"
+    },
+    "images": {
+      "type": "file",
+      "label": "تصاویر",
+      "multiple": true,
+      "widget": "imageSelector"
+    },
+    "description": {
+      "label": "توضیحات",
+      "type": "string",
+      "widget": "textarea"
+    },
+    "website": {
+      "label": "وب سایت",
+      "type": "string",
+      "widget": "textBox"
+    },
+    "telephoneNum": {
+      "type": "string",
+      "label": "شماره تلفن",
+      "widget": "textBox"
+    },
+    "features": {
+      "type": "string",
+      "label": "امکانات",
+      "multiple": true,
+      "widget": "textBox"
+    },
+    "rate": {
+      "type": "integer",
+      "typeParams": {
+        "min": 0,
+        "max": 10
+      },
+      "label": "رتبه",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "address": {
+      "label": "آدرس",
+      "type": "string",
+      "widget": "textarea"
+    },
+    "cityUIDs": {
+      "label": "شناسه شهر ها",
+      "type": "string",
+      "multiple": true,
+      "widget": "textBox"
+    }
+  },
+  "aspects": {},
+  "extents": {
+    "list": [
+      "name",
+      "placesUid",
+      "pricesPlan",
+      "tips",
+      "tags",
+      "images",
+      "description",
+      "website",
+      "telephoneNum",
+      "features",
+      "rate",
+      "address",
+      "cityUIDs"
+    ],
+    "full": [
+      "name",
+      "placesUid",
+      "pricesPlan",
+      "tips",
+      "tags",
+      "images",
+      "description",
+      "website",
+      "telephoneNum",
+      "features",
+      "rate",
+      "address",
+      "cityUIDs"
+    ]
+  },
+  "viewGroups": [
+    {
+      "key": "event",
+      "name": "رویداد",
+      "members": [
+        "name",
+        "placesUid",
+        "placesPlans",
+        "tips",
+        "tags",
+        "images",
+        "description",
+        "website",
+        "telephoneNum",
+        "features",
+        "rate",
+        "label",
+        "address",
+        "cityUIDs"
+      ],
+      "secretLevel": 0
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "path" : "gis-map",
+  "key" : "gismap",
+  "featureName" : "GIS_MAP",
+  "properties" : {
+    "title" : {
+      "label" : "title",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "latinTitle" : {
+      "label" : "latinTitle",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "description" : {
+      "label" : "description",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "minZoom" : {
+      "label" : "minZoom",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "maxZoom" : {
+      "label" : "maxZoom",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "defaultZoom" : {
+      "label" : "defaultZoom",
+      "type" : "int",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "boundingBox" : {
+      "label" : "boundingBox",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "center" : {
+      "label" : "center",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "childCount" : {
+      "label" : "childCount",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "organization" : {
+      "label" : "organization",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "subLayers" : {
+      "label" : "subLayers",
+      "type" : "collection",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    }
+  },
+  "extents" : {
+    "list" : [ "title", "latinTitle", "description", "boundingBox", "center" ]
+  }
+}

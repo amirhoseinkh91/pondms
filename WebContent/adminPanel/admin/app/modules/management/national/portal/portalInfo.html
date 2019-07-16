@@ -1,0 +1,118 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت پورتال‌ها</div>
+		<div class="panel-body">
+			<div class="col-md-8" access-checker="API_LIST_PORTAL">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<map-drawing model="Data.mapModel" mode="Data.mode" api="Controller.crud"></map-drawing>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4" access-checker="API_VIEW_PORTAL" 
+				ng-hide="Data.searchMode=='advanced'">
+				<div class="panel panel-default">
+					<div class="panel-body panel-management">
+						<div class="col-sm-12">
+							<a class="btn btn-sm btn-success btn-text"
+								access-checker="API_ADD_PORTAL"
+								ng-show="Data.mode=='add'" type="button"
+								ng-click="Func.onSaveportalClick()" ng-bind="'SAVE'|EnToFaButton"
+								ng-disabled="portalForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								access-checker="API_EDIT_PORTAL"
+								ng-show="Data.mode=='edit'" type="button"
+								ng-click="Func.onUpdateportalClick()" ng-bind="'UPDATE'|EnToFaButton"
+								ng-disabled="portalForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-warning btn-text"
+								ng-show="Data.mode=='edit' || Data.mode=='add'" type="button"
+								ng-click="Func.onCancelClick()" ng-disabled="" ng-bind="'CANCEL'|EnToFaButton"></a>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" ng-show="Data.selectedportal.organization.uid || Data.mode=='add'">
+					<div class="panel-body">
+						<form name="portalForm" role="form" novalidate>
+							
+							<div class="row rowForm">
+								<label class="col-sm-5">نام سازمان</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.organization.name|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="text" class="form-control" name="orgName" 
+										ng-model="Data.selectedportal.organization.name">
+								</div>
+							</div>
+							<div class="row rowForm">
+								<label class="col-sm-5">کد سازمان</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.organization.code|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="text" class="form-control" name="orgCode" 
+										ng-model="Data.selectedportal.organization.code">
+								</div>
+							</div>
+							
+							<hr>
+							
+							<div class="row rowForm">
+								<label class="col-sm-5">نام نقشه</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.map.title|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="text" class="form-control" name="mapTitle" 
+										ng-model="Data.selectedportal.map.title">
+								</div>
+							</div>
+							<div class="row rowForm">
+								<label class="col-sm-5">کمینه بزرگنمایی</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.map.minZoom|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="number" class="form-control" name="mapMinZoom" 
+										ng-model="Data.selectedportal.map.minZoom">
+								</div>
+							</div>
+							<div class="row rowForm">
+								<label class="col-sm-5">بیشینه بزرگنمایی</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.map.maxZoom|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="number" class="form-control" name="mapMaxZoom" 
+										ng-model="Data.selectedportal.map.maxZoom">
+								</div>
+							</div>
+							<div class="row rowForm">
+								<label class="col-sm-5">بزرگنمایی پیش‌فرض</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									{{Data.selectedportal.map.defaultZoom|EnToFaNumber}}
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<input type="number" class="form-control" name="mapDefaultZoom" 
+										ng-model="Data.selectedportal.map.defaultZoom">
+								</div>
+							</div>
+							<div class="row rowForm">
+								<label class="col-sm-5">توضیحات نقشه</label>
+								<div ng-show="Data.mode=='view'" class="col-sm-7">
+									<p ng-bind="Data.selectedportal.map.description"></p>
+								</div>
+								<div ng-show="Data.mode!='view'" class="col-sm-7">
+									<textarea class="form-control" name="description" 
+										ng-model="Data.selectedportal.map.description"></textarea>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/security
+			http://www.springframework.org/schema/security/spring-security.xsd"
+             profile="auth-local">
+
+    <!--	Secure the API	-->
+    <http pattern="/api/**" entry-point-ref="restAuthenticationEntryPoint" use-expressions="true">
+        <intercept-url pattern="/api/cu/v1/phone_verification" access="permitAll"/>
+        <intercept-url pattern="/api/cu/v1/profile/user/**" access="permitAll"/>
+        <intercept-url pattern="/api/cu/v1/profile/" access="permitAll"/>
+        <intercept-url pattern="/api/cu/v1/profile" access="permitAll"/>
+        <intercept-url pattern="/api/cu/v1/profile/**" access="permitAll"/>
+        <intercept-url pattern="/api/filter/all" access="permitAll"/>
+        <intercept-url pattern="/api/filter/all/*" access="permitAll"/>
+        <intercept-url pattern="/api/filter/hotel/items" access="permitAll"/>
+        <intercept-url pattern="/api/filter/things-to-do/items" access="permitAll"/>
+        <intercept-url pattern="/api/filter/restaurant/items" access="permitAll"/>
+        <intercept-url pattern="/api/filter/gis-vector-object/items/*" access="permitAll"/>
+        <intercept-url pattern="/api/version/last" access="permitAll"/>
+        <intercept-url pattern="/api/main/cityConfig/*" access="permitAll"/>
+        <intercept-url pattern="/api/main/cityConfig" access="permitAll"/>
+        <intercept-url pattern="/api/city/city-names" access="permitAll"/>
+        <intercept-url pattern="/api/v1/hotel/aria_booking" access="permitAll"/>
+        <intercept-url pattern="/api/v1/hotel/eghamat24" access="permitAll"/>
+        <intercept-url pattern="/api/v1/hotel/iranhotelonline" access="permitAll"/>
+        <intercept-url pattern="/api/v1/hotel/config" access="permitAll"/>
+        <intercept-url pattern="/api/v1/hotel/snapptrip" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/config" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/alibaba" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/mrbilit" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/sepehr360" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/ghasedak24" access="permitAll"/>
+        <intercept-url pattern="/api/v1/flight/airplane_ticket" access="permitAll"/>
+        <intercept-url pattern="/api/gis-vector-objects/items" access="permitAll"/>
+        <intercept-url pattern="/api/search/hotels/features" access="permitAll"/>
+        <intercept-url pattern="/api/search/hotels/searchNames" access="permitAll"/>
+        <intercept-url pattern="/api/search/hotels/items" access="permitAll"/>
+        <intercept-url pattern="/api/search/flights/items" access="permitAll"/>
+        <intercept-url pattern="/api/layerid/**" access="permitAll"/>
+        <intercept-url pattern="/api/top-places/items" access="permitAll"/>
+        <intercept-url pattern="/api/config/main/**" access="permitAll"/>
+        <intercept-url pattern="/api/filter/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/gis-vector-object/**" access="permitAll"/>
+        <intercept-url pattern="/api/filter/restaurant/**" access="permitAll"/>
+        <intercept-url pattern="/api/filter/hotel/**" access="permitAll"/>
+        <intercept-url pattern="/api/filter/things-to-do/**" access="permitAll"/>
+        <intercept-url pattern="/api/layer/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/user/**" access="permitAll"/>
+        <intercept-url pattern="/api/layer/items/*" access="permitAll"/>
+        <intercept-url pattern="/api/config/main/**" access="permitAll"/>
+        <intercept-url pattern="/api/feedBack/feedBackList" access="permitAll"/>
+        <intercept-url pattern="/api/feedBack/oneFeedBack" access="permitAll"/>
+        <intercept-url pattern="/api/layerId/city" access="permitAll"/>
+        <intercept-url pattern="/api/config/hotel/mainPage/**" access="permitAll"/>
+        <intercept-url pattern="/api/config/things-to-do/mainPage/**" access="permitAll"/>
+        <intercept-url pattern="/api/config/restaurant/mainPage/**" access="permitAll"/>
+        <intercept-url pattern="/api/layerId/city/**" access="permitAll"/>
+        <intercept-url pattern="/api/layerId/Point/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/myreviews/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/user/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/unConfirmed/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/confirmed/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/newReview/**" access="permitAll"/>
+        <intercept-url pattern="/api/new-config/**" access="permitAll"/>
+        <intercept-url pattern="/api/new-config/main/**" access="permitAll"/>
+        <intercept-url pattern="/api/things-to-do/**" access="permitAll"/>
+        <intercept-url pattern="/api/restaurant/**" access="permitAll"/>
+        <intercept-url pattern="/api/place-report/**" access="permitAll"/>
+        <intercept-url pattern="/api/mobile-login/**" access="permitAll"/>
+        <intercept-url pattern="/api/top-place/find/**" access="permitAll"/>
+        <intercept-url pattern="/api/top-place/" access="permitAll"/>
+        <intercept-url pattern="/api/city/topCities/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/user_web/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/all/waiting-for-confirm-web/**" access="permitAll"/>
+        <intercept-url pattern="/api/review/my-reviews-web/**" access="permitAll"/>
+        <intercept-url pattern="/api/province/get-name/**" access="permitAll"/>
+        <intercept-url pattern="/api/city/get-city-by-province/**" access="permitAll"/>
+        <intercept-url pattern="/api/campaign/flag-up/**" access="permitAll"/>
+        <intercept-url pattern="/api/campaign/join/**" access="permitAll"/>
+        <intercept-url pattern="/api/campaign/get-user/**" access="permitAll"/>
+        <!--###########################-->
+
+
+        <intercept-url pattern="/**/*" access="hasAuthority('ACCESS_API')"/>
+        <!-- socket settings :) -->
+        <intercept-url pattern="/endpoint" access="permitAll"/>
+        <access-denied-handler ref="accessDeniedHandler"/>
+        <remember-me key="PondMS_uniqueAndSecret_53475345"/>
+    </http>
+
+    <!-- Secure the page per the URL pattern -->
+    <global-method-security pre-post-annotations="enabled"/>
+
+
+    <!-- Enable the @PreAuthorize annotation to secure service layer methods -->
+    <!-- The AccessDenied Exception throws when the user is not authorized will handle by AccessDeniedMapper class and convert to a response with code 403 -->
+    <beans:bean id="restAuthenticationEntryPoint" class="ir.viratech.commons.api.auth.RestAuthenticationEntryPoint"/>
+
+    <http pattern="/**" auto-config="true" use-expressions="true">
+        <intercept-url pattern="/css/*" access="permitAll"/>
+
+        <intercept-url pattern="/css/**/*" access="permitAll"/>
+        <intercept-url pattern="/img/*" access="permitAll"/>
+        <intercept-url pattern="/img/**/*" access="permitAll"/>
+        <intercept-url pattern="/**/*.png" access="permitAll"/>
+        <intercept-url pattern="/**/*.jpg" access="permitAll"/>
+        <intercept-url pattern="/**/*.bmp" access="permitAll"/>
+        <intercept-url pattern="/**/*.gif" access="permitAll"/>
+        <intercept-url pattern="/test/*.html" access="ROLE_see_home"/>
+        <intercept-url pattern="/font/*" access="permitAll"/>
+        <intercept-url pattern="/common/*" access="permitAll"/>
+        <intercept-url pattern="/common/**/*" access="permitAll"/>
+        <intercept-url pattern="/static/*" access="permitAll"/>
+        <intercept-url pattern="/static/**/*" access="permitAll"/>
+
+        <intercept-url pattern="/intro/*" access="permitAll"/>
+        <intercept-url pattern="/intro/**/*" access="permitAll"/>
+        <intercept-url pattern="/*" access="permitAll"/>
+        <intercept-url pattern="/j_spring_otptoken_security_check" access="permitAll"/>
+
+        <!-- mine -->
+        <intercept-url pattern="/agency/dashboard/*" access="hasAuthority('SEE_HOME')"/>
+        <!--      -->
+
+        <intercept-url pattern="/admin/**/*" access="hasAuthority('SEE_HOME')"/>
+
+        <form-login login-page="/adminPanel/static/login.html" authentication-failure-url="/adminPanel/static/login.html?login_error=1"
+                    default-target-url="/adminPanel/admin" always-use-default-target="true"/>
+
+        <remember-me key="PondMS_uniqueAndSecret_53475345" services-ref="rememberMeService"/>
+
+        <custom-filter after="LOGIN_PAGE_FILTER" ref="otpSmsAuthenticationFilter"/>
+
+        <logout logout-url="/logout" logout-success-url="/adminPanel/static/login.html"/>
+        <access-denied-handler error-page="/adminPanel/static/error-403.html"/>
+        <session-management
+                session-authentication-strategy-ref="sas"/>
+    </http>
+
+    <beans:bean id="rememberMeService"
+                class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+
+        <beans:constructor-arg index="0" value="PondMS_uniqueAndSecret_53475345"/>
+        <beans:constructor-arg index="1" ref="userDetailsService"/>
+
+
+    </beans:bean>
+
+    <beans:bean id="accessDeniedHandler" class="ir.viratech.commons.api.auth.ApiAuthorizationAccessDeniedHandler"/>
+
+    <!-- Remove the "Role_" prefix -->
+    <beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter ">
+        <beans:property name="rolePrefix" value=""/>
+    </beans:bean>
+
+
+    <beans:bean id="userDetailsService" class="ir.viratech.pond_ms.api.auth.MyUserDetailsService"/>
+
+    <beans:bean id="otpSmsAuthenticationFilter" class="ir.viratech.commons.api.auth.OtpSmsAuthenticationFilter">
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+    </beans:bean>
+
+    <beans:bean id="otpSmsAuthenticationProvider" class="ir.viratech.commons.api.auth.OtpSmsAuthenticationProvider"/>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="otpSmsAuthenticationProvider"/>
+        <authentication-provider user-service-ref="userDetailsService">
+            <!--<password-encoder hash="plaintext" />-->
+            <password-encoder ref="serverPasswordEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="sas"
+                class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:bean
+                        class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+                    <beans:constructor-arg ref="sessionRegistry"/>
+                    <beans:property name="maximumSessions" value="-1"/>
+                    <beans:property name="exceptionIfMaximumExceeded" value="true"/>
+                </beans:bean>
+                <beans:bean
+                        class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+                </beans:bean>
+                <beans:bean
+                        class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                    <beans:constructor-arg ref="sessionRegistry"/>
+                </beans:bean>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+    <beans:bean id="sessionRegistry"
+                class="org.springframework.security.core.session.SessionRegistryImpl"/>
+</beans:beans>

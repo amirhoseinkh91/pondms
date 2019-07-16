@@ -1,0 +1,23 @@
+<div class="modal-header">{{Data.eventObj.name}}</div>
+<div class="modal-body">
+    <div class="col-sm-12">
+        <a ng-show="Data.mode=='view'" class="btn btn-sm btn-default" ng-click="Func.changeEditMode()">ویرایش</a>
+        <a ng-show="Data.mode=='view'" class="btn btn-sm btn-default" ng-click="Func.deleteModel()"
+           ng-confirm="آیا از حذف این نقطه مطمئن هستید؟">حذف</a>
+        <a ng-show="Data.mode!='view'" class="btn btn-sm btn-default" ng-click="Func.saveEditMode()">ذخیره</a>
+        <a ng-show="Data.mode!='view'" class="btn btn-sm btn-default" ng-click="Func.cancleEditMode()">انصراف</a>
+        <div class="panel-body">
+            <map-drawing model="Data.mapModel" mode="Data.mode" api="Controller.crud"></map-drawing>
+        </div>
+        <div>
+            <form name="example1" class="form-horizontal" role="form">
+                <schema-form-fields is-edit-mode="Data.mode!='view'" schema="Data.form"
+                                    model="Data.vectorObject.formInstance" api="Data.api"
+                                    simple-view="true"></schema-form-fields>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info" type="button" ng-click="Func.onCloseModalClick()">بستن</button>
+</div>

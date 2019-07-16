@@ -1,0 +1,212 @@
+{
+    "key": "site",
+    "title": "Site Schema",
+    "properties": {
+        "AC_Number": {
+            "label": "AC Number",
+            "type": "string"
+        },
+        "CMS_type": {
+            "label": "نوع CMS",
+            "type": "string"
+        },
+        "IP_address": {
+            "label": "آدرس آی پی",
+            "type": "string"
+        },
+        "IP_address_location": {
+            "label": "محل جغرافیایی IP",
+            "type": "string"
+        },
+        "IP_address_owner": {
+            "label": "مالک آی پی",
+            "type": "person",
+            "widget": "popupSelector"
+        },
+        "NetName": {
+            "label": "NetName",
+            "type": "string"
+        },
+        "NetNum": {
+            "label": "NetNum",
+            "type": "string"
+        },
+        "activity_status": {
+            "label": "وضعیت فعالیت",
+            "type": "boolean"
+        },
+        "address": {
+            "label": "آدرس",
+            "required": true,
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "alexa_country_name": {
+            "label": "کشور ثبت شده در الکسا",
+            "type": "string"
+        },
+        "alexa_country_rank": {
+            "label": "رتبه کشور الکسا",
+            "type": "integer"
+        },
+        "alexa_related_sites": {
+            "label": "سایت‌های مرتبط در الکسا",
+            "multiple": true,
+            "type": "string"
+        },
+        "alexa_world_rank": {
+            "label": "رتبه جهانی الکسا",
+            "type": "integer"
+        },
+        "comment": {
+            "label": "سایر توضیحات",
+            "type": "string",
+            "widget": "textarea"
+        },
+        "domain_expire_date": {
+            "label": "تاریخ انقضای دامنه",
+            "type": "date",
+            "widget": "garegorian"
+        },
+        "domain_extension_date": {
+            "label": "تاریخ تمدید دامنه",
+            "type": "date",
+            "widget": "garegorian"
+        },
+        "domain_name_1": {
+            "label": "نام دامنه۱",
+            "type": "string"
+        },
+        "domain_name_2": {
+            "label": "نام دامنه۲",
+            "type": "string"
+        },
+        "domain_owner": {
+            "label": "مالک دامنه",
+            "type": "person",
+            "widget": "popupSelector"
+        },
+        "domain_registration_date": {
+            "label": "تاریخ ثبت دامنه",
+            "type": "date",
+            "widget": "garegorian"
+        },
+        "email": {
+            "label": "ایمیل",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "expert_comment": {
+            "label": "نظر کارشناس",
+            "type": "string",
+            "widget": "textarea"
+        },
+        "filtering_status": {
+            "label": "وضعیت فیلترینگ",
+            "type": "boolean"
+        },
+        "firstPageTitle": {
+            "label": "عنوان صفحه‌ی اول",
+            "type": "string"
+        },
+        "google_rank": {
+            "label": "رنک در گوگل",
+            "type": "integer"
+        },
+        "iran_visit_statistics": {
+            "label": "آمار بازدید ایرانی",
+            "type": "integer"
+        },
+        "keywords": {
+            "label": "کلید واژه ها",
+            "multiple": true,
+            "type": "string"
+        },
+        "other_domains": {
+            "label": "سایر دامنه‌های سایت",
+            "multiple": true,
+            "type": "string"
+        },
+        "server_os_type": {
+            "label": "سیستم عامل سرور",
+            "type": "string"
+        },
+        "server_os_version": {
+            "label": "نسخه سیستم عامل سرور",
+            "type": "string"
+        },
+        "site_manager": {
+            "label": "مدیر سایت",
+            "searchable": true,
+            "type": "person",
+            "widget": "popupSelector"
+        },
+        "title": {
+            "label": "عنوان",
+            "searchable": true,
+            "type": "string"
+        },
+        "webserver_type": {
+            "label": "نوع وب سرور",
+            "type": "string"
+        },
+        "webserver_version": {
+            "label": "نسخه وب سرور",
+            "type": "string"
+        },
+        "whois_domain_output": {
+            "label": "مشخصات دامنه",
+            "type": "string",
+            "widget": "bigText",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "whois_ip_output": {
+            "label": "مشخصات آی پی",
+            "type": "string",
+            "widget": "bigText",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "world_visit_statistics": {
+            "label": "آمار بازدید جهانی",
+            "type": "integer"
+        }
+    },
+    "displayStringFunction": "function(){return title+ '(' +address + ')';}",
+    "extents": {
+        "enriched": [ "title", "address", "isDeleted" ],
+        "list": [ "title", "address", "isDeleted" ]
+    },
+    "viewGroups": [
+        {
+            "key": "ident",
+            "members": [ "title", "address", "@topicable", "firstPageTitle", "keywords", "email", "site_manager" ],
+            "name": "هویتی"
+        },
+        {
+            "key": "domain",
+            "members": [ "domain_owner", "domain_registration_date", "domain_expire_date", "domain_extension_date", "other_domains" ],
+            "name": "دامنه"
+        },
+        {
+            "key": "stat",
+            "members": [ "activity_status", "alexa_country_name", "filtering_status", "alexa_world_rank", "alexa_country_rank", "IP_address", "google_rank", "world_visit_statistics", "iran_visit_statistics", "alexa_related_sites", "whois_ip_output", "whois_domain_output" ],
+            "name": "آمار"
+        },
+        {
+            "key": "comment",
+            "members": [ "comment", "expert_comment" ],
+            "name": "نظر",
+            "secretLevel": 3
+        }
+    ]
+}

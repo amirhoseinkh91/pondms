@@ -1,0 +1,115 @@
+<style>
+body {
+	overflow: auto;
+	padding-top: 44px;
+}
+
+.dis-none {
+	display: none !important;
+}
+
+.dis-block {
+	display: block !important;
+}
+
+.dis-in-block {
+	display: inline-block !important;
+}
+</style>
+<div class="mainContent  form-manage">
+
+
+	<!-- --------------------------------------------------------------------------------------------- -->
+	<div class="panel-draggabled-component" ng-class="{'open':Data.showIconText}">
+		<div class="panel panel-default ">
+			<div class="panel-heading">
+				<span>فرم پایه</span>
+			</div>
+			<div class="panel-body">
+				<!-- nice-option="{railalign: 'left' , cursorcolor: '#000' , cursoropacitymin:0.5}" ng-nicescroll -->
+				<div class="panel-body-child" nice-option="{railalign: 'left' , cursorcolor: '#bdbdbd' , cursoropacitymin:1 , cursorborderradius:'0px;' , cursorborder : '0px solid' , cursorwidth : '4px' }" ng-nicescroll>
+					<div class="row noSideMargin">
+
+						<fieldset class="col-sm-12" ng-repeat="viewGroup in Data.formItem.viewGroups" ng-class="{'active':tabActiveIndex==$index}" ng-click="Func.changeTab($index);">
+							<legend aria-hidden="true" style="cursor: pointer;">
+								{{viewGroup.name}}
+								<span class="glyphicon glyphicon-edit" ng-click="Func.onEditGroupClick(viewGroup)"></span>
+								<span class=" glyphicon glyphicon-remove" ng-click="Func.onRemoveViewGroupClick(viewGroup)"></span>
+							</legend>
+							<div style="padding-left: 30px; padding-right: 30px; min-height: 300px;" jqyoui-droppable="droppable" data-jqyoui-options data-drop="true">
+								<form name="example" class="form-horizontal" role="form" ng-init="Func.onInitSchemaField($index)">
+									<schema-form-fields ng-init="isEditMode=true" is-edit-mode="isEditMode" user-secret-level="UserSecretLevelObj.UserSecretLevel" api="Data.apis[$index]" schema="Data.formItem" model="model" is-col-7="true"></schema-form-fields>
+								</form>
+							</div>
+
+						</fieldset>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="leftcolumn">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="row-reverse">
+					<a ui-sref="baseSelector" target="_blank" class="btn btn-xs btn-primary btn-text">مدیریت انتخابگر پایه</a>
+					<button ng-click="Func.onAddGroupClick();" class="btn btn-xs btn-success btn-text">
+					افزودن زیرفرم
+						<!-- <label ng-show="!Data.formItem.viewGroups.length">افزودن فرم</label> -->
+					</button>
+
+					<button class="btn btn-xs btn-success btn-text" type="button" ng-click="Func.onSaveFormClick()" ng-disabled="Data.formItem.properties['addProp']">ذخیره</button>
+					<button class="btn btn-xs btn-warning btn-text" type="button" ng-click="Func.onReturnClick()">انصراف</button>
+					<span style="color:#FFF;"> {{Data.formItem.title}}</span>
+					
+				</div>
+			</div>
+			<div class="panel-body p-r">
+				<div class="panel-body-child" nice-option="{railalign: 'left' , cursorcolor: '#bdbdbd' , cursoropacitymin:1 , cursorborderradius:'0px;' , cursorborder : '0px solid' , cursorwidth : '4px' }" ng-nicescroll>
+					<edit-prop type-list="Data.entityTypeList" ng-show="Data.mode =='EDIT-PROP'" base-selector-list="Data.baseSelectorList" property="editingProp" api="api.editProp"></edit-prop>
+					<edit-view-group api="api.editViewGroup" ng-show="Data.mode =='EDIT-VIEWGROUP'" view-group="selectedViewGroup" view-group-list="Data.formItem.viewGroups"></edit-view-group>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar-form-manage" ng-class="{'sidebar-close':!Data.showIconText , 'sidebar-open':Data.showIconText}">
+		<!-- <div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-sm-3">
+					<a class="btn btn-default btn-xs btn-text" ng-disabled="Data.mode=='add'" type="button" style="margin-right: 30px" ng-click="Func.onReturnClick()">بازگشت</a>
+				</div>
+				<div class="col-sm-3">
+					<a class="btn btn-primary btn-xs btn-text" ng-disabled="Data.mode=='add'" type="button" ng-click="Func.helpForDrag()">راهنما</a>
+				</div>
+			</div>
+		</div> -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<button ng-click="Func.onShowIconClick()" ng-if="Data.showIconText" class="btn sidebar-btn-toggle">
+					<span class="flaticon-fm-close"></span>
+				</button>
+				<button ng-click="Func.onShowIconTextClick()" ng-if="!Data.showIconText" class="btn sidebar-btn-toggle">
+					<span class="flaticon-fm-signs"></span>
+				</button>
+			</div>
+			<div class="panel-body">
+				<div class="sidebar-component" ng-repeat="comp in Data.components" ng-class="{'overflow-hidden':Data.showIconText}">
+					<!-- 					<div  ng-repeat="comp in Data.components" class="col-sm-5 widget" ng-class="comp.directiveName"  -->
+					<!-- 						ng-model="comp.model" model="comp.model" field="comp.field" is-edit-mode="true" -->
+					<!-- 						jqyoui-draggable="{animate:true,onStart:'Func.test(comp)'}"  -->
+					<!-- 						data-jqyoui-options="{revert: 'invalid'}" data-drag="true"></div> -->
+					<!-- <img ng-src="app/assets/img/component_pics/{{comp.picName}}.png" ng-class="{'col-sm-12':!Data.showIconText , 'col-sm-6':Data.showIconText}" jqyoui-draggable="{animate:true,onStart:'Func.onStartDragFunction(comp)'}" data-jqyoui-options="{revert: 'invalid'}" data-drag="true" style=""> -->
+					<span style="" ng-class="{'dis-block':!Data.showIconText , 'pull-right':Data.showIconText}" class="{{comp.picName}} " jqyoui-draggable="{animate:true,onStart:'Func.onStartDragFunction(comp)'}" data-jqyoui-options="{revert: 'invalid'}" data-drag="true" style=""></span>
+					<label class="pull-right" ng-class="{'dis-none':!Data.showIconText}">{{comp.persianName}}</label>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+

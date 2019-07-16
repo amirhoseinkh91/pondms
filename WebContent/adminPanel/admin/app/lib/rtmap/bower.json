@@ -1,0 +1,11 @@
+{
+	"name": "rtmap",
+	"version": "1.0.0",
+	"main": "rtmapModule.js",
+	"ignore": [],
+	"dependencies": {
+		"angular": "*",
+		"angular-sanitize": "*",
+		"openlayer": "3"
+	}
+}

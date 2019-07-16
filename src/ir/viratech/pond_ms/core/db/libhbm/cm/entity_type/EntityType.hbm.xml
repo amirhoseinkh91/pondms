@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.commons.cm.model.entity_type" schema="commons_cm">
+
+	<class name="EntityType" table="ENTITY_TYPES" schema="commons_cm">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+
+		<property name="key" type="string"
+				column="key_" not-null="true" unique="true" >
+			<meta attribute="alternate-key">true</meta>
+		</property>
+
+		<property name="name" type="string" not-null="true" unique="true" />
+		<property name="icon" type="string" not-null="false" unique="false" />
+		<property name="rawJsonSchema" type="text" not-null="true" unique="false"/>
+		<property name="processedJsonSchema" type="text" not-null="true" unique="false"/>
+		<property name="weak" type="boolean" not-null="true" unique="false" />
+		<property name="collectionName" type="string" not-null="true" unique="false" />
+		<property name="hotkey" type="string" not-null="false" unique="false"/>
+		<property name="archive" type="boolean" not-null="true" unique="false"/>
+
+		<many-to-one name="parentEntityType" class="EntityType"
+				column="parentEntityTypeId" not-null="false" unique="false"/>
+
+		<set name="childEntityTypes" inverse="true">
+			<key column="parentEntityTypeId" />
+			<one-to-many class="EntityType" />
+		</set>
+
+		<list name="snapshots" inverse="false" cascade="all-delete-orphan">
+			<key column="entityTypeId" not-null="true" />
+			<index column="revision" />
+			<one-to-many class="ir.viratech.commons.cm.model.entity_type.EntityTypeSnapshot" />
+		</list>
+
+		<property name="docxExportTemplate" type="string" not-null="false" unique="true" />
+
+	</class>
+
+</hibernate-mapping>

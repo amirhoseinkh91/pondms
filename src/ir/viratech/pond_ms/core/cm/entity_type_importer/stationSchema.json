@@ -1,0 +1,39 @@
+{
+    "key": "station",
+    "title": "ایستگاه",
+    "properties": {
+        "id": {
+            "label": "شماره ایستگاه",
+            "type": "integer"
+        },
+        "type": {
+            "label": "نوع وسیله",
+            "type": "string"
+        },
+        "englishName": {
+            "label": "نام انگلیسی",
+            "searchable": true,
+            "type": "string"
+        },
+        "name": {
+            "label": "نام",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        }
+    },
+    "displayStringFunction": "function () {var ds = name;if (ds.trim() === '') {return englishName;} else {return ds;}}",
+    "extents": {
+        "enriched": [ "name"],
+        "list": [ "name", "englishName", "type","id" ]
+    },
+    "viewGroups": [
+        {
+            "key": "detail",
+            "members": [ "name", "englishName", "id", "type"],
+            "name": "مشخصات"
+        }
+    ]
+}

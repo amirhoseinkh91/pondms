@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.map_object.vector">
+
+	<joined-subclass name="PointObject" table="POINT_OBJECTS" schema="pond_ms" 
+				extends="ir.viratech.pond_ms.model.map_object.vector.GISVectorObject">
+		
+		<key column="vector_object_id"/>
+		
+		<property name="point" type="org.hibernate.spatial.GeometryType"
+			not-null="true">
+			<meta attribute="property-type">com.vividsolutions.jts.geom.Point</meta>
+			<column name="point" sql-type="geometry(Point,4326)"></column>
+		</property>
+		
+      
+      
+	</joined-subclass>
+</hibernate-mapping>

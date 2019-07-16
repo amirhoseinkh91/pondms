@@ -1,0 +1,112 @@
+{
+    "key": "sampleEntity",
+    "title": "موجودیت تست",
+    "properties": {
+        "big_text": {
+            "label": "بزرگ‌متن",
+            "type": "string",
+            "widget": "bigText",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "boolean": {
+            "label": "بولین",
+            "type": "boolean"
+        },
+        "date_g": {
+            "label": "تاریخ",
+            "type": "date",
+            "widget": "gregorian"
+        },
+        "date_j": {
+            "label": "تاریخ جلالی",
+            "type": "date",
+            "widget": "jalali"
+        },
+        "entity": {
+            "label": "انتخابگر موجودیت",
+            "searchable": true,
+            "type": "personTest",
+            "widget": "popupSelector"
+        },
+        "enum": {
+            "label": "اینام",
+            "type": "enum",
+            "typeParams": {
+                "enumType": "gender"
+            }
+        },
+        "int": {
+            "label": "عدد",
+            "type": "integer"
+        },
+        "multi_entity": {
+            "label": "انتخابگر موجودیت چندتایی",
+            "multiple": true,
+            "type": "personTest",
+            "widget": "popupSelector"
+        },
+        "multi_enum": {
+            "label": "چند اینام",
+            "multiple": true,
+            "type": "enum",
+            "typeParams": {
+                "enumType": "gender"
+            }
+        },
+        "multi_string": {
+            "label": "رشته چندتایی",
+            "multiple": true,
+            "type": "string"
+        },
+        "multi_textarea": {
+            "label": "توضیحات چندتایی",
+            "type": "string",
+            "widget": "textarea"
+        },
+        "param_string": {
+            "label": "نام انگلیسی",
+            "required": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "string": {
+            "label": "رشته فارسی",
+            "type": "string"
+        },
+        "textarea": {
+            "label": "توضیحات",
+            "type": "string",
+            "widget": "textarea"
+        }
+    },
+    "displayStringFunction": "function(){return string}",
+    "aspects": {
+        "attachment": {},
+        "taggable": {}
+    },
+    "extents": {
+        "enriched": [ "string", "int", "boolean" ],
+        "list": [ "string", "int", "boolean" ]
+    },
+    "viewGroups": [
+        {
+            "key": "text",
+            "members": [ "string", "param_string", "multi_string", "textarea", "multi_textarea", "big_text", "tag" ],
+            "name": "رشته‌ها"
+        },
+        {
+            "key": "option",
+            "members": [ "@topicable", "entity", "multi_entity", "enum", "multi_enum" ],
+            "name": "انتخابگرها"
+        },
+        {
+            "key": "others",
+            "members": [ "int", "boolean", "date_g", "date_j" ],
+            "name": "بقیه"
+        }
+    ]
+}

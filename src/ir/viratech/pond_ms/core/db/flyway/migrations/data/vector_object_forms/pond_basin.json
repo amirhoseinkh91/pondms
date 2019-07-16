@@ -1,0 +1,46 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"Name": {
+			"label": "نام",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Perimeter": {
+			"label": "محیط",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Area": {
+			"label": "مساحت",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"Name",
+				"Perimeter",
+				"Area"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

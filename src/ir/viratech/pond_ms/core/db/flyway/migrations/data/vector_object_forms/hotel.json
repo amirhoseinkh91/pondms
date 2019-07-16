@@ -1,0 +1,158 @@
+{
+  "key": "",
+  "title": "",
+  "displayStringFunction": "function(){return null}",
+  "properties": {
+    "HotelName": {
+      "type": "string",
+      "label": "نام هتل",
+      "widget": "textBox",
+      "showEditButton": false
+    },
+    "TelephoneNum": {
+      "type": "string",
+      "label": "شماره تلفن",
+      "widget": "textBox"
+    },
+    "Website": {
+      "type": "string",
+      "label": "وب سایت",
+      "widget": "textBox"
+    },
+    "Address": {
+      "type": "string",
+      "label": "آدرس هتل",
+      "widget": "textarea"
+    },
+    "Description": {
+      "type": "string",
+      "label": "توضیحات هتل",
+      "widget": "textarea",
+      "showEditButton": false
+    },
+    "Features": {
+      "type": "string",
+      "label": "امکانات",
+      "multiple": true,
+      "widget": "textBox"
+    },
+    "Images": {
+      "type": "file",
+      "label": "تصاویر",
+      "multiple": true,
+      "widget": "imageSelector",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "TotalScore": {
+      "type": "integer",
+      "label": "امتیاز کل",
+      "widget": "",
+      "showEditButton": false
+    },
+    "IntrinsicValue": {
+      "type": "integer",
+      "label": "ارزش ذاتی",
+      "widget": "",
+      "showEditButton": false
+    },
+    "TemporalValue": {
+      "type": "integer",
+      "typeParams": {
+        "min": -100
+      },
+      "label": "ارزش زمانی",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false
+    },
+    "Rate": {
+      "type": "integer",
+      "typeParams": {
+        "min": 0,
+        "max": 10
+      },
+      "label": "هتل چند ستاره",
+      "widget": "",
+      "widgetParams": {},
+      "showEditButton": false,
+      "title": "Rate",
+      "multiple": false,
+      "typeComponent": {
+        "type": "integer",
+        "typePersianName": "عدد",
+        "widgets": [
+          {
+            "widget": "",
+            "persianName": "عدد",
+            "multiple": false,
+            "isHidden": false,
+            "picPath": "app/lib/vtSchemaDirective/img/component_pics/integer.png",
+            "htmlPath": "app/lib/vtSchemaDirective/schema-form-template/integerintBox.html",
+            "typeParamsSchema": {
+              "title": "",
+              "properties": {
+                "min": {
+                  "label": "کمترین",
+                  "type": "integer",
+                  "widget": "",
+                  "multiple": false,
+                  "enumType": "",
+                  "showEditButton": false
+                },
+                "max": {
+                  "label": "بیشترین",
+                  "type": "integer",
+                  "widget": "",
+                  "multiple": false,
+                  "enumType": "",
+                  "showEditButton": false
+                }
+              },
+              "viewGroups": [
+                {
+                  "id": "aa",
+                  "name": "اا",
+                  "members": [
+                    "min",
+                    "max"
+                  ],
+                  "$$hashKey": "object:229"
+                }
+              ]
+            },
+            "$$hashKey": "object:228"
+          }
+        ],
+        "$$hashKey": "object:64"
+      }
+    }
+  },
+  "extents": {
+    "enriched": [],
+    "list": []
+  },
+  "searchIndexDepth": null,
+  "aspects": {},
+  "viewGroups": [
+    {
+      "key": "Hotel",
+      "name": "هتل",
+      "members": [
+        "HotelName",
+        "TotalScore",
+        "TemporalValue",
+        "IntrinsicValue",
+        "Rate",
+        "Images",
+        "Description",
+        "Features",
+        "Address",
+        "Website",
+        "TelephoneNum"
+      ],
+      "secretLevel": 0,
+      "$$hashKey": "object:248"
+    }
+  ]
+}

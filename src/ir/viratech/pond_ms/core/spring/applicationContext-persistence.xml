@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+
+
+            http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource"
+          p:driverClassName="org.postgresql.Driver"
+          p:url="${db.url}"
+          p:username="${db.username}"
+          p:password="${db.password}"
+          destroy-method="close"/>
+
+    <bean id="flywayBean"
+          class="org.flywaydb.core.Flyway"
+          depends-on="dataSource, uidGenerator, CmFlywayMigrator"
+          p:locations="ir/viratech/pond_ms/core/db/flyway/migrations"
+          p:table="pond_ms_schema_version"
+          p:schemas="pond_ms"
+          p:validateOnMigrate="true">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="flaywayUpdaterBean"
+          class="ir.viratech.commons.persistence.flyway.FlywayMigrator"
+          depends-on="flywayBean,CmFlywayMigrator"/>
+
+    <bean id="persistenceEventInterceptor"
+          class="ir.viratech.commons.persistence.hibernate.interception.PersistenceEventInterceptor"/>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          depends-on="flywayAutomaticActionBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.default_schema">pond_ms</prop>
+            </props>
+        </property>
+        <property name="entityInterceptor">
+            <ref bean="persistenceEventInterceptor"/>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath*:ir/viratech/pond_ms/core/db/libhbm/**/*.hbm.xml</value>
+                <value>classpath*:ir/viratech/pond_ms/core/db/hbm/**/*.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <bean id="hibernateSessionManager" class="ir.viratech.commons.persistence.base.HibernateSessionManager">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+
+
+    <context:component-scan base-package="ir.viratech.pond_ms.model">
+        <context:include-filter type="regex" expression=".*\.dao\..*DAO"/>
+        <context:include-filter type="regex" expression=".*\.logic\..*Mgr"/>
+    </context:component-scan>
+
+    <context:component-scan base-package="ir.viratech.commons.file.model">
+        <context:include-filter type="regex" expression=".*\.dao\..*DAO"/>
+        <context:include-filter type="regex" expression=".*\.logic\..*Mgr"/>
+    </context:component-scan>
+
+    <bean id="mongoServerAddress" class="com.mongodb.ServerAddress">
+        <constructor-arg index="0" type="java.lang.String" value="${mongo.host}"/>
+        <constructor-arg index="1" type="int" value="${mongo.port}"/>
+    </bean>
+
+    <bean id="mongoClient" class="com.mongodb.MongoClient" destroy-method="close">
+        <constructor-arg ref="mongoServerAddress"/>
+    </bean>
+
+    <bean id="strongEncryptor" class="ir.viratech.commons.persistence.encryption.TestPBEStringEncryptorcryptor"/>
+    <bean id="hibernateStringEncryptor"
+          class="org.jasypt.hibernate4.encryptor.HibernatePBEStringEncryptor">
+        <property name="registeredName">
+            <value>strongHibernateStringEncryptor</value>
+        </property>
+        <property name="encryptor">
+            <ref bean="strongEncryptor"/>
+        </property>
+    </bean>
+    <bean id="byteEncryptor" class="org.jasypt.encryption.pbe.StandardPBEByteEncryptor">
+        <property name="algorithm">
+            <value>PBEWithMD5AndDES</value>
+        </property>
+        <property name="password">
+            <value>pass</value>
+        </property>
+    </bean>
+
+    <bean id="hibernateEncryptor"
+          class="org.jasypt.hibernate.encryptor.HibernatePBEByteEncryptor">
+        <property name="registeredName">
+            <value>myHibernateByteEncryptor</value>
+        </property>
+        <property name="encryptor">
+            <ref bean="byteEncryptor"/>
+        </property>
+    </bean>
+
+
+    <beans profile="dev">
+        <bean id="flywayAutomaticActionBean"
+              class="ir.viratech.pond_ms.core.db.flyway.CDMFlywayAutomaticUpdateMigratorBean"
+              depends-on="flaywayUpdaterBean, CmFlywayMigrator"/>
+    </beans>
+    <beans profile="!dev">
+        <bean id="flywayAutomaticActionBean"
+              class="ir.viratech.commons.persistence.flyway.FlywayAutomaticBypasserBean"/>
+    </beans>
+
+</beans>

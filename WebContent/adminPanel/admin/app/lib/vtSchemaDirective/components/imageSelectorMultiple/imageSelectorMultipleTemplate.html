@@ -1,0 +1,22 @@
+<span ng-show="isEditMode" ng-form="setViewValueForm">
+     <input class="file" type="file" name="setViewValueName" accept="image/*" ngf-select="onFileSelect($files)"
+            class="filestyle" multiple/>
+</span>
+
+<!--<span class=" glyphicon glyphicon-remove" ng-show="model && isEditMode" style="cursor: pointer; cursor: hand; position: absolute; z-index: 2; left: 56px; top: 18px; color: red" data-placement="top" title="پاک کردن" ng-click="removeFile();" class="remove"> </span>-->
+<span ng-repeat="img in model" ng-show="img || !isEditMode" style="position: relative;">
+     <button ng-show="isEditMode" class="btn btn-default btn-xs"
+             style="position: absolute; z-index: 10; right: -25px; top: 15px;" ng-click="removePic($index)">
+          <i class="glyphicon glyphicon-remove"></i>
+     </button>
+     <div ng-if="img.downloadLink === undefined">
+          <img ng-show="img.indexOf('http')==-1" class="thumbnail" alt="" src="/files/?mode=view&fcode={{img}}"
+               ng-click="onShowBigPicClick(false, img);" style="cursor: pointer; max-width: 104px; max-height: 156px;">
+          <img ng-show="img.indexOf('http')!=-1" class="thumbnail" alt="" src="{{img}}"
+               ng-click="onShowBigPicClick(false, img);" style="cursor: pointer; max-width: 104px; max-height: 156px;">
+     </div>
+     <div ng-if="img.downloadLink">
+          <img class="thumbnail" alt="" src="/{{img.downloadLink}}"
+               ng-click="onShowBigPicClick(false, img);" style="cursor: pointer; max-width: 104px; max-height: 156px;">
+     </div>
+</span>

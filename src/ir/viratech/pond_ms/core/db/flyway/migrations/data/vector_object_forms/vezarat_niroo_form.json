@@ -1,0 +1,60 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"Name": {
+			"label": "نام ایستگاه",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"YEAR": {
+			"label": "سال تاسیس",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Zone": {
+			"label": "ناحیه",
+			"type": "integer",
+			"widget": "",
+			"showEditButton": false
+		},
+		"X": {
+			"label": "طول جغرافیایی",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Y": {
+			"label": "عرض جغرافیایی",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"Name",
+				"YEAR",
+				"Zone",
+				"X",
+				"Y"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:107"
+		}
+	],
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	}
+}

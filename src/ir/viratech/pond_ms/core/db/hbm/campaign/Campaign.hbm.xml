@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.campaign">
+
+    <class name="Campaign" table="CAMPAIGNS" schema="pond_ms">
+        <id name="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+        <property name="extuid" type="string" not-null="true" unique="true">
+            <meta attribute="alternate-key">true</meta>
+            <meta attribute="init">this.generateUid()</meta>
+        </property>
+        <property name="useId" type="string" not-null="true" unique="true"/>
+        <property name="phone_num" type="string" not-null="true" unique="false"/>
+        <property name="device_name" type="string" not-null="false" unique="false"/>
+        <property name="destination" type="string" not-null="true" unique="false"/>
+        <property name="day01" type="yes_no" not-null="false" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day02" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day03" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day04" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day05" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day06" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day07" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day08" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day09" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day10" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day11" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day12" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day13" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day14" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day15" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day16" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day17" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+        <property name="day18" type="yes_no" not-null="true" unique="false">
+            <meta attribute="init">false</meta>
+        </property>
+    </class>
+
+</hibernate-mapping>

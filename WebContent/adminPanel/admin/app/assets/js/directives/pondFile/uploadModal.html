@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">بارگزاری اطلاعات لایه</h3>
+</div>
+<div class="modal-body">
+    <form name="form">
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">مرجع</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="reference" ng-model="Data.form.reference">
+            </div>
+        </div>
+        
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">تاریخ جمع‌آوری</label>
+            <div class="col-sm-6">
+				<vt-persian-date-picker name="date" model="Data.form.date"></vt-persian-date-picker>
+            </div>
+        </div>
+        
+        <div class="row rowForm">
+            <label class="col-sm-4 text-left">بارگزاری</label>
+            <div class="col-sm-6">
+				<vt-file name="file" is-edit-mode="true" model="Data.file" type="zip"></vt-file>
+            </div>
+        </div>
+	</form>  
+</div>
+<div class="modal-footer">
+	<button class="btn btn-sm btn-success" type="button" ng-click="Func.onSaveClick()">ذخیره</button>
+    <button class="btn btn-sm btn-warning" type="button" ng-click="Func.onCancelClick()">انصراف</button>
+</div>

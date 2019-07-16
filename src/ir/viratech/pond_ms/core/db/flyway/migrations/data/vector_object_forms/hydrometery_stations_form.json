@@ -1,0 +1,201 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"StCode": {
+			"label": "کد ایستگاه",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Elev": {
+			"label": "ارتفاع",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Year_": {
+			"label": "سال تاسیس",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Degree": {
+			"label": "درجه",
+			"type": "double",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Province": {
+			"label": "استان",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Riv_Name_1": {
+			"label": "نام رودخانه مجاور",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Name": {
+			"label": "نام",
+			"type": "string",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Zone": {
+			"label": "ناحیه",
+			"type": "integer",
+			"widget": "",
+			"showEditButton": false
+		},
+		"X": {
+			"label": "طول جغرافیایی",
+			"type": "integer",
+			"widget": "",
+			"multiple": false,
+			"showEditButton": false,
+			"title": "X",
+			"typeComponent": {
+				"type": "integer",
+				"typePersianName": "عدد",
+				"widgets": [
+					{
+						"widget": "",
+						"persianName": "عدد",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/integer.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/integerintBox.html",
+						"typeParamsSchema": {
+							"title": "",
+							"properties": {
+								"min": {
+									"label": "کمترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								},
+								"max": {
+									"label": "بیشترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"min",
+										"max"
+									],
+									"$$hashKey": "object:1021"
+								}
+							]
+						},
+						"$$hashKey": "object:1020"
+					}
+				],
+				"$$hashKey": "object:66"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"Y": {
+			"label": "عرض جغرافیایی",
+			"type": "integer",
+			"widget": "",
+			"multiple": false,
+			"showEditButton": true,
+			"title": "Y",
+			"typeComponent": {
+				"type": "integer",
+				"typePersianName": "عدد",
+				"widgets": [
+					{
+						"widget": "",
+						"persianName": "عدد",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/integer.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/integerintBox.html",
+						"typeParamsSchema": {
+							"title": "",
+							"properties": {
+								"min": {
+									"label": "کمترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								},
+								"max": {
+									"label": "بیشترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"min",
+										"max"
+									],
+									"$$hashKey": "object:1021"
+								}
+							]
+						},
+						"$$hashKey": "object:1020"
+					}
+				],
+				"$$hashKey": "object:66"
+			},
+			"widgetParams": {
+				
+			}
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"Name",
+				"StCode",
+				"Province",
+				"Riv_Name_1",
+				"Zone",
+				"Year_",
+				"Elev",
+				"Degree",
+				"X",
+				"Y"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:1146"
+		}
+	]
+}

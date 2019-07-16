@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="ir.viratech.pond_ms.model.time_series">
+
+	<joined-subclass name="ParentCategory" extends="Category"
+			table="PARENT_CATEGORY" schema="pond_ms" >
+
+		<key column="category_id" />
+
+		<list name="subCategories" cascade="all" inverse="false" >
+			<meta attribute="reverse">parentCategory</meta>
+			<key column="parent_id" not-null="false" unique="false" />
+			<list-index column="index_in_parent" base="0" />
+			<one-to-many class="Category" />
+		</list>
+
+	</joined-subclass>
+</hibernate-mapping>

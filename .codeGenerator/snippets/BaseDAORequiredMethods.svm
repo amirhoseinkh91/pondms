@@ -1,0 +1,23 @@
+:Modified=true
+:Description=
+-
+	/* (non-Javadoc)
+	 * @see ir.viratech.commons.persistence.base.BaseAbstractEntityDAO#getReferenceClass()
+	 */
+	@Override
+	public Class<${class.AbsoluteValueObjectClassName}> getReferenceClass() {
+		return ${class.AbsoluteValueObjectClassName}.class;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ir.viratech.commons.persistence.base.BaseAbstractEntityDAO#getId(java.lang.Object)
+	 */
+	@Override
+	public ${class.ParentRoot.Id.Property.ObjectClass} getId(${class.AbsoluteValueObjectSignatureClassName} ${class.VarName}) {
+#if ($class.Id && $class.Id.hasExternalClass())
+		return ${class.VarName}.${class.Id.Property.GetterName}();
+#else
+		return null;
+#end
+	}
+	

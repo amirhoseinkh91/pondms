@@ -1,0 +1,47 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت عوارض</div>
+		<div class="panel-body">
+
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-grid control-fn="Controller.listController"></vt-grid>			
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+
+						<a ng-show="Data.viewMode=='view'" class="btn btn-sm btn-default" ng-click="Func.changeEditMode()">ویرایش</a>
+						<a ng-show="Data.viewMode=='view'" class="btn btn-sm btn-default" ng-click="Func.deleteModel()" ng-confirm="آیا از حذف این نقطه مطمئن هستید؟">حذف</a>
+						<a ng-show="Data.viewMode=='view'" class="btn btn-sm btn-default" ng-click="Func.createModel()">ایجاد</a>
+						<a ng-show="Data.viewMode=='edit'" class="btn btn-sm btn-default" ng-click="Func.saveEditMode()">ذخیره</a>
+						<a ng-show="Data.viewMode=='edit'" class="btn btn-sm btn-default" ng-click="Func.cancleEditMode()">انصراف</a>
+						<a ng-show="Data.viewMode=='add'" class="btn btn-sm btn-default" ng-click="Func.saveNewModel()">ذخیره</a>
+						<a ng-show="Data.viewMode=='add'" class="btn btn-sm btn-default" ng-click="Func.cancleNewModel()">انصراف</a>
+
+						<div class="panel-body">
+							<map-drawing model="Data.mapModel" mode="Data.viewMode" api="Controller.crud"></map-drawing>
+						</div>
+
+						<form name="example" class="form-horizontal" role="form">
+							<schema-form-fields is-edit-mode="Data.editMode" schema="Data.schema"
+								model="Data.selectedFeature.formInstance" api="Data.api"
+ 								simple-view="true">
+							</schema-form-fields>
+						</form>
+					
+						<time-series-file-upload geo-object-uid=Data.selectedFeature.uid object-type="'VECTOR'"></time-series-file-upload>
+						<time-series-file-history func="Controller.func" ></time-series-file-history>
+					
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

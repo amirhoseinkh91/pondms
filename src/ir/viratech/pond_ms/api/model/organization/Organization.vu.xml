@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<uiModel xmlns="http://viraTech.ir/code_gen/ui/uiModel"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://viraTech.ir/code_gen/ui/uiModel
+				../uiModel.xsd ">
+
+	<dto name="Organization" extentKey="full"
+		entityPackage="ir.viratech.pond_ms.model.organization" package="ir.viratech.pond_ms.api.organization">
+
+		<prop name="uid" internalName="extuid" save="disabled" searchable="false" sortable="false" />
+
+		<prop name="title" internalName="displayString" save="disabled" searchable="false" sortable="false"/>
+
+		<prop name="name" type="string" trackModif="true" client-required="true"/>
+
+		<prop name="code" type="string" trackModif="true" client-required="true"/>
+
+		<prop-dto name="parent"  client-required="true"
+			type="ir.viratech.commons.api.dto.SimpleUltraLightDTO(ir.viratech.pond_ms.model.organization.Organization)"
+			internalType="ir.viratech.pond_ms.model.organization.Organization"
+			fieldInfoContextClass="ir.viratech.commons.api.dto.SimpleUltraLightDTO.FieldInfoContext.&lt;ir.viratech.pond_ms.model.organization.Organization&gt;getGenericClass()"
+			load="hooked-dtoLoadFrom" save="hooked-replaceEntity-nullable"
+			trackModif="true" />
+
+	</dto>
+
+	<resource name="Organization"
+		package="ir.viratech.pond_ms.api.organization"
+		parent="ir.viratech.pond_ms.api.AbstractMgrBasedTreeResource&lt;Organization, ir.viratech.pond_ms.api.organization.dto.OrganizationFullDTO&gt;"
+		entityPackage="ir.viratech.pond_ms.model.organization"
+		resourcePath="organization"
+		bundlePrefix="organization."
+		entityMgr="ir.viratech.pond_ms.model.organization.logic.OrganizationMgr"
+		fullDto="ir.viratech.pond_ms.api.organization.dto.OrganizationFullDTO"
+		featureEntityName="ORGANIZATION" />
+
+</uiModel>

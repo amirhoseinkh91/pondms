@@ -1,0 +1,93 @@
+<div class="col-sm-12">
+	<div class="panel panel-default panel-page-header">
+		<div class="panel-heading">مدیریت لایه‌ها</div>
+		<div class="panel-body">
+			<div class="col-md-8" access-checker="API_LIST_LAYER">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<vt-search control-fn="Controller.layerSearchController"></vt-search>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<ng-tree api="Controller.layerTreeController"></ng-tree>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4" access-checker="API_VIEW_LAYER"
+				ng-hide="Data.searchMode=='advanced'">
+				<div class="panel panel-default">
+					<div class="panel-body panel-management">
+						<div class="col-sm-12">
+							<a class="btn btn-sm btn-default btn-text"
+								access-checker="API_ADD_LAYER"
+								ng-show="Data.originallayer.type == 'parent' || Data.originalmap.uid"
+								type="button" ng-click="Func.onAddlayerClick()"
+								ng-disabled="Data.mode=='add'">ایجاد زیرلایه</a> <a
+								class="btn btn-sm btn-primary btn-text"
+								access-checker="API_EDIT_LAYER"
+								ng-show="Data.originallayer.uid && Data.mode=='view'"
+								type="button" ng-click="Func.onEditlayerClick()" ng-disabled=""
+								ng-bind="'EDIT'|EnToFaButton"></a> <a
+								class="btn btn-sm btn-success btn-text"
+								access-checker="API_ADD_LAYER" ng-show="Data.mode=='add'"
+								type="button" ng-click="Func.onSavelayerClick()"
+								ng-bind="'SAVE'|EnToFaButton"
+								ng-disabled="layerForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-success btn-text"
+								access-checker="API_EDIT_LAYER" ng-show="Data.mode=='edit'"
+								type="button" ng-click="Func.onUpdatelayerClick()"
+								ng-bind="'UPDATE'|EnToFaButton"
+								ng-disabled="layerForm.$invalid && Data.validationClicked"></a>
+							<a class="btn btn-sm btn-warning btn-text"
+								ng-show="Data.mode=='edit' || Data.mode=='add'" type="button"
+								ng-click="Func.onCancelClick()" ng-disabled=""
+								ng-bind="'CANCEL'|EnToFaButton"></a> <a
+								class="btn btn-sm btn-danger btn-text"
+								access-checker="API_DELETE_LAYER"
+								ng-show="Data.originallayer.uid && Data.mode=='view'"
+								type="button" ng-click="Func.onDeletelayerClick()"
+								ng-disabled="" ng-bind="'DELETE'|EnToFaButton"></a> </a>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default" ng-show="Data.originallayer.uid">
+					<div class="panel-body">
+						<div class="row rowForm">
+							<label class="col-sm-4 text-left">نام</label>
+							<div class="layer-data-value col-sm-6">{{Data.originallayer.name}}</div>
+						</div>
+						<div class="row rowForm">
+							<label class="col-sm-4 text-left">توضیحات</label>
+							<div class="layer-data-value col-sm-6">{{Data.originallayer.description}}</div>
+						</div>
+						<div class="row rowForm">
+							<label class="col-sm-4 text-left">نوع لایه</label>
+							<div class="layer-data-value col-sm-6">{{Data.originallayer.type}}</div>
+						</div>
+						<div class="row rowForm"
+							ng-show="Data.originallayer.type == 'vector'">
+							<label class="col-sm-4 text-left">نوع عوارض</label>
+							<div class="layer-data-value col-sm-6">{{Data.originallayer.vectorObjectsType}}</div>
+						</div>
+
+						<div class="row rowForm"
+							ng-show="Data.originallayer.type == 'vector' || Data.originallayer.type == 'raster'">
+							<div class="layer-action-btn-container col-sm-12">
+								<a id="layer-features-btn" class="layer-action-btn btn btn-sm btn-success"
+									ng-click="Func.goToFeaturePage()"
+									ng-show="Data.originallayer.type == 'vector'">لیست عوارض
+									لایه</a> 
+							</div>
+						</div>
+
+						<pond-file is-edit-mode="true" api="Data.api"
+							ng-show="Data.originallayer.type == 'vector' || Data.originallayer.type == 'raster'"></pond-file>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

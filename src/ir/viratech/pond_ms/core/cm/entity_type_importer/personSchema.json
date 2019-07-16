@@ -1,0 +1,71 @@
+{
+    "key": "person",
+    "title": "شخص",
+    "properties": {
+        "age": {
+            "label": "سن",
+            "type": "integer"
+        },
+        "birthDate": {
+            "label": "تاریخ",
+            "type": "date",
+            "widget": "jalali"
+        },
+        "emails": {
+            "label": "ایمیل ها",
+            "multiple": true,
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "direction": "ltr"
+            }
+        },
+        "englishName": {
+            "label": "نام انگلیسی",
+            "searchable": true,
+            "type": "string"
+        },
+        "father": {
+            "label": "پدر",
+            "type": "person",
+            "widget": "popupSelector"
+        },
+        "firstName": {
+            "label": "نام",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        },
+        "lastName": {
+            "label": "نام خانوادگی",
+            "searchable": true,
+            "type": "string",
+            "widgetParams": {
+                "emptyValueLabel": "بدون نام"
+            }
+        },
+        "picture": {
+            "label": "عکس کاربر",
+            "type": "file",
+            "widget": "imageSelector"
+        },
+        "resume": {
+            "label": "رزومه کاربر",
+            "type": "file"
+        }
+    },
+    "displayStringFunction": "function () {var ds = firstName + ' ' + lastName;if (ds.trim() === '') {return englishName;} else {return ds;}}",
+    "extents": {
+        "enriched": [ "firstName", "lastName", "isDeleted" ],
+        "list": [ "firstName", "lastName", "englishName", "isDeleted" ]
+    },
+    "viewGroups": [
+        {
+            "key": "detail",
+            "members": [ "firstName", "englishName", "lastName", "age", "picture", "birthDate", "emails", "attachments", "father" ],
+            "name": "مشخصات"
+        }
+    ]
+}

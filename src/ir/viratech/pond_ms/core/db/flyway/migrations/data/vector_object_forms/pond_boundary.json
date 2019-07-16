@@ -1,0 +1,173 @@
+{
+	"key": "",
+	"title": "",
+	"displayStringFunction": "function(){return null}",
+	"properties": {
+		"Name": {
+			"type": "string",
+			"label": "نام",
+			"widget": "textBox",
+			"showEditButton": false
+		},
+		"Perimeter": {
+			"type": "double",
+			"label": "محیط",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Area": {
+			"type": "double",
+			"label": "مساحت",
+			"widget": "",
+			"showEditButton": false
+		},
+		"Zone": {
+			"type": "integer",
+			"label": "ناحیه",
+			"widget": "",
+			"showEditButton": false
+		},
+		"X": {
+			"type": "integer",
+			"label": "طول",
+			"widget": "",
+			"showEditButton": true,
+			"title": "X",
+			"multiple": false,
+			"typeComponent": {
+				"type": "integer",
+				"typePersianName": "عدد",
+				"widgets": [
+					{
+						"widget": "",
+						"persianName": "عدد",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/integer.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/integerintBox.html",
+						"typeParamsSchema": {
+							"title": "",
+							"properties": {
+								"min": {
+									"label": "کمترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								},
+								"max": {
+									"label": "بیشترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"min",
+										"max"
+									],
+									"$$hashKey": "object:187"
+								}
+							]
+						},
+						"$$hashKey": "object:186"
+					}
+				],
+				"$$hashKey": "object:66"
+			},
+			"widgetParams": {
+				
+			}
+		},
+		"Y": {
+			"type": "integer",
+			"label": "عرض",
+			"widget": "",
+			"showEditButton": true,
+			"title": "Y",
+			"multiple": false,
+			"typeComponent": {
+				"type": "integer",
+				"typePersianName": "عدد",
+				"widgets": [
+					{
+						"widget": "",
+						"persianName": "عدد",
+						"multiple": false,
+						"isHidden": false,
+						"picPath": "app/lib/vtSchemaDirective/img/component_pics/integer.png",
+						"htmlPath": "app/lib/vtSchemaDirective/schema-form-template/integerintBox.html",
+						"typeParamsSchema": {
+							"title": "",
+							"properties": {
+								"min": {
+									"label": "کمترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								},
+								"max": {
+									"label": "بیشترین",
+									"type": "integer",
+									"widget": "",
+									"multiple": false,
+									"enumType": "",
+									"showEditButton": false
+								}
+							},
+							"viewGroups": [
+								{
+									"id": "aa",
+									"name": "اا",
+									"members": [
+										"min",
+										"max"
+									],
+									"$$hashKey": "object:187"
+								}
+							]
+						},
+						"$$hashKey": "object:186"
+					}
+				],
+				"$$hashKey": "object:66"
+			},
+			"widgetParams": {
+				
+			}
+		}
+	},
+	"extents": {
+		"enriched": [],
+		"list": []
+	},
+	"searchIndexDepth": null,
+	"aspects": {
+		
+	},
+	"viewGroups": [
+		{
+			"key": "viewGroup1",
+			"name": "گروه1",
+			"members": [
+				"Name",
+				"Zone",
+				"Perimeter",
+				"Area",
+				"X",
+				"Y"
+			],
+			"secretLevel": 0,
+			"$$hashKey": "object:279"
+		}
+	]
+}

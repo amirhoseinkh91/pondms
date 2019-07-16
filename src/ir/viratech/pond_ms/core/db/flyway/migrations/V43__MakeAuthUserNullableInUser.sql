@@ -1,0 +1,1 @@
+alter table pond_ms.USERS alter column authUserId drop not null;

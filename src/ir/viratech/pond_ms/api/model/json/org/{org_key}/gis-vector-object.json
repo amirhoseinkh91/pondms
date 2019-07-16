@@ -1,0 +1,87 @@
+{
+  "path" : "org/{org_key}/gis-vector-object",
+  "key" : "gisvectorobject",
+  "featureName" : "GIS_VECTOR_OBJECT",
+  "properties" : {
+    "name" : {
+      "label" : "name",
+      "type" : "string",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "creationDate" : {
+      "label" : "creationDate",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "type" : {
+      "label" : "type",
+      "type" : "disabled",
+      "multiple" : false,
+      "required" : false,
+      "searchable" : true,
+      "searchLevel" : 1
+    },
+    "formInstance" : {
+      "label" : "formInstance",
+      "type" : null,
+      "point" : {
+        "label" : "point",
+        "type" : "string",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "line" : {
+        "label" : "line",
+        "type" : "string",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "polygon" : {
+        "label" : "polygon",
+        "type" : "string",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "layer" : {
+        "label" : "layer",
+        "type" : "enum",
+        "enumType" : null,
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "timeSeries" : {
+        "label" : "timeSeries",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      },
+      "organization" : {
+        "label" : "organization",
+        "type" : "disabled",
+        "multiple" : false,
+        "required" : false,
+        "searchable" : true,
+        "searchLevel" : 1
+      }
+    },
+    "extents" : {
+      "list" : [ "name", "point", "line", "polygon" ]
+    }
+  }
+}
