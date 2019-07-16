@@ -1,0 +1,13 @@
+{
+
+    "objectUid" : "objectUid",
+    "rate" : 3,
+    "visitedDate" : null,
+    "typeOfVisit" : "typeOfVisit",
+    "title" : "title",
+    "text" : "text",
+    "images" : [
+	"image1" , "image2"
+    ]
+
+}

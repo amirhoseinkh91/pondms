@@ -1,0 +1,54 @@
+ایران ایر 1
+ماهان 2
+کیش ایر 3
+قشم ایر 4
+ایران ایر تور 5
+کاسپین 6
+تابان 7
+آسمان 8
+آتا 9
+زاگرس 10
+معراج 11 
+ساها 12
+اترک 13
+هما 14
+نفت 15
+سهند 16
+سپهران 17
+تفتان 18
+
+اگر هواپیمایی دیگری غیر از اینها باشد عدد صفر برگشت داده میشود
+
+نمونه فایل json خروجی برای هر پرواز:
+
+{
+	"flightCompany": "اترک",
+	"capacity": "ظرفیت ۸ نفر",
+	"flightNumber": "1919",
+	"date": "1396/03/20",
+	"time": "20:00",
+	"isCharter": "چارتر",
+	"flightClass": "اکونومی",
+	"companyCode": 13,
+	"lowestPrices": [{
+		"price": "1130000",
+		"host": "MrBilit",
+		"link": "https://mrbilit.com/flights/THR-MHD/1396-03-20"
+	}, {
+		"price": "1180000",
+		"host": "ghasedak24",
+		"link": "https://ghasedak24.com/search/flight/THR-MHD/1396-03-20/1-0-0"
+	}, {
+		"price": "1160000",
+		"host": "ghasedak24",
+		"link": "https://ghasedak24.com/search/flight/THR-MHD/1396-03-20/1-0-0"
+	}, {
+		"price": "1170000",
+		"host": "ghasedak24",
+		"link": "https://ghasedak24.com/search/flight/THR-MHD/1396-03-20/1-0-0"
+	}, {
+		"price": "1230000",
+		"host": "ghasedak24",
+		"link": "https://ghasedak24.com/search/flight/THR-MHD/1396-03-20/1-0-0"
+	}]
+}

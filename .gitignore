@@ -51,3 +51,10 @@ atlassian-ide-plugin.xml
 
 WebContent/WEB-INF/lib
 ${env.CATALINA_HOME}
+
+*.iml
+module_pondms.xml
+
+TEXT_FILES/fully-scrapped-hotels/**/*
+TEXT_FILES/.directory
+WebDraft/**/*

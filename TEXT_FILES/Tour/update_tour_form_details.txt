@@ -1,0 +1,13 @@
+update requset:
+
+api/tour/items/uid --> post
+
+content-type: application/json
+
+conten:
+{
+    "type" : "CLASS_NAME",
+    "info" : {
+	
+    }
+}

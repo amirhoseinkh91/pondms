@@ -1,0 +1,110 @@
+{
+  "dayObjects": [
+    {
+      "objectType": "meal",
+      "name": "string",
+      "images": [
+        "string",
+        "string"
+      ],
+      "point": {
+        "type": "Point",
+        "coordinates": [
+          45.7336,
+          36.780877
+        ]
+      },
+      "startTime": "HH:mm",
+      "mealName": "string",
+      "description": "string",
+      "duration": "string",
+      "city": "string",
+      "country": "string"
+    },
+    {
+      "objectType": "sightSeeing",
+      "name": "string",
+      "specialName": "string",
+      "point": {
+        "type": "Point",
+        "coordinates": [
+          45.7336,
+          36.780877
+        ]
+      },
+      "category": "string",
+      "images": [
+        "string",
+        "string"
+      ],
+      "description": "string",
+      "duration": "string",
+      "startTime": "HH:mm",
+      "city": "string",
+      "country": "string"
+    },
+    {
+      "objectType": "residence",
+      "name": "string",
+      "point": {
+        "type": "Point",
+        "coordinates": [
+          45.7336,
+          36.780877
+        ]
+      },
+      "images": [
+        "string",
+        "string"
+      ],
+      "description": "string",
+      "features": "string",
+      "Rate": 1,
+      "address": "string",
+      "type": "string",
+      "duration": "string",
+      "startTime": "HH:mm",
+      "city": "string",
+      "country": "string"
+    },
+    {
+      "objectType": "transfer",
+      "duration": "string",
+      "vehicle": "string"
+    },
+    {
+      "objectType": "departure",
+      "name": "string",
+      "city": "string",
+      "address": "string",
+      "point": {
+        "type": "Point",
+        "coordinates": [
+          45.7336,
+          36.780877
+        ]
+      },
+      "time": "HH:mm",
+      "description": "string",
+      "vehicle": "string",
+      "duration": "string"
+    },
+    {
+      "objectType": "arrival",
+      "name": "string",
+      "city": "string",
+      "address": "string",
+      "point": {
+        "type": "Point",
+        "coordinates": [
+          45.7336,
+          36.780877
+        ]
+      },
+      "time": "HH:mm",
+      "description": "string",
+      "vehicle": "string",
+      "duration": "string"
+    }
+  ]
+}

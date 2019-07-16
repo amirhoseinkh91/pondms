@@ -1,0 +1,34 @@
+{
+	"uid": "user uid must be written here",
+	"enabled": true,
+	"password": "new password must be written here",
+	"firstName": "new firstname goes here",
+	"lastName": "new lastname goes here",
+	"endAccessDate": null,
+	"startDailyAccessTime": null,
+	"endDailyAccessTime": null,
+	"phoneNumber": "new phone number goes here",
+	"email": "new email goes here", 
+	"profileImage": "new Image hashcode goes here",
+	"roles" : [ {
+	"uid" : "8a21af93-d657-4031-b6c0-559ec7bd573d",
+	"title" : "sysadmin",
+	"active" : false
+      }, {
+	"uid" : "821e9b70-b5e6-46d3-9269-8a9ebe731ca8",
+	"title" : "admin",
+	"active" : false
+      }, {
+	"uid" : "b5849607-f7c2-4d55-b68c-5760cc913b8a",
+	"title" : "MOBILE_ADMIN",
+	"active" : true
+      }, {
+	"uid" : "6731e397-aad2-4537-81a7-fb5769f5210f",
+	"title" : "NORM_USER_ROLE",
+	"active" : false
+      }, {
+	"uid" : "4c70422d-4402-4d38-8635-7a1765c17ee8",
+	"title" : "PRO_USER_ROLE",
+	"active" : false
+      } ]
+} 

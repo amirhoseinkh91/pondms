@@ -1,0 +1,169 @@
+[
+  {
+    "uid": "43156263-317a-491f-afe4-a90d30d4435a",
+    "rate": 0,
+    "mainInformation": {
+      "isIranian": false,
+      "name": "string",
+      "type": "string",
+      "duration": "5",
+      "date": "1396/12/14",
+      "price": 532,
+      "discountedPrice": 532,
+      "services": "string",
+      "signupRules": "string",
+      "requiredTools": "string",
+      "recommendedTools": "string",
+      "description": "string",
+      "images": ["string" , "string"],
+      "srcCity": "string",
+      "dstCities": ["string", "string"],
+      "dstCountries": ["string", "string"]
+    },
+    "hotels": [
+      {
+        "name" : "string",
+        "grade" : "string",
+        "rate" : 5,
+        "city" : "string",
+        "country" : "string",
+        "rooms" : [
+          {
+            "type" : "string",
+            "price" : 124521,
+            "discountedPrice" : 125486,
+            "capacity" : 1
+          }
+        ]
+      }
+    ],
+    "tourGuide": {
+      "name" : "string",
+      "phoneNumber" : "string",
+      "image" : "string"
+    },
+    "agency": {
+      "name" : "string",
+      "address" : "string",
+      "website" : "string",
+      "phone" : "string",
+      "image" : "string",
+      "point" : {
+        "type" : "Point",
+        "coordinate" : [12.23215, 31.54845]
+      }
+    },
+    "days": [
+      {
+        "dayObjects": [
+          {
+            "objectType": "meal",
+            "name": "string",
+            "images": [
+              "string",
+              "string"
+            ],
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                45.7336,
+                36.780877
+              ]
+            },
+            "startTime": "HH:mm",
+            "mealName": "string",
+            "description": "string",
+            "duration": "string",
+            "city": "string",
+            "country": "string"
+          },
+          {
+            "objectType": "sightSeeing",
+            "name": "string",
+            "specialName": "string",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                45.7336,
+                36.780877
+              ]
+            },
+            "category": "string",
+            "images": [
+              "string",
+              "string"
+            ],
+            "description": "string",
+            "duration": "string",
+            "startTime": "HH:mm",
+            "city": "string",
+            "country": "string"
+          },
+          {
+            "objectType": "residence",
+            "name": "string",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                45.7336,
+                36.780877
+              ]
+            },
+            "images": [
+              "string",
+              "string"
+            ],
+            "description": "string",
+            "features": "string",
+            "address": "string",
+            "type": "string",
+            "duration": "string",
+            "startTime": "HH:mm",
+            "city": "string",
+            "country": "string",
+            "Rate": 0
+          },
+          {
+            "objectType": "transfer",
+            "duration": "string",
+            "vehicle": "string"
+          },
+          {
+            "objectType": "departure",
+            "name": "string",
+            "city": "string",
+            "address": "string",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                45.7336,
+                36.780877
+              ]
+            },
+            "time": "string",
+            "description": "string",
+            "vehicle": "string",
+            "duration": "string"
+          },
+          {
+            "objectType": "arrival",
+            "name": "string",
+            "city": "string",
+            "address": "string",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                45.7336,
+                36.780877
+              ]
+            },
+            "time": "string",
+            "description": "string",
+            "vehicle": "string",
+            "duration": "string"
+          }
+        ]
+      }
+    ]
+  }
+]

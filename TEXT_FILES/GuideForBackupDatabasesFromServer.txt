@@ -1,0 +1,21 @@
+how to get backups from server:
+
+1- ssh user@91.99.96.10 -p 22102
+
+2- cd /mnt/share/talab
+
+-- for postgres backup:
+   2-1- cd postgresql
+
+-- for mongodb backup:
+   2-2- cd mongo
+
+3- ls
+
+4- select last backup
+
+5- go to new terminal tab
+
+6- from your laptop user:  scp -p 22102 user@91.99.96.10:</mnt/share/talab/<mongo|postgresql>/<backup file name> <. | path to your desktop folder>
+
+7- Done!

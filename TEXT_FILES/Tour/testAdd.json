@@ -1,0 +1,367 @@
+{
+	"mainInformation": {
+		"isIranian": true,
+		"name": "تور کیش گردی",
+		"type": "تفریحی",
+		"duration": "3",
+		"date": "1396/06/12",
+		"price": 1500000,
+		"discountedPrice": 1250000,
+		"services": "میبریم گردش. خیار میخوریم. هویج نشون میدیم. میاریم",
+		"signupRules": "داشتن پول زیاد. دخترا مجرد باشن. پسرا هم همینطور",
+		"requiredTools": "وسایل غواصی",
+		"recommendedTools": "کاندوم",
+		"description": "یه تور ۳ روزه باحال پر از پارتی و شب گردی و مهمونی داریم.. همه مجردن. بکن بکن آزاد. برین حال کنین. تازه تخفیفم داره",
+		"images": ["B94UPODS28GXWTWCOWMVVEBC59CQCET5KXLET89P", "AL81NYW4NB26COYH13P19KOJO0U990OZB8D25K6G"],
+		"srcCity": "تهران",
+		"dstCities": ["کیش", "قشم"],
+		"dstCountries": ["ایران"]
+	},
+
+	"tourGuide": {
+		"name": "سجاد خدایی",
+		"phoneNumber": "091254845344",
+		"image": "BDBQOJG5Y3TD5EVVZ4U2H38NLWMOEFA87LIUNCZL"
+	},
+
+	"hotels": [{
+			"name": "هتل داریوش کیش",
+			"grade": "A",
+			"Rate": 5,
+			"city": "کیش",
+			"country": "ایران",
+			"rooms": [{
+					"type": "دو تخته تویین",
+					"price": 650000,
+					"discountedPrice": 600000
+				},
+				{
+					"type": "دو تخته تویین لوکس",
+					"price": 800000,
+					"discountedPrice": 800000
+				}
+			]
+		},
+		{
+			"name": "هتل قشم قشم",
+			"grade": "‌B",
+			"Rate": 4,
+			"city": "قشم",
+			"country": "ایران",
+			"rooms": [{
+					"type": "دو تخته تویین",
+					"price": 500000,
+					"discountedPrice": 420000
+				},
+				{
+					"type": "دو تخته سینگل",
+					"price": 400000,
+					"discountedPrice": 278000
+				}
+			]
+		}
+	],
+
+	"day1": [{
+			"objectType": "departure",
+			"name": "حرکت از تهران",
+			"city": "تهران",
+			"address": "فرودگاه مهرآباد - ترمینال A",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"time": "06:00",
+			"description": "حرکت میکنیم. زود بیاین خیار داریم",
+			"vehicle": "هواپیما",
+			"duration": "2 ساعت"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "2 ساعت",
+			"vehicle": "هواپیما"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "2 ساعت",
+			"vehicle": "اتوبوس"
+		},
+		{
+			"objectType": "meal",
+			"name": "صبحانه در ساحل",
+			"images": ["E2WFHO6QT50SCU6Z3ZKLSUWVA0ZOJHK6ZSFOG21N", "AUEVLWPY36I0GLT7MAKKLAH9VQPWVM3DLEFKOUWR"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "08:00",
+			"mealName": "صبحانه",
+			"description": "صبونه نون خیار هویج پیاز میزنیم بوی گه بگیریم حالمون از هم بهم بخوره که فرتی نیوفتیم رو هم تلمبه بزنیم. تا شب طول بکشه حشری تر شین.",
+			"duration": "۲ ساعت",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "sightSeeing",
+			"name": "ساحل گردی",
+			"specialName": "ساحل سرخ کیش",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"category": "تفریح خوب",
+			"images": ["X9A3T2HUEP6QBH9DN6779VY1LVK2WZ7O3PW9DYN1", "2AO904NHA8AB33T2HEIKFZ0VVQH9B6YR5TJTLN82"],
+			"description": "میریم ساحال کیری مسخره کیش رو که قرمزه با هم میبینیم. میگن تو این سحا زن کوروش کبیر اولین بار پریود شده. .واسه همین قرمز مونده. نجس میشیم. دمپایی بیارین",
+			"duration": "5 ساعت",
+			"startTime": "10:00",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "1 ساعت",
+			"vehicle": "قدم زدن"
+		},
+		{
+			"objectType": "meal",
+			"name": "ناهار در هتل داریوش",
+			"images": ["3JTKACXH3E9LWH782OEILP3MUDAY17QLWAV1OQQ9", "OX2TW7O3F5SEPIEOQTISSOKWGM6YF4DV2DR7HC3W"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "13:00",
+			"mealName": "ناهار",
+			"description": "یه ناهار خفن داریم. ماست و نون و آب و ایناکه میشه همون آب دوغ خیار. خیارشم از صب نگه دارید",
+			"duration": "۲ ساعت",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "00:30 دقیقه",
+			"vehicle": "اتوبوس"
+		},
+		{
+			"objectType": "sightSeeing",
+			"name": "مرکز خرید کس بازان",
+			"specialName": "مرکز خرید خفن",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"category": "بازار",
+			"images": ["JTZS4SH09WMBH0DJTUZSULAB4N2YQBFUWFSFQL6R", "XEBQJJBZV7KRVVZ5ECS6LIV5FBA6WJ08JH790ZFR"],
+			"description": "میریم خرید دور هم خیلی حال میده. دافا سوتین میخرنو پسرا کاندوم واسه شب.و شرت مشکی واسه پسرا اجباری است.",
+			"duration": "3 ساعت",
+			"startTime": "15:00",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "00:30 دقیقه",
+			"vehicle": "اتوبوس"
+		},
+		{
+			"objectType": "meal",
+			"name": "شام در هتل",
+			"images": ["AO3FPKGNPXQIWAHJBLUYZRZV7JTAX9XKN9F3WNN0", "6KEG3U3OY3EONNZO3S5XU3R0PM0EGOBQ1U7KNVJQ"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "22:00",
+			"mealName": "شام",
+			"description": "شام جوج میزنیم تو رستوران هتل داریوش. برین حال کنین. جوجش خوشمزست.",
+			"duration": "۲ ساعت",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "residence",
+			"name": "هتل داریوش",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"images": ["66EROWGUB0A80L2LPURX4NKK357FFGO3H65XBZUD", "JBWSJORJZJ8Z25MFAMTX2B73U8NQODYA9GKRTHFI"],
+			"description": "هتل خفن داریوش که پشماتون میریزه وقتی واردش میشین. همه اتاقا هم مختلطه. بکن بکن داریم تا صبح. ",
+			"features": "اینترنت - روم سرویس - استخر - لابی - نمازخانه - رستوران",
+			"Rate": 5,
+			"address": "کیش - هتل داریوش",
+			"type": "هتل",
+			"duration": "7 ساعت",
+			"startTime": "12:00",
+			"city": "کیش",
+			"country": "ایران"
+		}
+	],
+	"day2": [{
+			"objectType": "meal",
+			"name": "صبحانه در هتل",
+			"images": ["NZRRRRHBCFJRSKQZQWAIT2E4L0J7FTO6X92WNU0V", "3T96HR2PEXLFP5I50F98U5DGGH0QT46D6MFX393O"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "08:00",
+			"mealName": "صبحانه",
+			"description": "صبحانه سوسیس تخم مرغ داریم و شیر موز واسه کسایی که تا صب کردن. اونایی هم که نکردن کون لقشون. صبونه بی صبونه..",
+			"duration": "۲ ساعت",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "5 ساعت",
+			"vehicle": "کشتی تفریحی"
+		},
+		{
+			"objectType": "meal",
+			"name": "ناهار در کشتی",
+			"images": ["9X2B08VCRX92W7YALJQVPWXLHCXE842NOXB3JZ68", "2K72H4JZ99OS58183W30SC5VCM1716ZED4F262LV"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "12:00",
+			"mealName": "ناهار",
+			"description": "ناهار نهنگ زنده داریم با سس هشت پا. این ناهار مال مردم کسخل چینه که کونتون پاره میشه تا بخورین. هشت پا اخه؟",
+			"duration": "۲ ساعت",
+			"city": "کیش",
+			"country": "ایران"
+		},
+		{
+			"objectType": "sightSeeing",
+			"name": "جزیره قشم",
+			"specialName": "جزیره زیبای قشم",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"category": "تفریح",
+			"images": ["C1BNMD71DSF9H4HYBJZL5XRVD75CV05RB1XHC3O2", "KPOWHDIKDWA7DS2XJQVNGOGNYUI7QTKTWARJP9K8"],
+			"description": "میرسیم به جزیره تخمی و زیبای کیری و گرم قشم. از تاریخ این جزیره براتون بگم که دختر ناصرالدین شاه با پسر محمد علی کلی تا صب تو ساحلی که ما لنگر می اندازیم سکس داشتن.",
+			"duration": "6 ساعت",
+			"startTime": "12:00",
+			"city": "قشم",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "6 ساعت",
+			"vehicle": "قدم زنی در جزیره و بازار"
+		},
+		{
+			"objectType": "meal",
+			"name": "شام در فضای باز هتل قشم",
+			"images": ["3N8A0MI1AHUGWNUCLUQRCLAG080ZUZBS4DDPSG2I", "A0JGX872AGJ3OVV3GF73K4VHRQ0YM6GHU83A02O6"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "21:00",
+			"mealName": "شام",
+			"description": "باقیمونده غذای ظهر رو میزنیم بر بدن که خرجمون کم شه. اگه کسی سیر نشد خودش میتونه دل و جیگر بخره کباب کنیم بخوریم ما هم سیر شیم. مرسی اه.",
+			"duration": "۲ ساعت",
+			"city": "قشم",
+			"country": "ایران"
+		},
+		{
+			"objectType": "residence",
+			"name": "هتل قشم",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"images": ["J2VCWBBVHC4GN7M6CJANVBHEBEGG4A6FAJMQH7VV", "SBWPMTJJ6SVGHCTXMRFGTG6LT7Q903V5KQ5B5O82"],
+			"description": "هتل خفن قشم که مثل هتل داریوش باز هم برنامه سکسه تا صب. برید حال کنید. امشب بی کاندومه. اسپری تاخیری هم محیاست براتون. جیغ هم بزنید بقیه حشری شن. مرسی اه. (داریوش جرم بده). ",
+			"features": "اینترنت - روم سرویس - استخر - لابی - نمازخانه - رستوران",
+			"Rate": 5,
+			"address": "قشم - هتل قشم",
+			"type": "هتل",
+			"duration": "7 ساعت",
+			"startTime": "24:00",
+			"city": "قشم",
+			"country": "ایران"
+		}
+	],
+	"day3": [{
+			"objectType": "meal",
+			"name": "صبحانه در هتل",
+			"images": ["OWGY99K7ZUKTX0F0BWHMSA6HHS80KCNN15EY02FQ", "P41DOJPR1JNC55SIXYJ7XAKHENVO908R0J1UCHXE"],
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"startTime": "08:00",
+			"mealName": "صبحانه",
+			"description": "بازم صبونه میخوریم نون پنیر سبزی با همه چی",
+			"duration": "۲ ساعت",
+			"city": "قشم",
+			"country": "ایران"
+		},
+		{
+			"objectType": "transfer",
+			"duration": "00:30 دقیقه",
+			"vehicle": "اتوبوس"
+		},
+		{
+			"objectType": "arrival",
+			"name": "بازگشت به تهران",
+			"city": "قشم",
+			"address": "ترمینال قشم",
+			"point": {
+				"type": "Point",
+				"coordinates": [
+					45.7336,
+					36.780877
+				]
+			},
+			"time": "09:00",
+			"description": "برمیگردیم خونه به زندگی کیری تهرانمون میرسیم",
+			"vehicle": "اتوبوس",
+			"duration": "19 ساعت"
+		}
+	]
+}

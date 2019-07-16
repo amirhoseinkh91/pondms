@@ -1,0 +1,49 @@
+{
+    "AvailableWebsitesCount" : 5,
+    "AvailableWebsites" : ["MrBilit" , "Alibaba" , "Ghasedak24" , "AirplaneTicket" , "Sepehr360"],
+    "WebsiteRequests":{
+        "MrBilit" : {
+            "serverAddress" : "/api/v1/flight/mrbilit/search",
+            "HttpMethod" : "POST",
+            "BaseURL" : "https://mrbilit.com/flights/getFlights",
+            "QueryType" : "FormParam",
+            "PathParam" : null,
+            "RequestBody" : true,
+            "RequestHeaders" : {
+                "Accept" : "application/json"
+            },
+            "Queries" : {
+                "SrcCity" : {
+                    "Key" : "from",
+                    "DataType" : "String"
+                },
+                "DstCity" : {
+                    "Key" : "to",
+                    "DataType" : "String"
+                },
+                "Adult" : {
+                    "Key" : "adl",
+                    "DataType" : "Integer"
+                },
+                "children" : {
+                    "Key" : "chd",
+                    "DataType" : "Integer"
+                },
+                "Infant" : {
+                    "Key" : "inf",
+                    "DataType" : "Integer"
+                },
+                "UsePersianDate" : true,
+                "DateSplitter" : "/",
+                "DateFormat" : "dd/mm/yyyy",
+                "DepartureDate" : {
+                    "Key" : "depart",
+                    "DataType" : "String"
+                },
+                "UseCityCode" : true,
+                "UsePersianCityName" : false,
+                "UseEnglishCityName" : false
+            }
+        }
+    }
+}

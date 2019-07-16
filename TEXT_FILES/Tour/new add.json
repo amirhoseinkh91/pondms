@@ -1,0 +1,51 @@
+{
+  "mainInformation": {
+    "isIranian": false,
+    "name": "string",
+    "type": "string",
+    "duration": "5",
+    "date": "1396/12/14",
+    "price": 532,
+    "discountedPrice": 532,
+    "services": "string",
+    "signupRules": "string",
+    "requiredTools": "string",
+    "recommendedTools": "string",
+    "description": "string",
+    "images": [
+      "string",
+      "string"
+    ],
+    "srcCity": "string",
+    "dstCities": [
+      "string",
+      "string"
+    ],
+    "dstCountries": [
+      "string",
+      "string"
+    ]
+  },
+  "hotels": [
+    {
+      "name": "string",
+      "grade": "string",
+      "rate": 5,
+      "city": "string",
+      "country": "string",
+      "rooms": [
+        {
+          "type": "string",
+          "price": 124521,
+          "discountedPrice": 125486,
+          "capacity": 1
+        }
+      ]
+    }
+  ],
+  "tourGuide": {
+    "name": "string",
+    "phoneNumber": "string",
+    "image": "string"
+  }
+}

@@ -1,0 +1,148 @@
+
+indexing:
+*** index for tag
+db.getCollection('things_to_do_col').ensureIndex({"Tags" : -1})
+*** index for nearby
+db.getCollection('things_to_do_col').createPointIndexForGisVectorObjects({ point : "2dsphere" })
+*** index for rate
+db.getCollection('things_to_do_col').ensureIndex({"Rate" : -1})
+*** index for layerUID
+db.getCollection('things_to_do_col').ensureIndex({"layer_uid" : -1})
+
+*** set 0 stars/rate to objects:
+db.getCollection('things_to_do_col').update({'Rate': {$exists : false}}, {$set: {'Rate': NumberInt(0)}} , {multi:true})
+*** delete test data
+db.getCollection('hotel_col').update({$and : [{'_isDeleted' : false} , {'point' : {$exists : false}}]}, {$set : {'_isDeleted' : true}} , {multi:true})
+
+*** test datas
+db.getCollection('things_to_do_col').find({$and : [{'_isDeleted' : false} , {'point' : {$exists : false}}]}).count()
+
+searching: 
+**** by tag
+db.getCollection('things_to_do_col').find({"Tags" :{$regex : /تگ/}}).sort({ "Rate": -1 }).toArray()
+*** nearby
+db.<things_to_do_col>.find({<point>:{$near:{$geometry:{type:"Point",coordinates:[<longitude>,<latitude>]},$maxDistance:<distance in meters>}}})
+
+
+
+*** grant privileges
+GRANT ALL PRIVILEGES ON schema org_chart TO viratech;
+
+**** images correction
+db.things_to_do_col.find().forEach(function(d){
+
+    if (d.Images){
+        var Images = new Array();
+        d.Images.forEach(function(c){
+            
+            if (typeof c === 'string'){
+                 Images.push(c);
+            }else{
+                Images.push(c.hash);
+            }
+            d.Images = Images;
+            db.things_to_do_col.save(d);
+        })
+            
+    }
+})
+
+************************************* run ************************************************
+db.getCollection('hotel_col').find().forEach(function(d){
+
+    if (d.Images){
+        var Images = new Array();
+        d.Images.forEach(function(c){
+            
+            if (typeof c === 'string'){
+                 Images.push(c);
+            }else{
+                Images.push(c.hash);
+            }
+            d.Images = Images;
+            db.things_to_do_col.save(d);
+        })
+            
+    }
+})
+*********
+db.getCollection('things_to_do_col').find().forEach(function(d){
+
+    if (d.Images){
+        var Images = new Array();
+        d.Images.forEach(function(c){
+            
+            if (typeof c === 'string'){
+                 Images.push(c);
+            }else{
+                Images.push(c.hash);
+            }
+            d.Images = Images;
+            db.things_to_do_col.save(d);
+        })
+            
+    }
+})
+
+*********
+db.getCollection('things_to_do_col').update({'Rate': {$exists : false}}, {$set: {'Rate': NumberInt(0)}} , {multi:true})
+*********
+db.getCollection('things_to_do_col').ensureIndex({"Tags" : -1})
+*********
+db.getCollection('things_to_do_col').ensureIndex({"Rate" : -1})
+*********
+db.getCollection('hotel_col').ensureIndex({"Score" : -1})
+*********
+db.getCollection('things_to_do_col').createPointIndexForGisVectorObjects({ point : "2dsphere" })
+*********
+db.getCollection('hotel_col').createPointIndexForGisVectorObjects({ point : "2dsphere" })
+
+
+***************************
+add extra fields to mongo:
+
+***************************
+// probably test data: ---> remove them
+db.getCollection('hotel_col').find({$and:[{'Score':{$exists:false}} , {'Rate':{$exists:false}}]}) // needs to check in server mongo database
+
+*********
+then add fields to formsaz
+
+*********
+remove deleted forms:
+db.getCollection('hotel_col').deleteMany({'_isDeleted' : true})
+
+*********
+unset Score for hotels and things_to_do_col using query:
+db.getCollection('hotel_col').update(
+    {'Score': {$exists : true}},
+    {$unset: {'score': ""}} , {multi:true}
+)
+
+unset score field from things_to_do_col:
+db.getCollection('things_to_do_col').update(
+    {'score': {$exists : true}},
+    {$unset: {'score': ""}} , {multi:true}
+)
+
+
+*************************************************
+
+calculate distance between two points:
+db.runCommand({ "geoNear" : "things_to_do_col", "spherical" : true, "distanceMultiplier" : 0.001, "near" : { "type" : "Point" , "coordinates" : [33.2926487, 44.4159651] } })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
