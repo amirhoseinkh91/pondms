@@ -29,6 +29,9 @@ public class DownloadRestaurantFoursquarePhotos {
             int allRestaurantsCount = dbObjects.size();
             char[] animationChars = new char[]{'|', '/', '-', '\\'};
             int i = 0;
+
+            System.out.println("restaurants without images count: " + uidList.size() );
+
             for (DBObject node : dbObjects) {
                 String gis_object_uid = MongoDBManager.getInstance().convertToObjectNode(node).get("gis_object_uid").asText();
                 if (uidList.contains(gis_object_uid)) {
@@ -50,8 +53,8 @@ public class DownloadRestaurantFoursquarePhotos {
                     }
                     int percentage = i * 100 / allRestaurantsCount;
                     System.out.print("Processing: " + percentage + "% " + animationChars[i % 4] + "\r");
-                    i++;
                 }
+                i++;
             }
             System.out.println("Processing: Done!          ");
         } catch (Exception e) {
