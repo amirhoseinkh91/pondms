@@ -1,10 +1,7 @@
 package ir.viratech.pond_ms.api.things_to_do;
 
-import scala.Array;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class ThingsToDoTagsMapper {

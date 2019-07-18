@@ -3,7 +3,6 @@ package ir.viratech.just_ro.api.flight.dto.sepehr360;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ir.viratech.base.SuppressWarningsOption;
-import scala.util.parsing.combinator.testing.Str;
 
 import java.util.List;
 
