@@ -398,5 +398,19 @@
             <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.FixWestAzarbayjanDeletedData"/>
         </antcall>
     </target>
+
+    <target name="downloadImagelessRestaurantPhotosFromFS" depends="build" description="">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.fix_no_images_restaurants.DownloadRestaurantFoursquarePhotos"/>
+        </antcall>
+    </target>
+
+    <target name="importImagelessRestaurantPhotosFromFS" depends="build" description="">
+        <antcall target="runQuick">
+            <param name="mainClass" value="ir.viratech.pond_ms.core.db.cli.fix_no_images_restaurants.ImportRestaurantFoursquarePhotosToDB"/>
+        </antcall>
+    </target>
+
+
 </project>
 

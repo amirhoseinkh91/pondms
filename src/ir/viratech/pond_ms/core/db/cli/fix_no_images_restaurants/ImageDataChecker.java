@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import ir.viratech.commons.file.model.AbstractFile;
-import ir.viratech.commons.file.model.logic.AbstractFileMgr;
 import ir.viratech.commons.persistence.mongo.base.MongoDBManager;
 import ir.viratech.commons.spring.context.ApplicationContextProvider;
 import ir.viratech.pond_ms.core.spring.ApplicationContextUtil;
@@ -14,7 +12,6 @@ import ir.viratech.pond_ms.core.spring.ApplicationContextUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -73,7 +70,6 @@ public class ImageDataChecker {
 
 
                 List<String> imagesHashes = (List<String>) var.get("Images");
-
 
 
             }
