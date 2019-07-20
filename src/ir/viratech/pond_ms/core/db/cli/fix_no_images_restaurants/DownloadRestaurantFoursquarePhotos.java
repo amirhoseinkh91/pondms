@@ -12,6 +12,7 @@ import ir.viratech.pond_ms.core.spring.ApplicationContextUtil;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("Duplicates")
@@ -30,7 +31,7 @@ public class DownloadRestaurantFoursquarePhotos {
             char[] animationChars = new char[]{'|', '/', '-', '\\'};
             int i = 0;
 
-            System.out.println("restaurants without images count: " + uidList.size() );
+            System.out.println("restaurants without images count: " + uidList.size());
 
             for (DBObject node : dbObjects) {
                 String gis_object_uid = MongoDBManager.getInstance().convertToObjectNode(node).get("gis_object_uid").asText();
@@ -86,7 +87,10 @@ public class DownloadRestaurantFoursquarePhotos {
             imageDataChecker.init();
             for (ImageDataChecker.NoImageItemResult item : imageDataChecker.data) {
                 if (item.getGisObjectType().equalsIgnoreCase("restaurant")) {
-                    res.add(item.getGisVectorObjectUid());
+                    List<String> downloadedUids = Arrays.asList(new File(restaurantsPath).list());
+                    if (!downloadedUids.contains(item.getGisVectorObjectUid())) {
+                        res.add(item.getGisVectorObjectUid());
+                    }
                 }
             }
 
