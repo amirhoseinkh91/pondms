@@ -32,7 +32,7 @@ public class DownloadRestaurantFoursquarePhotos {
             int i = 0;
 
             System.out.println("restaurants without images count: " + uidList.size());
-
+            System.out.println("=========== dbObjects Count: "  + dbObjects);
             for (DBObject node : dbObjects) {
                 String gis_object_uid = MongoDBManager.getInstance().convertToObjectNode(node).get("gis_object_uid").asText();
                 if (uidList.contains(gis_object_uid)) {
