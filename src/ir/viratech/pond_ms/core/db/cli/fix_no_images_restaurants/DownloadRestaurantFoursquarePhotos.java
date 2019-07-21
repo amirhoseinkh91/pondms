@@ -41,6 +41,7 @@ public class DownloadRestaurantFoursquarePhotos {
                         file.mkdirs();
                     }
                     JsonNode foursquarePhotos = MongoDBManager.getInstance().convertToObjectNode(node).get("FoursquarePhotos");
+                    System.out.println("found " + foursquarePhotos.size() + " photos for " + gis_object_uid);
                     if (foursquarePhotos.size() > 0) {
                         int imageCounter = 1;
                         for (JsonNode imageNode : foursquarePhotos) {
